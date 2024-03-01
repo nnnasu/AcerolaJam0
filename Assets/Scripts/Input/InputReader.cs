@@ -19,7 +19,7 @@ public class InputReader : ScriptableObject, InputActions.IGameMapActions {
         OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
     public void OnFire(InputAction.CallbackContext context) {
-        OnFireEvent?.Invoke();
+        if (context.performed) OnFireEvent?.Invoke();
     }
     public void OnRecall(InputAction.CallbackContext context) {
         OnRecallEvent?.Invoke();

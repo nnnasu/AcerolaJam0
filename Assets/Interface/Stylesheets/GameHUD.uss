@@ -1,5 +1,6 @@
 .unity-progress-bar {
     color: rgb(255, 255, 255);
+    max-width: none;
 }
 
 .unity-progress-bar__title-container {

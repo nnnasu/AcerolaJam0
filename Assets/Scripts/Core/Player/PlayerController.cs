@@ -32,8 +32,6 @@ public partial class PlayerController : MonoBehaviour {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitinfo;
         if (Physics.Raycast(ray, out hitinfo)) {
-            Debug.Log(hitinfo.point);
-            Debug.DrawRay(hitinfo.point, Vector3.up * 5, Color.red, 3);
             abilityManager.OnClick(hitinfo.point);
         }
         

@@ -16,21 +16,66 @@ MonoBehaviour:
   Alignment: 0
   AbilityType: 0
   Actions:
-  - rid: 1263628710645334016
+  - rid: 1263628710645334017
+  DamageScalingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.027893187
+      outSlope: 0.027893187
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.30768892
+    - serializedVersion: 3
+      time: 5
+      value: 2.5
+      inSlope: -0.0025608207
+      outSlope: -0.0025608207
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5572924
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  icon: {fileID: 0}
+  AbilityTitle: 
+  Description: 
   references:
     version: 2
     RefIds:
-    - rid: 1263628710645334016
-      type: {class: ProjectileAction, ns: , asm: Core.AbilitySystem}
+    - rid: 1263628710645334017
+      type: {class: ProjectileAction, ns: , asm: Core.AbilityExtensions}
       data:
         PrefabToFire: {fileID: 1629408442555188311, guid: 0a0dca243b0c51e42a43ae1f3631a143,
           type: 3}
         duration: 5
-        speed: 0
+        speed: 5
         useCurve: 0
         curve:
           serializedVersion: 2
-          m_Curve: []
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4

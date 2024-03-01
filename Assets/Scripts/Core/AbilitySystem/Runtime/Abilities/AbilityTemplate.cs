@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.AbilitySystem.Alignments;
 using UnityEngine;
 
@@ -12,14 +13,27 @@ public enum AbilityType {
 namespace Core.AbilitySystem.Abilities {
     [CreateAssetMenu(fileName = "AbilityTemplate", menuName = "Abilities/AbilityTemplate", order = 0)]
     public class AbilityTemplate : ScriptableObject {
+
+        [Header("Ability Information")]
         public TargetingType TargetType;
         public AberrantType Alignment;
         public AbilityType AbilityType;
+        public float BaseCooldown = 1;
 
-        [SerializeReference]
-        public List<AbilityAction> Actions;
 
-        public float[] DamageScaling = new float[] { 1 };
+        [Header("Damage Scaling")]
+
+        [Tooltip("Damage scaling as a multiplier of base attack. Time = level, value = multiplier, i.e. t=5 v=2 does 2xATK at level 5.")]
+        public AnimationCurve DamageScalingCurve;
+        public int MaximumLevel => (int)DamageScalingCurve.keys.Last().time;
+
+        [Header("UI Properties")]
+        public Texture2D icon;
+        public string AbilityTitle;
+        [TextArea] public string Description;
+
+        [Header("Actions")]
+        [SerializeReference] public List<AbilityAction> Actions;
 
 
 

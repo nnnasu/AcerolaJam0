@@ -14,22 +14,20 @@ public class ProjectileAction : AbilityAction {
     public bool useCurve;
     public AnimationCurve curve;
 
-    public override void Execute(AbilityManager manager, Vector3 target, float damage = 0, GameplayEffect effect = null, Action<AttributeSet> OnHit = null) {
-        Vector3 direction = target - manager.transform.position;
+    public override void Execute(AbilityInstance instance, Vector3 target, float damage = 0, GameplayEffect effect = null, Action<AttributeSet> OnHit = null) {
+        Vector3 direction = target - instance.owner.transform.position;
         direction.y = 0;
         direction.Normalize();
-        Projectile obj = GameObject.Instantiate(PrefabToFire).GetComponent<Projectile>();
-        obj.transform.position = manager.transform.position;
+        var poolObj = GlobalPool.Current.GetObject(PrefabToFire);
+        Projectile obj = poolObj.GetComponent<Projectile>();
+        if (obj == null) return;
+
+        obj.transform.position = instance.owner.transform.position;
         if (useCurve) {
             obj.Activate(curve, duration, direction, OnHit);
         } else obj.Activate(speed, duration, direction, OnHit);
-
-        obj.OnReturn += DestroyPrefab;
+        
     }
 
 
-    private void DestroyPrefab(GameObject obj) {
-        obj.GetComponent<Projectile>().OnReturn -= DestroyPrefab;
-        GameObject.Destroy(obj);
-    }
 }
