@@ -12,5 +12,5 @@ public abstract class AbilityAction {
     /// </summary>
     /// <param name="manager">The player's ability manager</param>
     /// <param name="target">The target point clicked in world-space.</param>
-    public abstract void Execute(AbilityManager manager, Vector3 target, float damage, GameplayEffect effect);
+    public abstract void Execute(AbilityManager manager, Vector3 target, float damage = 0, GameplayEffect effect = null, Action<AttributeSet> OnHit = null);
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core.AbilitySystem.Alignments;
 using UnityEngine;
 
-public enum AbilityType { 
+public enum AbilityType {
     BasicAttack,
     Spell,
     Structure
@@ -18,6 +18,8 @@ namespace Core.AbilitySystem.Abilities {
 
         [SerializeReference]
         public List<AbilityAction> Actions;
+
+        public float[] DamageScaling = new float[] { 1 };
 
 
 
