@@ -1,0 +1,18 @@
+{
+    "name": "Core.Player",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7bf7ce1d11eba144c9623055cf024fd5",
+        "GUID:c7e6599aa12b4ac4e9db326385dabb1c",
+        "GUID:d6008d8d9530e3d44a8a0b13e96850a8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

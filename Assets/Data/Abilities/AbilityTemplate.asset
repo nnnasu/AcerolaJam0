@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8975ca649c591140a3e6579825cf7d6, type: 3}
+  m_Name: AbilityTemplate
+  m_EditorClassIdentifier: 
+  TargetType: 0
+  Alignment: 0
+  AbilityType: 0
+  Actions:
+  - rid: 1263628710645334016
+  references:
+    version: 2
+    RefIds:
+    - rid: 1263628710645334016
+      type: {class: ProjectileAction, ns: , asm: Core.AbilitySystem}
+      data:
+        PrefabToFire: {fileID: 1629408442555188311, guid: 0a0dca243b0c51e42a43ae1f3631a143,
+          type: 3}
+        duration: 5
+        speed: 0
+        useCurve: 0
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4

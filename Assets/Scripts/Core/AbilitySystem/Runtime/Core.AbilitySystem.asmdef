@@ -1,0 +1,16 @@
+{
+    "name": "Core.AbilitySystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c7e6599aa12b4ac4e9db326385dabb1c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
