@@ -16,6 +16,10 @@ namespace Core.AbilitySystem.Abilities {
 
         [Header("Ability Information")]
         public TargetingType TargetType;
+        public float TargetingWidth;
+        public float TargetingDepth;
+        public float TargetingHeight;
+
         public AberrantType Alignment;
         public AbilityType AbilityType;
         public float BaseCooldown = 1;

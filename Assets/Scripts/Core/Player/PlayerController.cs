@@ -8,6 +8,8 @@ public partial class PlayerController : MonoBehaviour {
     [SerializeField] AbilityManager abilityManager;
     public float speed = 5;
     Vector2 currentInput;
+    Vector3 movementDirection;
+    Vector3 mousePosition;
     Camera MainCamera;
 
     private void Start() {
@@ -15,13 +17,12 @@ public partial class PlayerController : MonoBehaviour {
     }
 
     private void OnEnable() {
-
         input.OnMoveEvent += OnMove;
         input.OnFireEvent += OnFire;
     }
     private void OnDisable() {
         input.OnMoveEvent -= OnMove;
-        input.OnFireEvent += OnFire;
+        input.OnFireEvent -= OnFire;
     }
 
     private void OnMove(Vector2 move) {
@@ -29,17 +30,24 @@ public partial class PlayerController : MonoBehaviour {
     }
 
     private void OnFire() {
-        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitinfo;
-        if (Physics.Raycast(ray, out hitinfo)) {
-            abilityManager.OnClick(hitinfo.point);
-        }
-        
-
-
+        abilityManager.OnClick(mousePosition);
     }
 
     private void Update() {
-        characterController.Move(new Vector3(currentInput.x, 0, currentInput.y) * speed * Time.deltaTime);
+        UpdateMouse();
+        movementDirection.x = currentInput.x;
+        movementDirection.z = currentInput.y;
+        characterController.Move(movementDirection * speed * Time.deltaTime);
+    }
+
+    private void UpdateMouse() {
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitinfo;
+        if (Physics.Raycast(ray, out hitinfo)) {
+            mousePosition = hitinfo.point;
+        }        
+
+        mousePosition.y = transform.position.y;
+        transform.LookAt(mousePosition);
     }
 }

@@ -15,8 +15,7 @@ MonoBehaviour:
   TargetType: 0
   Alignment: 0
   AbilityType: 0
-  Actions:
-  - rid: 1263628710645334017
+  BaseCooldown: 0.2
   DamageScalingCurve:
     serializedVersion: 2
     m_Curve:
@@ -44,6 +43,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   AbilityTitle: 
   Description: 
+  Actions:
+  - rid: 1263628710645334017
+  - rid: 8291785558208806913
   references:
     version: 2
     RefIds:
@@ -52,8 +54,8 @@ MonoBehaviour:
       data:
         PrefabToFire: {fileID: 1629408442555188311, guid: 0a0dca243b0c51e42a43ae1f3631a143,
           type: 3}
-        duration: 5
-        speed: 5
+        duration: 1
+        speed: 2
         useCurve: 0
         curve:
           serializedVersion: 2
@@ -79,3 +81,7 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+    - rid: 8291785558208806913
+      type: {class: TeleportAction, ns: , asm: Core.AbilityExtensions}
+      data:
+        Range: 5
