@@ -13,18 +13,17 @@ public class AbilityManager : MonoBehaviour {
     AbilityInstance BasicAttack;
     List<AbilityInstance> Abilities = new();
 
-    public AttributeSet Attributes;
+    public PlayerAttributeSet Attributes;
 
     private void Start() {
-        foreach (var item in Loadout) {
-            Abilities.Add(new AbilityInstance(item, this));
-        }
-        BasicAttack = new(BasicAttackTemplate, this);
+        BasicAttack = new(BasicAttackTemplate);
+        
     }
 
 
     public void OnClick(Vector3 position) {
-        BasicAttack?.ActivateAbility(position);
+        BasicAttack.ActivateAbility(this, position);
+        
     }
 
     public event Action<AbilityInstance> OnAbilityUsed = delegate { };
