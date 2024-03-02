@@ -13,6 +13,7 @@ public class InputReader : ScriptableObject, InputActions.IGameMapActions {
     public event Action<Vector2> OnMoveEvent = delegate { };
     public event Action OnFireEvent = delegate { };
     public event Action OnRecallEvent = delegate { };
+    public event Action<int> OnSkillSelected = delegate {};
 
 
     public void OnMove(InputAction.CallbackContext context) {
@@ -24,9 +25,6 @@ public class InputReader : ScriptableObject, InputActions.IGameMapActions {
     public void OnRecall(InputAction.CallbackContext context) {
         OnRecallEvent?.Invoke();
     }
-
-
-
     private void OnEnable() {
         if (input == null) {
             input = new InputActions();
@@ -40,4 +38,23 @@ public class InputReader : ScriptableObject, InputActions.IGameMapActions {
         input.GameMap.RemoveCallbacks(this);
     }
 
+    public void SelectSkill(int num) {
+        OnSkillSelected?.Invoke(num);
+    }
+
+    public void OnSelectSkillA(InputAction.CallbackContext context) {
+        SelectSkill(1);        
+    }
+
+    public void OnSelectSkillB(InputAction.CallbackContext context) {
+        SelectSkill(2);
+    }
+
+    public void OnSelectSkillC(InputAction.CallbackContext context) {
+        SelectSkill(3);
+    }
+
+    public void OnSelectSkillD(InputAction.CallbackContext context) {
+        SelectSkill(4);
+    }
 }

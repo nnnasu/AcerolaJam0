@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639ced086a615e543ab1c4862504ba23, type: 3}
-  m_Name: AbilityTemplate
+  m_Script: {fileID: 11500000, guid: e392eac95b1e4034cada3df5e2dacaac, type: 3}
+  m_Name: StructureDefinition
   m_EditorClassIdentifier: 
-  actions:
-  - action: {fileID: 11400000, guid: a84ce6fbd6ad44c488e6b909cdc762d6, type: 2}
-    level: 1
-  modifiers: []
+  RechargeTime: 5
+  structurePrefab: {fileID: 1957290656272839930, guid: 801e6a799a3c8e643bbdb9316ad652bd,
+    type: 3}

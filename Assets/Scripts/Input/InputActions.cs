@@ -53,6 +53,42 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkillA"",
+                    ""type"": ""Button"",
+                    ""id"": ""deb95175-8dc7-4c18-b615-f92b0adf9410"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkillB"",
+                    ""type"": ""Button"",
+                    ""id"": ""5194743a-efb4-4929-b7b8-bf5727e32046"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkillC"",
+                    ""type"": ""Button"",
+                    ""id"": ""1fadb7d5-f883-49da-8471-cf7498ee9638"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkillD"",
+                    ""type"": ""Button"",
+                    ""id"": ""3976d98f-07ce-4151-8ac7-895b39bed298"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +168,50 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Recall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""713a2401-ba7a-4bc7-a164-6609e5182f87"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSkillA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80fcfb39-dfbf-4839-b299-967015b11403"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSkillB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7414a294-91fc-49ce-a14a-0b49145bfc56"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSkillC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""844c2e8d-56ac-4940-9bc3-ce78935c884d"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSkillD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,6 +240,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_GameMap_Move = m_GameMap.FindAction("Move", throwIfNotFound: true);
         m_GameMap_Fire = m_GameMap.FindAction("Fire", throwIfNotFound: true);
         m_GameMap_Recall = m_GameMap.FindAction("Recall", throwIfNotFound: true);
+        m_GameMap_SelectSkillA = m_GameMap.FindAction("SelectSkillA", throwIfNotFound: true);
+        m_GameMap_SelectSkillB = m_GameMap.FindAction("SelectSkillB", throwIfNotFound: true);
+        m_GameMap_SelectSkillC = m_GameMap.FindAction("SelectSkillC", throwIfNotFound: true);
+        m_GameMap_SelectSkillD = m_GameMap.FindAction("SelectSkillD", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +308,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameMap_Move;
     private readonly InputAction m_GameMap_Fire;
     private readonly InputAction m_GameMap_Recall;
+    private readonly InputAction m_GameMap_SelectSkillA;
+    private readonly InputAction m_GameMap_SelectSkillB;
+    private readonly InputAction m_GameMap_SelectSkillC;
+    private readonly InputAction m_GameMap_SelectSkillD;
     public struct GameMapActions
     {
         private @InputActions m_Wrapper;
@@ -231,6 +319,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_GameMap_Move;
         public InputAction @Fire => m_Wrapper.m_GameMap_Fire;
         public InputAction @Recall => m_Wrapper.m_GameMap_Recall;
+        public InputAction @SelectSkillA => m_Wrapper.m_GameMap_SelectSkillA;
+        public InputAction @SelectSkillB => m_Wrapper.m_GameMap_SelectSkillB;
+        public InputAction @SelectSkillC => m_Wrapper.m_GameMap_SelectSkillC;
+        public InputAction @SelectSkillD => m_Wrapper.m_GameMap_SelectSkillD;
         public InputActionMap Get() { return m_Wrapper.m_GameMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +341,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Recall.started += instance.OnRecall;
             @Recall.performed += instance.OnRecall;
             @Recall.canceled += instance.OnRecall;
+            @SelectSkillA.started += instance.OnSelectSkillA;
+            @SelectSkillA.performed += instance.OnSelectSkillA;
+            @SelectSkillA.canceled += instance.OnSelectSkillA;
+            @SelectSkillB.started += instance.OnSelectSkillB;
+            @SelectSkillB.performed += instance.OnSelectSkillB;
+            @SelectSkillB.canceled += instance.OnSelectSkillB;
+            @SelectSkillC.started += instance.OnSelectSkillC;
+            @SelectSkillC.performed += instance.OnSelectSkillC;
+            @SelectSkillC.canceled += instance.OnSelectSkillC;
+            @SelectSkillD.started += instance.OnSelectSkillD;
+            @SelectSkillD.performed += instance.OnSelectSkillD;
+            @SelectSkillD.canceled += instance.OnSelectSkillD;
         }
 
         private void UnregisterCallbacks(IGameMapActions instance)
@@ -262,6 +366,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Recall.started -= instance.OnRecall;
             @Recall.performed -= instance.OnRecall;
             @Recall.canceled -= instance.OnRecall;
+            @SelectSkillA.started -= instance.OnSelectSkillA;
+            @SelectSkillA.performed -= instance.OnSelectSkillA;
+            @SelectSkillA.canceled -= instance.OnSelectSkillA;
+            @SelectSkillB.started -= instance.OnSelectSkillB;
+            @SelectSkillB.performed -= instance.OnSelectSkillB;
+            @SelectSkillB.canceled -= instance.OnSelectSkillB;
+            @SelectSkillC.started -= instance.OnSelectSkillC;
+            @SelectSkillC.performed -= instance.OnSelectSkillC;
+            @SelectSkillC.canceled -= instance.OnSelectSkillC;
+            @SelectSkillD.started -= instance.OnSelectSkillD;
+            @SelectSkillD.performed -= instance.OnSelectSkillD;
+            @SelectSkillD.canceled -= instance.OnSelectSkillD;
         }
 
         public void RemoveCallbacks(IGameMapActions instance)
@@ -293,5 +409,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnRecall(InputAction.CallbackContext context);
+        void OnSelectSkillA(InputAction.CallbackContext context);
+        void OnSelectSkillB(InputAction.CallbackContext context);
+        void OnSelectSkillC(InputAction.CallbackContext context);
+        void OnSelectSkillD(InputAction.CallbackContext context);
     }
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using PrimeTween;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ValueBar : MonoBehaviour {
     public Image fill;
     public Image ghostFill;
+    public TextMeshProUGUI text;
 
     public float MaxValue;
     public float HitSpeed = 0.3f;
@@ -16,6 +18,7 @@ public class ValueBar : MonoBehaviour {
     Tween GhostTween;
 
     public void OnValueChanged(float oldValue, float newValue, float maxValue) {
+        text.text = $"{newValue}/{maxValue}";
         MaxValue = maxValue;
         HitTween.Stop();
         GhostTween.Stop();
