@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Interface/Stylesheets/GameHUD.uss?fileID=7433441132597879392&amp;guid=730f07ae423f8b94ab7233911ad0af59&amp;type=3#GameHUD" />
-    <ui:VisualElement name="container" style="flex-grow: 1; width: auto; height: auto; bottom: 0; left: auto; top: auto; min-width: 30%; min-height: auto; right: auto; flex-shrink: 1; position: relative; max-width: 40%; max-height: none; align-self: center; flex-direction: column; align-items: stretch; justify-content: flex-end;">
-        <ui:ProgressBar value="30" name="hpbar" />
-        <ui:ProgressBar value="100" name="mpbar" />
-        <ui:VisualElement name="ability-displays" style="flex-grow: 0; flex-direction: row; justify-content: center; margin-top: 1%; margin-right: 1%; margin-bottom: 1%; margin-left: 1%; align-items: center; flex-wrap: nowrap; align-self: auto; flex-shrink: 1; min-width: auto; min-height: auto;" />
-    </ui:VisualElement>
-</ui:UXML>
