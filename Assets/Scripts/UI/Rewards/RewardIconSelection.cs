@@ -21,7 +21,6 @@ namespace Core.UI.Rewards {
 
         public Sprite defaultTexture;
 
-
         Tween selectionBorderTween;
         Tween hoverBorderTween;
         public Image SelectionBorder;

@@ -11,17 +11,39 @@ public class AbilityPanel : MonoBehaviour {
     public List<RewardIconSelection> Actions = new();
     public List<RewardIconSelection> Modifiers = new();
 
-    public event Action<int, bool> OnSelected = delegate { };
-    public event Action<int, bool, Vector2> OnHover = delegate { };
-    public event Action OnHoverLeft = delegate { };
+    public event Action<int, int, bool> OnSelectedEvent = delegate { };
+    public event Action<int, int, bool, Vector2> OnHoverEvent = delegate { };
+    public event Action OnHoverLeftEvent = delegate { };
+
+    public int abilityIndex;
+
+    private void OnHover(int index, bool isModifier, Vector2 pos) {
+        Debug.Log(pos);
+        OnHoverEvent?.Invoke(abilityIndex, index, isModifier, pos);
+    }
+
+    private void OnSelected(int index, bool isModifier) {
+        Debug.Log("Selected");
+        OnSelectedEvent?.Invoke(abilityIndex, index, isModifier);
+    }
+
+    private void OnHoverLeft() {
+        Debug.Log("Hover Left");
+        OnHoverLeftEvent?.Invoke();
+    }
 
     private void OnEnable() {
-        Actions.ForEach(x => x.OnClickEvent += OnSelected);
-        Actions.ForEach(x => x.OnHoverLeft += OnHoverLeft);
-        Actions.ForEach(x => x.OnHoverEvent += OnHover);
-        Modifiers.ForEach(x => x.OnClickEvent += OnSelected);
-        Modifiers.ForEach(x => x.OnHoverLeft += OnHoverLeft);
-        Modifiers.ForEach(x => x.OnHoverEvent += OnHover);
+        foreach (var item in Actions) {
+            item.OnClickEvent += OnSelected;
+            item.OnHoverEvent += OnHover;
+            item.OnHoverLeft += OnHoverLeft;
+        }
+
+        foreach (var item in Modifiers) {
+            item.OnClickEvent += OnSelected;
+            item.OnHoverEvent += OnHover;
+            item.OnHoverLeft += OnHoverLeft;
+        }
     }
 
     private void OnDisable() {
