@@ -1,3 +1,4 @@
+using System.Linq;
 using Core.Abilities;
 using Core.Abilities.Instances;
 using Core.Abilities.Templates;
@@ -14,9 +15,12 @@ public class AbilityTemplateSetter : MonoBehaviour {
         target.BasicAttack = CreateInstance(target, BasicAttackTemplate);
         target.Abilities.Clear();
 
-        foreach (var item in AbilitiesToAdd) {
-            target.Abilities.Add(CreateInstance(target, item));
-            
+        for (int i = 0; i < 4; i++) {
+            if (i < AbilitiesToAdd.Length) {
+                target.Abilities.Add(CreateInstance(target, AbilitiesToAdd[i]));
+            } else {
+                target.Abilities.Add(new(target));
+            }
         }
         target.RecalculateStats();
     }

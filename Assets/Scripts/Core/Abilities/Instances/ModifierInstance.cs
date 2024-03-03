@@ -21,5 +21,8 @@ namespace Core.Abilities.Instances {
             definition.OnHit(owner, ability, this, hitTarget);
         }
 
+        public string ToTooltipText() {
+            return "This is a mod";
+        }
     }
 }

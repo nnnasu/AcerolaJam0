@@ -29,5 +29,9 @@ namespace Core.Abilities.Instances {
             definition.OnHit(owner, ability, this, target);
         }
 
+        public string ToTooltipText() {
+            return "This is an action";
+        }
+
     }
 }

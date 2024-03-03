@@ -11,7 +11,7 @@ namespace Core.UI.Rewards {
     /// <summary>
     /// This class is used for individual icons and handles when the cursor hovers over or clicks the icon.
     /// </summary>
-    public class RewardIconSelection : MonoBehaviour, IPointerMoveHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class AbilitySlotSelection : MonoBehaviour, IPointerMoveHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
         public int index;
         public bool isModifier;
 
@@ -33,13 +33,6 @@ namespace Core.UI.Rewards {
 
         public void OnPointerClick(PointerEventData eventData) {
             OnClickEvent?.Invoke(index, isModifier);
-            isSelected = !isSelected;
-            selectionBorderTween.Stop();
-            if (isSelected) {
-                selectionBorderTween = Tween.Custom(0, 1, tweenDuration, SetSelectionBorderAlpha);
-            } else {
-                selectionBorderTween = Tween.Custom(1, 0, tweenDuration, SetSelectionBorderAlpha);
-            }
         }
 
         private void SetSelectionBorderAlpha(float value) {
@@ -51,6 +44,16 @@ namespace Core.UI.Rewards {
             Color color = HoverBorder.color;
             color.a = value;
             HoverBorder.color = color;
+        }
+
+        public void SetSelected(bool select) {
+            isSelected = select;
+            selectionBorderTween.Stop();
+            if (isSelected) {
+                selectionBorderTween = Tween.Custom(0, 1, tweenDuration, SetSelectionBorderAlpha);
+            } else {
+                selectionBorderTween = Tween.Custom(1, 0, tweenDuration, SetSelectionBorderAlpha);
+            }
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
@@ -71,11 +74,11 @@ namespace Core.UI.Rewards {
 
         public void SetIcon(Sprite icon = null) {
             if (!icon) {
-                IconImage.sprite = defaultTexture;                
+                IconImage.sprite = defaultTexture;
             } else {
                 IconImage.sprite = icon;
             }
-
         }
+
     }
 }
