@@ -19,11 +19,14 @@ namespace Core.UI.Rewards {
         public event Action<int, bool> OnClickEvent = delegate { };
         public event Action OnHoverLeft = delegate { };
 
+        public Sprite defaultTexture;
+
 
         Tween selectionBorderTween;
         Tween hoverBorderTween;
         public Image SelectionBorder;
         public Image HoverBorder;
+        public Image IconImage;
 
         bool isSelected;
         public float tweenDuration = 0.5f;
@@ -65,6 +68,15 @@ namespace Core.UI.Rewards {
 
         public void OnPointerMove(PointerEventData eventData) {
             OnHoverEvent?.Invoke(index, isModifier, eventData.position);
+        }
+
+        public void SetIcon(Sprite icon = null) {
+            if (!icon) {
+                IconImage.sprite = defaultTexture;                
+            } else {
+                IconImage.sprite = icon;
+            }
+
         }
     }
 }

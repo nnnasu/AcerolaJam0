@@ -125,7 +125,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
-  ActionTitle: 
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  ActionTitle: Summon Cylinder
   Description: 
   structure: {fileID: 11400000, guid: d04e9ba4912c2ad4b835768315c13bb6, type: 2}

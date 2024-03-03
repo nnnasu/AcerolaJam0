@@ -18,6 +18,13 @@ public abstract class ModifierDefinition : ScriptableObject {
     [Tooltip("Stats which apply ONLY to this ability.")]
     public List<StatModifier> PerAbilityModifier = new();
 
+
+
+    [Header("UI Properties")]
+    public Sprite icon;
+    public string ActionTitle;
+    [TextArea] public string Description;
+
     public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null);
     public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, AttributeSet hitTarget);
 

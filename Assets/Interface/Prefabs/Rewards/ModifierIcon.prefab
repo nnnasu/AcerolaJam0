@@ -318,6 +318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   isModifier: 1
+  defaultTexture: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
   SelectionBorder: {fileID: 3308494803568249863}
   HoverBorder: {fileID: 4752315600423194201}
+  IconImage: {fileID: 2266729461756541977}
   tweenDuration: 0.5

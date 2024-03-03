@@ -168,8 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   isModifier: 0
+  defaultTexture: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
   SelectionBorder: {fileID: 1751384542865711630}
   HoverBorder: {fileID: 2257678315293716457}
+  IconImage: {fileID: 372720782747195481}
   tweenDuration: 0.5
 --- !u!1 &6299664968736630840
 GameObject:

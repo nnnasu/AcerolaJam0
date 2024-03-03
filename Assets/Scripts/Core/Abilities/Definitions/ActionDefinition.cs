@@ -25,7 +25,7 @@ namespace Core.Abilities.Definitions {
         public ScaledFloat Range;
 
         [Header("UI Properties")]
-        public Texture2D icon;
+        public Sprite icon;
         public string ActionTitle;
         [TextArea] public string Description;
 
