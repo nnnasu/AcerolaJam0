@@ -21,9 +21,9 @@ namespace Core.Abilities.Instances {
         public Tween UsageTween; // cast time = max(action cast time)
 
         public event Action OnAbilityActivated = delegate { };
+        public event Action<bool> OnFocusChanged = delegate { };
         public event Action<float> OnCooldownStarted = delegate { };
         public event Action OnCooldownEnded = delegate { };
-        public event Action<bool> OnFocusChanged = delegate { };
 
         public AbilityInstance(AbilityManager owner) {
             this.owner = owner;
@@ -59,10 +59,12 @@ namespace Core.Abilities.Instances {
             foreach (var item in modifiers) {
                 item.OnActivate(owner, this, targetPoint);
             }
+
+
             // Start Cooldowns
-            isOnCooldown = true;
             OnAbilityActivated?.Invoke();
-            Debug.Log($"Current CD = {cachedCooldownTime}");
+            isOnCooldown = true;
+
             StartCooldown();
             // if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
             // else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
@@ -112,12 +114,9 @@ namespace Core.Abilities.Instances {
 
 
         private void StartCooldown() {
-            if (cachedCooldownTime >= float.Epsilon) {
-                OnCooldownStarted?.Invoke(cachedCooldownTime);
-                CooldownTween = Tween.Delay(cachedCooldownTime, OnCooldownEnd);
-            } else {
-                OnCooldownEnd();
-            }
+            OnCooldownStarted?.Invoke(cachedCooldownTime);
+            CooldownTween = Tween.Delay(cachedCooldownTime, OnCooldownEnd);
+
         }
         private void OnCooldownEnd() {
             isOnCooldown = false;

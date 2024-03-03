@@ -35,13 +35,13 @@ namespace Core.Abilities {
             }
         }
 
-        public void OnClick(Vector3 targetPosition, int selectedKey = 0) {
-            if (selectedKey == 0) {
+        public void OnClick(Vector3 targetPosition) {
+            if (index == 0) {
                 BasicAttack?.ActivateAbility(targetPosition);
             } else {
-                if (selectedKey >= Abilities.Count) return;
+                if (index - 1 >= Abilities.Count) return;
 
-                var ability = Abilities[selectedKey - 1];
+                var ability = Abilities[index - 1];
                 ability?.ActivateAbility(targetPosition);
             }
             SetActiveSkill(0);

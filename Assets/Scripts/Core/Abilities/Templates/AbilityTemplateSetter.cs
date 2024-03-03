@@ -16,6 +16,7 @@ public class AbilityTemplateSetter : MonoBehaviour {
 
         foreach (var item in AbilitiesToAdd) {
             target.Abilities.Add(CreateInstance(target, item));
+            
         }
         target.RecalculateStats();
     }

@@ -18,17 +18,14 @@ public class SkillDisplay : MonoBehaviour {
     Tween CooldownTextTween;
     bool isSelected = false;
 
-    private void StartUsage() {
-
+    public void OnAbilityStarted() {
     }
 
     public void StartCooldown(float duration) {
-        Debug.Log("cooldown started in ui");
         CooldownText.gameObject.SetActive(true);
         CooldownDisplayTween = Tween.Custom(1, 0, duration, UpdateFillAmount);
         CooldownTextTween = Tween.Custom(duration, 0, duration, UpdateDisplayTime).OnComplete(CleanCooldownText);
     }
-
     private void UpdateDisplayTime(float value) {
         CooldownText.text = value.ToString("0");
     }
@@ -51,17 +48,16 @@ public class SkillDisplay : MonoBehaviour {
     public void Bind(AbilityInstance ability) {
         boundAbility = ability;
         boundAbility.OnFocusChanged += SetFocus;
-        boundAbility.OnAbilityActivated += StartUsage;
+        boundAbility.OnAbilityActivated += OnAbilityStarted;
         boundAbility.OnCooldownStarted += StartCooldown;
         boundAbility.OnCooldownEnded += CleanCooldownText;
     }
 
     public void Unbind() {
         boundAbility.OnFocusChanged -= SetFocus;
-        boundAbility.OnAbilityActivated -= StartUsage;
+        boundAbility.OnAbilityActivated -= OnAbilityStarted;
         boundAbility.OnCooldownStarted -= StartCooldown;
         boundAbility.OnCooldownEnded -= CleanCooldownText;
         boundAbility = null;
-
     }
 }

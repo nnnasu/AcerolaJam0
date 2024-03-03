@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60728eb6805dc4543904c2d72c2b46c1, type: 3}
   m_Name: TeleportAction
   m_EditorClassIdentifier: 
-  actionType: 0
+  actionType: 5
   alignment: 0
   DamageMultiplier:
     BaseValue: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   BaseCooldown:
     BaseValue: 0
-    AdditiveValue: 0.3
+    AdditiveValue: 2
     ValueCurve:
       serializedVersion: 2
       m_Curve:
