@@ -11,11 +11,14 @@ namespace Core.Abilities.Instances {
         public ActionDefinition definition;
         public int level = 1;
         public float BaseCooldown => definition.BaseCooldown.GetValueAtLevel(level);
+        public float CooldownDisplay;
         public float BaseCost => definition.BaseMPCost.GetValueAtLevel(level);
         public float DamageMultiplier => definition.DamageMultiplier.GetValueAtLevel(level);
 
         public ActionInstance(ActionDefinition definition) {
             this.definition = definition;
+
+            CooldownDisplay = BaseCooldown;
         }
 
         public void ActivateAbility(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {

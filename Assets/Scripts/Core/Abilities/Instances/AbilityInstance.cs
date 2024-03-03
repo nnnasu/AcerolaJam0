@@ -12,7 +12,7 @@ namespace Core.Abilities.Instances {
         public AbilityManager owner;
         public List<ActionInstance> actions = new(4);
         public List<ModifierInstance> modifiers = new(4);
-
+        public float CooldownDisplay;
         public bool isOnCooldown { get; private set; } = false;
         public float cachedCooldownTime { get; private set; }
         public float cachedUsageTime { get; private set; }
@@ -23,14 +23,34 @@ namespace Core.Abilities.Instances {
         public event Action OnAbilityActivated = delegate { };
         public event Action<float> OnCooldownStarted = delegate { };
         public event Action OnCooldownEnded = delegate { };
+        public event Action<bool> OnFocusChanged = delegate { };
 
         public AbilityInstance(AbilityManager owner) {
             this.owner = owner;
         }
 
+        public void OnAbilityModified() {
+            CalculateCooldownTime(owner);
+            CalculateUsageTime(owner);
+        }
+
+        public bool SetFocus(bool focused) {
+            // TODO FIX THIS
+            if (!focused) {
+                OnFocusChanged?.Invoke(false);
+                return true;
+            }
+            if (isOnCooldown) {
+                OnFocusChanged?.Invoke(false);
+                return false;
+            }
+            OnFocusChanged?.Invoke(true);
+            return true;
+        }
+
         public bool ActivateAbility(Vector3 targetPoint) {
             if (isOnCooldown) return false;
-            if (useDynamicCooldown) CalculateCooldownTime(owner); // otherwise, just use cached.
+            if (useDynamicCooldown) cachedCooldownTime = CalculateCooldownTime(owner); // otherwise, just use cached.
 
             foreach (var item in actions) {
                 item.ActivateAbility(owner, this, targetPoint);
@@ -42,8 +62,10 @@ namespace Core.Abilities.Instances {
             // Start Cooldowns
             isOnCooldown = true;
             OnAbilityActivated?.Invoke();
-            if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
-            else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
+            Debug.Log($"Current CD = {cachedCooldownTime}");
+            StartCooldown();
+            // if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
+            // else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
 
             return true;
         }
@@ -72,7 +94,8 @@ namespace Core.Abilities.Instances {
                 });
             }
 
-            cachedCooldownTime = Formulas.CooldownReductionFormula(cachedCooldownTime, cdr);
+            cachedCooldownTime = Formulas.CooldownReductionFormula(cooldown, cdr);
+            CooldownDisplay = cachedCooldownTime;
             return cachedCooldownTime;
         }
 

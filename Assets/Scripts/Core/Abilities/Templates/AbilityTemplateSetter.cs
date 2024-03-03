@@ -5,28 +5,26 @@ using UnityEngine;
 
 public class AbilityTemplateSetter : MonoBehaviour {
     public AbilityTemplate BasicAttackTemplate;
-    public AbilityTemplate[] Abilities;
-
+    public AbilityTemplate[] AbilitiesToAdd;
     public AbilityManager target;
 
 
-    private void Start() {
+    private void Awake() {
         target.BasicAttack = new(target);
-        AddToInstance(target.BasicAttack, BasicAttackTemplate);
+        target.BasicAttack = CreateInstance(target, BasicAttackTemplate);
         target.Abilities.Clear();
-        foreach (var item in Abilities) {
-            AbilityInstance instance = new(target);
-            AddToInstance(instance, item);
+
+        foreach (var item in AbilitiesToAdd) {
+            target.Abilities.Add(CreateInstance(target, item));
         }
         target.RecalculateStats();
-
     }
 
-    private void AddToInstance(AbilityInstance instance, AbilityTemplate template) {
-        instance.actions.Clear();
-        instance.modifiers.Clear();
-
-        template.actions.ForEach(x => instance.actions.Add(new(x.action) { level = x.level }));
-        template.modifiers.ForEach(x => instance.modifiers.Add(new(x.mod) { level = x.level }));
+    private AbilityInstance CreateInstance(AbilityManager manager, AbilityTemplate template) {
+        AbilityInstance result = new(manager);
+        template.actions.ForEach(x => result.actions.Add(new(x.action) { level = x.level }));
+        template.modifiers.ForEach(x => result.modifiers.Add(new(x.mod) { level = x.level }));
+        return result;
     }
+
 }

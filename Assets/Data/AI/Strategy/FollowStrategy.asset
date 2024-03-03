@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639ced086a615e543ab1c4862504ba23, type: 3}
-  m_Name: AbilityTemplate
+  m_Script: {fileID: 11500000, guid: 4cd79a435feb27947918cebc4c82d969, type: 3}
+  m_Name: FollowStrategy
   m_EditorClassIdentifier: 
-  actions:
-  - action: {fileID: 11400000, guid: ced27c2357872654c80194ea60062b92, type: 2}
-    level: 1
-  modifiers: []
+  Actions:
+  - {fileID: 11400000, guid: 03a7a91cdc5a3314ea24ce3c88d7ade3, type: 2}

@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class StructureBase : MonoBehaviour, IPoolable {
+namespace Core.Abilities.Structures {
+    public class StructureBase : PoolableBehaviour {
 
-    private IObjectPool<GameObject> pool;
-    public IObjectPool<GameObject> Pool { get => pool; set => pool = value; }
-
-    public void ReturnToPool() {
-        pool?.Release(gameObject);
     }
 }

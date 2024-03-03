@@ -13,4 +13,6 @@ public class PlayerAttributeSet : AttributeSet {
     public float StructureTickSpeed;
     public float CooldownReduction;
 
+    public event Action<float, float> OnMPChanged = delegate {};
+
 }

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core.Abilities;
+using Core.Abilities.Structures;
 using UnityEngine;
 
 public partial class PlayerController : MonoBehaviour {
     [SerializeField] InputReader input;
     [SerializeField] CharacterController characterController;
     [SerializeField] AbilityManager abilityManager;
-    public float speed = 5;
+    public float speed = 5; // TODO Use abilityManager.movementSpeed
     Vector2 currentInput;
     Vector3 movementDirection;
     Vector3 mousePosition;
@@ -23,11 +24,13 @@ public partial class PlayerController : MonoBehaviour {
         input.OnMoveEvent += OnMove;
         input.OnFireEvent += OnFire;
         input.OnRecallEvent += OnRecall;
+        input.OnSkillSelected += OnSkillSelected;
     }
     private void OnDisable() {
         input.OnMoveEvent -= OnMove;
         input.OnFireEvent -= OnFire;
         input.OnRecallEvent -= OnRecall;
+        input.OnSkillSelected -= OnSkillSelected;
     }
 
     private void OnMove(Vector2 move) {
@@ -39,12 +42,24 @@ public partial class PlayerController : MonoBehaviour {
     }
 
     private void OnRecall() {
+        if (abilityManager.isSkillSelected) {
+            DeselectSkill();
+            return;
+        }
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitinfo;
         if (Physics.Raycast(ray, out hitinfo, Mathf.Infinity, RecallLayer)) {
-            Debug.Log(hitinfo.collider.name);
+            var structure = hitinfo.collider.GetComponentInParent<StructureBase>();
+            abilityManager.OnStructureRecall(structure);
         }
+    }
 
+    private void DeselectSkill() {
+        abilityManager.SetActiveSkill(0);
+    }
+
+    private void OnSkillSelected(int index) {
+        abilityManager.SetActiveSkill(index);
     }
 
     private void Update() {

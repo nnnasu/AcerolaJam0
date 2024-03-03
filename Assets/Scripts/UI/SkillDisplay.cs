@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core.Abilities.Instances;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillDisplay : MonoBehaviour {
+
+    private AbilityInstance boundAbility;
     public Image Border;
     public Image MainIcon;
     public Image CooldownOverlay;
@@ -15,7 +18,12 @@ public class SkillDisplay : MonoBehaviour {
     Tween CooldownTextTween;
     bool isSelected = false;
 
+    private void StartUsage() {
+
+    }
+
     public void StartCooldown(float duration) {
+        Debug.Log("cooldown started in ui");
         CooldownText.gameObject.SetActive(true);
         CooldownDisplayTween = Tween.Custom(1, 0, duration, UpdateFillAmount);
         CooldownTextTween = Tween.Custom(duration, 0, duration, UpdateDisplayTime).OnComplete(CleanCooldownText);
@@ -27,7 +35,6 @@ public class SkillDisplay : MonoBehaviour {
     private void UpdateFillAmount(float value) {
         CooldownOverlay.fillAmount = value;
     }
-
     private void CleanCooldownText() {
         CooldownText.gameObject.SetActive(false);
     }
@@ -41,8 +48,20 @@ public class SkillDisplay : MonoBehaviour {
         KeyText.text = num.ToString();
     }
 
-    [ContextMenu("Test")]
-    public void CD() {
-        StartCooldown(5);
+    public void Bind(AbilityInstance ability) {
+        boundAbility = ability;
+        boundAbility.OnFocusChanged += SetFocus;
+        boundAbility.OnAbilityActivated += StartUsage;
+        boundAbility.OnCooldownStarted += StartCooldown;
+        boundAbility.OnCooldownEnded += CleanCooldownText;
+    }
+
+    public void Unbind() {
+        boundAbility.OnFocusChanged -= SetFocus;
+        boundAbility.OnAbilityActivated -= StartUsage;
+        boundAbility.OnCooldownStarted -= StartCooldown;
+        boundAbility.OnCooldownEnded -= CleanCooldownText;
+        boundAbility = null;
+
     }
 }

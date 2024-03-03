@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639ced086a615e543ab1c4862504ba23, type: 3}
-  m_Name: AbilityTemplate
+  m_Script: {fileID: 11500000, guid: af686076e884b6a40b1456f204194f5e, type: 3}
+  m_Name: Run Away Action
   m_EditorClassIdentifier: 
-  actions:
-  - action: {fileID: 11400000, guid: ced27c2357872654c80194ea60062b92, type: 2}
-    level: 1
-  modifiers: []
+  VelocityMultiplier: -1

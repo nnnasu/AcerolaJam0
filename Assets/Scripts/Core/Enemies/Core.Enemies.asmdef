@@ -1,11 +1,11 @@
 {
-    "name": "Core.UI",
+    "name": "Core.Enemies",
     "rootNamespace": "",
     "references": [
-        "GUID:80ecb87cae9c44d19824e70ea7229748",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:d319d576fda3f2c46839e04ecb059f11",
-        "GUID:c7e6599aa12b4ac4e9db326385dabb1c"
+        "GUID:db31bb5f2418a0c40a4ba37c4045b330",
+        "GUID:c7e6599aa12b4ac4e9db326385dabb1c",
+        "GUID:445df3e460fdef845a31e013b6ff956e",
+        "GUID:80ecb87cae9c44d19824e70ea7229748"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
