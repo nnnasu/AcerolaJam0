@@ -32,5 +32,9 @@ namespace Core.Abilities.Definitions {
 
         public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target);
         public abstract void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
+
+        public virtual string GetTooltipText(float level) {
+            return Description;
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Core.Abilities.Instances {
         }
 
         public string ToTooltipText() {
-            return "This is a mod";
+            return definition.GetTooltipText(level);
         }
     }
 }

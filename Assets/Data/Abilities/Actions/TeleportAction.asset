@@ -127,4 +127,4 @@ MonoBehaviour:
       m_RotationOrder: 4
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   ActionTitle: Teleport
-  Description: 
+  Description: 'Moves to the targeted point within range. '

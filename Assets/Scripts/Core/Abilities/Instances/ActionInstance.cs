@@ -30,7 +30,7 @@ namespace Core.Abilities.Instances {
         }
 
         public string ToTooltipText() {
-            return "This is an action";
+            return definition.GetTooltipText(level);
         }
 
     }

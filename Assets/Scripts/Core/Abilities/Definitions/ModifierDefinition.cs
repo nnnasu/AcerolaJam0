@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Abilities;
 using Core.Abilities.Definitions;
 using Core.Abilities.Enums;
@@ -22,10 +23,17 @@ public abstract class ModifierDefinition : ScriptableObject {
 
     [Header("UI Properties")]
     public Sprite icon;
-    public string ActionTitle;
+    public string ModifierName;
     [TextArea] public string Description;
 
     public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null);
     public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, AttributeSet hitTarget);
+    public virtual string GetTooltipText(float level) {
+        List<string> strings = new();
+        GlobalStatModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));
+        PerAbilityModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));
+        strings.Add(Description);
+        return string.Join("\n", strings);
+    }
 
 }
