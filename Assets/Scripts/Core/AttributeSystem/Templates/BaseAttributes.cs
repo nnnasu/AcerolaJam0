@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Core.AttributeSystem {
 
-    [CreateAssetMenu(fileName = "BaseAttributes", menuName = "Attributes/BaseAttributes", order = 0)]
+    [CreateAssetMenu(fileName = "BaseAttributes", menuName = "Templates/BaseAttributes", order = 0)]
     public class BaseAttributes : ScriptableObject {
 
         public float MaxHP;

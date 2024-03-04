@@ -10,7 +10,6 @@ using UnityEngine;
 
 
 namespace Core.Abilities.Definitions {
-    // [CreateAssetMenu(fileName = "ActionDefinition", menuName = "Actions/ActionDefinition", order = 0)]
     public abstract class ActionDefinition : ScriptableObject {
         [Header("Ability Parameters")]
         public ActionType actionType;

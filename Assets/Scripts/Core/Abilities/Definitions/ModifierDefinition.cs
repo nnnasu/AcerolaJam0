@@ -8,7 +8,6 @@ using Core.Abilities.Enums;
 using Core.Abilities.Instances;
 using UnityEngine;
 
-// [CreateAssetMenu(fileName = "ModifierDefinition", menuName = "Modifiers/ModifierDefinition", order = 0)]
 public abstract class ModifierDefinition : ScriptableObject {
     // pass in the modifier instance so we can tell what level the mod is at
     public AlignmentType alignment;

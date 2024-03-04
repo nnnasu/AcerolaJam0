@@ -8,7 +8,7 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Projectile Action", menuName = "Actions/Projectile Action", order = 0)]
+[CreateAssetMenu(fileName = "Projectile Action", menuName = "Player Actions/Fire Projectile", order = 0)]
 public class ProjectileAction : ActionDefinition {
     public GameObject projectilePrefab;
     public float ProjectileSpeed = 10;

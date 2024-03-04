@@ -4,7 +4,7 @@ using Core.Abilities.Definitions;
 using Core.Abilities.Instances;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RewardGenerator", menuName = "RewardGenerator", order = 0)]
+[CreateAssetMenu(fileName = "RewardGenerator", menuName = "Game Management/RewardGenerator", order = 0)]
 public class RewardGenerator : ScriptableObject {
     public List<ActionDefinition> Actions = new();
     public List<ModifierDefinition> Modifiers = new();

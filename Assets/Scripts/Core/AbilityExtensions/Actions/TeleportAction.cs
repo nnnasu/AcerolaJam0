@@ -7,7 +7,7 @@ using Core.Abilities.Instances;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.Actions {
-    [CreateAssetMenu(fileName = "TeleportAction", menuName = "Actions/Teleport Action", order = 0)]
+    [CreateAssetMenu(fileName = "TeleportAction", menuName = "Player Actions/Teleport Action", order = 0)]
     public class TeleportAction : ActionDefinition {
 
 

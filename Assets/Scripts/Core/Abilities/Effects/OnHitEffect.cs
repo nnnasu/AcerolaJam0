@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Core.Abilities.Effects {
 
-    // [CreateAssetMenu(fileName = "OnHitEffect", menuName = "Effects/OnHitEffect", order = 0)]
     public abstract class OnHitEffect : ScriptableObject {
 
         public abstract string GetTooltip(ActionInstance action);

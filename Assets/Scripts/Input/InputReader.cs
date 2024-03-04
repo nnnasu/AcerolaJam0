@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "InputReader", order = 0)]
+// [CreateAssetMenu(fileName = "InputReader", menuName = "InputReader", order = 0)]
 public class InputReader : ScriptableObject, InputActions.IGameMapActions {
 
     private InputActions input;
