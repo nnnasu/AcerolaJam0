@@ -15,6 +15,7 @@ MonoBehaviour:
   actionType: 4
   alignment: 3
   DamageMultiplier:
+    scalingType: 0
     BaseValue: 0
     AdditiveValue: 0
     ValueCurve:
@@ -42,6 +43,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   BaseCooldown:
+    scalingType: 0
     BaseValue: 1
     AdditiveValue: 0
     ValueCurve:
@@ -69,6 +71,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   BaseMPCost:
+    scalingType: 0
     BaseValue: 0
     AdditiveValue: 0
     ValueCurve:
@@ -96,9 +99,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   UsageTime: 0
-  TargetSize: {x: 0, y: 0, z: 0}
+  TargetingType: 1
+  TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
+    scalingType: 0
     BaseValue: 0
     AdditiveValue: 10
     ValueCurve:

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.AttributeSystem;
 using UnityEngine;
 
 public class AttributeSet : MonoBehaviour {
@@ -12,9 +13,11 @@ public class AttributeSet : MonoBehaviour {
     public float MovementSpeedCurrent => MovementSpeedBase;
     public float AttackSpeed;
     public float BaseAttack;
+    public EntityType entityType = EntityType.Enemy;
 
     public event Action<AttributeSet> OnDeath = delegate { };
-    public event Action<float, float>  OnHPChanged = delegate {};    
+    public event Action<float, float> OnHPChanged = delegate { };
+
 
     public virtual void ResetState() {
         HP = MaxHP;
@@ -33,6 +36,6 @@ public class AttributeSet : MonoBehaviour {
 
     }
 
-    
+
 
 }

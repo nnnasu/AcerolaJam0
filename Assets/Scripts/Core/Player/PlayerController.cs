@@ -11,7 +11,7 @@ public partial class PlayerController : MonoBehaviour {
     public float speed = 5; // TODO Use abilityManager.movementSpeed
     Vector2 currentInput;
     Vector3 movementDirection;
-    Vector3 mousePosition;
+    public Vector3 mousePosition;
     Camera MainCamera;
 
     public LayerMask RecallLayer;

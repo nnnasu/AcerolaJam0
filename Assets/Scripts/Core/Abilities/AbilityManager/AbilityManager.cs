@@ -21,8 +21,13 @@ namespace Core.Abilities {
         private int index = 0;
         public bool isSkillSelected => index != 0;
 
+        public AbilityInstance CurrentlySelected { get; private set; }
+        public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
+
+
         private void Awake() {
             Initialize();
+            CurrentlySelected = BasicAttack;
         }
 
         public void Initialize() {
@@ -42,6 +47,8 @@ namespace Core.Abilities {
             Abilities.ForEach(x => x.SetFocus(false)); // clear current selected
             if (index == 0) {
                 this.index = 0;
+                CurrentlySelected = BasicAttack;
+                OnCurrentSelectedAbilityChanged?.Invoke(CurrentlySelected);
                 return;
             }
 
@@ -51,8 +58,10 @@ namespace Core.Abilities {
                     SetActiveSkill(0); // Reset to basic attack if we couldn't set focus.
                 } else {
                     this.index = index;
+                    CurrentlySelected = Abilities[abilityIndex];
                 }
             }
+            OnCurrentSelectedAbilityChanged?.Invoke(CurrentlySelected);
         }
 
         public void OnClick(Vector3 targetPosition) {
@@ -68,7 +77,8 @@ namespace Core.Abilities {
         }
 
         public void OnStructureRecall(StructureBase structureBase) {
-
+            structureBase.OnRecall(this);
+            structureBase.ReturnToPool();
         }
 
         [ContextMenu("Recalculate Stats")]

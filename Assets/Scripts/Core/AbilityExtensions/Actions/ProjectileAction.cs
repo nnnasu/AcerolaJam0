@@ -5,6 +5,7 @@ using Core.Abilities;
 using Core.Abilities.Definitions;
 using Core.Abilities.Instances;
 using Core.AbilityExtensions.Spawns;
+using Core.AttributeSystem;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Projectile Action", menuName = "Actions/Projectile Action", order = 0)]
@@ -13,6 +14,8 @@ public class ProjectileAction : ActionDefinition {
     public float ProjectileSpeed = 10;
     public float ProjectileDuration = 5;
     public bool DestroyOnContact = false;
+
+    public EntityType IgnoredEntities = EntityType.Player;
 
     public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
@@ -27,6 +30,7 @@ public class ProjectileAction : ActionDefinition {
 
         // TODO: Implement Projectile
         obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
+        obj.IgnoredEntities = IgnoredEntities;
         obj.DestroyOnContact = DestroyOnContact;
 
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);

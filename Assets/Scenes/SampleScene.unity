@@ -2065,77 +2065,6 @@ Transform:
   - {fileID: 1032266916}
   m_Father: {fileID: 386531887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &884870255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 884870256}
-  - component: {fileID: 884870258}
-  - component: {fileID: 884870257}
-  m_Layer: 0
-  m_Name: Targets
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &884870256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884870255}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1107741108}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &884870257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884870255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd64312b8f4dcf64b9629047e4acf4ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projector: {fileID: 884870258}
-  scale: {x: 0, y: 0, z: 0}
---- !u!114 &884870258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884870255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: fbd2b5ffb45dc324abe0aa2c8a40aa06, type: 2}
-  m_DrawDistance: 1000
-  m_FadeScale: 0.9
-  m_StartAngleFade: 180
-  m_EndAngleFade: 180
-  m_UVScale: {x: 1, y: 1}
-  m_UVBias: {x: 0, y: 0}
-  m_DecalLayerMask: 1
-  m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 3}
-  m_Size: {x: 1, y: 5, z: 5}
-  m_FadeFactor: 0.721
 --- !u!224 &913210046 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6453751760559978445, guid: da27a963163a59b49a0c2a1060ce0986,
@@ -2446,7 +2375,7 @@ GameObject:
   - component: {fileID: 1107741113}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2467,6 +2396,7 @@ MonoBehaviour:
   characterController: {fileID: 1107741104}
   abilityManager: {fileID: 1107741112}
   speed: 5
+  mousePosition: {x: 0, y: 0, z: 0}
   RecallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -2608,8 +2538,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 884870256}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1107741110
@@ -2629,6 +2558,7 @@ MonoBehaviour:
   MovementSpeedBase: 0
   AttackSpeed: 0
   BaseAttack: 10
+  entityType: 1
   MP: 50
   MaxMP: 50
   MPRegenPercent: 0
@@ -3906,6 +3836,7 @@ MonoBehaviour:
   MovementSpeedBase: 3
   AttackSpeed: 0
   BaseAttack: 0
+  entityType: 4
 --- !u!114 &1641776943
 MonoBehaviour:
   m_ObjectHideFlags: 0

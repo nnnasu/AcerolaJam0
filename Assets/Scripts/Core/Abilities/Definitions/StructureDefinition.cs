@@ -14,10 +14,12 @@ namespace Core.Abilities.Definitions {
         public GameObject structurePrefab;
         
 
-        public void SpawnStructure(Vector3 target, AbilityManager owner, AbilityInstance ability, ActionInstance action) {
+        public GameObject SpawnStructure(Vector3 target, AbilityManager owner, AbilityInstance ability, ActionInstance action) {
             var obj = GlobalPool.Current.GetObject(structurePrefab);
             obj.transform.position = target;
+            
             // Set any parameters on the actual structure object.
+            return obj;
         }
 
 

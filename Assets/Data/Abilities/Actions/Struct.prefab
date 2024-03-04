@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1278457600933213772}
   - component: {fileID: 1727325407710556067}
   - component: {fileID: 8129339459736725771}
+  - component: {fileID: 9124384133778270505}
   m_Layer: 6
   m_Name: Struct
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff5c98f34748e249be7004c036f0cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attributes: {fileID: 9124384133778270505}
 --- !u!136 &8129339459736725771
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -69,6 +71,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &9124384133778270505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957290656272839930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea7cf0adaddf874887311165b66c158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 10
+  MovementSpeedBase: 0
+  AttackSpeed: 0
+  BaseAttack: 0
+  entityType: 2
 --- !u!1 &5400236923110891998
 GameObject:
   m_ObjectHideFlags: 0

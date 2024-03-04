@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Abilities.Enums;
+using Core.AttributeSystem;
 using PrimeTween;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,11 +14,19 @@ namespace Core.AbilityExtensions.Spawns {
         public float speed = 0;
         public Action<AttributeSet> OnHitCallback = null;
         Tween ExpiryTween;
+        public EntityType IgnoredEntities = EntityType.NONE;
 
         private void OnTriggerEnter(Collider other) {
-            if (other.tag == "Player") return; // TODO: filter player/enemies properly
+            
+            
             var attribute = other.GetComponent<AttributeSet>();
             if (!attribute) return;
+
+            if ((IgnoredEntities & attribute.entityType) != 0) {
+                // No overlap between flag objects.
+                return;
+            }
+            
             attribute.TakeDamage(damage);
             if (DestroyOnContact) {
                 ExpiryTween.Complete();

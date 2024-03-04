@@ -99,6 +99,11 @@ namespace Core.UI.Rewards {
         private bool CheckSelectionTypesCompatible() {
             // Match action/modifier slot types
             if (inventorySelection.isModifierSelected != rewardSelection.isModifierSelected) return false;
+            if (inventorySelection.SelectedSlot != -1 
+                && !rewardSelection.isModifierSelected
+                && RewardPanel.actionInstances[rewardSelection.SelectedSlot].definition.actionType 
+                    == Abilities.Enums.ActionType.BasicAttack) return false; // Basic attacks should only be in basic attacks
+
             if (inventorySelection.SelectedAbility == -1
                 && !inventorySelection.isModifierSelected
                 && RewardPanel.actionInstances[rewardSelection.SelectedSlot].definition.actionType

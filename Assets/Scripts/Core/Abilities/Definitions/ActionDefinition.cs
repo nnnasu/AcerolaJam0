@@ -20,6 +20,7 @@ namespace Core.Abilities.Definitions {
         public float UsageTime = 0;
 
         [Header("Targeting Properties")]
+        public TargetingType TargetingType;
         public Vector3 TargetSize;
         public Vector3 TargetOffset;
         public ScaledFloat Range;

@@ -2,7 +2,9 @@
     "name": "Core.Targeting",
     "rootNamespace": "",
     "references": [
-        "GUID:15fc0a57446b3144c949da3e2b9737a9"
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:d319d576fda3f2c46839e04ecb059f11",
+        "GUID:a0592c38eea14084292e0521d2323d89"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

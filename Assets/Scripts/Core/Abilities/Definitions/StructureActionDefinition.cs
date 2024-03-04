@@ -11,7 +11,9 @@ public class StructureActionDefinition : ActionDefinition {
     public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         // Check if the player has enough structures in stock
         // Spawn the structure.
-        structure.SpawnStructure(target, owner, ability, action);
+        var obj = structure.SpawnStructure(target, owner, ability, action);
+        obj.SetActive(true);
+        
 
     }
 
