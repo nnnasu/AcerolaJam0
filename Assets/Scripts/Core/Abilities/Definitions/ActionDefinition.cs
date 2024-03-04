@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Abilities.Effects;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
 using Core.Utilities.Scaling;
@@ -18,6 +19,7 @@ namespace Core.Abilities.Definitions {
         public ScaledFloat BaseCooldown;
         public ScaledFloat BaseMPCost;
         public float UsageTime = 0;
+        public List<OnHitEffect> OnHitEffects = new();
 
         [Header("Targeting Properties")]
         public TargetingType TargetingType;
@@ -31,7 +33,10 @@ namespace Core.Abilities.Definitions {
         [TextArea] public string Description;
 
 
-        public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target);
+
+        public virtual void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+            OnHitEffects.ForEach(x => x.OnHit(owner, ability, action, target));
+        }
         public abstract void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
 
         public virtual string GetTooltipText(float level) {

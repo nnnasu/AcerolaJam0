@@ -2584,6 +2584,7 @@ MonoBehaviour:
     modifiers: []
     CooldownDisplay: 0
     UsageTimeDisplay: 0
+    useDynamicCost: 0
     useDynamicCooldown: 0
   Abilities: []
   DefaultAttack: {fileID: 11400000, guid: ac886c2a94d2f9248815756b19eac79f, type: 2}

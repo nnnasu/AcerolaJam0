@@ -37,6 +37,4 @@ public class ProjectileAction : ActionDefinition {
         // else obj.Activate(speed, duration, direction, OnHit);
     }
 
-    public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-    }
 }

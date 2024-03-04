@@ -90,7 +90,7 @@ namespace Core.Abilities {
             BasicAttack.modifiers.ForEach(x => ApplyGlobalModifiers(x));
             Abilities.ForEach(x => x.modifiers.ForEach(x => ApplyGlobalModifiers(x)));
 
-            Debug.Log($"{Attributes.MaxHP - oldMaxHP} + {Attributes.HP}");
+            // Debug.Log($"{Attributes.MaxHP - oldMaxHP} + {Attributes.HP}");
 
             Attributes.HP += Mathf.Clamp(Attributes.MaxHP - oldMaxHP, 0, float.MaxValue);
             Attributes.MP += Mathf.Clamp(Attributes.MaxMP - oldMaxMP, 0, float.MaxValue);
@@ -103,38 +103,7 @@ namespace Core.Abilities {
 
         private void ApplyGlobalModifiers(ModifierInstance modifier) {
             modifier.definition.GlobalStatModifier.ForEach(x => {
-                float value = x.value.GetValueAtLevel(modifier.level);
-                switch (x.Attribute) {
-                    case GameAttributes.MaxHP:
-                        Attributes.MaxHP += value;
-                        break;
-                    case GameAttributes.MaxMP:
-                        Attributes.MaxMP += value;
-                        break;
-                    case GameAttributes.MovementSpeed:
-                        Attributes.MovementSpeed += value;
-                        break;
-                    case GameAttributes.AttackSpeed:
-                        Attributes.AttackSpeed += value;
-                        break;
-                    case GameAttributes.BaseAttack:
-                        Attributes.BaseAttack += value;
-                        break;
-                    case GameAttributes.MPRegenPercent:
-                        Attributes.MPRegenPercent += value;
-                        break;
-                    case GameAttributes.HPRegenPercent:
-                        Attributes.HPRegenPercent += value;
-                        break;
-                    case GameAttributes.StructureTickSpeed:
-                        Attributes.StructureTickSpeed += value;
-                        break;
-                    case GameAttributes.CooldownReduction:
-                        Attributes.CooldownReduction += value;
-                        break;
-                    default: break;
-                }
-
+                Attributes.ApplyModifier(x, modifier.level);
             });
         }
     }

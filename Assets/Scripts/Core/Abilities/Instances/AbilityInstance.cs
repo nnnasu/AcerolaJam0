@@ -18,6 +18,8 @@ namespace Core.Abilities.Instances {
         public bool isOnCooldown { get; private set; } = false;
         public float cachedCooldownTime { get; private set; }
         public float cachedUsageTime { get; private set; }
+        public float cachedMPCost { get; private set; }
+        public bool useDynamicCost = false;
         public bool useDynamicCooldown = false;
         public Tween CooldownTween; // sum(action cd)
         public Tween UsageTween; // cast time = max(action cast time)
@@ -26,6 +28,7 @@ namespace Core.Abilities.Instances {
         public event Action<bool> OnFocusChanged = delegate { };
         public event Action<float> OnCooldownStarted = delegate { };
         public event Action OnCooldownEnded = delegate { };
+        public event Action OnAbilityChanged = delegate { };
 
         public AbilityInstance(AbilityManager owner) {
             this.owner = owner;
@@ -34,10 +37,12 @@ namespace Core.Abilities.Instances {
         public void OnAbilityModified() {
             CalculateCooldownTime(owner);
             CalculateUsageTime(owner);
+            CalculateMPCost(owner);
+            OnAbilityChanged?.Invoke();
         }
 
         public bool SetFocus(bool focused) {
-            // TODO FIX THIS
+            // TODO FIX THIS // never mind I think it is fixed already idk
             if (!focused) {
                 OnFocusChanged?.Invoke(false);
                 return true;
@@ -53,16 +58,16 @@ namespace Core.Abilities.Instances {
         public bool ActivateAbility(Vector3 targetPoint) {
             if (isOnCooldown) return false;
             if (useDynamicCooldown) cachedCooldownTime = CalculateCooldownTime(owner); // otherwise, just use cached.
+            if (useDynamicCost) cachedMPCost = CalculateMPCost(owner);
+            if (owner.Attributes.MP - cachedMPCost <= 0) return false;
 
             foreach (var item in actions) {
-                item.ActivateAbility(owner, this, targetPoint);
+                item.ActivateAbility(owner, this, targetPoint, OnHit);
             }
 
             foreach (var item in modifiers) {
                 item.OnActivate(owner, this, targetPoint);
             }
-
-
             // Start Cooldowns
             OnAbilityActivated?.Invoke();
             isOnCooldown = true;
@@ -70,6 +75,7 @@ namespace Core.Abilities.Instances {
             if (actions.Count > 0 && actions[0].definition.actionType == ActionType.BasicAttack) {
                 CalculateUsageTime(owner);
             }
+            owner.Attributes.CostMana(cachedMPCost);
 
             if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
             else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
@@ -84,6 +90,15 @@ namespace Core.Abilities.Instances {
             foreach (var item in modifiers) {
                 item.OnHit(owner, this, target);
             }
+        }
+
+        public float CalculateMPCost(AbilityManager owner) {
+            float mp = 0;
+            foreach (var item in actions) {
+                mp += item.BaseCost;
+            }
+            cachedMPCost = mp; // TODO: cost reduction?
+            return mp;
         }
 
         public float CalculateCooldownTime(AbilityManager owner) {

@@ -17,7 +17,4 @@ public class StructureActionDefinition : ActionDefinition {
 
     }
 
-    public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-        // Doesn't do anything, hits aren't passed from structure to player.        
-    }
 }

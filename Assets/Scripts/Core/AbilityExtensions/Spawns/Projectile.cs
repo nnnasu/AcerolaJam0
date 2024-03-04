@@ -19,15 +19,16 @@ namespace Core.AbilityExtensions.Spawns {
         private void OnTriggerEnter(Collider other) {
             
             
-            var attribute = other.GetComponent<AttributeSet>();
-            if (!attribute) return;
+            var target = other.GetComponent<AttributeSet>();
+            if (!target) return;
 
-            if ((IgnoredEntities & attribute.entityType) != 0) {
+            if ((IgnoredEntities & target.entityType) != 0) {
                 // No overlap between flag objects.
                 return;
             }
             
-            attribute.TakeDamage(damage);
+            target.TakeDamage(damage);
+            OnHitCallback?.Invoke(target);
             if (DestroyOnContact) {
                 ExpiryTween.Complete();
             }
@@ -41,6 +42,7 @@ namespace Core.AbilityExtensions.Spawns {
             ExpiryTween = Tween.Delay(duration, OnExpiry);
             this.speed = speed;
             this.damage = damage;
+            this.OnHitCallback = onHitCallback;
         }
 
 

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Core.Enemies {
 
-    public class AIController : MonoBehaviour {
+    public class AIController : PoolableBehaviour {
         public Rigidbody rb;
         public AttributeSet attributes;
         public float TickRate = 0.5f;
@@ -20,9 +20,20 @@ namespace Core.Enemies {
             Tick();
         }
 
+        private void OnEnable() {
+            attributes.OnDeath += (x) => DeathCleanup();
+        }
+        private void OnDisable() {
+
+        }
+
+        /// <summary>
+        /// Function that calls itself using tweens. 
+        /// </summary>
         private void Tick() {
             Vector3? playerPos = PlayerLocation.CurrentLocator?.playerLocation;
             float delay = Strategy.ExecuteNextAction(this, playerPos);
+            // TODO: Block rotations based on action??
             if (playerPos.HasValue) {
                 // Rotate towards player
                 Vector3 dir = playerPos.Value - transform.position;
@@ -35,6 +46,12 @@ namespace Core.Enemies {
             }
 
             TickTween = Tween.Delay(Mathf.Max(TickRate, delay), Tick);
+        }
+
+        private void DeathCleanup() {
+            // TODO return to pool
+            TickTween.Stop();
+            Destroy(gameObject);
         }
 
 

@@ -24,8 +24,5 @@ namespace Core.AbilityExtensions.Actions {
             charcon.enabled = true;
         }
 
-        public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-
-        }
     }
 }

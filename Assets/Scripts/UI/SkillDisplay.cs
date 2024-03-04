@@ -15,6 +15,8 @@ public class SkillDisplay : MonoBehaviour {
     public Image CooldownOverlay;
     public TextMeshProUGUI CooldownText;
     public TextMeshProUGUI KeyText;
+    public TextMeshProUGUI MPCost;
+
     Tween CooldownDisplayTween;
     Tween CooldownTextTween;
     bool isSelected = false;
@@ -61,6 +63,9 @@ public class SkillDisplay : MonoBehaviour {
         boundAbility.OnAbilityActivated += OnAbilityStarted;
         boundAbility.OnCooldownStarted += StartCooldown;
         boundAbility.OnCooldownEnded += CleanCooldownText;
+        boundAbility.OnAbilityChanged += UpdateAbilityDisplay;
+        MPCost.text = boundAbility.cachedMPCost.ToString();
+
 
         if (boundAbility.actions.Count > 0) {
             gameObject.SetActive(true);
@@ -70,11 +75,17 @@ public class SkillDisplay : MonoBehaviour {
         }
     }
 
+    private void UpdateAbilityDisplay() {
+        MPCost.text = boundAbility.cachedMPCost.ToString();
+
+    }
+
     public void Unbind() {
         boundAbility.OnFocusChanged -= SetFocus;
         boundAbility.OnAbilityActivated -= OnAbilityStarted;
         boundAbility.OnCooldownStarted -= StartCooldown;
         boundAbility.OnCooldownEnded -= CleanCooldownText;
+        boundAbility.OnAbilityChanged -= UpdateAbilityDisplay;
         boundAbility = null;
         gameObject.SetActive(false);
     }
