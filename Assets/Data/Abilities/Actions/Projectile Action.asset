@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
-    AdditiveValue: 0
+    AdditiveValue: 1
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -98,7 +98,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  UsageTime: 0
+  UsageTime: 2
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
@@ -129,8 +129,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
-  ActionTitle: 
-  Description: 
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  ActionTitle: Projectile
+  Description: Fires a projectile.
   projectilePrefab: {fileID: 3867255862158688488, guid: 755bda098bd64f2438f5e06e81725f65,
     type: 3}
+  ProjectileSpeed: 10
+  ProjectileDuration: 5

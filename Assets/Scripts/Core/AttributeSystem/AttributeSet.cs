@@ -20,6 +20,10 @@ public class AttributeSet : MonoBehaviour {
         HP = MaxHP;
     }
 
+    private void OnEnable() {
+        ResetState();
+    }
+
     public virtual void TakeDamage(float amount) {
         float oldHP = HP;
         HP -= amount;

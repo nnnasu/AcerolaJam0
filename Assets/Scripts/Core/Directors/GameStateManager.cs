@@ -7,21 +7,26 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour {
 
-    public float FadeDuration = 1;
+    [Header("Reward UI")]
     public CanvasGroup SwapMenuCanvas;
     public RewardScreen rewardScreen;
-    private Tween RewardFadeTween;
-
-    public int RoomsTraversed { get; private set; } = 0;
-
-
     public CanvasGroup GameHUDCanvas;
     public PlayerHUD playerHUD;
+    public RewardGenerator DefaultRewardGenerator;
+    public float FadeDuration = 1;
+
+    
+
+    [Header("Player References")]
     public AbilityManager Player;
     public PlayerController playerController;
+
+
+    // State
+    public int RoomsTraversed { get; private set; } = 0;
+    private Tween RewardFadeTween;
     private Tween HUDFadeTween;
 
-    public RewardGenerator DefaultRewardGenerator;
     private System.Random random = new();
 
     private void OnEnable() {

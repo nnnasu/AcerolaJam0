@@ -14,6 +14,7 @@ namespace Core.Abilities.Instances {
         public List<ActionInstance> actions = new();
         public List<ModifierInstance> modifiers = new();
         public float CooldownDisplay;
+        public float UsageTimeDisplay;
         public bool isOnCooldown { get; private set; } = false;
         public float cachedCooldownTime { get; private set; }
         public float cachedUsageTime { get; private set; }
@@ -66,9 +67,8 @@ namespace Core.Abilities.Instances {
             OnAbilityActivated?.Invoke();
             isOnCooldown = true;
 
-            StartCooldown();
-            // if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
-            // else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
+            if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
+            else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
 
             return true;
         }
@@ -103,20 +103,27 @@ namespace Core.Abilities.Instances {
         }
 
         public virtual float CalculateUsageTime(AbilityManager owner) {
+            bool isBasicAttack = false;
             float usage = 0;
             foreach (var item in actions) {
                 if (item == null) break;
+                if (item.definition.actionType == ActionType.BasicAttack) isBasicAttack = true;
                 usage = Mathf.Max(usage, item.definition.UsageTime);
             }
             cachedUsageTime = usage;
-
+            if (isBasicAttack) {
+                float attackSpeed = owner.Attributes.AttackSpeed;
+                cachedUsageTime = Formulas.AttackSpeedFormula(cachedUsageTime, attackSpeed);
+            }
+            UsageTimeDisplay = cachedUsageTime;
             return cachedUsageTime;
         }
 
 
         private void StartCooldown() {
             OnCooldownStarted?.Invoke(cachedCooldownTime);
-            CooldownTween = Tween.Delay(cachedCooldownTime, OnCooldownEnd);
+            if (cachedCooldownTime > float.Epsilon) CooldownTween = Tween.Delay(cachedCooldownTime, OnCooldownEnd);
+            else OnCooldownEnd();
 
         }
         private void OnCooldownEnd() {

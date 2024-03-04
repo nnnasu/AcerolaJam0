@@ -10,6 +10,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Projectile Action", menuName = "Actions/Projectile Action", order = 0)]
 public class ProjectileAction : ActionDefinition {
     public GameObject projectilePrefab;
+    public float ProjectileSpeed = 10;
+    public float ProjectileDuration = 5;
+    public bool DestroyOnContact = false;
 
     public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
@@ -20,8 +23,11 @@ public class ProjectileAction : ActionDefinition {
         if (obj == null) return;
 
         obj.transform.position = owner.transform.position;
+        float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
 
         // TODO: Implement Projectile
+        obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
+        obj.DestroyOnContact = DestroyOnContact;
 
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
         // else obj.Activate(speed, duration, direction, OnHit);

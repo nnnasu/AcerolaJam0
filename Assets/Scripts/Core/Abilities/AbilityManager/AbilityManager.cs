@@ -16,15 +16,26 @@ namespace Core.Abilities {
         public List<AbilityInstance> Abilities = new(4);
 
         public float movementSpeed => Attributes.MovementSpeedCurrent;
+        public ActionDefinition DefaultAttack;
 
         private int index = 0;
         public bool isSkillSelected => index != 0;
 
         private void Awake() {
+            Initialize();
+        }
+
+        public void Initialize() {
+            // TODO: Reset to base stats
+            Abilities.Clear();
+
             for (int i = 0; i < 4; i++) {
                 Abilities.Add(new(this));
             }
             BasicAttack = new(this);
+            if (DefaultAttack) BasicAttack.actions.Add(new(DefaultAttack));
+
+            RecalculateStats();
         }
 
         public void SetActiveSkill(int index) {
@@ -60,12 +71,12 @@ namespace Core.Abilities {
 
         }
 
+        [ContextMenu("Recalculate Stats")]
         public void RecalculateStats() {
             BasicAttack.OnAbilityModified();
             Abilities.ForEach(x => x.OnAbilityModified());
 
             OnRebindRequest?.Invoke();
-
         }
     }
 }
