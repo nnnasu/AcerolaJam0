@@ -126,6 +126,7 @@ namespace Core.Abilities.Instances {
 
 
         public AddStatus CanSwapModifier(ModifierInstance incoming, int index) {
+            if (incoming == null) return AddStatus.Null;
             if (index >= modifiers.Count) {
                 // just check for duplicates
                 if (modifiers.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
@@ -133,8 +134,8 @@ namespace Core.Abilities.Instances {
             }
             var target = modifiers[index];
             if (incoming.definition == target.definition) {
-                if (incoming.level == target.level) return AddStatus.Available;
-                else return AddStatus.MergeTargetHasDifferentLevel;
+                if (incoming.level >= target.level) return AddStatus.Available;
+                else return AddStatus.MergeTargetHasHigherLevel;
             }
 
             if (modifiers.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
@@ -142,6 +143,7 @@ namespace Core.Abilities.Instances {
         }
 
         public AddStatus CanSwapAction(ActionInstance incoming, int index) {
+            if (incoming == null) return AddStatus.Null;
             if (index >= actions.Count) {
                 // just check for duplicates
                 if (actions.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
@@ -149,8 +151,8 @@ namespace Core.Abilities.Instances {
             }
             var target = actions[index];
             if (incoming.definition == target.definition) {
-                if (incoming.level == target.level) return AddStatus.Available;
-                else return AddStatus.MergeTargetHasDifferentLevel;
+                if (incoming.level >= target.level) return AddStatus.Available;
+                else return AddStatus.MergeTargetHasHigherLevel;
             }
 
             if (actions.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
@@ -165,20 +167,22 @@ namespace Core.Abilities.Instances {
             }
             var target = modifiers[index];
             if (target.definition == incoming.definition) {
-                target.level++;
+                if (target.level == incoming.level) target.level++;
+                else target.level = Mathf.Max(target.level, incoming.level);
             } else {
                 modifiers[index] = incoming;
             }
         }
         public void SwapAction(ActionInstance incoming, int index) {
             // We assume that this has already been validated
-            if (index >= modifiers.Count) {
+            if (index >= actions.Count) {
                 actions.Add(incoming);
                 return;
             }
-            var target = modifiers[index];
+            var target = actions[index];
             if (target.definition == incoming.definition) {
-                target.level++;
+                if (target.level == incoming.level) target.level++;
+                else target.level = Mathf.Max(target.level, incoming.level);
             } else {
                 actions[index] = incoming;
             }

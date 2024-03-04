@@ -11,6 +11,7 @@ public class AttributeSet : MonoBehaviour {
     public float MovementSpeedBase;
     public float MovementSpeedCurrent => MovementSpeedBase;
     public float AttackSpeed;
+    public float BaseAttack;
 
     public event Action<AttributeSet> OnDeath = delegate { };
     public event Action<float, float>  OnHPChanged = delegate {};    

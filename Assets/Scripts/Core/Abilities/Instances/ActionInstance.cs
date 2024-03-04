@@ -30,6 +30,7 @@ namespace Core.Abilities.Instances {
         }
 
         public string ToTooltipText() {
+            if (definition == null) return "Empty Action";
             return definition.GetTooltipText(level);
         }
 

@@ -20,6 +20,13 @@ namespace Core.Abilities {
         private int index = 0;
         public bool isSkillSelected => index != 0;
 
+        private void Awake() {
+            for (int i = 0; i < 4; i++) {
+                Abilities.Add(new(this));
+            }
+            BasicAttack = new(this);
+        }
+
         public void SetActiveSkill(int index) {
             Abilities.ForEach(x => x.SetFocus(false)); // clear current selected
             if (index == 0) {

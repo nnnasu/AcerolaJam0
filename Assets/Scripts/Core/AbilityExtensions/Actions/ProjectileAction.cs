@@ -7,6 +7,7 @@ using Core.Abilities.Instances;
 using Core.AbilityExtensions.Spawns;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Projectile Action", menuName = "Actions/Projectile Action", order = 0)]
 public class ProjectileAction : ActionDefinition {
     public GameObject projectilePrefab;
 

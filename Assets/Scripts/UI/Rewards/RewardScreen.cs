@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Core.Abilities;
 using Core.Abilities.Instances;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +24,10 @@ namespace Core.UI.Rewards {
         public RewardPanel RewardPanel;
         public Button swapButton;
         private bool CanSwap = false;
+        public TextMeshProUGUI RemainingChoiceDisplay;
+
+        public int remainingTries = 0;
+        public event Action OnChoicesFinished = delegate { };
 
         private void OnEnable() {
             panels.ForEach(x => {
@@ -46,17 +52,32 @@ namespace Core.UI.Rewards {
             AbilityInstance currentAbility;
             if (inventorySelection.SelectedAbility == -1) currentAbility = abilityManager.BasicAttack;
             else currentAbility = abilityManager.Abilities[inventorySelection.SelectedAbility];
-            
+
             if (rewardSelection.isModifierSelected) {
                 var reward = RewardPanel.modifierInstances[rewardSelection.SelectedSlot];
                 currentAbility.SwapModifier(reward, inventorySelection.SelectedSlot);
+
+                RewardPanel.modifierInstances[rewardSelection.SelectedSlot] = null;
+                RewardPanel.ModifierSlots[rewardSelection.SelectedSlot].SetIcon();
             } else {
                 var reward = RewardPanel.actionInstances[rewardSelection.SelectedSlot];
                 currentAbility.SwapAction(reward, inventorySelection.SelectedSlot);
+
+                RewardPanel.actionInstances[rewardSelection.SelectedSlot] = null;
+                RewardPanel.ActionSlots[rewardSelection.SelectedSlot].SetIcon();
             }
+
+
+
+            remainingTries--;
+            RemainingChoiceDisplay.text = $"Remaining choices: {remainingTries}";
 
             abilityManager.RecalculateStats(); // rebind 
             LoadPlayerData(abilityManager);
+
+            if (remainingTries <= 0) {
+                OnChoicesFinished?.Invoke();
+            }
         }
 
 
@@ -106,12 +127,12 @@ namespace Core.UI.Rewards {
                 return;
             }
             if (inventorySelection.isModifierSelected) {
-                var modifier = RewardPanel.modifierInstances[inventorySelection.SelectedSlot];
+                var modifier = RewardPanel.modifierInstances[rewardSelection.SelectedSlot];
                 var status = currentAbility.CanSwapModifier(modifier, inventorySelection.SelectedSlot);
                 if (status == Abilities.Enums.AddStatus.Available) ApproveSwap();
                 else InvalidateSwap();
             } else {
-                var action = RewardPanel.actionInstances[inventorySelection.SelectedSlot];
+                var action = RewardPanel.actionInstances[rewardSelection.SelectedSlot];
                 var status = currentAbility.CanSwapAction(action, inventorySelection.SelectedSlot);
                 if (status == Abilities.Enums.AddStatus.Available) ApproveSwap();
                 else InvalidateSwap();
@@ -161,7 +182,8 @@ namespace Core.UI.Rewards {
                 rewardSelection.SelectedSlot = iconIndex;
                 rewardSelection.isModifierSelected = isModifier;
                 var current = GetIconFromReward(rewardSelection);
-                current.SetSelected(true);
+
+                if (RewardPanel.modifierInstances[rewardSelection.SelectedSlot] != null) current.SetSelected(true);
             } else {
                 rewardSelection = new() {
                     SelectedAbility = 0,
@@ -169,6 +191,7 @@ namespace Core.UI.Rewards {
                     isModifierSelected = isModifier
                 };
                 var current = GetIconFromReward(rewardSelection);
+                if (RewardPanel.actionInstances[rewardSelection.SelectedSlot] != null) current.SetSelected(true);
                 current.SetSelected(true);
             }
             ValidateSelection();
@@ -212,10 +235,13 @@ namespace Core.UI.Rewards {
         private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos) {
             // TODO: Create reward ability so that this can be used. 
             if (isModifier) {
-                string result = RewardPanel.modifierInstances[iconIndex].ToTooltipText();
+                var icon = RewardPanel.modifierInstances[iconIndex];
+
+                string result = icon == null ? "NA" : icon.ToTooltipText();
                 hoverTipManager.ShowTip(result, pos);
             } else {
-                string result = RewardPanel.actionInstances[iconIndex].ToTooltipText();
+                var icon = RewardPanel.actionInstances[iconIndex];
+                string result = icon == null ? "NA" : icon.ToTooltipText();
                 hoverTipManager.ShowTip(result, pos);
             }
         }

@@ -12,12 +12,25 @@ public class GameStateManager : MonoBehaviour {
     public RewardScreen rewardScreen;
     private Tween RewardFadeTween;
 
+    public int RoomsTraversed { get; private set; } = 0;
+
 
     public CanvasGroup GameHUDCanvas;
     public PlayerHUD playerHUD;
     public AbilityManager Player;
     public PlayerController playerController;
     private Tween HUDFadeTween;
+
+    public RewardGenerator DefaultRewardGenerator;
+    private System.Random random = new();
+
+    private void OnEnable() {
+        rewardScreen.OnChoicesFinished += OnRewardCompleted;
+    }
+
+    private void OnRewardCompleted() {
+        HideSwapUI();
+    }
 
 
     [ContextMenu("Show Reward Menu")]
@@ -26,6 +39,11 @@ public class GameStateManager : MonoBehaviour {
         rewardScreen.LoadPlayerData(Player);
         SwapMenuCanvas.gameObject.SetActive(true);
         RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 0, 1, FadeDuration);
+
+        // TODO Set levels on rewards
+        rewardScreen.remainingTries = 3;
+        rewardScreen.RewardPanel.SetRewards(DefaultRewardGenerator.GetRandomActions(random), DefaultRewardGenerator.GetRandomModifiers(random));
+
 
         HUDFadeTween = Tween.Alpha(GameHUDCanvas, 1, 0, FadeDuration);
     }

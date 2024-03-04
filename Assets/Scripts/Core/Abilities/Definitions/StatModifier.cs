@@ -9,10 +9,10 @@ namespace Core.Abilities.Definitions {
         public Attributes Attribute;
         public ScaledFloat value;
 
-        public string GetTooltipText(float level, bool perAbility = false) {
+        public string GetTooltipText(int level, bool perAbility = false) {
             float change = value.GetValueAtLevel(level);
 
-            if (perAbility) return $"{Attribute} {(change >= 0 ? "+" : "")}{change} for this ability only.";
+            if (perAbility) return $"{Attribute} {(change >= 0 ? "+" : "")}{change} for this ability.";
             return $"{Attribute} {(change >= 0 ? "+" : "")}{change}";
         }
 

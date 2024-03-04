@@ -10,10 +10,7 @@ namespace Core.UI.Rewards {
         public List<AbilitySlotSelection> ActionSlots = new();
         public List<AbilitySlotSelection> ModifierSlots = new();
 
-        [HideInInspector]
         public List<ActionInstance> actionInstances = new();
-
-        [HideInInspector]
         public List<ModifierInstance> modifierInstances = new();
 
         public ActionDefinition DefaultAction;
@@ -23,6 +20,9 @@ namespace Core.UI.Rewards {
             for (int i = 0; i < 4; i++) {
                 actionInstances.Add(new(DefaultAction));
                 modifierInstances.Add(new(DefaultModifier));
+
+                ActionSlots[i].SetIcon(DefaultAction.icon);
+                ModifierSlots[i].SetIcon(DefaultAction.icon);
             }
         }
 

@@ -28,7 +28,7 @@ public abstract class ModifierDefinition : ScriptableObject {
 
     public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null);
     public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, AttributeSet hitTarget);
-    public virtual string GetTooltipText(float level) {
+    public virtual string GetTooltipText(int level) {
         List<string> strings = new();
         GlobalStatModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));
         PerAbilityModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));

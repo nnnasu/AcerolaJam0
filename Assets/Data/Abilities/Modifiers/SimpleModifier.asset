@@ -16,8 +16,9 @@ MonoBehaviour:
   GlobalStatModifier:
   - Attribute: 0
     value:
-      BaseValue: 0
-      AdditiveValue: 15
+      scalingType: 0
+      BaseValue: 15
+      AdditiveValue: 5
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -45,6 +46,7 @@ MonoBehaviour:
   PerAbilityModifier:
   - Attribute: 8
     value:
+      scalingType: 0
       BaseValue: 0
       AdditiveValue: 50
       ValueCurve:
