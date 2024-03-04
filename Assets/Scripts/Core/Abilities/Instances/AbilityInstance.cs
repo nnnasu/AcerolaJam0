@@ -67,6 +67,10 @@ namespace Core.Abilities.Instances {
             OnAbilityActivated?.Invoke();
             isOnCooldown = true;
 
+            if (actions.Count > 0 && actions[0].definition.actionType == ActionType.BasicAttack) {
+                CalculateUsageTime(owner);
+            }
+
             if (cachedUsageTime <= float.Epsilon) StartCooldown(); // CD only starts ticking after cast time finishes
             else UsageTween = Tween.Delay(cachedUsageTime, StartCooldown);
 

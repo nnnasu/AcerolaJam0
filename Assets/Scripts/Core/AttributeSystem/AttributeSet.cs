@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class AttributeSet : MonoBehaviour {
 
+    public BaseAttributes baseAttributes;
+
     public float HP;
     public float MaxHP;
-
-    public float MovementSpeedBase;
-    public float MovementSpeedCurrent => MovementSpeedBase;
+    public float MovementSpeed;
     public float AttackSpeed;
     public float BaseAttack;
     public EntityType entityType = EntityType.Enemy;
@@ -20,7 +20,12 @@ public class AttributeSet : MonoBehaviour {
 
 
     public virtual void ResetState() {
+        MaxHP = baseAttributes.MaxHP;
         HP = MaxHP;
+        MovementSpeed = baseAttributes.MovementSpeedBase;
+        AttackSpeed = baseAttributes.AttackSpeed;
+        BaseAttack = baseAttributes.BaseAttack;
+
     }
 
     private void OnEnable() {
@@ -32,8 +37,6 @@ public class AttributeSet : MonoBehaviour {
         HP -= amount;
         OnHPChanged?.Invoke(oldHP, HP);
         if (HP <= 0) OnDeath?.Invoke(this);
-
-
     }
 
 

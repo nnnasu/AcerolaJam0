@@ -83,9 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea7cf0adaddf874887311165b66c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseAttributes: {fileID: 11400000, guid: c54bc9c0298faa9488cef9724ad8a87d, type: 2}
   HP: 0
   MaxHP: 10
-  MovementSpeedBase: 0
+  MovementSpeed: 0
   AttackSpeed: 0
   BaseAttack: 0
   entityType: 2

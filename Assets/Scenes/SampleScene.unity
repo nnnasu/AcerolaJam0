@@ -2395,7 +2395,6 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: 784b092c9608e7b44a4a6ba99d9621ab, type: 2}
   characterController: {fileID: 1107741104}
   abilityManager: {fileID: 1107741112}
-  speed: 5
   mousePosition: {x: 0, y: 0, z: 0}
   RecallLayer:
     serializedVersion: 2
@@ -2553,9 +2552,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee3e4ff1ec559c43871cd89b5fd4ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseAttributes: {fileID: 11400000, guid: 01a6b7ff937264b46a3ba52ecb82b76d, type: 2}
   HP: 50
   MaxHP: 50
-  MovementSpeedBase: 0
+  MovementSpeed: 0
   AttackSpeed: 0
   BaseAttack: 10
   entityType: 1
@@ -3831,9 +3831,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea7cf0adaddf874887311165b66c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseAttributes: {fileID: 11400000, guid: 4dd22f382d40224498847c4a828ea661, type: 2}
   HP: 0
   MaxHP: 50
-  MovementSpeedBase: 3
+  MovementSpeed: 0
   AttackSpeed: 0
   BaseAttack: 0
   entityType: 4

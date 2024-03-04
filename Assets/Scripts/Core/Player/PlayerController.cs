@@ -8,7 +8,7 @@ public partial class PlayerController : MonoBehaviour {
     [SerializeField] InputReader input;
     [SerializeField] CharacterController characterController;
     [SerializeField] AbilityManager abilityManager;
-    public float speed = 5; // TODO Use abilityManager.movementSpeed
+    public float speed => abilityManager.movementSpeed;
     Vector2 currentInput;
     Vector3 movementDirection;
     public Vector3 mousePosition;

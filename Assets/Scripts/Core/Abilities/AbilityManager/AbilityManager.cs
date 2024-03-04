@@ -15,7 +15,7 @@ namespace Core.Abilities {
         public AbilityInstance BasicAttack;
         public List<AbilityInstance> Abilities = new(4);
 
-        public float movementSpeed => Attributes.MovementSpeedCurrent;
+        public float movementSpeed => Attributes.MovementSpeed;
         public ActionDefinition DefaultAttack;
 
         private int index = 0;
@@ -83,10 +83,17 @@ namespace Core.Abilities {
 
         [ContextMenu("Recalculate Stats")]
         public void RecalculateStats() {
+            // Apply stat modifiers.
             BasicAttack.OnAbilityModified();
             Abilities.ForEach(x => x.OnAbilityModified());
 
             OnRebindRequest?.Invoke();
+        }
+
+        private void ApplyModifier(ModifierInstance modifier) {
+            modifier.definition.GlobalStatModifier.ForEach(x => {
+                
+            });
         }
     }
 }

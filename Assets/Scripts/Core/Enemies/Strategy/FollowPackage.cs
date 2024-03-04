@@ -14,7 +14,7 @@ namespace Core.Enemies.Strategy {
 
             Vector3 direction = playerPosition.Value - controller.transform.position;            
             direction.Normalize();
-            controller.rb.velocity = VelocityMultiplier * controller.attributes.MovementSpeedCurrent * direction;
+            controller.rb.velocity = VelocityMultiplier * controller.attributes.MovementSpeed * direction;
             return 0;
         }
 
