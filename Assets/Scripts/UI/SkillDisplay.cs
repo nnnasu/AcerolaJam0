@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Abilities.Instances;
 using PrimeTween;
 using TMPro;
@@ -46,11 +47,23 @@ public class SkillDisplay : MonoBehaviour {
     }
 
     public void Bind(AbilityInstance ability) {
+        if (ability == null) {
+            if (boundAbility != null) Unbind();
+            return;
+        }
+
         boundAbility = ability;
         boundAbility.OnFocusChanged += SetFocus;
         boundAbility.OnAbilityActivated += OnAbilityStarted;
         boundAbility.OnCooldownStarted += StartCooldown;
         boundAbility.OnCooldownEnded += CleanCooldownText;
+        
+        if (boundAbility.actions.Count > 0) {            
+            gameObject.SetActive(true);
+            MainIcon.sprite = boundAbility.actions[0].definition.icon;
+        } else {
+            gameObject.SetActive(false);
+        }
     }
 
     public void Unbind() {
@@ -59,5 +72,6 @@ public class SkillDisplay : MonoBehaviour {
         boundAbility.OnCooldownStarted -= StartCooldown;
         boundAbility.OnCooldownEnded -= CleanCooldownText;
         boundAbility = null;
+        gameObject.SetActive(false);
     }
 }

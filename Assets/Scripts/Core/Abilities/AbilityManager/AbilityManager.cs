@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Abilities.Definitions;
@@ -9,6 +10,7 @@ namespace Core.Abilities {
     public class AbilityManager : MonoBehaviour {
         public PlayerAttributeSet Attributes;
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
+        public event Action OnRebindRequest = delegate { };
 
         public AbilityInstance BasicAttack;
         public List<AbilityInstance> Abilities = new(4);
@@ -54,6 +56,8 @@ namespace Core.Abilities {
         public void RecalculateStats() {
             BasicAttack.OnAbilityModified();
             Abilities.ForEach(x => x.OnAbilityModified());
+
+            OnRebindRequest?.Invoke();
 
         }
     }

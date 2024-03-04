@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4047999104294852307}
   - component: {fileID: 3962358635129823927}
-  - component: {fileID: 3814214053077084601}
   - component: {fileID: 6725507640418473047}
   - component: {fileID: 1406842733389943915}
+  - component: {fileID: 1506464077290121878}
   m_Layer: 5
   m_Name: RewardPanel
   m_TagString: Untagged
@@ -49,29 +49,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2363295937236628898}
   m_CullTransparentMesh: 1
---- !u!114 &3814214053077084601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363295937236628898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf4999a412cf1e449a0b2a85b47111b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Actions:
-  - {fileID: 1542111126053908240}
-  - {fileID: 281767392334001599}
-  - {fileID: 3094344559238930002}
-  - {fileID: 8824696161515350483}
-  Modifiers:
-  - {fileID: 2673283066285307024}
-  - {fileID: 4573993649860436759}
-  - {fileID: 5791845786842435170}
-  - {fileID: 4555234140501554750}
-  abilityIndex: 0
 --- !u!114 &6725507640418473047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +96,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -128,6 +105,32 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1506464077290121878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363295937236628898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827d302477bf5944f960ef86ec4c2bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionSlots:
+  - {fileID: 1542111126053908240}
+  - {fileID: 281767392334001599}
+  - {fileID: 3094344559238930002}
+  - {fileID: 8824696161515350483}
+  ModifierSlots:
+  - {fileID: 2673283066285307024}
+  - {fileID: 4573993649860436759}
+  - {fileID: 5791845786842435170}
+  - {fileID: 4555234140501554750}
+  actionInstances: []
+  modifierInstances: []
+  DefaultAction: {fileID: 0}
+  DefaultModifier: {fileID: 0}
 --- !u!1 &5856479311106187700
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +171,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 150}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1135897762969121202
 CanvasRenderer:
@@ -274,7 +277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5994894826001512928
 CanvasRenderer:

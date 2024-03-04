@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Abilities.Enums;
 using PrimeTween;
 using UnityEngine;
 
@@ -10,8 +11,8 @@ namespace Core.Abilities.Instances {
     public class AbilityInstance {
 
         public AbilityManager owner;
-        public List<ActionInstance> actions = new(4);
-        public List<ModifierInstance> modifiers = new(4);
+        public List<ActionInstance> actions = new();
+        public List<ModifierInstance> modifiers = new();
         public float CooldownDisplay;
         public bool isOnCooldown { get; private set; } = false;
         public float cachedCooldownTime { get; private set; }
@@ -123,6 +124,65 @@ namespace Core.Abilities.Instances {
             OnCooldownEnded?.Invoke();
         }
 
+
+        public AddStatus CanSwapModifier(ModifierInstance incoming, int index) {
+            if (index >= modifiers.Count) {
+                // just check for duplicates
+                if (modifiers.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
+                return AddStatus.Available;
+            }
+            var target = modifiers[index];
+            if (incoming.definition == target.definition) {
+                if (incoming.level == target.level) return AddStatus.Available;
+                else return AddStatus.MergeTargetHasDifferentLevel;
+            }
+
+            if (modifiers.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
+            return AddStatus.Available;
+        }
+
+        public AddStatus CanSwapAction(ActionInstance incoming, int index) {
+            if (index >= actions.Count) {
+                // just check for duplicates
+                if (actions.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
+                return AddStatus.Available;
+            }
+            var target = actions[index];
+            if (incoming.definition == target.definition) {
+                if (incoming.level == target.level) return AddStatus.Available;
+                else return AddStatus.MergeTargetHasDifferentLevel;
+            }
+
+            if (actions.Any(x => x.definition == incoming.definition)) return AddStatus.DuplicateOnSameAbility;
+            return AddStatus.Available;
+        }
+
+        public void SwapModifier(ModifierInstance incoming, int index) {
+            // We assume that this has already been validated
+            if (index >= modifiers.Count) {
+                modifiers.Add(incoming);
+                return;
+            }
+            var target = modifiers[index];
+            if (target.definition == incoming.definition) {
+                target.level++;
+            } else {
+                modifiers[index] = incoming;
+            }
+        }
+        public void SwapAction(ActionInstance incoming, int index) {
+            // We assume that this has already been validated
+            if (index >= modifiers.Count) {
+                actions.Add(incoming);
+                return;
+            }
+            var target = modifiers[index];
+            if (target.definition == incoming.definition) {
+                target.level++;
+            } else {
+                actions[index] = incoming;
+            }
+        }
 
     }
 }

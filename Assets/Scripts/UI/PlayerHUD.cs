@@ -10,7 +10,7 @@ public class PlayerHUD : MonoBehaviour {
     public HorizontalLayoutGroup AbilityContainer;
     public ValueBar HPBar;
     public ValueBar MPBar;
-    public SkillDisplay AbilityPrefab;
+    public List<SkillDisplay> Skills = new();
 
     [Header("Player Reference")]
     public AbilityManager abilityManager;
@@ -34,21 +34,25 @@ public class PlayerHUD : MonoBehaviour {
 
     private void BindAbilities() {
         int abilityCount = abilityManager.Abilities.Count;
-        for (int i = 0; i < abilityCount; i++) {
-            SkillDisplay display = Instantiate(AbilityPrefab, AbilityContainer.transform);
-            display.Bind(abilityManager.Abilities[i]);
+        for (int i = 0; i < Skills.Count; i++) {
+            if (i >= abilityCount) {
+                Skills[i].Bind(null);
+            } else {
+                Skills[i].Bind(abilityManager.Abilities[i]);
+            }
         }
-
     }
 
     private void OnEnable() {
         attributes.OnHPChanged += UpdateHP;
         attributes.OnMPChanged += UpdateMP;
+        abilityManager.OnRebindRequest += Synchronise;
     }
 
     private void OnDisable() {
         attributes.OnHPChanged -= UpdateHP;
         attributes.OnMPChanged -= UpdateMP;
+        abilityManager.OnRebindRequest -= Synchronise;
     }
 
     private void UpdateMP(float oldValue, float newValue) {

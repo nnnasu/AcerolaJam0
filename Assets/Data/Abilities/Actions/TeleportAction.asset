@@ -96,7 +96,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   UsageTime: 0
-  TargetSize: {x: 0, y: 0, z: 0}
+  TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
     BaseValue: 0
@@ -125,6 +125,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
   ActionTitle: Teleport
   Description: 'Moves to the targeted point within range. '

@@ -7,6 +7,6 @@ public class AbilityRewardTest : MonoBehaviour {
     public AbilityManager player;
 
     private void Start() {
-        rewardScreen.LoadPlayer(player);
+        rewardScreen.LoadPlayerData(player);
     }
 }
