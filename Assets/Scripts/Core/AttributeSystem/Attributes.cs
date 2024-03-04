@@ -1,5 +1,5 @@
 
-public enum Attributes {
+public enum GameAttributes {
     MaxHP, 
     MaxMP,
     MovementSpeed,

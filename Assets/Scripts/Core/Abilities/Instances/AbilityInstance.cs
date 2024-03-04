@@ -96,7 +96,7 @@ namespace Core.Abilities.Instances {
             float cdr = owner.Attributes.CooldownReduction;
             foreach (var item in modifiers) {
                 item.definition.PerAbilityModifier.ForEach(x => {
-                    if (x.Attribute == Attributes.CooldownReduction)
+                    if (x.Attribute == GameAttributes.CooldownReduction)
                         cdr += x.value.GetValueAtLevel(item.level);
                 });
             }

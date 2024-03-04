@@ -14,10 +14,10 @@ public class PlayerAttributeSet : AttributeSet {
     public float StructureTickSpeed;
     public float CooldownReduction;
 
-    public override void ResetState() {
-        base.ResetState();
+    public override void ResetState(bool resetHP = false) {
+        base.ResetState(resetHP);
         if (baseAttributes is BasePlayerAttributes playerAttr) {
-            MaxMP = playerAttr.MaxMP;
+            if (resetHP) MaxMP = playerAttr.MaxMP;
             MPRegenPercent = playerAttr.MPRegenPercent;
             HPRegenPercent = playerAttr.HPRegenPercent;
             StructureTickSpeed = playerAttr.StructureTickSpeed;

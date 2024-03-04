@@ -24,6 +24,10 @@ public class SkillDisplay : MonoBehaviour {
 
     public void StartCooldown(float duration) {
         CooldownText.gameObject.SetActive(true);
+        if (duration <= float.Epsilon) {
+            CleanCooldownText();
+            return;
+        }
         CooldownDisplayTween = Tween.Custom(1, 0, duration, UpdateFillAmount);
         CooldownTextTween = Tween.Custom(duration, 0, duration, UpdateDisplayTime).OnComplete(CleanCooldownText);
     }
@@ -57,8 +61,8 @@ public class SkillDisplay : MonoBehaviour {
         boundAbility.OnAbilityActivated += OnAbilityStarted;
         boundAbility.OnCooldownStarted += StartCooldown;
         boundAbility.OnCooldownEnded += CleanCooldownText;
-        
-        if (boundAbility.actions.Count > 0) {            
+
+        if (boundAbility.actions.Count > 0) {
             gameObject.SetActive(true);
             MainIcon.sprite = boundAbility.actions[0].definition.icon;
         } else {

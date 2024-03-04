@@ -19,9 +19,9 @@ public class AttributeSet : MonoBehaviour {
     public event Action<float, float> OnHPChanged = delegate { };
 
 
-    public virtual void ResetState() {
+    public virtual void ResetState(bool resetHP = false) {
         MaxHP = baseAttributes.MaxHP;
-        HP = MaxHP;
+        if (resetHP) HP = MaxHP;
         MovementSpeed = baseAttributes.MovementSpeedBase;
         AttackSpeed = baseAttributes.AttackSpeed;
         BaseAttack = baseAttributes.BaseAttack;
@@ -29,7 +29,7 @@ public class AttributeSet : MonoBehaviour {
     }
 
     private void OnEnable() {
-        ResetState();
+        ResetState(true);
     }
 
     public virtual void TakeDamage(float amount) {
