@@ -3,6 +3,7 @@ using Core.AttributeSystem;
 using PrimeTween;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.VFX;
 
 namespace Core.AbilityExtensions.Spawns {
     /// <summary>
@@ -18,6 +19,7 @@ namespace Core.AbilityExtensions.Spawns {
         public Action<AttributeSet> OnHitCallback = null;
         Tween DelayTween;
         Tween ExpiryTween;
+        public VisualEffect vfx;
 
         public EntityType IgnoredEntities = EntityType.NONE;
 
@@ -42,6 +44,7 @@ namespace Core.AbilityExtensions.Spawns {
             this.damage = damage;
             this.OnHitCallback = onHitCallback;
             DelayTween = Tween.Delay(delay, Burst);
+            vfx.Play();
         }
 
         private void Burst() {

@@ -8,7 +8,7 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Projectile Action", menuName = "Player Actions/Fire Projectile", order = 0)]
+[CreateAssetMenu(fileName = "AOE  Action", menuName = "Player Actions/AOE", order = 0)]
 public class AoeAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;
@@ -21,7 +21,9 @@ public class AoeAction : ActionDefinition {
         AreaBurst obj = poolObj.GetComponent<AreaBurst>();
         if (obj == null) return;
 
-        obj.transform.position = owner.transform.position;
+        Vector3 finalPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction;
+
+        obj.transform.position = finalPos;
         float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
 
         obj.Activate(damage, OnHit);
