@@ -24,6 +24,8 @@ namespace Core.Abilities {
         public AbilityInstance CurrentlySelected { get; private set; }
         public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
 
+        public CharacterController characterController;
+
 
         private void Awake() {
             Initialize();
@@ -105,6 +107,12 @@ namespace Core.Abilities {
             modifier.definition.GlobalStatModifier.ForEach(x => {
                 Attributes.ApplyModifier(x, modifier.level);
             });
+        }
+
+        public void Teleport(Vector3 position) {            
+            characterController.enabled = false;
+            transform.position = position;
+            characterController.enabled = true;
         }
     }
 }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad560a45a26b77d44b3572c75beca327, type: 3}
-  m_Name: SimpleModifier
+  m_Name: Attack and Speed
   m_EditorClassIdentifier: 
   alignment: 0
   GlobalStatModifier:
-  - Attribute: 0
+  - Attribute: 3
     value:
       scalingType: 0
-      BaseValue: 15
-      AdditiveValue: 5
+      BaseValue: 10
+      AdditiveValue: 10
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -43,12 +43,11 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  PerAbilityModifier:
-  - Attribute: 8
+  - Attribute: 4
     value:
       scalingType: 0
-      BaseValue: 0
-      AdditiveValue: 50
+      BaseValue: 5
+      AdditiveValue: 10
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -73,6 +72,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
+  PerAbilityModifier: []
+  icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
   ModifierName: Flat Stat Bonus
   Description: 

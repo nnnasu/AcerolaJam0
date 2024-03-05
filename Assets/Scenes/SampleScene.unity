@@ -2953,6 +2953,7 @@ MonoBehaviour:
     useDynamicCooldown: 0
   Abilities: []
   DefaultAttack: {fileID: 11400000, guid: ac886c2a94d2f9248815756b19eac79f, type: 2}
+  characterController: {fileID: 1107741104}
 --- !u!114 &1107741113
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,6 +45,23 @@ namespace Core.UI.Rewards {
             swapButton.onClick.AddListener(OnButtonClicked);
         }
 
+        private void OnDisable() {
+            panels.ForEach(x => {
+                x.OnHoverEvent -= OnHover;
+                x.OnHoverLeftEvent -= OnHoverLeft;
+                x.OnSelectedEvent -= OnSelected;
+            });
+            BasicAttackPanel.OnHoverEvent -= OnHover;
+            BasicAttackPanel.OnHoverLeftEvent -= OnHoverLeft;
+            BasicAttackPanel.OnSelectedEvent -= OnSelected;
+
+            RewardPanel.OnHoverEvent -= OnHoverReward;
+            RewardPanel.OnHoverLeftEvent -= OnHoverLeft;
+            RewardPanel.OnSelectedEvent -= OnSelectedReward;
+            swapButton.onClick.RemoveListener(OnButtonClicked);
+
+        }
+
 
         private void OnButtonClicked() {
             if (!CanSwap) return;
@@ -99,9 +116,9 @@ namespace Core.UI.Rewards {
         private bool CheckSelectionTypesCompatible() {
             // Match action/modifier slot types
             if (inventorySelection.isModifierSelected != rewardSelection.isModifierSelected) return false;
-            if (inventorySelection.SelectedSlot != -1 
+            if (inventorySelection.SelectedSlot != -1
                 && !rewardSelection.isModifierSelected
-                && RewardPanel.actionInstances[rewardSelection.SelectedSlot].definition.actionType 
+                && RewardPanel.actionInstances[rewardSelection.SelectedSlot].definition.actionType
                     == Abilities.Enums.ActionType.BasicAttack) return false; // Basic attacks should only be in basic attacks
 
             if (inventorySelection.SelectedAbility == -1

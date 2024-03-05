@@ -17,11 +17,7 @@ namespace Core.AbilityExtensions.Actions {
             float mag = Mathf.Clamp(direction.magnitude, 0, Range.GetValueAtLevel(action.level));
             direction = direction.normalized * mag;
             Vector3 targetPoint = owner.transform.position + direction;
-
-            var charcon = owner.GetComponent<CharacterController>();
-            charcon.enabled = false;
-            owner.transform.position = targetPoint;
-            charcon.enabled = true;
+            owner.Teleport(targetPoint);
         }
 
     }
