@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abec8393e2823a4b9344057c8a72a1e, type: 3}
+  m_Name: Shoot
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3867255862158688488, guid: 755bda098bd64f2438f5e06e81725f65,
+    type: 3}
+  speed: 4
+  duration: 10
+  damageMult:
+    scalingType: 0
+    BaseValue: 0
+    AdditiveValue: 1
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CastPoint: 0.375
+  BaseAttackTime: 2
+  AnimatorState: 
+  offset: {x: 0, y: 0, z: 1}
+  IgnoredEntities: 12
+  Piercing: 0

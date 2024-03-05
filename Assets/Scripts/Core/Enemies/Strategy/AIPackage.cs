@@ -23,17 +23,19 @@ namespace Core.Enemies.Strategy {
 
         public float ExecuteNextAction(AIController controller, Vector3? playerLocation) {
             if (!playerLocation.HasValue) return 0;
-            
+
             Vector3 location = playerLocation.Value;
             location.y = controller.transform.position.y;
             float distance = Vector3.Distance(location, controller.transform.position);
             foreach (var item in Actions) {
                 if (distance <= item.range) {
+                    controller.CurrentAction = item.action;
                     return item.action.Execute(controller, this, playerLocation);
                 }
             }
-            
+
             if (!FallbackAction) return 0;
+            controller.CurrentAction = FallbackAction;
             return FallbackAction.Execute(controller, this, playerLocation);
         }
 

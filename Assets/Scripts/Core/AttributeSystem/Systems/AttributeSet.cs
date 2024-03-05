@@ -21,6 +21,14 @@ public class AttributeSet : MonoBehaviour {
 
     public Dictionary<GameplayEffect, EffectInstance> ActiveEffects = new();
 
+    public event Action<EffectInstance> OnEffectApplied = delegate { };
+    public event Action<EffectInstance> OnEffectRemoved = delegate { };
+
+    public bool ResetOnEnable = false;
+
+    private void OnEnable() {
+        if (ResetOnEnable) ResetState(true);
+    }
 
     public virtual void ResetState(bool resetHP = false) {
         MaxHP = baseAttributes.MaxHP;
@@ -28,12 +36,8 @@ public class AttributeSet : MonoBehaviour {
         MovementSpeed = baseAttributes.MovementSpeedBase;
         AttackSpeed = baseAttributes.AttackSpeed;
         BaseAttack = baseAttributes.BaseAttack;
-
     }
 
-    private void OnEnable() {
-        ResetState(true);
-    }
 
     public virtual void TakeDamage(float amount) {
         float oldHP = HP;
@@ -44,20 +48,25 @@ public class AttributeSet : MonoBehaviour {
 
     public void ApplyEffect(EffectInstance effect) {
         if (ActiveEffects.ContainsKey(effect.effectDefinition)) {
-            RemoveEffect(effect); // just remove the existing effect and apply it again
+            RemoveEffect(effect, true); // just remove the existing effect and apply it again
         }
         effect.effectDefinition.Apply(this, effect.level);
         ActiveEffects[effect.effectDefinition] = effect;
         if (effect.effectDefinition.effectType == EffectType.Duration) {
             effect.ExpiryTween = Tween.Delay(effect.effectDefinition.duration.GetValueAtLevel(effect.level), () => RemoveEffect(effect));
         }
+        OnEffectApplied?.Invoke(effect);
     }
 
-    public void RemoveEffect(EffectInstance effect) {
+    public void RemoveEffect(EffectInstance effect, bool toReplace = false) {
         if (!ActiveEffects.ContainsKey(effect.effectDefinition)) return;
         var currentEffect = ActiveEffects[effect.effectDefinition];
         currentEffect.ExpiryTween.Stop();
         currentEffect.effectDefinition.Remove(this, currentEffect.level);
+
+        if (!toReplace) {
+            OnEffectRemoved?.Invoke(currentEffect);
+        }
     }
 
     public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false) {
@@ -79,8 +88,6 @@ public class AttributeSet : MonoBehaviour {
                 break;
             default: break;
         }
-
-
     }
 
 

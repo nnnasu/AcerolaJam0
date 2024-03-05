@@ -16,6 +16,8 @@ namespace Core.Enemies {
         public AIPackage Strategy;
         public float Turn180Duration = 1;
 
+        public AIActionBase CurrentAction;
+
         private void Start() {
             Tick();
         }
@@ -36,13 +38,14 @@ namespace Core.Enemies {
             // TODO: Block rotations based on action??
             if (playerPos.HasValue) {
                 // Rotate towards player
+                // TODO: Lock rotations to y axis only
                 Vector3 dir = playerPos.Value - transform.position;
                 dir.y = 0;
-                Quaternion start = transform.rotation;
-                Quaternion target = Quaternion.LookRotation(dir);
+                Quaternion start = transform.rotation.normalized;
+                Quaternion target = Quaternion.LookRotation(dir).normalized;
                 float duration = Mathf.Max(Quaternion.Angle(start, target) / 180 * Turn180Duration, float.Epsilon);
                 RotationTween.Stop();
-                RotationTween = Tween.RigidbodyMoveRotation(rb, start, target, duration);
+                if (start != target) Tween.RigidbodyMoveRotation(rb, target, duration);
             }
 
             TickTween = Tween.Delay(Mathf.Max(TickRate, delay), Tick);

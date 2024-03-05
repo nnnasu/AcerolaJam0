@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Core.Abilities.Enums;
 using Core.AttributeSystem;
 using PrimeTween;
 using UnityEngine;
@@ -17,8 +16,8 @@ namespace Core.AbilityExtensions.Spawns {
         public EntityType IgnoredEntities = EntityType.NONE;
 
         private void OnTriggerEnter(Collider other) {
-            
-            
+
+
             var target = other.GetComponent<AttributeSet>();
             if (!target) return;
 
@@ -26,13 +25,13 @@ namespace Core.AbilityExtensions.Spawns {
                 // No overlap between flag objects.
                 return;
             }
-            
+
             target.TakeDamage(damage);
             OnHitCallback?.Invoke(target);
             if (DestroyOnContact) {
                 ExpiryTween.Complete();
             }
-            
+
         }
 
         public void Activate(float duration, float speed, Vector3 directionWS, float damage, Action<AttributeSet> onHitCallback = null) {

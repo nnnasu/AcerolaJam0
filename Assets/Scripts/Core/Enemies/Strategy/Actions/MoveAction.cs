@@ -1,8 +1,8 @@
 using UnityEngine;
 
 namespace Core.Enemies.Strategy {
-    [CreateAssetMenu(fileName = "Follow", menuName = "AI Actions/AI Follow", order = 11)]
-    public class FollowPackage : AIActionBase{
+    [CreateAssetMenu(fileName = "MoveCommand", menuName = "AI Actions/Movement", order = 11)]
+    public class MoveAction : AIActionBase{
 
         public float VelocityMultiplier = 1;
 

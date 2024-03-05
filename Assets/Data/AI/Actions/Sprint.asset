@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba46e42167a2154fa8a9fd71ed6ed24, type: 3}
-  m_Name: BaseAttributes
+  m_Script: {fileID: 11500000, guid: af686076e884b6a40b1456f204194f5e, type: 3}
+  m_Name: Sprint
   m_EditorClassIdentifier: 
-  MaxHP: 30
-  MovementSpeedBase: 3
-  AttackSpeed: 0
-  BaseAttack: 10
+  VelocityMultiplier: 2

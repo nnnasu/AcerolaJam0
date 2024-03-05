@@ -13,7 +13,7 @@ public class ProjectileAction : ActionDefinition {
     public GameObject projectilePrefab;
     public float ProjectileSpeed = 10;
     public float ProjectileDuration = 5;
-    public bool DestroyOnContact = false;
+    public bool Piercing = false;
 
     public EntityType IgnoredEntities = EntityType.Player;
 
@@ -31,7 +31,7 @@ public class ProjectileAction : ActionDefinition {
         // TODO: Implement Projectile
         obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
         obj.IgnoredEntities = IgnoredEntities;
-        obj.DestroyOnContact = DestroyOnContact;
+        obj.DestroyOnContact = !Piercing;
 
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
         // else obj.Activate(speed, duration, direction, OnHit);
