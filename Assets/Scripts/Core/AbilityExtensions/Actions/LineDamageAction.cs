@@ -8,31 +8,29 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Projectile Action", menuName = "Player Actions/Fire Projectile", order = 0)]
-public class ProjectileAction : ActionDefinition {
-    public GameObject projectilePrefab;
-    public float ProjectileSpeed = 10;
-    public float ProjectileDuration = 5;
-    public bool Piercing = false;
-    public Vector3 offset = new Vector3(0, 1, 0);
-
+[CreateAssetMenu(fileName = "Line Action", menuName = "Player Actions/Line", order = 0)]
+public class LineDamageAction : ActionDefinition {
+    public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;
+    public float radius = 1;
 
     public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();
-        var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
-        Projectile obj = poolObj.GetComponent<Projectile>();
+        var poolObj = GlobalPool.Current.GetObject(AoeSpawnObject);
+        LineAoe obj = poolObj.GetComponent<LineAoe>();
         if (obj == null) return;
 
-        obj.transform.position = owner.transform.position + owner.transform.rotation * offset;
+        Vector3 finalPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction;
+
+        obj.transform.position = finalPos;
         float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
 
-        // TODO: Implement Projectile
-        obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
+        obj.Activate(damage, OnHit);
+        obj.ResizeAndMoveColliderToFitLength(owner.previousPosition, finalPos, 1);
         obj.IgnoredEntities = IgnoredEntities;
-        obj.DestroyOnContact = !Piercing;
+        
 
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
         // else obj.Activate(speed, duration, direction, OnHit);

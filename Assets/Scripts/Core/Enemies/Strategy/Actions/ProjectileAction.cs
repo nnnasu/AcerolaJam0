@@ -20,7 +20,7 @@ namespace Core.Enemies.Strategy {
         public float BaseAttackTime = 2;
         public string AnimatorState;
 
-        public Vector3 offset = new(0, 0, 1);
+        public Vector3 offset = new(0, 1, 1);
 
         public EntityType IgnoredEntities = EntityType.Enemy | EntityType.EnemyStructure;
         public bool Piercing = false;

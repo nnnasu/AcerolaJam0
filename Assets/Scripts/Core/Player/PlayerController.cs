@@ -67,6 +67,7 @@ public partial class PlayerController : MonoBehaviour {
         movementDirection.x = currentInput.x;
         movementDirection.z = currentInput.y;
         characterController.Move(movementDirection * speed * Time.deltaTime);
+        RegroundCharacter();
     }
 
     private void UpdateMouse() {
@@ -78,5 +79,15 @@ public partial class PlayerController : MonoBehaviour {
 
         mousePosition.y = transform.position.y;
         transform.LookAt(mousePosition);
+    }
+
+    private void RegroundCharacter() {
+        RaycastHit hit;
+        Vector3 foot = characterController.bounds.center + ((characterController.height / 2) * Vector3.down);
+        if (Physics.Raycast(foot, Vector3.down, out hit)) {
+            Vector3 dist = hit.point - foot;
+            characterController.Move(dist);
+        }
+
     }
 }

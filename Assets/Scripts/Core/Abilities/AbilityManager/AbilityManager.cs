@@ -26,6 +26,8 @@ namespace Core.Abilities {
 
         public CharacterController characterController;
 
+        public Vector3 previousPosition; // before applying abilities
+
 
         private void Awake() {
             Initialize();
@@ -67,6 +69,7 @@ namespace Core.Abilities {
         }
 
         public void OnClick(Vector3 targetPosition) {
+            previousPosition = transform.position;
             if (index == 0) {
                 BasicAttack?.ActivateAbility(targetPosition);
             } else {
