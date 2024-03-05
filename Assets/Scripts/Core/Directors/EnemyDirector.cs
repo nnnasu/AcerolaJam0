@@ -16,6 +16,7 @@ namespace Core.Directors {
         }
 
         public void SpawnCheckpoint() {
+            // TODO: Use this to spawn additional checkpoint types
             var pt = GlobalPool.Current.GetObject(CheckpointPrefab);
             pt.SetActive(true);
             pt.transform.position = new Vector3(0, 1, 5);

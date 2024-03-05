@@ -77,7 +77,8 @@ public class GameStateManager : MonoBehaviour {
         EnemyDirector.SpawnEnemies(0, level); // TODO: derive credits        
     }
 
-    public void LoadNewRoom() {
+    public void LoadNewRoom(int value) {
+        // TODO: Use this to select difficulty for rooms
         RequestSpawns();
     }
 }

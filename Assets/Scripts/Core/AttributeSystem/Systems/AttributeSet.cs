@@ -24,6 +24,8 @@ public class AttributeSet : MonoBehaviour {
     public event Action<EffectInstance> OnEffectApplied = delegate { };
     public event Action<EffectInstance> OnEffectRemoved = delegate { };
 
+    public event Action<float> OnDamageTaken = delegate { };
+
     public bool ResetOnEnable = false;
 
     private void OnEnable() {
@@ -43,6 +45,7 @@ public class AttributeSet : MonoBehaviour {
         float oldHP = HP;
         HP -= amount;
         OnHPChanged?.Invoke(oldHP, HP);
+        OnDamageTaken?.Invoke(amount);
         if (HP <= 0) OnDeath?.Invoke(this);
     }
 
