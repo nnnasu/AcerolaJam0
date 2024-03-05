@@ -190,7 +190,7 @@ MonoBehaviour:
   attributes: {fileID: 3731839275590343434}
   MaxHPScaling:
     scalingType: 0
-    BaseValue: 10
+    BaseValue: 25
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2

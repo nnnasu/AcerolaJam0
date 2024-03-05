@@ -105,8 +105,8 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
     scalingType: 0
-    BaseValue: 2
-    AdditiveValue: 3
+    BaseValue: 3
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:

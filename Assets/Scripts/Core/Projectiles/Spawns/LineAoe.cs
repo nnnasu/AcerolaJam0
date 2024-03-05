@@ -35,6 +35,7 @@ namespace Core.AbilityExtensions.Spawns {
                 // No overlap between flag objects.
                 return;
             }
+            Debug.Log(other.name);
             target.TakeDamage(damage);
             OnHitCallback?.Invoke(target);
         }

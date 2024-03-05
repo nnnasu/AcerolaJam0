@@ -17,7 +17,7 @@ MonoBehaviour:
   - Attribute: 8
     value:
       scalingType: 0
-      BaseValue: 3
+      BaseValue: 10
       AdditiveValue: 5
       ValueCurve:
         serializedVersion: 2

@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0.3
-    AdditiveValue: 2
+    AdditiveValue: 1.5
     ValueCurve:
       serializedVersion: 2
       m_Curve:

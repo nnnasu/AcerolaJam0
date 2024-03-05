@@ -42,6 +42,7 @@ public class AttributeSet : MonoBehaviour {
 
 
     public virtual void TakeDamage(float amount) {
+        // Debug.Log(amount);
         float oldHP = HP;
         HP -= amount;
         OnHPChanged?.Invoke(oldHP, HP);

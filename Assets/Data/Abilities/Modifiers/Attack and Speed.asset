@@ -17,8 +17,8 @@ MonoBehaviour:
   - Attribute: 3
     value:
       scalingType: 0
-      BaseValue: 10
-      AdditiveValue: 10
+      BaseValue: 5
+      AdditiveValue: 5
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -46,8 +46,8 @@ MonoBehaviour:
   - Attribute: 4
     value:
       scalingType: 0
-      BaseValue: 5
-      AdditiveValue: 10
+      BaseValue: 3
+      AdditiveValue: 3
       ValueCurve:
         serializedVersion: 2
         m_Curve:
