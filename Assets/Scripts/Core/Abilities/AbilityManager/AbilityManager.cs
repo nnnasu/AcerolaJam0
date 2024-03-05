@@ -94,8 +94,7 @@ namespace Core.Abilities {
             Attributes.ResetState();
             BasicAttack.modifiers.ForEach(x => ApplyGlobalModifiers(x));
             Abilities.ForEach(x => x.modifiers.ForEach(x => ApplyGlobalModifiers(x)));
-
-            // Debug.Log($"{Attributes.MaxHP - oldMaxHP} + {Attributes.HP}");
+            // TODO: Fix this from adding more MP modifiers every reward
 
             Attributes.HP += Mathf.Clamp(Attributes.MaxHP - oldMaxHP, 0, float.MaxValue);
             Attributes.MP += Mathf.Clamp(Attributes.MaxMP - oldMaxMP, 0, float.MaxValue);

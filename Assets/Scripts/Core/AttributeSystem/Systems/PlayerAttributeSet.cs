@@ -17,7 +17,7 @@ public class PlayerAttributeSet : AttributeSet {
     public override void ResetState(bool resetHP = false) {
         base.ResetState(resetHP);
         if (baseAttributes is BasePlayerAttributes playerAttr) {
-            if (resetHP) MaxMP = playerAttr.MaxMP;
+            if (resetHP) MP = playerAttr.MaxMP;
             MPRegenPercent = playerAttr.MPRegenPercent;
             HPRegenPercent = playerAttr.HPRegenPercent;
             StructureTickSpeed = playerAttr.StructureTickSpeed;
