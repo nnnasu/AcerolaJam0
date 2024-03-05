@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core.Abilities;
+using Core.Directors;
+using Core.GlobalInfo;
 using Core.UI.Rewards;
 using PrimeTween;
 using UnityEngine;
@@ -21,6 +23,10 @@ public class GameStateManager : MonoBehaviour {
     public AbilityManager Player;
     public PlayerController playerController;
 
+    [Header("Game Management")]
+    public EnemyDirector EnemyDirector;
+    public EventChannel OnRoomTraversed;
+
 
     // State
     public int RoomsTraversed { get; private set; } = 0;
@@ -31,10 +37,14 @@ public class GameStateManager : MonoBehaviour {
 
     private void OnEnable() {
         rewardScreen.OnChoicesFinished += OnRewardCompleted;
+        EnemyDirector.OnEnemiesCleared += ShowSwapUI;
+        OnRoomTraversed.Event += LoadNewRoom;
     }
+
 
     private void OnRewardCompleted() {
         HideSwapUI();
+        EnemyDirector.SpawnCheckpoint();
     }
 
 
@@ -58,5 +68,16 @@ public class GameStateManager : MonoBehaviour {
         playerController.enabled = true;
         RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 1, 0, FadeDuration).OnComplete(() => SwapMenuCanvas.gameObject.SetActive(false));
         HUDFadeTween = Tween.Alpha(GameHUDCanvas, 0, 1, FadeDuration);
+    }
+
+    public void RequestSpawns() {
+        int level = GameLevel.current.level;
+        level++;
+        GameLevel.current.SetLevel(level);
+        EnemyDirector.SpawnEnemies(0, level); // TODO: derive credits        
+    }
+
+    public void LoadNewRoom() {
+        RequestSpawns();
     }
 }

@@ -3,7 +3,16 @@ guid: d1dcc672d847042458fb6e693e816b26
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SwapMenuCanvas: {instanceID: 0}
+  - rewardScreen: {instanceID: 0}
+  - GameHUDCanvas: {instanceID: 0}
+  - playerHUD: {instanceID: 0}
+  - DefaultRewardGenerator: {instanceID: 0}
+  - Player: {instanceID: 0}
+  - playerController: {instanceID: 0}
+  - EnemyDirector: {instanceID: 0}
+  - OnRoomTraversed: {fileID: 11400000, guid: 4932bc3ba9eba47428c0353ea55111b6, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

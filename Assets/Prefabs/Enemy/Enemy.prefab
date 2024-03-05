@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 8187667278936037665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 7.22}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -135,7 +135,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &3236897907262734286
 MonoBehaviour:
@@ -152,8 +152,9 @@ MonoBehaviour:
   rb: {fileID: 4708584948428200342}
   attributes: {fileID: 3731839275590343434}
   TickRate: 0.5
-  Strategy: {fileID: 11400000, guid: b8bafdbff06a4af4e8e3ac80a29d70ec, type: 2}
-  Turn180Duration: 1
+  Strategy: {fileID: 11400000, guid: c6bb39d01ba06ef4ea7c57cada048651, type: 2}
+  Turn180Duration: 0.5
+  CurrentAction: {fileID: 0}
 --- !u!114 &3731839275590343434
 MonoBehaviour:
   m_ObjectHideFlags: 0

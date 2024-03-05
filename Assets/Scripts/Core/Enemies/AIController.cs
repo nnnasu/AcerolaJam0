@@ -18,15 +18,15 @@ namespace Core.Enemies {
 
         public AIActionBase CurrentAction;
 
-        private void Start() {
+        private void OnEnable() {
+            attributes.OnDeath += DeathCleanup;
+            rb.velocity = Vector3.zero;
+            TickTween.Stop();
             Tick();
         }
-
-        private void OnEnable() {
-            attributes.OnDeath += (x) => DeathCleanup();
-        }
         private void OnDisable() {
-
+            attributes.OnDeath -= DeathCleanup;
+            TickTween.Stop();
         }
 
         /// <summary>
@@ -37,6 +37,7 @@ namespace Core.Enemies {
             float delay = Strategy.ExecuteNextAction(this, playerPos);
             // TODO: Block rotations based on action??
             if (playerPos.HasValue) {
+                rb.angularVelocity = Vector3.zero;
                 // Rotate towards player
                 // TODO: Lock rotations to y axis only
                 Vector3 dir = playerPos.Value - transform.position;
@@ -44,17 +45,17 @@ namespace Core.Enemies {
                 Quaternion start = transform.rotation.normalized;
                 Quaternion target = Quaternion.LookRotation(dir).normalized;
                 float duration = Mathf.Max(Quaternion.Angle(start, target) / 180 * Turn180Duration, float.Epsilon);
-                RotationTween.Stop();
+                // RotationTween.Stop();
                 if (start != target) Tween.RigidbodyMoveRotation(rb, target, duration);
             }
 
             TickTween = Tween.Delay(Mathf.Max(TickRate, delay), Tick);
         }
 
-        private void DeathCleanup() {
+        private void DeathCleanup(AttributeSet attributeSet) {
             // TODO return to pool
             TickTween.Stop();
-            Destroy(gameObject);
+            ReturnToPool();
         }
 
 

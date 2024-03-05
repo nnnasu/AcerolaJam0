@@ -11,7 +11,7 @@ public class GlobalPool : MonoBehaviour {
 
     private Dictionary<GameObject, ObjectPool<GameObject>> pool = new();
 
-    private void Start() {
+    private void Awake() {
         if (instance != null) {
             Destroy(this);
         } else {

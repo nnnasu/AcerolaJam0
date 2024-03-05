@@ -206,6 +206,7 @@ namespace Core.Abilities.Instances {
                 return;
             }
             var target = actions[index];
+            // TODO: Fix the null ref exception here
             if (target.definition == incoming.definition) {
                 if (target.level == incoming.level) target.level++;
                 else target.level = Mathf.Max(target.level, incoming.level);
