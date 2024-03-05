@@ -43,7 +43,7 @@ public class EnemyDisplay : PoolableBehaviour {
     private void OnHpChange(float oldValue, float newValue) {
         float maxHP = attributes.MaxHP;
         HitTween = Tween.Custom(oldValue / maxHP, newValue / maxHP, 0.5f, UpdateFillAmount);
-        textDisplay.text = newValue.ToString(); 
+        textDisplay.text = newValue.ToString("0"); 
     }
 
     private void UpdateFillAmount(float value) {

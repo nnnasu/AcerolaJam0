@@ -15,6 +15,7 @@ public partial class PlayerController : MonoBehaviour {
     Camera MainCamera;
 
     public LayerMask RecallLayer;
+    public LayerMask MousePositionLayer;
 
     private void Start() {
         MainCamera = Camera.main;
@@ -73,7 +74,7 @@ public partial class PlayerController : MonoBehaviour {
     private void UpdateMouse() {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitinfo;
-        if (Physics.Raycast(ray, out hitinfo)) {
+        if (Physics.Raycast(ray, out hitinfo, Mathf.Infinity, MousePositionLayer)) {
             mousePosition = hitinfo.point;
         }
 

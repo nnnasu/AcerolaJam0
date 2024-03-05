@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration:
     scalingType: 0
-    BaseValue: 5
-    AdditiveValue: 0
+    BaseValue: 2
+    AdditiveValue: 3
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -41,11 +41,14 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   effectType: 1
+  icon: {fileID: 0}
+  EffectName: 
+  Description: 
   modifiers:
   - Attribute: 2
     value:
       scalingType: 0
-      BaseValue: 0
+      BaseValue: -0.5
       AdditiveValue: -1
       ValueCurve:
         serializedVersion: 2

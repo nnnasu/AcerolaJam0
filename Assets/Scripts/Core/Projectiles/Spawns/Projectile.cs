@@ -16,8 +16,6 @@ namespace Core.AbilityExtensions.Spawns {
         public EntityType IgnoredEntities = EntityType.NONE;
 
         private void OnTriggerEnter(Collider other) {
-
-
             var target = other.GetComponent<AttributeSet>();
             if (!target) return;
 
@@ -31,7 +29,6 @@ namespace Core.AbilityExtensions.Spawns {
             if (DestroyOnContact) {
                 ExpiryTween.Complete();
             }
-
         }
 
         public void Activate(float duration, float speed, Vector3 directionWS, float damage, Action<AttributeSet> onHitCallback = null) {
