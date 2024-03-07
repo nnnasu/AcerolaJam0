@@ -33,9 +33,11 @@ public class PlayerAttributeSet : AttributeSet {
         if (oldMP == MP) return;
         OnMPChanged?.Invoke(oldMP, MP);
     }
-    public override void ApplyModifier(StatModifier modifier, int level, bool negate = false) {
-        float value = modifier.value.GetValueAtLevel(level);
+    public override void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
+        float rawValue = modifier.value.GetValueAtLevel(level) * (mult != 0 ? mult : 1); ;
+        float value = rawValue;
         if (negate) value *= -1;
+
         switch (modifier.Attribute) {
             case GameAttributes.MaxHP:
                 MaxHP += value;
@@ -63,6 +65,14 @@ public class PlayerAttributeSet : AttributeSet {
                 break;
             case GameAttributes.CooldownReduction:
                 CooldownReduction += value;
+                break;
+            case GameAttributes.DamageTaken:
+                if (negate) DamageTakenMult /= rawValue;
+                else DamageTakenMult *= rawValue;
+                break;
+            case GameAttributes.DamageDealt:
+                if (negate) DamageDealtMult /= rawValue;
+                else DamageDealtMult *= rawValue;
                 break;
             default: break;
         }

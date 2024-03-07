@@ -12,12 +12,11 @@ public class EffectInstance {
         this.level = level;
     }
 
-    public virtual void Apply(AttributeSet attribute) {
-        
+    public virtual void Apply(AttributeSet attributes) {
+        effectDefinition.Apply(attributes, this);
     }
-
-    public virtual void Remove(AttributeSet attribute) {
-
+    public virtual void Remove(AttributeSet attributes) {
+        effectDefinition.Remove(attributes, this);
     }
 
 }

@@ -34,8 +34,11 @@ namespace Core.Enemies.Strategy {
             controller.rb.velocity = controller.rb.rotation * Movement;
 
             float attackTime = Formulas.AttackSpeedFormula(BaseAttackTime, controller.attributes.AttackSpeed);
-            float damage = controller.attributes.BaseAttack * damageMult.GetValueAtLevel(GameLevel.current.level);
-
+            float damage = Formulas.DamageDealtFormula(
+                        controller.attributes.BaseAttack,
+                        damageMult.GetValueAtLevel(GameLevel.current.level),
+                        controller.attributes.DamageDealtMult
+                    );
             if (controller.GetComponent<EnemyAnimationHandler>() is EnemyAnimationHandler enemyAnimationHandler) {
                 enemyAnimationHandler.SetMovement(false);
                 float mult = BaseAttackTime / attackTime;

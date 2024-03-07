@@ -23,6 +23,13 @@ public static class Formulas {
             0.3f,
             BaseStructureTickInterval
         );
+    }
 
+    public static float DamageDealtFormula(float baseAttack, float actionMult, float modifierMult) {
+        return baseAttack * actionMult * modifierMult;
+    }
+
+    public static float DamageTakenFormula(float incomingDamage, float damageTakenMult) {
+        return incomingDamage * damageTakenMult;
     }
 }

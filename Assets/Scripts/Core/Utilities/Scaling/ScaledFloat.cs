@@ -17,7 +17,7 @@ namespace Core.Utilities.Scaling {
     }
 
     [Serializable]
-    public class ScaledFloat {
+    public class ScaledFloat  {
 
 
         public ScalingType scalingType = ScalingType.Linear;
@@ -36,6 +36,6 @@ namespace Core.Utilities.Scaling {
                 _ => 0
             };
         }
-
     }
+
 }

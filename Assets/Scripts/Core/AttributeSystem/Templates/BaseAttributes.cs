@@ -9,5 +9,11 @@ namespace Core.AttributeSystem {
         public float AttackSpeed;
         public float BaseAttack;
 
+        [Range(0.001f, 10)]
+        public float DamageDealtMult = 1;
+        [Range(0.001f, 10)]
+        public float DamageTakenMult = 1;
+
+
     }
 }

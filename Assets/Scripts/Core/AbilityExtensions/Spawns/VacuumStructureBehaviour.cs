@@ -27,7 +27,7 @@ namespace Core.AbilityExtensions.Spawns {
             Vector3 direction = transform.position - target.transform.position;
             direction = direction.normalized * force;
 
-            var instance = EffectToApply.GetEffectInstance(level);
+            var instance = EffectToApply.GetEffectInstance(target, level);
             target.ApplyEffect(instance);
 
             rb.AddForce(direction, ForceMode.Impulse);

@@ -5,7 +5,7 @@ using Core.AttributeSystem;
 using PrimeTween;
 using UnityEngine;
 
-public class AttributeSet : MonoBehaviour {
+public class AttributeSet : MonoBehaviour, IDamageable {
 
     public BaseAttributes baseAttributes;
 
@@ -14,6 +14,9 @@ public class AttributeSet : MonoBehaviour {
     public float MovementSpeed;
     public float AttackSpeed;
     public float BaseAttack;
+    public float DamageDealtMult = 1;
+    public float DamageTakenMult = 1;
+
     public EntityType entityType = EntityType.Enemy;
 
     public event Action<AttributeSet> OnDeath = delegate { };
@@ -38,11 +41,14 @@ public class AttributeSet : MonoBehaviour {
         MovementSpeed = baseAttributes.MovementSpeedBase;
         AttackSpeed = baseAttributes.AttackSpeed;
         BaseAttack = baseAttributes.BaseAttack;
+        DamageDealtMult = baseAttributes.DamageDealtMult;
+        DamageTakenMult = baseAttributes.DamageTakenMult;
     }
 
 
     public virtual void TakeDamage(float amount) {
-        // Debug.Log(amount);
+        amount = Formulas.DamageTakenFormula(amount, DamageTakenMult);
+
         float oldHP = HP;
         HP -= amount;
         OnHPChanged?.Invoke(oldHP, HP);
@@ -54,7 +60,7 @@ public class AttributeSet : MonoBehaviour {
         if (ActiveEffects.ContainsKey(effect.effectDefinition)) {
             RemoveEffect(effect, true); // just remove the existing effect and apply it again
         }
-        effect.effectDefinition.Apply(this, effect.level);
+        effect.Apply(this);
         ActiveEffects[effect.effectDefinition] = effect;
         if (effect.effectDefinition.effectType == EffectType.Duration) {
             effect.ExpiryTween = Tween.Delay(effect.effectDefinition.duration.GetValueAtLevel(effect.level), () => RemoveEffect(effect));
@@ -66,15 +72,16 @@ public class AttributeSet : MonoBehaviour {
         if (!ActiveEffects.ContainsKey(effect.effectDefinition)) return;
         var currentEffect = ActiveEffects[effect.effectDefinition];
         currentEffect.ExpiryTween.Stop();
-        currentEffect.effectDefinition.Remove(this, currentEffect.level);
+        currentEffect.Remove(this);
 
         if (!toReplace) {
             OnEffectRemoved?.Invoke(currentEffect);
         }
     }
 
-    public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false) {
-        float value = modifier.value.GetValueAtLevel(level);
+    public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
+        float rawValue = modifier.value.GetValueAtLevel(level) * (mult != 0 ? mult : 1);
+        float value = rawValue;
         if (negate) value *= -1;
 
         switch (modifier.Attribute) {
@@ -89,6 +96,14 @@ public class AttributeSet : MonoBehaviour {
                 break;
             case GameAttributes.BaseAttack:
                 BaseAttack += value;
+                break;
+            case GameAttributes.DamageTaken:
+                if (negate) DamageTakenMult /= rawValue;
+                else DamageTakenMult *= rawValue;
+                break;
+            case GameAttributes.DamageDealt:
+                if (negate) DamageDealtMult /= rawValue;
+                else DamageDealtMult *= rawValue;
                 break;
             default: break;
         }

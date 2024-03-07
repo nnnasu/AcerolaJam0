@@ -25,12 +25,15 @@ public class LineDamageAction : ActionDefinition {
         Vector3 finalPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction;
 
         obj.transform.position = finalPos;
-        float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
-
+        float damage = Formulas.DamageDealtFormula(
+                    owner.Attributes.BaseAttack,
+                    DamageMultiplier.GetValueAtLevel(action.level),
+                    owner.Attributes.DamageDealtMult
+                );
         obj.Activate(damage, OnHit);
         obj.ResizeAndMoveColliderToFitLength(owner.previousPosition, finalPos, 1);
         obj.IgnoredEntities = IgnoredEntities;
-        
+
 
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
         // else obj.Activate(speed, duration, direction, OnHit);

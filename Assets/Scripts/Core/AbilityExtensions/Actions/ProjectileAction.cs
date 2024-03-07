@@ -27,9 +27,11 @@ public class ProjectileAction : ActionDefinition {
         if (obj == null) return;
 
         obj.transform.position = owner.transform.position + owner.transform.rotation * offset;
-        float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
-
-        // TODO: Implement Projectile
+        float damage = Formulas.DamageDealtFormula(
+            owner.Attributes.BaseAttack,
+            DamageMultiplier.GetValueAtLevel(action.level),
+            owner.Attributes.DamageDealtMult
+        );
         obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
         obj.IgnoredEntities = IgnoredEntities;
         obj.DestroyOnContact = !Piercing;

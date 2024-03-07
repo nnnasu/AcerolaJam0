@@ -6,7 +6,7 @@ using Core.Utilities.Scaling;
 [Serializable]
 public class StatModifier {
     public GameAttributes Attribute;
-    public ScaledFloat value;
+    public ScaledFloat value;    
 
     public string GetTooltipText(int level, bool perAbility = false) {
         float change = value.GetValueAtLevel(level);

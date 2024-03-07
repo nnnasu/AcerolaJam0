@@ -14,7 +14,7 @@ namespace Core.AbilityExtensions.Effects {
         }
 
         public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-            var instance = effect.GetEffectInstance(action.level);
+            var instance = effect.GetEffectInstance(target, action.level);
             target.ApplyEffect(instance);
         }
     }

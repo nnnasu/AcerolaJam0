@@ -24,7 +24,11 @@ public class AoeAction : ActionDefinition {
         Vector3 finalPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction;
 
         obj.transform.position = finalPos;
-        float damage = DamageMultiplier.GetValueAtLevel(action.level) * owner.Attributes.BaseAttack;
+        float damage = Formulas.DamageDealtFormula(
+            owner.Attributes.BaseAttack,
+            DamageMultiplier.GetValueAtLevel(action.level),
+            owner.Attributes.DamageDealtMult
+        );
 
         obj.Activate(damage, OnHit);
         obj.IgnoredEntities = IgnoredEntities;
