@@ -8,7 +8,8 @@ using Core.Abilities.Instances;
 public class StructureActionDefinition : ActionDefinition {
     public StructureDefinition structure;
 
-    public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        base.ActivateAction(owner, ability, action, target, OnHit);
         // Check if the player has enough structures in stock
         // Spawn the structure.
         var obj = structure.SpawnStructure(target, owner, ability, action);

@@ -19,6 +19,7 @@ namespace Core.Abilities.Definitions {
         public ScaledFloat BaseMPCost;
         public float UsageTime = 0;
         public List<OnHitEffect> OnHitEffects = new();
+        public List<OnActivateEffect> OnActivateEffects = new();
 
         [Header("Targeting Properties")]
         public TargetingType TargetingType;
@@ -36,7 +37,9 @@ namespace Core.Abilities.Definitions {
         public virtual void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
             OnHitEffects.ForEach(x => x.OnHit(owner, ability, action, target));
         }
-        public abstract void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
+        public virtual void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+            OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
+        }
 
         public virtual string GetTooltipText(float level) {
             return Description;

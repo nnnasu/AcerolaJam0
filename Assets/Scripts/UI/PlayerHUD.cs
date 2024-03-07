@@ -10,11 +10,14 @@ public class PlayerHUD : MonoBehaviour {
     public HorizontalLayoutGroup AbilityContainer;
     public ValueBar HPBar;
     public ValueBar MPBar;
+    public StatusEffectDisplay statusEffectDisplay;
     public List<SkillDisplay> Skills = new();
 
     [Header("Player Reference")]
     public AbilityManager abilityManager;
     public PlayerAttributeSet attributes => abilityManager.Attributes;
+
+    
 
     private void Start() {
         // Tween.Delay(1, Synchronise);
@@ -47,12 +50,16 @@ public class PlayerHUD : MonoBehaviour {
         attributes.OnHPChanged += UpdateHP;
         attributes.OnMPChanged += UpdateMP;
         abilityManager.OnRebindRequest += Synchronise;
+        attributes.OnEffectApplied += statusEffectDisplay.ApplyEffect;
+        attributes.OnEffectRemoved += statusEffectDisplay.RemoveEffect;
     }
 
     private void OnDisable() {
         attributes.OnHPChanged -= UpdateHP;
         attributes.OnMPChanged -= UpdateMP;
         abilityManager.OnRebindRequest -= Synchronise;
+        attributes.OnEffectApplied -= statusEffectDisplay.ApplyEffect;
+        attributes.OnEffectRemoved -= statusEffectDisplay.RemoveEffect;
     }
 
     private void UpdateMP(float oldValue, float newValue) {

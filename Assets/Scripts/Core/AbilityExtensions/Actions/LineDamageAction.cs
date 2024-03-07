@@ -14,7 +14,8 @@ public class LineDamageAction : ActionDefinition {
     public EntityType IgnoredEntities = EntityType.Player;
     public float radius = 1;
 
-    public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        base.ActivateAction(owner, ability, action, target, OnHit);
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();

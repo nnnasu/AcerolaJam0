@@ -11,7 +11,8 @@ namespace Core.AbilityExtensions.Actions {
     public class TeleportAction : ActionDefinition {
 
 
-        public override void ActivateAbility(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+            base.ActivateAction(owner, ability, action, target, OnHit);
             Vector3 direction = target - owner.transform.position;
             direction.y = 0;
             float mag = Mathf.Clamp(direction.magnitude, 0, Range.GetValueAtLevel(action.level));

@@ -6,15 +6,15 @@ using UnityEngine;
 namespace Core.AbilityExtensions.StatusEffects.Stackables {
     [CreateAssetMenu(fileName = "StackableEffect", menuName = "Effects/Status Effects/Stackable", order = 0)]
     public class StackableEffect : StatusEffect {
+        public List<StatModifier> modifiers = new();
+
+
         public override EffectInstance GetEffectInstance(AttributeSet target, int level) {
             if (!target.ActiveEffects.ContainsKey(this) && target.ActiveEffects[this] is StackableEffectInstance current) {
                 return new StackableEffectInstance(this, level, current.stackCount + 1);
             }
             return new StackableEffectInstance(this, level, 1);
         }
-
-        public List<StatModifier> modifiers = new();
-
 
         public override void Apply(AttributeSet attributeSet, EffectInstance instance) {
             float stacks = 1;

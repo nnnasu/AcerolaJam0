@@ -22,7 +22,7 @@ namespace Core.Abilities.Instances {
         }
 
         public void ActivateAbility(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {
-            definition.ActivateAbility(owner, ability, this, target, OnHit);
+            definition.ActivateAction(owner, ability, this, target, OnHit);
         }
 
         public void OnHit(AbilityManager owner, AbilityInstance ability, AttributeSet target) {
