@@ -57,7 +57,7 @@ public class EnemyDisplay : PoolableBehaviour {
         var enemyPosition = MainCamera.WorldToScreenPoint(attributes.transform.position);
         Vector3 uiPosition = enemyPosition + offset;
 
-        if (IsUIVisibleOnScreen(uiPosition)) {
+        if (IsUIVisibleOnScreen(enemyPosition)) {
             baseImage.transform.position = uiPosition;
             baseImage.gameObject.SetActive(true);
             directionIndicator.gameObject.SetActive(false);

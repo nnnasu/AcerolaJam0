@@ -76,3 +76,4 @@ crashlytics-build.properties
 
 # External Libraries
 Assets/Plugins/PrimeTween
+Assets/External/*

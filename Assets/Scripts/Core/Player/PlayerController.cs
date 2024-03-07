@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Abilities;
@@ -17,6 +18,9 @@ public partial class PlayerController : MonoBehaviour {
     public LayerMask RecallLayer;
     public LayerMask MousePositionLayer;
 
+    public event Action<Vector3> OnMoveEvent = delegate { };
+    public event Action OnControllerDisable = delegate { };
+
     private void Start() {
         MainCamera = Camera.main;
     }
@@ -32,6 +36,7 @@ public partial class PlayerController : MonoBehaviour {
         input.OnFireEvent -= OnFire;
         input.OnRecallEvent -= OnRecall;
         input.OnSkillSelected -= OnSkillSelected;
+        OnControllerDisable?.Invoke();
     }
 
     private void OnMove(Vector2 move) {
@@ -67,6 +72,7 @@ public partial class PlayerController : MonoBehaviour {
         UpdateMouse();
         movementDirection.x = currentInput.x;
         movementDirection.z = currentInput.y;
+        OnMoveEvent?.Invoke(movementDirection);
         characterController.Move(movementDirection * speed * Time.deltaTime);
         RegroundCharacter();
     }

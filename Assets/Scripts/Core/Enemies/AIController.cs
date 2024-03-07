@@ -6,7 +6,8 @@ using PrimeTween;
 using UnityEngine;
 
 namespace Core.Enemies {
-
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(AttributeSet))]
     public class AIController : PoolableBehaviour {
         public Rigidbody rb;
         public AttributeSet attributes;
@@ -15,8 +16,9 @@ namespace Core.Enemies {
         Tween RotationTween;
         public AIPackage Strategy;
         public float Turn180Duration = 1;
-
         public AIActionBase CurrentAction;
+        public EnemyAnimationHandler enemyAnimationHandler;
+
 
         private void OnEnable() {
             attributes.OnDeath += DeathCleanup;
@@ -34,7 +36,7 @@ namespace Core.Enemies {
         /// </summary>
         private void Tick() {
             Vector3? playerPos = PlayerLocation.CurrentLocator?.playerLocation;
-            float delay = Strategy.ExecuteNextAction(this, playerPos);
+            float delay = Strategy.ExecuteNextAction(this, playerPos);            
             // TODO: Block rotations based on action??
             if (playerPos.HasValue) {
                 rb.angularVelocity = Vector3.zero;
@@ -58,6 +60,11 @@ namespace Core.Enemies {
             ReturnToPool();
         }
 
+
+        private void OnValidate() {
+            if (rb == null) rb = GetComponent<Rigidbody>();
+            if (attributes == null) attributes = GetComponent<AttributeSet>();
+        }
 
 
 

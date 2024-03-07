@@ -74,7 +74,7 @@ public class GameStateManager : MonoBehaviour {
         int level = GameLevel.current.level;
         level++;
         GameLevel.current.SetLevel(level);
-        EnemyDirector.SpawnEnemies(0, level); // TODO: derive credits        
+        EnemyDirector.SpawnEnemies(level); // TODO: derive credits        
     }
 
     public void LoadNewRoom(int value) {

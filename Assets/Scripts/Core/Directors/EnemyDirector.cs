@@ -1,15 +1,26 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Core.GlobalInfo;
+using KaimiraGames;
 using UnityEngine;
 
 namespace Core.Directors {
     public class EnemyDirector : MonoBehaviour {
         private HashSet<GameObject> enemies = new();
         public event Action OnEnemiesCleared = delegate { };
-        public List<GameObject> Enemies = new();
+        public EnemyWeights weights;
         public GameObject CheckpointPrefab;
+        public WeightedList<EnemySpawnParameters> WeightedEnemyList;
+        public Dictionary<EnemySpawnParameters, int> EnemySpawnCount = new();
+
+        private void Awake() {
+            List<WeightedListItem<EnemySpawnParameters>> items = weights.weights
+                .Select(x => new WeightedListItem<EnemySpawnParameters>(x, x.weight))
+                .ToList();
+            WeightedEnemyList = new(items);
+        }
 
         private void Start() {
             SpawnCheckpoint();
@@ -22,8 +33,25 @@ namespace Core.Directors {
             pt.transform.position = new Vector3(0, 1, 5);
         }
 
-        public void SpawnEnemies(float credits, int currentGameLevel) {
-            Enemies.ForEach(x => SpawnEnemy(Vector3.up, x));
+        public void SpawnEnemies(int currentGameLevel) {
+            // TODO: Derive formulas for this
+            int numberSpawned = 0;
+            float budget = 5 + currentGameLevel;
+            int chances = 5;
+            while (budget > 0 && chances > 0) {
+                // Try to spawn 
+                var enemy = WeightedEnemyList.Next();
+                if (budget - enemy.cost < 0) {
+                    // give up if we couldn't spawn anything 5 times.
+                    chances--;
+                    continue;
+                } else {
+                    SpawnEnemy(Vector3.zero, enemy.prefab);
+                    numberSpawned++;
+                    budget-= enemy.cost;
+                }
+            }
+
         }
 
         private void SpawnEnemy(Vector3 position, GameObject prefab) {

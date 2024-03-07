@@ -21,6 +21,7 @@ namespace Core.Enemies.Strategy {
         public string AnimatorState;
 
         public Vector3 offset = new(0, 1, 1);
+        public Vector3 Movement = Vector3.forward;
 
         public EntityType IgnoredEntities = EntityType.Enemy | EntityType.EnemyStructure;
         public bool Piercing = false;
@@ -30,10 +31,16 @@ namespace Core.Enemies.Strategy {
                 controller.rb.velocity = Vector3.zero;
                 return 0;
             }
-            controller.rb.velocity = Vector3.zero;
+            controller.rb.velocity = controller.rb.rotation * Movement;
 
             float attackTime = Formulas.AttackSpeedFormula(BaseAttackTime, controller.attributes.AttackSpeed);
             float damage = controller.attributes.BaseAttack * damageMult.GetValueAtLevel(GameLevel.current.level);
+
+            if (controller.GetComponent<EnemyAnimationHandler>() is EnemyAnimationHandler enemyAnimationHandler) {
+                enemyAnimationHandler.SetMovement(false);
+                float mult = BaseAttackTime / attackTime;
+                enemyAnimationHandler.SetAttackTrigger(mult);
+            }
 
 
             Tween.Delay(attackTime * CastPoint, () => SpawnProjectile(damage, controller));

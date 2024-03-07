@@ -15,6 +15,10 @@ namespace Core.Enemies.Strategy {
             Vector3 direction = playerPosition.Value - controller.transform.position;            
             direction.Normalize();
             controller.rb.velocity = VelocityMultiplier * controller.attributes.MovementSpeed * direction;
+
+            if (controller.GetComponent<EnemyAnimationHandler>() is EnemyAnimationHandler enemyAnimationHandler) {
+                enemyAnimationHandler.SetMovement(true, VelocityMultiplier);
+            }
             return 0;
         }
 
