@@ -59,7 +59,7 @@ namespace Core.Abilities.Instances {
             if (isOnCooldown) return false;
             if (useDynamicCooldown) cachedCooldownTime = CalculateCooldownTime(owner); // otherwise, just use cached.
             if (useDynamicCost) cachedMPCost = CalculateMPCost(owner);
-            if (owner.Attributes.MP - cachedMPCost <= 0) return false;
+            if (owner.Attributes.MP - cachedMPCost < 0) return false;
 
             foreach (var item in actions) {
                 item.ActivateAbility(owner, this, targetPoint, OnHit);

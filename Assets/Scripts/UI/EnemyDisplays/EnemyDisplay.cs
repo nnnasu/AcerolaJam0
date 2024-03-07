@@ -12,6 +12,8 @@ public class EnemyDisplay : PoolableBehaviour {
     public Image baseImage;
     public Image fillImage;
     public TextMeshProUGUI textDisplay;
+    public Image directionIndicator;
+
 
     public Vector3 offset;
 
@@ -43,7 +45,7 @@ public class EnemyDisplay : PoolableBehaviour {
     private void OnHpChange(float oldValue, float newValue) {
         float maxHP = attributes.MaxHP;
         HitTween = Tween.Custom(oldValue / maxHP, newValue / maxHP, 0.5f, UpdateFillAmount);
-        textDisplay.text = newValue.ToString("0"); 
+        textDisplay.text = newValue.ToString("0");
     }
 
     private void UpdateFillAmount(float value) {
@@ -52,9 +54,37 @@ public class EnemyDisplay : PoolableBehaviour {
 
 
     public void Tick() {
-        var pos = MainCamera.WorldToScreenPoint(attributes.transform.position);
-        baseImage.transform.position = pos + offset;
+        var enemyPosition = MainCamera.WorldToScreenPoint(attributes.transform.position);
+        Vector3 uiPosition = enemyPosition + offset;
 
+        if (IsUIVisibleOnScreen(uiPosition)) {
+            baseImage.transform.position = uiPosition;
+            baseImage.gameObject.SetActive(true);
+            directionIndicator.gameObject.SetActive(false);
+            return;
+        }
+
+        baseImage.gameObject.SetActive(false);
+        directionIndicator.gameObject.SetActive(true);
+        // Set position to be within screen
+        // vector from center of screen to current position
+        Vector3 direction = uiPosition - new Vector3(Screen.width / 2, Screen.height / 2);
+        float angle = Vector3.SignedAngle(Vector3.up, direction.normalized, Vector3.forward);
+        directionIndicator.transform.eulerAngles = new Vector3(0, 0, angle);
+
+
+        float rectWidth = directionIndicator.rectTransform.rect.width;
+        float rectHeight = directionIndicator.rectTransform.rect.height;
+        float x = Mathf.Clamp(uiPosition.x, rectWidth, Screen.width - rectWidth);
+        float y = Mathf.Clamp(uiPosition.y, rectHeight, Screen.height - rectHeight);
+        directionIndicator.transform.position = new Vector3(x, y); // todo change position
+    }
+
+    private bool IsUIVisibleOnScreen(Vector3 pos) {
+        if (pos.x < 0 || pos.x > Screen.width) return false;
+        if (pos.y < 0 || pos.y > Screen.height) return false;
+
+        return true;
     }
 
 }
