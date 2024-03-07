@@ -12,13 +12,13 @@ public class AbilityPanel : MonoBehaviour {
     public List<AbilitySlotSelection> Modifiers = new();
 
     public event Action<int, int, bool> OnSelectedEvent = delegate { };
-    public event Action<int, int, bool, Vector2> OnHoverEvent = delegate { };
+    public event Action<int, int, bool, Vector2, bool> OnHoverEvent = delegate { };
     public event Action OnHoverLeftEvent = delegate { };
 
     public int abilityIndex;
 
-    private void OnHover(int index, bool isModifier, Vector2 pos) {
-        OnHoverEvent?.Invoke(abilityIndex, index, isModifier, pos);
+    private void OnHover(int index, bool isModifier, Vector2 pos, bool wasHovered) {
+        OnHoverEvent?.Invoke(abilityIndex, index, isModifier, pos, wasHovered);
     }
 
     private void OnSelected(int index, bool isModifier) {

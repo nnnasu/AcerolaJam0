@@ -8,7 +8,7 @@ using Core.Abilities.Enums;
 using Core.Abilities.Instances;
 using UnityEngine;
 
-public abstract class ModifierDefinition : ScriptableObject {
+public abstract class AbilityModifierDefinition : ScriptableObject {
     // pass in the modifier instance so we can tell what level the mod is at
     public AlignmentType alignment;
 

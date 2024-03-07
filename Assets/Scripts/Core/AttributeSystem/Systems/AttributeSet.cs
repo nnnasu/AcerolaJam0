@@ -19,7 +19,7 @@ public class AttributeSet : MonoBehaviour {
     public event Action<AttributeSet> OnDeath = delegate { };
     public event Action<float, float> OnHPChanged = delegate { };
 
-    public Dictionary<GameplayEffect, EffectInstance> ActiveEffects = new();
+    public Dictionary<StatusEffect, EffectInstance> ActiveEffects = new();
 
     public event Action<EffectInstance> OnEffectApplied = delegate { };
     public event Action<EffectInstance> OnEffectRemoved = delegate { };

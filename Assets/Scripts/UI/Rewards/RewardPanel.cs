@@ -14,7 +14,7 @@ namespace Core.UI.Rewards {
         public List<ModifierInstance> modifierInstances = new();
 
         public ActionDefinition DefaultAction;
-        public ModifierDefinition DefaultModifier;
+        public AbilityModifierDefinition DefaultModifier;
 
         private void Awake() {
             for (int i = 0; i < 4; i++) {
@@ -28,11 +28,11 @@ namespace Core.UI.Rewards {
 
 
         public event Action<int, bool> OnSelectedEvent = delegate { };
-        public event Action<int, bool, Vector2> OnHoverEvent = delegate { };
+        public event Action<int, bool, Vector2, bool> OnHoverEvent = delegate { };
         public event Action OnHoverLeftEvent = delegate { };
 
-        private void OnHover(int index, bool isModifier, Vector2 pos) {
-            OnHoverEvent?.Invoke(index, isModifier, pos);
+        private void OnHover(int index, bool isModifier, Vector2 pos, bool wasHovered) {
+            OnHoverEvent?.Invoke(index, isModifier, pos, wasHovered);
         }
 
         private void OnSelected(int index, bool isModifier) {

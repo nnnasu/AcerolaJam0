@@ -77,3 +77,10 @@ crashlytics-build.properties
 # External Libraries
 Assets/Plugins/PrimeTween
 Assets/External/*
+Assets/Art/Kenney Assets/*
+Assets/Interface/Sounds/*
+
+# To remove later once art is finalized
+Assets/Art/* 
+Assets/Shaders/NShader*
+Assets/Sounds/Music/*

@@ -48,5 +48,6 @@ MonoBehaviour:
   BaseAttackTime: 2
   AnimatorState: 
   offset: {x: 0, y: 0, z: 1}
+  Movement: {x: 0, y: 0, z: 1}
   IgnoredEntities: 12
   Piercing: 0

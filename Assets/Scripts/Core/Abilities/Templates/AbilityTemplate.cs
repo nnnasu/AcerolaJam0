@@ -20,7 +20,7 @@ namespace Core.Abilities.Templates {
 
         [Serializable]
         public class ModifierLevel {
-            public ModifierDefinition mod;
+            public AbilityModifierDefinition mod;
             public int level = 1;
         }
 

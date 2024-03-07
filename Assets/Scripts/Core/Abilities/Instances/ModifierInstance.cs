@@ -6,10 +6,10 @@ using UnityEngine;
 namespace Core.Abilities.Instances {
     [Serializable]
     public class ModifierInstance {
-        public ModifierDefinition definition;
+        public AbilityModifierDefinition definition;
         public int level = 1;
 
-        public ModifierInstance(ModifierDefinition def) {
+        public ModifierInstance(AbilityModifierDefinition def) {
             this.definition = def;
 
         }

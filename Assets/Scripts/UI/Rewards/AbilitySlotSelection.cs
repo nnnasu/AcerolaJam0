@@ -15,7 +15,7 @@ namespace Core.UI.Rewards {
         public int index;
         public bool isModifier;
 
-        public event Action<int, bool, Vector2> OnHoverEvent = delegate { };
+        public event Action<int, bool, Vector2, bool> OnHoverEvent = delegate { };
         public event Action<int, bool> OnClickEvent = delegate { };
         public event Action OnHoverLeft = delegate { };
 
@@ -29,6 +29,7 @@ namespace Core.UI.Rewards {
 
         bool isSelected;
         public float tweenDuration = 0.5f;
+        public bool IsHoveredOver = false;
 
 
         public void OnPointerClick(PointerEventData eventData) {
@@ -57,19 +58,21 @@ namespace Core.UI.Rewards {
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
-            OnHoverEvent?.Invoke(index, isModifier, eventData.position);
+            OnHoverEvent?.Invoke(index, isModifier, eventData.position, IsHoveredOver);
+            IsHoveredOver = true;
             hoverBorderTween.Stop();
             hoverBorderTween = Tween.Custom(0, 1, tweenDuration, SetHoverBorderAlpha);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             OnHoverLeft?.Invoke();
+            IsHoveredOver = false;
             hoverBorderTween.Stop();
             hoverBorderTween = Tween.Custom(1, 0, tweenDuration, SetHoverBorderAlpha);
         }
 
         public void OnPointerMove(PointerEventData eventData) {
-            OnHoverEvent?.Invoke(index, isModifier, eventData.position);
+            OnHoverEvent?.Invoke(index, isModifier, eventData.position, IsHoveredOver);
         }
 
         public void SetIcon(Sprite icon = null) {

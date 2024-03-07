@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Core.AbilityExtensions.Modifiers {
     [CreateAssetMenu(fileName = "SimpleModifier", menuName = "Ability Modifiers/Stat-only Modifier", order = 0)]
     
-    public class SimpleModifier : ModifierDefinition {
+    public class SimpleModifier : AbilityModifierDefinition {
         public override void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null) {
         }
 

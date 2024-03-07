@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3731839275590343434}
   - component: {fileID: 4130350777704908684}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Gooner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

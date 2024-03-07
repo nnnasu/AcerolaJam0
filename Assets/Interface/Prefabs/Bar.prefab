@@ -344,7 +344,6 @@ MonoBehaviour:
   HitSpeed: 0.5
   ghostSpeed: 1
   ghostDelay: 2
-  barvalue: 0
 --- !u!114 &6133151298306782541
 MonoBehaviour:
   m_ObjectHideFlags: 0

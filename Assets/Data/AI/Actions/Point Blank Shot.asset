@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3867255862158688488, guid: 755bda098bd64f2438f5e06e81725f65,
     type: 3}
-  speed: 10
+  speed: 0
   duration: 0.3
   damageMult:
     scalingType: 0
@@ -44,9 +44,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  CastPoint: 0.375
+  CastPoint: 0.725
   BaseAttackTime: 2
-  AnimatorState: 
+  AnimatorState: AttackTrigger
   offset: {x: 0, y: 0, z: 1}
   IgnoredEntities: 12
   Piercing: 0

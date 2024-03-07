@@ -8,7 +8,7 @@ using System.Collections.Generic;
 /// This class encapsulates effects like debuffs which can be applied to enemies.
 /// </summary>
 [CreateAssetMenu(fileName = "StatBuff", menuName = "Status Effects/Stat Modification", order = 0)]
-public class StatModificationEffect : GameplayEffect {
+public class StatModificationEffect : StatusEffect {
 
     public List<StatModifier> modifiers = new();
 
@@ -17,6 +17,7 @@ public class StatModificationEffect : GameplayEffect {
             attributeSet.ApplyModifier(item, level);
         }
     }
+
 
     public override void Remove(AttributeSet attributeSet, int level) {
         foreach (var item in modifiers) {

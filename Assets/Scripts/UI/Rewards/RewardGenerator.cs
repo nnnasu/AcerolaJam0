@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RewardGenerator", menuName = "Game Management/RewardGenerator", order = 0)]
 public class RewardGenerator : ScriptableObject {
     public List<ActionDefinition> Actions = new();
-    public List<ModifierDefinition> Modifiers = new();
+    public List<AbilityModifierDefinition> Modifiers = new();
 
     public List<ActionInstance> GetRandomActions(System.Random random, int number = 4) {
         return Actions

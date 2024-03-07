@@ -4,6 +4,7 @@ using Core.Abilities;
 using Core.Abilities.Instances;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Core.UI.Rewards {
@@ -28,6 +29,12 @@ namespace Core.UI.Rewards {
 
         public int remainingTries = 0;
         public event Action OnChoicesFinished = delegate { };
+
+        // Events used for sound effects.
+        public UnityEvent OnHoverAny = new();
+        public UnityEvent OnHoverLeftAny = new();
+        public UnityEvent OnClickAny = new();
+
 
         private void OnEnable() {
             panels.ForEach(x => {
@@ -65,6 +72,7 @@ namespace Core.UI.Rewards {
 
         private void OnButtonClicked() {
             if (!CanSwap) return;
+            OnClickAny?.Invoke();
 
             AbilityInstance currentAbility;
             if (inventorySelection.SelectedAbility == -1) currentAbility = abilityManager.BasicAttack;
@@ -116,7 +124,7 @@ namespace Core.UI.Rewards {
         private bool CheckSelectionTypesCompatible() {
             // Match action/modifier slot types
             if (inventorySelection.isModifierSelected != rewardSelection.isModifierSelected) return false;
-           
+
 
             if (inventorySelection.SelectedAbility == -1
                 && !inventorySelection.isModifierSelected
@@ -171,6 +179,8 @@ namespace Core.UI.Rewards {
         #region selection
 
         private void OnSelected(int abilityIndex, int iconIndex, bool isModifier) {
+            
+            OnClickAny?.Invoke();
             if (inventorySelection != null) {
                 // Clear the previous 
                 var prev = GetIcon(inventorySelection);
@@ -193,6 +203,8 @@ namespace Core.UI.Rewards {
         }
 
         private void OnSelectedReward(int iconIndex, bool isModifier) {
+            
+            OnClickAny?.Invoke();
             if (rewardSelection != null) {
                 var prev = GetIconFromReward(rewardSelection);
                 prev.SetSelected(false);
@@ -229,7 +241,8 @@ namespace Core.UI.Rewards {
         #endregion
 
         #region hover
-        private void OnHover(int abilityIndex, int slotIndex, bool isModifier, Vector2 pos) {
+        private void OnHover(int abilityIndex, int slotIndex, bool isModifier, Vector2 pos,  bool isEnter) {
+            if (isEnter) InvokeHoverSounds();
             AbilityInstance abilityInstance = null;
             if (abilityIndex == -1) abilityInstance = abilityManager.BasicAttack;
             else abilityInstance = abilityManager.Abilities[abilityIndex];
@@ -251,10 +264,10 @@ namespace Core.UI.Rewards {
                 hoverTipManager.ShowTip(slot.ToTooltipText(), pos);
             }
         }
-        private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos) {
-            // TODO: Create reward ability so that this can be used. 
-            if (isModifier) {
-                var icon = RewardPanel.modifierInstances[iconIndex];
+        private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos, bool isEnter) {                        
+            if (isEnter) InvokeHoverSounds();
+            if (isModifier) {                
+                var icon = RewardPanel.modifierInstances[iconIndex];                
 
                 string result = icon == null ? "NA" : icon.ToTooltipText();
                 hoverTipManager.ShowTip(result, pos);
@@ -265,11 +278,25 @@ namespace Core.UI.Rewards {
             }
         }
         private void OnHoverLeft() {
+            InvokeHoverLeftSounds();
             hoverTipManager.HideTip();
         }
 
 
         #endregion
 
+        #region sound integration
+        private void InvokeHoverSounds() {
+            OnHoverAny?.Invoke();
+        }
+
+        private void InvokeHoverLeftSounds() {
+            OnHoverLeftAny?.Invoke();
+        }
+
+        private void InvokeClickSounds() {
+            OnClickAny?.Invoke();
+        }
+        #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace Core.AbilityExtensions.Spawns {
 
         public SphereCollider aoe;
         public float force = 10;
-        public GameplayEffect EffectToApply;
+        public StatusEffect EffectToApply;
         public int level;
 
         private void OnTriggerEnter(Collider other) {
@@ -26,7 +26,9 @@ namespace Core.AbilityExtensions.Spawns {
             Rigidbody rb = target.GetComponent<Rigidbody>();
             Vector3 direction = transform.position - target.transform.position;
             direction = direction.normalized * force;
-            target.ApplyEffect(new(EffectToApply, level));
+
+            var instance = EffectToApply.GetEffectInstance(level);
+            target.ApplyEffect(instance);
 
             rb.AddForce(direction, ForceMode.Impulse);
         }

@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  DestroyOnContact: 1
+  DestroyOnContact: 0
   speed: 0
+  IgnoredEntities: 0
