@@ -10,6 +10,10 @@ These libraries have been used in this project, but may or may not have been inc
 [Kaimira Weighted List](https://github.com/cdanek/KaimiraWeightedList) - Algorithm for weighted random choices.
 [Kenney Game Assets](https://kenney.nl/assets)
 
+
+[Google Fonts](https://fonts.google.com/):
+* Hedvig Letters Serif
+
 ### Acknowledgements - Tutorials
 Some material techniques were done following these tutorials.
 

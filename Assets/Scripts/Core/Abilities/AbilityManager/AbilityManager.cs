@@ -23,10 +23,9 @@ namespace Core.Abilities {
 
         public AbilityInstance CurrentlySelected { get; private set; }
         public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
-
         public CharacterController characterController;
-
         public Vector3 previousPosition; // before applying abilities
+        public event Action<PlayerAttributeSet> OnAlignmentRecalculated = delegate { };
 
 
         private void Awake() {
@@ -86,7 +85,30 @@ namespace Core.Abilities {
             structureBase.ReturnToPool();
         }
 
-        [ContextMenu("Recalculate Stats")]
+
+        public void RecalculateAlignmentLevels() {
+            Attributes.levels.Clear();
+            BasicAttack.actions.ForEach(y => {
+                if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
+                Attributes.levels[y.definition.alignment] += y.level;
+            });
+            BasicAttack.modifiers.ForEach(y => {
+                if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
+                Attributes.levels[y.definition.alignment] += y.level;
+            });
+            Abilities.ForEach(x => {
+                x.actions.ForEach(y => {
+                    if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
+                    Attributes.levels[y.definition.alignment] += y.level;
+                });
+                x.modifiers.ForEach(y => {
+                    if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
+                    Attributes.levels[y.definition.alignment] += y.level;
+                });
+            });
+            OnAlignmentRecalculated?.Invoke(Attributes);
+        }
+
         public void RecalculateStats() {
             // Apply stat modifiers.
             float oldMaxHP = Attributes.MaxHP;
@@ -111,7 +133,7 @@ namespace Core.Abilities {
             });
         }
 
-        public void Teleport(Vector3 position) {            
+        public void Teleport(Vector3 position) {
             characterController.enabled = false;
             transform.position = position;
             characterController.enabled = true;

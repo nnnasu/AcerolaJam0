@@ -17,7 +17,6 @@ public class GlobalPool : MonoBehaviour {
         } else {
             instance = this;
         }
-        DontDestroyOnLoad(this);
     }
 
     public GameObject GetObject(GameObject prefab) {

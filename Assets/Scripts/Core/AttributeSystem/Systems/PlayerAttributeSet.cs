@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.AttributeSystem;
+using Core.AttributeSystem.Enums;
 using UnityEngine;
 
 
@@ -13,6 +14,8 @@ public class PlayerAttributeSet : AttributeSet {
     public float HPRegenPercent;
     public float StructureTickSpeed;
     public float CooldownReduction;
+
+    public Dictionary<AlignmentType, int> levels = new();
 
     public override void ResetState(bool resetHP = false) {
         base.ResetState(resetHP);

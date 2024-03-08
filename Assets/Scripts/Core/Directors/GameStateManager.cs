@@ -6,6 +6,7 @@ using Core.GlobalInfo;
 using Core.UI.Rewards;
 using PrimeTween;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour {
 
@@ -34,6 +35,11 @@ public class GameStateManager : MonoBehaviour {
     private Tween HUDFadeTween;
 
     private System.Random random = new();
+
+    [ContextMenu("Reset Game")]
+    private void ReloadGame() {
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+    }
 
     private void OnEnable() {
         rewardScreen.OnChoicesFinished += OnRewardCompleted;

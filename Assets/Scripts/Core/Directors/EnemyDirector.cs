@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Core.GlobalInfo;
 using KaimiraGames;
 using UnityEngine;
+using PrimeTween;
 
 namespace Core.Directors {
     public class EnemyDirector : MonoBehaviour {
@@ -23,12 +24,12 @@ namespace Core.Directors {
         }
 
         private void Start() {
-            SpawnCheckpoint();
+            Tween.Delay(5, SpawnCheckpoint);
         }
 
         public void SpawnCheckpoint() {
             // TODO: Use this to spawn additional checkpoint types
-            var pt = GlobalPool.Current.GetObject(CheckpointPrefab);
+            var pt = GlobalPool.Current.GetObject(CheckpointPrefab);            
             pt.SetActive(true);
             pt.transform.position = new Vector3(0, 1, 5);
         }

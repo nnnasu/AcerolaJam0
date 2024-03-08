@@ -6,6 +6,7 @@ using Core.Abilities;
 using Core.Abilities.Definitions;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
+using Core.AttributeSystem.Enums;
 using UnityEngine;
 
 public abstract class AbilityModifierDefinition : ScriptableObject {

@@ -1,5 +1,5 @@
 
-namespace Core.Abilities.Enums {
+namespace Core.AttributeSystem.Enums {
     public enum AlignmentType {
         Neutral,
         Magic,
