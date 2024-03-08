@@ -56,8 +56,10 @@ namespace Core.Enemies {
 
         private void DeathCleanup(AttributeSet attributeSet) {
             // TODO return to pool
+            rb.velocity = Vector3.zero;
+            float delay = enemyAnimationHandler.SetDeath();
             TickTween.Stop();
-            ReturnToPool();
+            Tween.Delay(delay, ReturnToPool);
         }
 
 

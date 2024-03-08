@@ -13,8 +13,9 @@ namespace Juice.Footsteps {
         public float delay;
         Tween tween;
         public string currentTag;
+        public bool startLoop = false;
         private void Start() {
-            FootstepLoop();
+            if (startLoop) FootstepLoop();
         }
 
         private void FootstepLoop() {
