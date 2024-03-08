@@ -7,8 +7,8 @@ using UnityEngine;
 
 public partial class PlayerController : MonoBehaviour {
     [SerializeField] InputReader input;
-    [SerializeField] CharacterController characterController;
-    [SerializeField] AbilityManager abilityManager;
+    [SerializeField] public CharacterController characterController;
+    [SerializeField] public AbilityManager abilityManager;
     public float speed => abilityManager.movementSpeed;
     Vector2 currentInput;
     Vector3 movementDirection;

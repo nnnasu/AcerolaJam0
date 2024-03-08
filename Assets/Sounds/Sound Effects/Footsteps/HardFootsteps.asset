@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2da75cfac558594eaca50670860a812, type: 3}
+  m_Name: HardFootsteps
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: edc06c3fbc81250409f4a87de34a7982, type: 3}
+  - {fileID: 8300000, guid: 26606d7a42b41a04d9e4740c43854e18, type: 3}
+  - {fileID: 8300000, guid: b984f2b376262fa40a36e444c2a42751, type: 3}
+  - {fileID: 8300000, guid: 9147682fe57ffeb4ca203a46e45f4a49, type: 3}
+  - {fileID: 8300000, guid: cbf684ca46ed46f4bb1cc911005c34bb, type: 3}
+  - {fileID: 8300000, guid: cd2e30e70083af743b690897b0f4303b, type: 3}
+  - {fileID: 8300000, guid: 4a09a3a8f34a615449115a73281b9477, type: 3}
+  - {fileID: 8300000, guid: b77316d99e228e1488688e57bc1deb1d, type: 3}
+  - {fileID: 8300000, guid: 66664a642c0c9a74e8ae456fce69bafe, type: 3}
+  - {fileID: 8300000, guid: 13eb99b72829a5a4bb0cb907f27cd396, type: 3}
+  - {fileID: 8300000, guid: 0b5435b3aa26f7e4e84367af0f86246a, type: 3}
+  - {fileID: 8300000, guid: e920b545feefadc45b29164c66aa37f1, type: 3}

@@ -18,7 +18,7 @@ public class GameStateManager : MonoBehaviour {
     public RewardGenerator DefaultRewardGenerator;
     public float FadeDuration = 1;
 
-    
+
 
     [Header("Player References")]
     public AbilityManager Player;
@@ -27,7 +27,7 @@ public class GameStateManager : MonoBehaviour {
     [Header("Game Management")]
     public EnemyDirector EnemyDirector;
     public EventChannel OnRoomTraversed;
-
+    public LocationChannel OnSpawnPointRegistered;
 
     // State
     public int RoomsTraversed { get; private set; } = 0;
@@ -45,6 +45,18 @@ public class GameStateManager : MonoBehaviour {
         rewardScreen.OnChoicesFinished += OnRewardCompleted;
         EnemyDirector.OnEnemiesCleared += ShowSwapUI;
         OnRoomTraversed.Event += LoadNewRoom;
+        OnSpawnPointRegistered.Event += MovePlayerToLocation;
+    }
+
+    private void OnDisable() {
+        rewardScreen.OnChoicesFinished -= OnRewardCompleted;
+        EnemyDirector.OnEnemiesCleared -= ShowSwapUI;
+        OnRoomTraversed.Event -= LoadNewRoom;
+        OnSpawnPointRegistered.Event -= MovePlayerToLocation;
+    }
+
+    private void MovePlayerToLocation(Vector3 point) {
+        playerController.abilityManager.Teleport(point);
     }
 
 

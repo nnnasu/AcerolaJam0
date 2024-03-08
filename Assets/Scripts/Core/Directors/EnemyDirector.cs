@@ -24,6 +24,7 @@ namespace Core.Directors {
         }
 
         private void Start() {
+            // TODO: Fix this
             Tween.Delay(5, SpawnCheckpoint);
         }
 

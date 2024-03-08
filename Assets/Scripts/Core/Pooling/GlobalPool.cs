@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 
 
 public class GlobalPool : MonoBehaviour {
@@ -26,14 +27,15 @@ public class GlobalPool : MonoBehaviour {
                     GameObject obj = Instantiate(prefab);
                     var poolable = obj.GetComponent<IPoolable>();
                     poolable.Pool = pool[prefab];
+                    SceneManager.MoveGameObjectToScene(obj, this.gameObject.scene);
                     obj.gameObject.SetActive(true);
+
                     return obj;
                 },
                 actionOnRelease: OnReturnedToPool
             );
             pool.Add(prefab, newPool);
         }
-
         var item = pool[prefab].Get();
         return item;
     }

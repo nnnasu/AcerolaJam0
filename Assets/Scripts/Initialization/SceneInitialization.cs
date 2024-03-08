@@ -14,7 +14,7 @@ public class SceneInitialization : MonoBehaviour {
     public TextMeshProUGUI textMeshProUGUI;
 
     public AssetReference GameplayScene;
-    public AssetReference InitialLevel;
+    
     public AssetReference StorageScene;
 
     private void Start() {
@@ -26,13 +26,8 @@ public class SceneInitialization : MonoBehaviour {
         await storageHandle.Task;
 
         var gameplayHandle = Addressables.LoadSceneAsync(GameplayScene, LoadSceneMode.Additive, activateOnLoad: true);
-        
-
-        var tutorialHandle = Addressables.LoadSceneAsync(InitialLevel, LoadSceneMode.Additive, activateOnLoad: true);
         await gameplayHandle.Task;
         SceneManager.SetActiveScene(gameplayHandle.Result.Scene);
-        await tutorialHandle.Task;
-        SceneManager.SetActiveScene(tutorialHandle.Result.Scene);
 
 
 
