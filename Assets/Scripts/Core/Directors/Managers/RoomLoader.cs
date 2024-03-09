@@ -15,16 +15,9 @@ namespace Core.Directors.Managers {
     /// </summary>
     public class RoomLoader : MonoBehaviour {
 
-        public RoomType tutorialRoom;
         private AsyncOperationHandle<SceneInstance> CurrentHandle;
         public event Action<RoomType> OnLoadCompleted = delegate { };
-        public bool LoadTutorialOnStart = true;
         public LoadingScreen loadingScreen;
-
-        private void Start() {
-            // Load the first level
-            if (LoadTutorialOnStart) LoadLevel(tutorialRoom, true);
-        }
 
         public void LoadLevel(RoomType room, bool skipFadeIn = false) {
             loadingScreen.ShowLoadingScreen(skipFadeIn);

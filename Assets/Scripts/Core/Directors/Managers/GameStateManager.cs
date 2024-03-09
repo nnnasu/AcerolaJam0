@@ -21,10 +21,21 @@ namespace Core.Directors.Managers {
 
         public int RoomsTraversed { get; private set; } = 0;
 
+        [Header("Initialization")]
+        public bool LoadTutorialOnStart = true;
+        public RoomType TutorialRoom;
+
         [ContextMenu("Reset Game")]
         private void ReloadGame() {
             SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
         }
+
+        
+        private void Start() {
+            // Load the first level
+            if (LoadTutorialOnStart) LoadNextLevel(TutorialRoom, true);
+        }
+
 
         private void OnEnable() {
             rewardScreen.OnChoicesFinished += OnRewardCompleted;
@@ -53,11 +64,17 @@ namespace Core.Directors.Managers {
         }
 
         private void LoadNextLevel(RoomType room) {
+            LoadNextLevel(room, false);
+        }
+
+        private void LoadNextLevel(RoomType room, bool skipFade = false) {
+            LockPlayer();
             levelManager.LoadLevel(room);
             GameLevel.current.SetLevel(GameLevel.current.level + 1);
         }
 
         private void OnLoadCompleted(RoomType room) {
+            UnlockPlayer();
             EnemyDirector.SetRoomParameters(room);
         }
 
