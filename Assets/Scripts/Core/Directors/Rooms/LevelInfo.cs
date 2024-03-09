@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Core.Directors.Checkpoints;
+using Core.Directors.Rooms;
+using Core.Directors.Common;
 using UnityEngine;
 
 namespace Core.Directors.Levels {
@@ -14,11 +15,21 @@ namespace Core.Directors.Levels {
         public int Count => Checkpoints.Count;
 
         internal void DistributeCheckpointTypes(List<RoomType> toDistribute) {
-            throw new NotImplementedException();
+            for (int i = 0; i < Count; i++) {
+                Checkpoints[i].SetNextRoom(toDistribute[i]);
+            }
         }
 
-        private void OnEnable() {
+        private void Start() {
             CheckpointRegistry.RegisterCheckpoint(this);
+        }
+
+        public void OpenDoors() {
+            Checkpoints.ForEach(x => x.ShowDoor());
+        }
+
+        public void DisableDoors() {
+            Checkpoints.ForEach(x => x.DisablePortal());
         }
     }
 }

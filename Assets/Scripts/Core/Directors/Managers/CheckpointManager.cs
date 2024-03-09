@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Directors.Common;
 using Core.Directors.Levels;
+using Core.Directors.Rooms;
 using UnityEngine;
 
 
-namespace Core.Directors.Checkpoints {
+namespace Core.Directors.Managers {
     /// <summary>
     /// GameManager class which abstracts checkpoint events.
     /// </summary>
-    public class CheckpointManager : MonoBehaviour {
+    public partial class CheckpointManager : MonoBehaviour {
         public DoorEventChannel registry;
         public LevelInfo ActiveLevel { get; private set; } = null;
         public event Action<RoomType> OnCheckpointEntered = delegate { };
@@ -35,6 +37,10 @@ namespace Core.Directors.Checkpoints {
             ActiveLevel.DistributeCheckpointTypes(toDistribute);
         }
 
+        public void OpenDoors() {
+            ActiveLevel.OpenDoors();
+        }
+
         private void OnEnable() {
             ActiveLevel = null;
             registry.OnLevelInfoRegistered += RegisterLevelInfo;
@@ -47,20 +53,15 @@ namespace Core.Directors.Checkpoints {
             registry.OnCheckpointEntered -= OnCheckpointEnter;
         }
 
-        public void ClearCheckpoints() {
-            ActiveLevel = null;
-        }
-
-
 
         private void RegisterLevelInfo(LevelInfo level) {
             ActiveLevel = level;
         }
 
-
         private void OnCheckpointEnter(Checkpoint checkpoint) {
+            ActiveLevel.DisableDoors();
+            ActiveLevel = null;
             OnCheckpointEntered?.Invoke(checkpoint.NextRoomType);
-            ClearCheckpoints();
         }
     }
 }

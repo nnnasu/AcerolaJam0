@@ -1,8 +1,9 @@
-
 using System;
+using Core.Directors.Rooms;
 using Core.Directors.Levels;
 using UnityEngine;
-namespace Core.Directors.Checkpoints {
+
+namespace Core.Directors.Common {
     [CreateAssetMenu(fileName = "EventChannel", menuName = "Events/CheckpointRegistry", order = 0)]
     public class DoorEventChannel : ScriptableObject {
 

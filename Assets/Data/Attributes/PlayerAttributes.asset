@@ -16,6 +16,8 @@ MonoBehaviour:
   MovementSpeedBase: 5
   AttackSpeed: 10
   BaseAttack: 20
+  DamageDealtMult: 1
+  DamageTakenMult: 1
   MaxMP: 50
   MPRegenPercent: 0
   HPRegenPercent: 0

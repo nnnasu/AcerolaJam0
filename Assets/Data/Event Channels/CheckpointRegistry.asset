@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba46e42167a2154fa8a9fd71ed6ed24, type: 3}
-  m_Name: BaseAttributes
+  m_Script: {fileID: 11500000, guid: 5365154e2775424448670e6b4ecfd437, type: 3}
+  m_Name: CheckpointRegistry
   m_EditorClassIdentifier: 
-  MaxHP: 30
-  MovementSpeedBase: 3
-  AttackSpeed: 15
-  BaseAttack: 10
-  DamageDealtMult: 1
-  DamageTakenMult: 1

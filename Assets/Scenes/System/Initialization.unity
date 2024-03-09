@@ -235,11 +235,6 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  InitialLevel:
-    m_AssetGUID: 99c9720ab356a0642a771bea13969a05
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
   StorageScene:
     m_AssetGUID: cc26185ecb3e28c49baa9896d9585aa2
     m_SubObjectName: 

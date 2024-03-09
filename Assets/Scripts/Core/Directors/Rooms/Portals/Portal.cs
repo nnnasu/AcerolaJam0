@@ -6,7 +6,7 @@ using PrimeTween;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace Core.Directors.Checkpoints.Portals {
+namespace Core.Directors.Rooms.Portals {
     public class Portal : MonoBehaviour {
         public Transform doorModel;
         Tween doorMovementTween;
@@ -18,10 +18,11 @@ namespace Core.Directors.Checkpoints.Portals {
 
         public event Action<Collider> OnEntered = delegate { };
         public BoxCollider triggerVol;
-        public TriggerEvent triggerer;
+        public TriggerEvent triggerer; // used to pass OnTriggerEnter() up to this component.
 
         public void SetColours(Color portal, Color particle) {
-            // vfx.SetVector4("", portal);
+            vfx.SetVector4("PortalColour", portal);
+            vfx.SetVector4("ParticleColour", particle);
         }
 
         private void OnEnable() {
@@ -44,12 +45,21 @@ namespace Core.Directors.Checkpoints.Portals {
             triggerVol.enabled = true;
         }
 
+
+        public void DisablePortal() {
+            triggerVol.enabled = false;
+        }
+
+
+        // Test function to hide portals
         [ContextMenu("Hide")]
         public void HidePortal() {
             doorModel.localPosition = Vector3.zero;
             vfx.enabled = false;
             triggerVol.enabled = false;
         }
+
+
 
         private void OnEnter(Collider col) {
             OnEntered?.Invoke(col);

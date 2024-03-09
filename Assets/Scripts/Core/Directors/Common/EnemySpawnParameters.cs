@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-namespace Core.Directors {
+namespace Core.Directors.Common {
     [Serializable]
     public class EnemySpawnParameters {
 
