@@ -1,13 +1,9 @@
 {
-    "name": "Juice",
+    "name": "Core.Generators",
     "rootNamespace": "",
     "references": [
-        "GUID:80ecb87cae9c44d19824e70ea7229748",
-        "GUID:a0592c38eea14084292e0521d2323d89",
-        "GUID:c7e6599aa12b4ac4e9db326385dabb1c",
-        "GUID:d319d576fda3f2c46839e04ecb059f11",
-        "GUID:db31bb5f2418a0c40a4ba37c4045b330",
-        "GUID:ced00e8513c2529468a38c5c580e2b9b"
+        "GUID:2bda659bafb1d2746a18aaf6870fd1f6",
+        "GUID:d319d576fda3f2c46839e04ecb059f11"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

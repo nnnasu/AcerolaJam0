@@ -12,7 +12,6 @@ namespace Core.Directors {
         private HashSet<GameObject> enemies = new();
         public event Action OnEnemiesCleared = delegate { };
         public EnemyWeights weights;
-        public GameObject CheckpointPrefab;
         public WeightedList<EnemySpawnParameters> WeightedEnemyList;
         public Dictionary<EnemySpawnParameters, int> EnemySpawnCount = new();
 
@@ -23,17 +22,6 @@ namespace Core.Directors {
             WeightedEnemyList = new(items);
         }
 
-        private void Start() {
-            // TODO: Fix this
-            Tween.Delay(5, SpawnCheckpoint);
-        }
-
-        public void SpawnCheckpoint() {
-            // TODO: Use this to spawn additional checkpoint types
-            var pt = GlobalPool.Current.GetObject(CheckpointPrefab);            
-            pt.SetActive(true);
-            pt.transform.position = new Vector3(0, 1, 5);
-        }
 
         public void SpawnEnemies(int currentGameLevel) {
             // TODO: Derive formulas for this

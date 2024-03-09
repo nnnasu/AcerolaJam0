@@ -62,7 +62,7 @@ public class GameStateManager : MonoBehaviour {
 
     private void OnRewardCompleted() {
         HideSwapUI();
-        EnemyDirector.SpawnCheckpoint();
+        // TODO: Spawn checkpoints
     }
 
 
@@ -75,7 +75,7 @@ public class GameStateManager : MonoBehaviour {
 
         // TODO Set levels on rewards
         rewardScreen.remainingTries = 3;
-        rewardScreen.RewardPanel.SetRewards(DefaultRewardGenerator.GetRandomActions(random), DefaultRewardGenerator.GetRandomModifiers(random));
+        rewardScreen.RewardPanel.SetRewards(DefaultRewardGenerator.GetRandomActions(), DefaultRewardGenerator.GetRandomModifiers());
 
 
         HUDFadeTween = Tween.Alpha(GameHUDCanvas, 1, 0, FadeDuration);

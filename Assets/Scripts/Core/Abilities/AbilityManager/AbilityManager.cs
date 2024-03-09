@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Core.Abilities.Definitions;
 using Core.Abilities.Instances;
 using Core.Abilities.Structures;
+using PrimeTween;
 using UnityEngine;
 
 namespace Core.Abilities {
@@ -26,6 +27,8 @@ namespace Core.Abilities {
         public CharacterController characterController;
         public Vector3 previousPosition; // before applying abilities
         public event Action<PlayerAttributeSet> OnAlignmentRecalculated = delegate { };
+
+        public bool IsMovementControlledByAbility { get; private set; } = false;
 
 
         private void Awake() {
@@ -137,6 +140,16 @@ namespace Core.Abilities {
             characterController.enabled = false;
             transform.position = position;
             characterController.enabled = true;
+        }
+
+        public void MoveTowards(Vector3 position, float time) {
+            Vector3 move = position - transform.position;
+            characterController.Move(move);            
+        }
+
+        public void MoveTick(Vector3 amount) {
+            if (IsMovementControlledByAbility) return;
+            characterController.Move(amount * Attributes.MovementSpeed);
         }
     }
 }

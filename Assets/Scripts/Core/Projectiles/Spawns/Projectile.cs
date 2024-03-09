@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.AttributeSystem;
+using Core.Utilities.Sounds;
 using PrimeTween;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -15,6 +16,10 @@ namespace Core.AbilityExtensions.Spawns {
         Tween ExpiryTween;
         public EntityType IgnoredEntities = EntityType.NONE;
 
+        public AudioSource audioPlayer;
+        public SoundGroup OnFireSounds;
+        public SoundGroup OnHitSounds;
+
         private void OnTriggerEnter(Collider other) {
             var target = other.GetComponent<AttributeSet>();
             if (!target) return;
@@ -26,6 +31,9 @@ namespace Core.AbilityExtensions.Spawns {
 
             target.TakeDamage(damage);
             OnHitCallback?.Invoke(target);
+
+            if (OnHitSounds) audioPlayer.PlayOneShot(OnHitSounds.GetRandomClip());
+
             if (DestroyOnContact) {
                 ExpiryTween.Complete();
             }
@@ -39,6 +47,9 @@ namespace Core.AbilityExtensions.Spawns {
             this.speed = speed;
             this.damage = damage;
             this.OnHitCallback = onHitCallback;
+            if (OnFireSounds) {
+                audioPlayer.PlayOneShot(OnFireSounds.GetRandomClip());
+            }
         }
 
 

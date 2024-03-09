@@ -9,7 +9,6 @@ public partial class PlayerController : MonoBehaviour {
     [SerializeField] InputReader input;
     [SerializeField] public CharacterController characterController;
     [SerializeField] public AbilityManager abilityManager;
-    public float speed => abilityManager.movementSpeed;
     Vector2 currentInput;
     Vector3 movementDirection;
     public Vector3 mousePosition;
@@ -73,7 +72,7 @@ public partial class PlayerController : MonoBehaviour {
         movementDirection.x = currentInput.x;
         movementDirection.z = currentInput.y;
         OnMoveEvent?.Invoke(movementDirection);
-        characterController.Move(movementDirection * speed * Time.deltaTime);
+        abilityManager.MoveTick(movementDirection * Time.deltaTime);
         RegroundCharacter();
     }
 
