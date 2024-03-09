@@ -1,5 +1,7 @@
 using System;
 using Core.Directors.Common;
+using Core.UI.Loading;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,24 +19,40 @@ namespace Core.Directors.Managers {
         private AsyncOperationHandle<SceneInstance> CurrentHandle;
         public event Action<RoomType> OnLoadCompleted = delegate { };
         public bool LoadTutorialOnStart = true;
+        public LoadingScreen loadingScreen;
 
         private void Start() {
             // Load the first level
-            if (LoadTutorialOnStart) LoadLevel(tutorialRoom);
+            if (LoadTutorialOnStart) LoadLevel(tutorialRoom, true);
+        }
+
+        public void LoadLevel(RoomType room, bool skipFadeIn = false) {
+            loadingScreen.ShowLoadingScreen(skipFadeIn);
+            if (skipFadeIn) {
+                LoadLevelInternal(room);
+                return;
+            }
+            Tween.Delay(loadingScreen.FadeInTime, () => LoadLevelInternal(room));
         }
 
 
-        internal async void LoadLevel(RoomType room) {
+        private async void LoadLevelInternal(RoomType room) {
             var scene = room.GetRandomLevel();
             var newHandle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive, activateOnLoad: true);
+
+            loadingScreen.SetProgressFunction(() => newHandle.PercentComplete);
+
             await newHandle.Task;
+
             SceneManager.SetActiveScene(newHandle.Result.Scene);
+
             if (CurrentHandle.IsValid()) {
                 var unloadHandle = Addressables.UnloadSceneAsync(CurrentHandle);
                 await unloadHandle.Task;
             }
             CurrentHandle = newHandle;
             OnLoadCompleted?.Invoke(room);
+            loadingScreen.SetLoadFinished();
         }
     }
 }
