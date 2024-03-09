@@ -4,7 +4,7 @@ using Core.Abilities;
 using Core.Abilities.Definitions;
 using Core.Abilities.Instances;
 
-[CreateAssetMenu(fileName = "StructureActionDefinition", menuName = "Player Actions/Build Structure", order = 0)]
+[CreateAssetMenu(fileName = "StructureActionDefinition", menuName = "Ability System/Player Actions/Build Structure", order = 0)]
 public class StructureActionDefinition : ActionDefinition {
     public StructureDefinition structure;
 

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.StatusEffects.Stackables {
-    [CreateAssetMenu(fileName = "StackableEffect", menuName = "Effects/Status Effects/Stackable", order = 0)]
+    [CreateAssetMenu(fileName = "StackableEffect", menuName = "Ability System/Effects/Status Effects/Stackable", order = 0)]
     public class StackableEffect : StatusEffect {
         public List<StatModifier> modifiers = new();
 

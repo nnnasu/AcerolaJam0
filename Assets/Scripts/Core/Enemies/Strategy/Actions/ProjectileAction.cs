@@ -6,7 +6,7 @@ using PrimeTween;
 using UnityEngine;
 
 namespace Core.Enemies.Strategy {
-    [CreateAssetMenu(fileName = "AttackCommand", menuName = "AI Actions/Projectile", order = 11)]
+    [CreateAssetMenu(fileName = "AttackCommand", menuName = "Enemy AI/Actions/Projectile", order = 11)]
     public class ProjectileAction : AIActionBase {
 
         public GameObject projectile;

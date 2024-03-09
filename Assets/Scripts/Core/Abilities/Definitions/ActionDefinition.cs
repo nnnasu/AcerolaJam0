@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Core.Abilities.Effects;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
-using Core.AttributeSystem.Enums;
+using Core.AttributeSystem.Alignments;
 using Core.Utilities.Scaling;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ namespace Core.Abilities.Definitions {
     public abstract class ActionDefinition : ScriptableObject {
         [Header("Ability Parameters")]
         public ActionType actionType;
-        public AlignmentType alignment;
+        public AlignmentDefinition alignment;
         public ScaledFloat DamageMultiplier;
         public ScaledFloat BaseCooldown;
         public ScaledFloat BaseMPCost;

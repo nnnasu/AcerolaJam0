@@ -6,12 +6,12 @@ using Core.Abilities;
 using Core.Abilities.Definitions;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
-using Core.AttributeSystem.Enums;
+using Core.AttributeSystem.Alignments;
 using UnityEngine;
 
 public abstract class AbilityModifierDefinition : ScriptableObject {
     // pass in the modifier instance so we can tell what level the mod is at
-    public AlignmentType alignment;
+    public AlignmentDefinition alignment;
 
     [Tooltip("Stats which apply to the entire character.")]
     public List<StatModifier> GlobalStatModifier = new();

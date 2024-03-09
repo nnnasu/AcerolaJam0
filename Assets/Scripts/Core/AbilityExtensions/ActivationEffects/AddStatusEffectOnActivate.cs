@@ -7,7 +7,7 @@ using Core.Abilities.Instances;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.ActivationEffects {
-    [CreateAssetMenu(fileName = "OnActivateStatusEffect", menuName = "Effects/On Activate/Status Effect", order = 0)]
+    [CreateAssetMenu(fileName = "OnActivateStatusEffect", menuName = "Ability System/Effects/On Activate/Status Effect", order = 0)]
     public  class AddStatusEffectOnActivate : OnActivateEffect {
 
         public StatusEffect EffectToApply;

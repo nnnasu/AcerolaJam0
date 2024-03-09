@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Core.Abilities.Definitions {
 
 
-    [CreateAssetMenu(fileName = "StructureDefinition", menuName = "Player Actions/Structure/StructureDefinition", order = 0)]
+    [CreateAssetMenu(fileName = "StructureDefinition", menuName = "Ability System/Player Actions/Spawns/StructureDefinition", order = 0)]
     public class StructureDefinition : ScriptableObject {
 
         public float RechargeTime = 5;

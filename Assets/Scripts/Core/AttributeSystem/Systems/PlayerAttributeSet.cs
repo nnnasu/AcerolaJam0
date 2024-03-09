@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.AttributeSystem;
-using Core.AttributeSystem.Enums;
+using Core.AttributeSystem.Alignments;
 using UnityEngine;
 
 
@@ -15,7 +15,7 @@ public class PlayerAttributeSet : AttributeSet {
     public float StructureTickSpeed;
     public float CooldownReduction;
 
-    public Dictionary<AlignmentType, int> levels = new();
+    public Dictionary<AlignmentDefinition, int> levels = new();
 
     public override void ResetState(bool resetHP = false) {
         base.ResetState(resetHP);
@@ -37,6 +37,11 @@ public class PlayerAttributeSet : AttributeSet {
         if (oldMP == MP) return;
         OnMPChanged?.Invoke(oldMP, MP);
     }
+
+    public void UpdateAlignmentStatus() {
+
+    }
+
     public override void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
         float rawValue = modifier.value.GetValueAtLevel(level) * (mult != 0 ? mult : 1); ;
         float value = rawValue;
@@ -80,7 +85,6 @@ public class PlayerAttributeSet : AttributeSet {
                 break;
             default: break;
         }
-
 
     }
 }

@@ -11,7 +11,7 @@ namespace Juice.Footsteps {
         public SoundGroup soundGroup;
     }
 
-    [CreateAssetMenu(fileName = "FootstepSettings", menuName = "FootstepSettings", order = 0)]
+    [CreateAssetMenu(fileName = "FootstepSettings", menuName = "Juice/FootstepSettings", order = 0)]
     public class FootstepSettings : ScriptableObject {
 
         public LayerMask RaycastSettings = 8 | 16;

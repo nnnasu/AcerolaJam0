@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Core.Directors.Common {
 
-    [CreateAssetMenu(fileName = "EnemyWeights", menuName = "EnemyWeights", order = 0)]
+    [CreateAssetMenu(fileName = "EnemyWeights", menuName = "Rooms/EnemyWeights", order = 0)]
     public class EnemyWeights : ScriptableObject {
 
         public List<EnemySpawnParameters> weights;

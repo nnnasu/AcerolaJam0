@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Core.Utilities.Sounds {
 
-    [CreateAssetMenu(fileName = "SoundGroup", menuName = "SoundGroup", order = 0)]
+    [CreateAssetMenu(fileName = "SoundGroup", menuName = "Juice/SoundGroup", order = 0)]
     public class SoundGroup : ScriptableObject {
         public AudioClip[] sounds;
 

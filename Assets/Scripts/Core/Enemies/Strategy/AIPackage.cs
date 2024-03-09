@@ -13,7 +13,7 @@ namespace Core.Enemies.Strategy {
     }
 
 
-    [CreateAssetMenu(fileName = "AIPackage", menuName = "AI Actions/Strategy", order = 0)]
+    [CreateAssetMenu(fileName = "AIPackage", menuName = "Enemy AI/Strategy", order = 0)]
     public class AIPackage : ScriptableObject {
 
         public List<RangeAction> Actions = new();

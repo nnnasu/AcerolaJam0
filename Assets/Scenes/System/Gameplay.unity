@@ -793,6 +793,9 @@ MonoBehaviour:
     type: 2}
   levelManager: {fileID: 386531895}
   checkpointManager: {fileID: 386531896}
+  LoadTutorialOnStart: 1
+  TutorialRoom: {fileID: 11400000, guid: fb2281dee6c830e4b90ec3d6f17c8f58, type: 2}
+  PlayerSemaphore: 0
   SwapMenuCanvas: {fileID: 560199140}
   rewardScreen: {fileID: 560199139}
   GameHUDCanvas: {fileID: 1032266918}
@@ -951,8 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997c3ca5d76975542a19f57b064bc253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialRoom: {fileID: 11400000, guid: fb2281dee6c830e4b90ec3d6f17c8f58, type: 2}
-  LoadTutorialOnStart: 1
   loadingScreen: {fileID: 2549140411668921286}
 --- !u!114 &386531896
 MonoBehaviour:

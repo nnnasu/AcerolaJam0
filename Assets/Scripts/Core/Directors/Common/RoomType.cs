@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Core.Directors.Common {
 
-    [CreateAssetMenu(fileName = "RoomType", menuName = "RoomType", order = 0)]
+    [CreateAssetMenu(fileName = "RoomType", menuName = "Rooms/RoomType", order = 0)]
     public class RoomType : ScriptableObject {
 
         [Header("Scaling Formulas")]

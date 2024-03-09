@@ -8,7 +8,7 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Line Action", menuName = "Player Actions/Line", order = 0)]
+[CreateAssetMenu(fileName = "Line Action", menuName = "Ability System/Player Actions/Line Action", order = 0)]
 public class LineDamageAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;

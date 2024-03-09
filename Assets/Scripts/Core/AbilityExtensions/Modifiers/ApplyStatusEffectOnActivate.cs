@@ -6,7 +6,7 @@ using Core.Abilities.Instances;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.Modifiers {
-    [CreateAssetMenu(fileName = "StatusEffectActivation", menuName = "Ability Modifiers/Status Effect on Activation", order = 0)]    
+    [CreateAssetMenu(fileName = "StatusEffectActivation", menuName = "Ability System/Ability Modifiers/Status Effect on Activation", order = 0)]    
     public class ApplyStatusEffectOnActivate : AbilityModifierDefinition {
         public StatusEffect effectToApply;
         

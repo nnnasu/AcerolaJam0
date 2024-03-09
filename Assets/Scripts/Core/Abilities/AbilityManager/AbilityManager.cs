@@ -8,7 +8,7 @@ using PrimeTween;
 using UnityEngine;
 
 namespace Core.Abilities {
-    public class AbilityManager : MonoBehaviour {
+    public partial class AbilityManager : MonoBehaviour {
         public PlayerAttributeSet Attributes;
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
         public event Action OnRebindRequest = delegate { };
@@ -26,7 +26,6 @@ namespace Core.Abilities {
         public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
         public CharacterController characterController;
         public Vector3 previousPosition; // before applying abilities
-        public event Action<PlayerAttributeSet> OnAlignmentRecalculated = delegate { };
 
         public bool IsMovementControlledByAbility { get; private set; } = false;
 
@@ -89,53 +88,6 @@ namespace Core.Abilities {
         }
 
 
-        public void RecalculateAlignmentLevels() {
-            Attributes.levels.Clear();
-            BasicAttack.actions.ForEach(y => {
-                if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
-                Attributes.levels[y.definition.alignment] += y.level;
-            });
-            BasicAttack.modifiers.ForEach(y => {
-                if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
-                Attributes.levels[y.definition.alignment] += y.level;
-            });
-            Abilities.ForEach(x => {
-                x.actions.ForEach(y => {
-                    if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
-                    Attributes.levels[y.definition.alignment] += y.level;
-                });
-                x.modifiers.ForEach(y => {
-                    if (!Attributes.levels.ContainsKey(y.definition.alignment)) Attributes.levels.Add(y.definition.alignment, 0);
-                    Attributes.levels[y.definition.alignment] += y.level;
-                });
-            });
-            OnAlignmentRecalculated?.Invoke(Attributes);
-        }
-
-        public void RecalculateStats() {
-            // Apply stat modifiers.
-            float oldMaxHP = Attributes.MaxHP;
-            float oldMaxMP = Attributes.MaxMP;
-            Attributes.ResetState();
-            BasicAttack.modifiers.ForEach(x => ApplyGlobalModifiers(x));
-            Abilities.ForEach(x => x.modifiers.ForEach(x => ApplyGlobalModifiers(x)));
-            // TODO: Fix this from adding more MP modifiers every reward
-
-            Attributes.HP += Mathf.Clamp(Attributes.MaxHP - oldMaxHP, 0, float.MaxValue);
-            Attributes.MP += Mathf.Clamp(Attributes.MaxMP - oldMaxMP, 0, float.MaxValue);
-
-            BasicAttack.OnAbilityModified();
-            Abilities.ForEach(x => x.OnAbilityModified());
-
-            OnRebindRequest?.Invoke();
-        }
-
-        private void ApplyGlobalModifiers(ModifierInstance modifier) {
-            modifier.definition.GlobalStatModifier.ForEach(x => {
-                Attributes.ApplyModifier(x, modifier.level);
-            });
-        }
-
         public void Teleport(Vector3 position) {
             characterController.enabled = false;
             transform.position = position;
@@ -144,7 +96,7 @@ namespace Core.Abilities {
 
         public void MoveTowards(Vector3 position, float time) {
             Vector3 move = position - transform.position;
-            characterController.Move(move);            
+            characterController.Move(move);
         }
 
         public void MoveTick(Vector3 amount) {

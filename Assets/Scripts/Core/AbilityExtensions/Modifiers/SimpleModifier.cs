@@ -6,7 +6,7 @@ using Core.Abilities.Instances;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.Modifiers {
-    [CreateAssetMenu(fileName = "SimpleModifier", menuName = "Ability Modifiers/Stat-only Modifier", order = 0)]
+    [CreateAssetMenu(fileName = "SimpleModifier", menuName = "Ability System/Ability Modifiers/Stat-Only Modifier", order = 0)]
     
     public class SimpleModifier : AbilityModifierDefinition {
         public override void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null) {

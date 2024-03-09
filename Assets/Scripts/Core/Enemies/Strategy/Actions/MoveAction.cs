@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Core.Enemies.Strategy {
-    [CreateAssetMenu(fileName = "MoveCommand", menuName = "AI Actions/Movement", order = 11)]
+    [CreateAssetMenu(fileName = "MoveCommand", menuName = "Enemy AI/Actions/Movement", order = 11)]
     public class MoveAction : AIActionBase{
 
         public float VelocityMultiplier = 1;
