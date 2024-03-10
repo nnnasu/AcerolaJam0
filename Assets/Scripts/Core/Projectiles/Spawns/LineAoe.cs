@@ -28,16 +28,18 @@ namespace Core.AbilityExtensions.Spawns {
         public CapsuleCollider col;
 
         private void OnTriggerEnter(Collider other) {
-            var target = other.GetComponent<AttributeSet>();
-            if (!target) return;
+            var target = other.GetComponent<IDamageable>();
+            if (target == null) return;
 
-            if ((IgnoredEntities & target.entityType) != 0) {
+            if ((IgnoredEntities & target.GetEntityType()) != 0) {
                 // No overlap between flag objects.
                 return;
             }
             // Debug.Log(other.name);
             target.TakeDamage(damage);
-            OnHitCallback?.Invoke(target);
+            if (target is AttributeSet attribute) {
+                OnHitCallback?.Invoke(attribute);
+            }
         }
 
         public void ResizeAndMoveColliderToFitLength(Vector3 start, Vector3 end, float? radius = null) {

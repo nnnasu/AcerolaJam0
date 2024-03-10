@@ -16,28 +16,30 @@ public class LineDamageAction : ActionDefinition {
 
     public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         base.ActivateAction(owner, ability, action, target, OnHit);
-        Vector3 direction = target - owner.transform.position;
-        direction.y = 0;
-        direction.Normalize();
+        Vector3 direction = target - owner.previousPosition;
         var poolObj = GlobalPool.Current.GetObject(AoeSpawnObject);
         LineAoe obj = poolObj.GetComponent<LineAoe>();
         if (obj == null) return;
 
-        Vector3 finalPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction;
+        float mag = Mathf.Clamp(direction.magnitude, 0, Range.GetValueAtLevel(action.level));
+        direction.y = 0;
+        direction = direction.normalized;
 
-        obj.transform.position = finalPos;
+        Vector3 teleportTargetPoint = owner.transform.position + direction * mag;
+        Vector3 lineEndPos = owner.transform.position + Range.GetValueAtLevel(action.level) * direction; // line should extend to max
+
         float damage = Formulas.DamageDealtFormula(
                     owner.Attributes.BaseAttack,
                     DamageMultiplier.GetValueAtLevel(action.level),
                     owner.Attributes.DamageDealtMult
                 );
         obj.Activate(damage, OnHit);
-        obj.ResizeAndMoveColliderToFitLength(owner.previousPosition, finalPos, 1);
+        obj.ResizeAndMoveColliderToFitLength(owner.previousPosition, lineEndPos, 1);
         obj.IgnoredEntities = IgnoredEntities;
+        owner.Teleport(teleportTargetPoint);
 
 
-        // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
-        // else obj.Activate(speed, duration, direction, OnHit);
+
     }
 
 }

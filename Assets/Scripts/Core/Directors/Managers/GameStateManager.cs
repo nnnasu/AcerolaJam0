@@ -69,7 +69,7 @@ namespace Core.Directors.Managers {
 
         private void LoadNextLevel(RoomType room, bool skipFade = false) {
             LockPlayer();
-            levelManager.LoadLevel(room);
+            levelManager.LoadLevel(room, skipFade);
             GameLevel.current.SetLevel(GameLevel.current.level + 1);
         }
 

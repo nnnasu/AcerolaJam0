@@ -3,11 +3,18 @@ using UnityEngine.Pool;
 
 public class PoolableBehaviour : MonoBehaviour, IPoolable {
     private IObjectPool<GameObject> pool;
-    public IObjectPool<GameObject> Pool { get => pool; set => pool = value; }    
+    public IObjectPool<GameObject> Pool { get => pool; set => pool = value; }
+    public bool HasBeenReturned { get; protected set; } = false;
+    public void MarkAsUnreturned() {
+        HasBeenReturned = false;
+    }
 
-    public virtual void ReturnToPool() {
-        // bug where OnDestroy() gets called and throws errors here when closing the game.         
-        pool?.Release(gameObject);
+    public void ReturnToPool() {
+        if (!HasBeenReturned && gameObject) {
+            pool?.Release(gameObject);
+            HasBeenReturned = true;
+        }
+
     }
 
 }

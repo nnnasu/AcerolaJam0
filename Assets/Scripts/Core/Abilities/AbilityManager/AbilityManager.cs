@@ -84,7 +84,6 @@ namespace Core.Abilities {
 
         public void OnStructureRecall(StructureBase structureBase) {
             structureBase.OnRecall(this);
-            structureBase.ReturnToPool();
         }
 
 

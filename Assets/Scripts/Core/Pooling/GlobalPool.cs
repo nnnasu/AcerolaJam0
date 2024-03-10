@@ -32,6 +32,7 @@ public class GlobalPool : MonoBehaviour {
 
                     return obj;
                 },
+                actionOnGet: (obj) =>obj.GetComponent<PoolableBehaviour>()?.MarkAsUnreturned(),
                 actionOnRelease: OnReturnedToPool
             );
             pool.Add(prefab, newPool);

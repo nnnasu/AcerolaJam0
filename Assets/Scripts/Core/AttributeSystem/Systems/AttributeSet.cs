@@ -129,5 +129,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         effects.ForEach(x => RemoveEffect(x));
     }
 
-
+    public EntityType GetEntityType() {
+        return entityType;
+    }
 }

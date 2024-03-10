@@ -33,6 +33,14 @@ namespace Core.AbilityExtensions.Spawns {
             rb.AddForce(direction, ForceMode.Impulse);
         }
 
+        protected override void ActivateAction() {
+        }
+        protected override void TickAction() {
+
+        }
+        protected override void RecallAction() {
+        }
+
 
     }
 }

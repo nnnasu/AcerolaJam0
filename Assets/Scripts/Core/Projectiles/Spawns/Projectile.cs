@@ -21,16 +21,18 @@ namespace Core.AbilityExtensions.Spawns {
         public SoundGroup OnHitSounds;
 
         private void OnTriggerEnter(Collider other) {
-            var target = other.GetComponent<AttributeSet>();
-            if (!target) return;
+            var target = other.GetComponent<IDamageable>();
+            if (target == null) return;
 
-            if ((IgnoredEntities & target.entityType) != 0) {
+            if ((IgnoredEntities & target.GetEntityType()) != 0) {
                 // No overlap between flag objects.
                 return;
             }
 
             target.TakeDamage(damage);
-            OnHitCallback?.Invoke(target);
+            if (target is AttributeSet attribute) {
+                OnHitCallback?.Invoke(attribute);
+            }
 
             if (OnHitSounds) audioPlayer.PlayOneShot(OnHitSounds.GetRandomClip());
 
