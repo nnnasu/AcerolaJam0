@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e88255a20639d4284a3cf7bfa6fbfd, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  budget: 50
-  numberOfSpawns: 5
+  CreditFormula: {fileID: 11400000, guid: 4b0faa8a10710e749b2705c675e76239, type: 2}
+  SpawnFormula: {fileID: 11400000, guid: a1ae164fc55ebc74f8c0206135797d69, type: 2}
   SpawnList: {fileID: 11400000, guid: 11d9844b0d7de7c4b9fcc72fd51960af, type: 2}
   SpawnAttempts: 5
   PortalColour: {r: 1, g: 0, b: 0, a: 1}

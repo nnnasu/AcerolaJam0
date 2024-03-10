@@ -6,6 +6,7 @@ public class PoolableBehaviour : MonoBehaviour, IPoolable {
     public IObjectPool<GameObject> Pool { get => pool; set => pool = value; }    
 
     public virtual void ReturnToPool() {
+        // bug where OnDestroy() gets called and throws errors here when closing the game.         
         pool?.Release(gameObject);
     }
 

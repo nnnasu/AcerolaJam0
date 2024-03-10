@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.UI.PositionDisplays;
 using Core.Utilities.Sounds;
 using PrimeTween;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.VFX;
 
 namespace Core.Directors.Rooms.Portals {
     public class Portal : MonoBehaviour {
+        public DisplayTargetSource displayTarget;
         public Transform doorModel;
         Tween doorMovementTween;
         public Vector3 offset;
@@ -38,6 +40,7 @@ namespace Core.Directors.Rooms.Portals {
             if (DoorOpenSound) audioPlayer.PlayOneShot(DoorOpenSound.GetRandomClip());
             doorMovementTween = Tween.LocalPosition(doorModel, offset, doorTiming, Ease.OutSine);
             doorMovementTween.OnComplete(EnableVFX);
+            displayTarget.enabled = true;
         }
 
         private void EnableVFX() {
@@ -48,6 +51,7 @@ namespace Core.Directors.Rooms.Portals {
 
         public void DisablePortal() {
             triggerVol.enabled = false;
+            displayTarget.enabled = false;
         }
 
 

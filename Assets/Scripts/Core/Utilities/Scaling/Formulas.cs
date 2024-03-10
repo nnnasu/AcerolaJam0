@@ -32,4 +32,14 @@ public static class Formulas {
     public static float DamageTakenFormula(float incomingDamage, float damageTakenMult) {
         return incomingDamage * damageTakenMult;
     }
+
+    public static int SpawnFormula(int level, int adjustment) {
+        return level + adjustment;
+    }
+
+    public static float CreditFormula(int level, float extraLevels, float exponent) {
+        float x = level + extraLevels;
+        return Mathf.Pow(Mathf.Log(x), exponent);
+    }
+
 }

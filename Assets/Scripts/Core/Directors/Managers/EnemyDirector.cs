@@ -55,7 +55,6 @@ namespace Core.Directors.Managers {
             var attr = obj.GetComponent<AttributeSet>();
             enemies.Add(attr.gameObject);
             attr.OnDeath += OnEnemyKilled;
-            EnemyDisplayManager.Current.Register(attr);
         }
 
         private void OnEnemyKilled(AttributeSet attributeSet) {

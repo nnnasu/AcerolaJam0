@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Directors;
+using Core.Utilities.Scaling;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -9,9 +10,8 @@ namespace Core.Directors.Common {
     public class RoomType : ScriptableObject {
 
         [Header("Scaling Formulas")]
-        //TODO change these to formula values.
-        public float budget;
-        public float numberOfSpawns;
+        public ScalingFormula CreditFormula;
+        public ScalingFormula SpawnFormula;
         public EnemyWeights SpawnList;
         public int SpawnAttempts = 5;
 
@@ -29,11 +29,11 @@ namespace Core.Directors.Common {
 
         public int GetSpawnCount(int level) {
             // TODO DERIVE
-            return level;
+            return SpawnFormula.GetFlooredValue(level);
         }
 
         public float GetCredits(int level) {
-            return 50;
+            return CreditFormula.GetValue(level);
         }
 
 
