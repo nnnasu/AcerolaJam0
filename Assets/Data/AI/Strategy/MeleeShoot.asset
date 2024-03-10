@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: MeleeShoot
   m_EditorClassIdentifier: 
   Actions:
-  - range: 3
-    action: {fileID: 11400000, guid: 2377144612961af4786524a2d183e061, type: 2}
-  - range: 30
-    action: {fileID: 11400000, guid: cb574e88bceb8f440a648b1b07623c53, type: 2}
-  FallbackAction: {fileID: 11400000, guid: 03a7a91cdc5a3314ea24ce3c88d7ade3, type: 2}
+  - {fileID: 11400000, guid: 2377144612961af4786524a2d183e061, type: 2}
+  - {fileID: 11400000, guid: 31dcc284273b32c4190142b072bff599, type: 2}

@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 6665536529988014424}
   - component: {fileID: 729092637374731601}
   - component: {fileID: 1549643982725145525}
+  - component: {fileID: 569630393169001387}
   m_Layer: 0
   m_Name: Shroomer
   m_TagString: Untagged
@@ -237,7 +238,7 @@ MonoBehaviour:
   TickRate: 0.5
   Strategy: {fileID: 11400000, guid: c6bb39d01ba06ef4ea7c57cada048651, type: 2}
   Turn180Duration: 0.5
-  CurrentAction: {fileID: 0}
+  CurrentAction: {fileID: 11400000, guid: 2377144612961af4786524a2d183e061, type: 2}
   enemyAnimationHandler: {fileID: 6665536529988014424}
 --- !u!114 &3731839275590343434
 MonoBehaviour:
@@ -383,6 +384,21 @@ MonoBehaviour:
   delay: 0
   currentTag: 
   startLoop: 0
+--- !u!114 &569630393169001387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8187667278936037665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195315eb629272342934a0accd430560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayPrefab: {fileID: 6353072237644076602, guid: f5ef613668550eb4298e6e611b41c401,
+    type: 3}
+  offset: {x: 0, y: 75, z: 0}
 --- !u!1001 &4373492593148761561
 PrefabInstance:
   m_ObjectHideFlags: 0

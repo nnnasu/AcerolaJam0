@@ -19,6 +19,11 @@ namespace Core.Enemies {
         public AIActionBase CurrentAction;
         public EnemyAnimationHandler enemyAnimationHandler;
 
+        internal Vector3 currentPlayerPosition;
+        internal float currentPlayerDistance;
+        internal Vector3 currentPlayerDirection;
+
+
 
         private void OnEnable() {
             attributes.OnDeath += DeathCleanup;
@@ -36,7 +41,16 @@ namespace Core.Enemies {
         /// </summary>
         private void Tick() {
             Vector3? playerPos = PlayerLocation.CurrentLocator?.playerLocation;
-            float delay = Strategy.ExecuteNextAction(this, playerPos);            
+            if (playerPos.HasValue) {
+                currentPlayerPosition = playerPos.Value;
+                Vector3 dir = currentPlayerPosition - transform.position;
+                currentPlayerDistance = dir.magnitude;
+                currentPlayerDirection = dir.normalized;
+            }
+
+            float delay = Strategy.ExecuteNextAction(this, playerPos);
+
+
             // TODO: Block rotations based on action??
             if (playerPos.HasValue) {
                 rb.angularVelocity = Vector3.zero;
@@ -55,11 +69,15 @@ namespace Core.Enemies {
         }
 
         private void DeathCleanup(AttributeSet attributeSet) {
-            // TODO return to pool
             rb.velocity = Vector3.zero;
-            float delay = enemyAnimationHandler.SetDeath();
             TickTween.Stop();
-            Tween.Delay(delay, ReturnToPool);
+
+            if (enemyAnimationHandler) {
+                float delay = enemyAnimationHandler.SetDeath();
+                Tween.Delay(delay, ReturnToPool);
+            } else {
+                ReturnToPool();
+            }
         }
 
 

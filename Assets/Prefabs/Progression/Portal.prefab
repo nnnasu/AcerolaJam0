@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4065676661903017488}
   - component: {fileID: 1024777696081295477}
   - component: {fileID: 5576866727620816583}
+  - component: {fileID: 8220344716230737792}
   m_Layer: 2
   m_Name: Portal
   m_TagString: Untagged
@@ -78,11 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62758d8a2691ecf4a979417442441729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayTarget: {fileID: 8220344716230737792}
   doorModel: {fileID: 1234732907890049149}
   offset: {x: 0, y: 10, z: 0}
   audioPlayer: {fileID: 5966522474110915911}
-  DoorOpenSound: {fileID: 0}
-  doorTiming: 5
+  DoorOpenSound: {fileID: 11400000, guid: 0693a5c63f0f6104fa9bfe5495816d36, type: 2}
+  doorTiming: 3
   vfx: {fileID: 6763427085936761836}
   triggerVol: {fileID: 2586923984586388571}
   triggerer: {fileID: 3779616835198319655}
@@ -100,6 +102,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CheckpointRegister: {fileID: 11400000, guid: 8bb699fc0452b3147b6b078ded5daa4a, type: 2}
   portal: {fileID: 1024777696081295477}
+--- !u!114 &8220344716230737792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041628427924235741}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195315eb629272342934a0accd430560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayPrefab: {fileID: 6353072237644076602, guid: a695ba2a76685b44b80a7a6852065f1a,
+    type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1632588352009594774
 PrefabInstance:
   m_ObjectHideFlags: 0

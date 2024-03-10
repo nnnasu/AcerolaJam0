@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1278457600933213772}
   - component: {fileID: 8129339459736725771}
-  - component: {fileID: 9124384133778270505}
   - component: {fileID: -5025425988308658488}
   - component: {fileID: 1937379282279591095}
+  - component: {fileID: 5326054490826963755}
   m_Layer: 6
   m_Name: Struct
   m_TagString: Untagged
@@ -59,26 +59,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &9124384133778270505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957290656272839930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea7cf0adaddf874887311165b66c158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseAttributes: {fileID: 11400000, guid: c54bc9c0298faa9488cef9724ad8a87d, type: 2}
-  HP: 0
-  MaxHP: 10
-  MovementSpeed: 0
-  AttackSpeed: 0
-  BaseAttack: 0
-  entityType: 2
-  ResetOnEnable: 0
 --- !u!114 &-5025425988308658488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0cc690371c84b47aa4cfe71bfe992d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 9124384133778270505}
+  attributes: {fileID: 5326054490826963755}
   IgnoredEntities: 3
+  TickInterval: 2
+  DamagePerTick: 1
   aoe: {fileID: 1937379282279591095}
   force: 10
   EffectToApply: {fileID: 11400000, guid: c1a661bd4ed59eb449d055354b45b54a, type: 2}
@@ -118,6 +100,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5326054490826963755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957290656272839930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6951f4e9ad570c548ae0de95bd0c41c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 20
+  MaxHP: 20
 --- !u!1 &5400236923110891998
 GameObject:
   m_ObjectHideFlags: 0

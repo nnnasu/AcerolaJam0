@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abec8393e2823a4b9344057c8a72a1e, type: 3}
   m_Name: Point Blank Shot
   m_EditorClassIdentifier: 
+  Conditions:
+  - {fileID: 11400000, guid: 502c8411eab1e484fa06dcfbedfafe59, type: 2}
   projectile: {fileID: 3867255862158688488, guid: 755bda098bd64f2438f5e06e81725f65,
     type: 3}
   speed: 0
@@ -48,5 +50,6 @@ MonoBehaviour:
   BaseAttackTime: 2
   AnimatorState: AttackTrigger
   offset: {x: 0, y: 0, z: 1}
+  Movement: {x: 0, y: 0, z: 1}
   IgnoredEntities: 12
   Piercing: 0

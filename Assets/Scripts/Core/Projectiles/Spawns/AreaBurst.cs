@@ -17,6 +17,7 @@ namespace Core.AbilityExtensions.Spawns {
 
 
         public Action<AttributeSet> OnHitCallback = null;
+        Tween ExpandTween;
         Tween DelayTween;
         Tween ExpiryTween;
         public VisualEffect vfx;
@@ -57,7 +58,6 @@ namespace Core.AbilityExtensions.Spawns {
 
         private void Expire() {
             ReturnToPool();
-
         }
 
     }
