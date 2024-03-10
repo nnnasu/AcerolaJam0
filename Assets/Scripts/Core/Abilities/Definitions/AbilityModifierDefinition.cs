@@ -9,9 +9,9 @@ using Core.Abilities.Instances;
 using Core.AttributeSystem.Alignments;
 using UnityEngine;
 
-public abstract class AbilityModifierDefinition : ScriptableObject {
+public abstract class AbilityModifierDefinition : ScriptableObject, IGetAlignmentLevel {
     // pass in the modifier instance so we can tell what level the mod is at
-    public AlignmentDefinition alignment;
+    public AlignmentDefinition alignment;    
 
     [Tooltip("Stats which apply to the entire character.")]
     public List<StatModifier> GlobalStatModifier = new();
@@ -36,4 +36,7 @@ public abstract class AbilityModifierDefinition : ScriptableObject {
         return string.Join("\n", strings);
     }
 
+    public (AlignmentDefinition, int) GetAlignmentLevel(int level) {
+        return (alignment, level); // modifiers don't have level multipliers?
+    }
 }

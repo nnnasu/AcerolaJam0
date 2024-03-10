@@ -5,7 +5,7 @@ using Core.Utilities.Scaling;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.Effects {
-    [CreateAssetMenu(fileName = "MPRegenEffect", menuName = "Ability System/Effects/On Hit Effects/MP Regen On Hit", order = 0)]
+    [CreateAssetMenu(fileName = "MPRegenEffect", menuName = "Ability System/On Hit Effects/MP Regen On Hit", order = 0)]
     public class RestoreMPOnHit : OnHitEffect {
         public ScaledFloat RegenOnHit;
 

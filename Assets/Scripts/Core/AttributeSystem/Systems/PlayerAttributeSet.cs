@@ -39,7 +39,19 @@ public class PlayerAttributeSet : AttributeSet {
     }
 
     public void UpdateAlignmentStatus() {
+        foreach (var item in levels) {
+            var alignment = item.Key;
+            int level = item.Value;
+            alignment.ApplyEffects(this, level);
+        }
+    }
 
+    public void AddAlignmentLevels(AlignmentDefinition alignment, int level) {
+        if (alignment == null) return;
+        if (!levels.ContainsKey(alignment)) {
+            levels.Add(alignment, 0);
+        }
+        levels[alignment] += level;
     }
 
     public override void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Line Action
   m_EditorClassIdentifier: 
   actionType: 2
-  alignment: 0
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0.3
@@ -100,6 +100,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   UsageTime: 0
   OnHitEffects: []
+  OnActivateEffects: []
   TargetingType: 3
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}

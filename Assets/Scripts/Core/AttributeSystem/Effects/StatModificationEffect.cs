@@ -8,7 +8,7 @@ using System.Linq;
 /// <summary>
 /// This class encapsulates effects like debuffs which can be applied to enemies.
 /// </summary>
-[CreateAssetMenu(fileName = "StatBuff", menuName = "Ability System/Effects/Status Effects/Stat Modification", order = 0)]
+[CreateAssetMenu(fileName = "StatBuff", menuName = "Ability System/Status Effects/Stat Modification", order = 0)]
 public class StatModificationEffect : StatusEffect {
 
     public List<StatModifier> modifiers = new();

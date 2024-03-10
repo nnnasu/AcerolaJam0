@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TeleportAction
   m_EditorClassIdentifier: 
   actionType: 5
-  alignment: 0
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   UsageTime: 0
+  OnHitEffects: []
+  OnActivateEffects: []
   TargetingType: 2
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}

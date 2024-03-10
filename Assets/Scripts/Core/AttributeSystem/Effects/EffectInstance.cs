@@ -1,7 +1,7 @@
 using System;
 using PrimeTween;
 
-
+// probably generates garbage like crazy
 public class EffectInstance {
     public StatusEffect effectDefinition;
     public int level;
@@ -12,10 +12,10 @@ public class EffectInstance {
         this.level = level;
     }
 
-    public virtual void Apply(AttributeSet attributes) {
+    public virtual void HandleEffectApplication(AttributeSet attributes) {
         effectDefinition.Apply(attributes, this);
     }
-    public virtual void Remove(AttributeSet attributes) {
+    public virtual void HandleEffectRemoval(AttributeSet attributes) {
         effectDefinition.Remove(attributes, this);
     }
 

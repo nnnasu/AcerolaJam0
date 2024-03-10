@@ -11,10 +11,11 @@ using UnityEngine;
 
 
 namespace Core.Abilities.Definitions {
-    public abstract class ActionDefinition : ScriptableObject {
+    public abstract class ActionDefinition : ScriptableObject, IGetAlignmentLevel {
         [Header("Ability Parameters")]
         public ActionType actionType;
         public AlignmentDefinition alignment;
+
         public ScaledFloat DamageMultiplier;
         public ScaledFloat BaseCooldown;
         public ScaledFloat BaseMPCost;
@@ -44,6 +45,10 @@ namespace Core.Abilities.Definitions {
 
         public virtual string GetTooltipText(float level) {
             return Description;
+        }
+
+        public (AlignmentDefinition, int) GetAlignmentLevel(int level) {
+            return (alignment, level * 2); // hardcoded value, but easy to turn into parameter
         }
     }
 }

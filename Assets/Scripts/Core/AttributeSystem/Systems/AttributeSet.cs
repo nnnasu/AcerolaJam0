@@ -36,6 +36,8 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     }
 
     public virtual void ResetState(bool resetHP = false) {
+
+        RemoveAllEffects();
         MaxHP = baseAttributes.MaxHP;
         if (resetHP) HP = MaxHP;
         MovementSpeed = baseAttributes.MovementSpeedBase;
@@ -60,7 +62,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         if (ActiveEffects.ContainsKey(effect.effectDefinition)) {
             RemoveEffect(effect, true); // just remove the existing effect and apply it again
         }
-        effect.Apply(this);
+        effect.HandleEffectApplication(this);
         ActiveEffects[effect.effectDefinition] = effect;
         if (effect.effectDefinition.effectType == EffectType.Duration) {
             effect.ExpiryTween = Tween.Delay(effect.effectDefinition.duration.GetValueAtLevel(effect.level), () => RemoveEffect(effect));
@@ -72,11 +74,21 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         if (!ActiveEffects.ContainsKey(effect.effectDefinition)) return;
         var currentEffect = ActiveEffects[effect.effectDefinition];
         currentEffect.ExpiryTween.Stop();
-        currentEffect.Remove(this);
+        currentEffect.HandleEffectRemoval(this);
+        ActiveEffects.Remove(effect.effectDefinition);
 
         if (!toReplace) {
             OnEffectRemoved?.Invoke(currentEffect);
         }
+    }
+
+    public void RemoveEffect(StatusEffect effect) {
+        if (!ActiveEffects.ContainsKey(effect)) return;
+        var currentEffect = ActiveEffects[effect];
+        currentEffect.ExpiryTween.Stop();
+        currentEffect.HandleEffectRemoval(this);
+        ActiveEffects.Remove(effect);
+        OnEffectRemoved?.Invoke(currentEffect);
     }
 
     public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
@@ -107,6 +119,14 @@ public class AttributeSet : MonoBehaviour, IDamageable {
                 break;
             default: break;
         }
+    }
+
+    public void RemoveAllEffects() {
+        List<StatusEffect> effects = new();
+        foreach (var item in ActiveEffects) {
+            effects.Add(item.Key);
+        }
+        effects.ForEach(x => RemoveEffect(x));
     }
 
 

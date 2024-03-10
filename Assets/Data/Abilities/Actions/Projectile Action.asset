@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Projectile Action
   m_EditorClassIdentifier: 
   actionType: 0
-  alignment: 0
+  alignment: {fileID: 0}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -102,8 +102,7 @@ MonoBehaviour:
   OnHitEffects:
   - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
   - {fileID: 11400000, guid: 590ae6a176ce2c645bcd92574bc0bf75, type: 2}
-  OnActivateEffects:
-  - {fileID: 11400000, guid: 968505f7b9b1fcf4ea253db40b14a43b, type: 2}
+  OnActivateEffects: []
   TargetingType: 0
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}

@@ -80,12 +80,14 @@ namespace Core.UI.Rewards {
 
             if (rewardSelection.isModifierSelected) {
                 var reward = RewardPanel.modifierInstances[rewardSelection.SelectedSlot];
+                if (reward == null) return;
                 currentAbility.SwapModifier(reward, inventorySelection.SelectedSlot);
 
                 RewardPanel.modifierInstances[rewardSelection.SelectedSlot] = null;
                 RewardPanel.ModifierSlots[rewardSelection.SelectedSlot].SetIcon();
             } else {
                 var reward = RewardPanel.actionInstances[rewardSelection.SelectedSlot];
+                if (reward == null) return;
                 currentAbility.SwapAction(reward, inventorySelection.SelectedSlot);
 
                 RewardPanel.actionInstances[rewardSelection.SelectedSlot] = null;
@@ -179,7 +181,7 @@ namespace Core.UI.Rewards {
         #region selection
 
         private void OnSelected(int abilityIndex, int iconIndex, bool isModifier) {
-            
+
             OnClickAny?.Invoke();
             if (inventorySelection != null) {
                 // Clear the previous 
@@ -203,7 +205,7 @@ namespace Core.UI.Rewards {
         }
 
         private void OnSelectedReward(int iconIndex, bool isModifier) {
-            
+
             OnClickAny?.Invoke();
             if (rewardSelection != null) {
                 var prev = GetIconFromReward(rewardSelection);
@@ -241,7 +243,7 @@ namespace Core.UI.Rewards {
         #endregion
 
         #region hover
-        private void OnHover(int abilityIndex, int slotIndex, bool isModifier, Vector2 pos,  bool isEnter) {
+        private void OnHover(int abilityIndex, int slotIndex, bool isModifier, Vector2 pos, bool isEnter) {
             if (isEnter) InvokeHoverSounds();
             AbilityInstance abilityInstance = null;
             if (abilityIndex == -1) abilityInstance = abilityManager.BasicAttack;
@@ -264,10 +266,10 @@ namespace Core.UI.Rewards {
                 hoverTipManager.ShowTip(slot.ToTooltipText(), pos);
             }
         }
-        private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos, bool isEnter) {                        
+        private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos, bool isEnter) {
             if (isEnter) InvokeHoverSounds();
-            if (isModifier) {                
-                var icon = RewardPanel.modifierInstances[iconIndex];                
+            if (isModifier) {
+                var icon = RewardPanel.modifierInstances[iconIndex];
 
                 string result = icon == null ? "NA" : icon.ToTooltipText();
                 hoverTipManager.ShowTip(result, pos);
