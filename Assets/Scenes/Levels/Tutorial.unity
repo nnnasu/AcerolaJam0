@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &120773938
 Transform:
   m_ObjectHideFlags: 0
@@ -319,6 +319,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPointChannel: {fileID: 11400000, guid: 9fc6479a360227d48b2f2e7e1681e5f3, type: 2}
+--- !u!1001 &354996543
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7624043
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.208216
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 363a5bbffc41b1242bc9bd1d0555be34,
+        type: 3}
+      propertyPath: m_Name
+      value: Witch
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 363a5bbffc41b1242bc9bd1d0555be34, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +417,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1287,3 +1355,4 @@ SceneRoots:
   - {fileID: 3239975544040684946}
   - {fileID: 1929252801}
   - {fileID: 947638475}
+  - {fileID: 354996543}

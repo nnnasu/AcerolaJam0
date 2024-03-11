@@ -16,7 +16,22 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 19d8f57087ddd794b870073d6fe1e938
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 8bb699fc0452b3147b6b078ded5daa4a
+    m_Address: Assets/Data/Event Channels/CheckpointRegistry.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f96f0f6952600f4397b7113e9dbee2e
+    m_Address: Assets/Data/Event Channels/RewardScreenEventChannel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fc6479a360227d48b2f2e7e1681e5f3
+    m_Address: Assets/Data/Event Channels/SpawnPointRegistrationChannel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 644696595008f5540a28c072fe12ba8f, type: 2}
   m_SchemaSet:

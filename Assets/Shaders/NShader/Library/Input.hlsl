@@ -6,7 +6,7 @@
 
 sampler2D _MainTex;
 sampler2D _EmissionMap;
-sampler2D _OcclusionMap;
+sampler2D _MaskMap;
 
 CBUFFER_START(UnityPerMaterial)
     float4 _MainTex_ST;
@@ -30,6 +30,7 @@ struct NSurfaceData {
     half alpha;
     half3 emission;
     half occlusion;
+    half smoothness;
 };
 
 struct NLightingData {

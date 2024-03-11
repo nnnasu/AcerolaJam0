@@ -11,20 +11,13 @@ half3 ShadeGI(NSurfaceData surfaceData, NLightingData lightingData) {
 half3 ShadeSingleLight(NSurfaceData surfaceData, NLightingData lightingData, Light light, bool isAdditionalLight) {
     half3 N = lightingData.normalWS;
     half3 L = light.direction;
-
     half NoL = dot(N, L);
-
     half lightAttenuation = 1;
-
-    // light's distance & angle fade for point light & spot light (see GetAdditionalPerObjectLight(...) in Lighting.hlsl)
+    
     // Lighting.hlsl -> https://github.com/Unity-Technologies/Graphics/blob/master/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl
     half distanceAttenuation = min(4, light.distanceAttenuation);
-    //clamp to prevent light over bright if point/spot light too close to vertex
-
-    // N dot L
-    // simplest 1 line cel shade, you can always replace this line by your own method!
-    half litOrShadowArea = smoothstep(_CelShadeMidPoint - _CelShadeSoftness, _CelShadeMidPoint + _CelShadeSoftness,
-                                      NoL);
+    
+    half litOrShadowArea = smoothstep(_CelShadeMidPoint - _CelShadeSoftness, _CelShadeMidPoint + _CelShadeSoftness, NoL);
 
     // occlusion
     litOrShadowArea *= surfaceData.occlusion;
@@ -34,10 +27,15 @@ half3 ShadeSingleLight(NSurfaceData surfaceData, NLightingData lightingData, Lig
 
     half3 litOrShadowColor = litOrShadowArea;
     half3 lightAttenuationRGB = litOrShadowColor * distanceAttenuation;
+    
+    half smoothness = exp2(10 * surfaceData.smoothness + 1);
+    half3 lightSpecularColor = 0;
+
+    lightSpecularColor += LightingSpecular(light.color, light.direction, lightingData.normalWS, lightingData.viewDirectionWS, 1, smoothness);
 
     // saturate() light.color to prevent over bright
     // additional light reduce intensity since it is additive
-    return saturate(light.color) * lightAttenuationRGB * (isAdditionalLight ? 0.25 : 1);
+    return saturate(light.color) * lightAttenuationRGB * (isAdditionalLight ? 0.25 : 1) + saturate(lightSpecularColor);
 }
 
 

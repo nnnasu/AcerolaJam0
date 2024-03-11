@@ -14,11 +14,13 @@ Shader "NShader/Lit" {
         [MainTexture] _MainTex ("Texture", 2D) = "white" {}
         [MainColor] _MainColor ("Color", Color) = (1,1,1,1)
 
+        [NoScaleOffset] _MaskMap("Mask Map", 2D) = "white" {}
+        _OcclusionStrength("Occlusion Strength", Range(0.0, 1.0)) = 1.0
+
+
         [NoScaleOffset]_EmissionMap("Emission Map", 2D) = "white" {}
         [HDR] _EmissionColor("Emission Color", Color) = (0,0,0)
 
-        _OcclusionMap ("Occlusion Map", 2D) = "white" {}
-        _OcclusionStrength("Occlusion Strength", Range(0.0, 1.0)) = 1.0
 
         [Header(Lighting Settings)]
         _IndirectLightMinColor("Min Color", Color) = (0.1,0.1,0.1,1) // can prevent completely black if light prob is not baked

@@ -339,6 +339,7 @@ MonoBehaviour:
   render: {fileID: 4265238918006610507}
   baseMat: {fileID: 2100000, guid: 6ac85376142ddec469f8cec82e1dab00, type: 2}
   lerpMat: {fileID: 2100000, guid: f1994cb4c1b861a4ebc36cdb4e4d7517, type: 2}
+  ChargeStatus: 0
   ChargeTimer: 2
   DefuseTime: 5
   ExplosionDelay: 2
@@ -357,7 +358,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     asymmetry: 0
     easeBetweenShakes: 0
-    cycles: -1
+    cycles: 1
     startDelay: 0
     endDelay: 0
     useUnscaledTime: 0

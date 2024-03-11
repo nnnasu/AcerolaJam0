@@ -12,11 +12,15 @@ half3 GetFinalEmissionColor(Varyings input) {
     return result;
 }
 
-half GetFinalOcclusion(Varyings input) {
-    // TODO if not using occlusion, return 1
-    half4 occlusionValue = tex2D(_OcclusionMap, input.uv);
-    occlusionValue = lerp(1, occlusionValue, _OcclusionStrength);
-    return occlusionValue;
+// half GetFinalOcclusion(Varyings input) {
+//     // TODO if not using occlusion, return 1
+//     half4 occlusionValue = tex2D(_MaskMap, input.uv);
+//     occlusionValue = lerp(1, occlusionValue, _OcclusionStrength);
+//     return occlusionValue;
+// }
+
+half4 GetMaskData(Varyings input) {
+    return tex2D(_MaskMap, input.uv);   
 }
 
 NSurfaceData InitializeSurfaceData(Varyings input) {
@@ -25,7 +29,9 @@ NSurfaceData InitializeSurfaceData(Varyings input) {
     output.albedo = baseColorFinal.rgb;
     output.alpha = baseColorFinal.a;
     output.emission = GetFinalEmissionColor(input);
-    output.occlusion = GetFinalOcclusion(input);
+    float4 mask = GetMaskData(input);
+    output.occlusion = mask.g;
+    output.smoothness = mask.a;
     return output;
 }
 
@@ -35,6 +41,7 @@ NLightingData InitializeLightingData(Varyings input) {
     output.viewDirectionWS = SafeNormalize(GetCameraPositionWS() - output.positionWS);
     output.normalWS = normalize(input.normalWS);
     output.shadowCoord = TransformWorldToShadowCoord(input.positionWSAndFogFactor.rgb);
+    
     
     return output;
 }
