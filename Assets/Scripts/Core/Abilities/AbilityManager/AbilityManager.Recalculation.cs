@@ -12,11 +12,11 @@ namespace Core.Abilities {
 
         public void RecalculateAlignmentLevels() {
             Attributes.levels.Clear();
-            BasicAttack.actions.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.level));
-            BasicAttack.modifiers.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.level));
+            BasicAttack.actions.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.definition.GetAlignmentLevel(y.level).Item2));
+            BasicAttack.modifiers.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.definition.GetAlignmentLevel(y.level).Item2));
             Abilities.ForEach(x => {
-                x.actions.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.level));
-                x.modifiers.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.level));
+                x.actions.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.definition.GetAlignmentLevel(y.level).Item2));
+                x.modifiers.ForEach(y => Attributes.AddAlignmentLevels(y.definition.alignment, y.definition.GetAlignmentLevel(y.level).Item2));
             });
 
             Attributes.UpdateAlignmentStatus();

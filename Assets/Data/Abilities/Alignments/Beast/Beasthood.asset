@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b636825ea199f342ac126d04e0d1ad8, type: 3}
-  m_Name: MagicBonusCDR
+  m_Script: {fileID: 11500000, guid: 141ccef993424094cb707b6043037087, type: 3}
+  m_Name: Beasthood
   m_EditorClassIdentifier: 
   duration:
-    scalingType: 0
+    scalingType: 2
     BaseValue: 0
-    AdditiveValue: 0
+    AdditiveValue: 3
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -40,20 +40,47 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  effectType: 0
-  icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
-  EffectName: Mage Alignment CDR
-  ShouldDisplayNumber: 0
+  effectType: 1
+  Conditions: []
+  icon: {fileID: 0}
+  EffectName: Beasthood
+  ShortDescription: 'Increases attack speed, damage taken, and damage dealt. '
+  ShouldDisplayNumber: 1
   ShowInHUD: 1
   modifiers:
-  - Attribute: 8
+  - Attribute: 9
     value:
       scalingType: 0
-      BaseValue: 5
-      AdditiveValue: 30
+      BaseValue: 0.005
+      AdditiveValue: 0
       ValueCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
+  - Attribute: 10
+    value:
+      scalingType: 0
+      BaseValue: 0.005
+      AdditiveValue: 0
+      ValueCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - Attribute: 3
+    value:
+      scalingType: 0
+      BaseValue: 0.1
+      AdditiveValue: 0
+      ValueCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  UseAlignmentLevelForScaling: 1
+  alignmentToScaleWith: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0,
+    type: 2}

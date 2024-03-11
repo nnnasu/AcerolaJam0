@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Throwing Knife
   m_EditorClassIdentifier: 
   actionType: 0
-  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
+  alignment: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -101,7 +101,8 @@ MonoBehaviour:
   OnHitUniqueEffects:
   - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
   OnHitEffects: []
-  OnActivateEffects: []
+  OnActivateEffects:
+  - {fileID: 11400000, guid: 968505f7b9b1fcf4ea253db40b14a43b, type: 2}
   AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
   CastPoint: 0.3
   UsageTime: 1.5

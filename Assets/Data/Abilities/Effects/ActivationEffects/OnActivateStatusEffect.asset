@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e039f42da1948de40b694a0155228d99, type: 3}
   m_Name: OnActivateStatusEffect
   m_EditorClassIdentifier: 
-  EffectToApply: {fileID: 11400000, guid: cd81167ba84ed9e4ea0c442eabeb57f5, type: 2}
+  EffectToApply: {fileID: 11400000, guid: 05d8d15bc85abf34db4aa747d8ce5dda, type: 2}
   Description: 

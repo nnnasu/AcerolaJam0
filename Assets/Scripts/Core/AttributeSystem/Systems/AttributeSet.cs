@@ -93,8 +93,8 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         OnEffectRemoved?.Invoke(currentEffect);
     }
 
-    public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
-        float rawValue = modifier.value.GetValueAtLevel(level) * (mult != 0 ? mult : 1);
+    public virtual void ApplyModifier(StatModifier modifier, int level, bool negate = false, int stacks = 1) {
+        float rawValue = modifier.GetValue(level, stacks);
         float value = rawValue;
         if (negate) value *= -1;
 

@@ -47,6 +47,7 @@ public class PlayerAttributeSet : AttributeSet {
     }
 
     public void AddAlignmentLevels(AlignmentDefinition alignment, int level) {
+
         if (alignment == null) return;
         if (!levels.ContainsKey(alignment)) {
             levels.Add(alignment, 0);
@@ -54,8 +55,8 @@ public class PlayerAttributeSet : AttributeSet {
         levels[alignment] += level;
     }
 
-    public override void ApplyModifier(StatModifier modifier, int level, bool negate = false, float mult = 1) {
-        float rawValue = modifier.value.GetValueAtLevel(level) * (mult != 0 ? mult : 1); ;
+    public override void ApplyModifier(StatModifier modifier, int level, bool negate = false, int stacks = 1) {
+        float rawValue = modifier.GetValue(level, stacks);
         float value = rawValue;
         if (negate) value *= -1;
 

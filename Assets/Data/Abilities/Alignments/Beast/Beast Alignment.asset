@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257c291527abb9344a66d11a5c3bdc40, type: 3}
   m_Name: Beast Alignment
   m_EditorClassIdentifier: 
-  AlignmentName: Magic
+  AlignmentName: Beast
   ApplyHighestEffectOnly: 0
   Effects:
   - level: 10
