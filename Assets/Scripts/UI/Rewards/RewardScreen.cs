@@ -251,19 +251,19 @@ namespace Core.UI.Rewards {
 
             if (isModifier) {
                 if (slotIndex >= abilityInstance.modifiers.Count) {
-                    hoverTipManager.ShowTip("Empty Modifier", pos);
+                    hoverTipManager.ShowTip("Empty Modifier", "", pos);
                     return;
                 }
 
                 var slot = abilityInstance.modifiers[slotIndex];
-                hoverTipManager.ShowTip(slot.ToTooltipText(), pos);
+                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos);
             } else {
                 if (slotIndex >= abilityInstance.actions.Count) {
-                    hoverTipManager.ShowTip("Empty Action", pos);
+                    hoverTipManager.ShowTip("Empty Action", "", pos);
                     return;
                 }
                 var slot = abilityInstance.actions[slotIndex];
-                hoverTipManager.ShowTip(slot.ToTooltipText(), pos);
+                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos);
             }
         }
         private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos, bool isEnter) {
@@ -271,12 +271,19 @@ namespace Core.UI.Rewards {
             if (isModifier) {
                 var icon = RewardPanel.modifierInstances[iconIndex];
 
-                string result = icon == null ? "NA" : icon.ToTooltipText();
-                hoverTipManager.ShowTip(result, pos);
+                if (icon == null) {
+                    hoverTipManager.ShowTip("NA", "", pos);
+                } else {
+                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos);
+                }
+
             } else {
                 var icon = RewardPanel.actionInstances[iconIndex];
-                string result = icon == null ? "NA" : icon.ToTooltipText();
-                hoverTipManager.ShowTip(result, pos);
+                if (icon == null) {
+                    hoverTipManager.ShowTip("NA", "", pos);
+                } else {
+                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos);
+                }
             }
         }
         private void OnHoverLeft() {

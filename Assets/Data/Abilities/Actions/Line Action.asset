@@ -98,6 +98,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  OnHitUniqueEffects: []
   OnHitEffects: []
   OnActivateEffects: []
   AnimationToPlay: {fileID: 11400000, guid: 35f5c9420d9f8bc42927c37a1e8fa6a2, type: 2}
@@ -136,7 +137,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   ActionTitle: Line Damage
-  Description: 
+  Description: Teleports up to {RANGE} away, leaving a trail behind which does {DAMAGE}
+    damage to enemies.
   AoeSpawnObject: {fileID: 6657872281969549556, guid: 0b803adf2c3358342a58c241e4367c0b,
     type: 3}
   IgnoredEntities: 1

@@ -33,6 +33,7 @@ namespace Core.Abilities.Instances {
 
         // Animations
         public AnimationStateInfo StateToPlay { get; private set; } = null;
+        public string CachedDescription = "";
 
         public event Action OnAbilityActivated = delegate { };
         public event Action<bool> OnFocusChanged = delegate { };
@@ -49,6 +50,7 @@ namespace Core.Abilities.Instances {
             CalculateUsageTime(owner);
             CalculateMPCost(owner);
             RecalculateAnimation();
+            RegenerateDescription();
             OnAbilityChanged?.Invoke();
         }
 
@@ -244,5 +246,17 @@ namespace Core.Abilities.Instances {
             StateToPlay = animationToPlay;
         }
 
+        private string RegenerateDescription() {
+            List<string> results = new();
+            actions.ForEach(x => results.Add(x.definition.GetActionDescription(x.level)));
+            // add modifiers?
+            CachedDescription = string.Join("\n", results);
+            return CachedDescription;
+        }
+
+        public string GetDescription() {
+            if (CachedDescription.Length != 0) return CachedDescription;
+            return RegenerateDescription();
+        }
     }
 }

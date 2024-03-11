@@ -9,7 +9,7 @@ namespace Core.AbilityExtensions.Effects {
     public class ApplyEffectOnHit : OnHitEffect {
         public StatusEffect effect;
 
-        public override string GetTooltip(ActionInstance action) {
+        public override string GetTooltip(int level) {
             return $"Applies {effect.name} on hit.";
         }
 

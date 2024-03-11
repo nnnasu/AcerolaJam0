@@ -98,6 +98,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  OnHitUniqueEffects: []
   OnHitEffects: []
   OnActivateEffects: []
   AnimationToPlay: {fileID: 11400000, guid: cae8b6781700f0e41aa40453d7de3b0a, type: 2}
@@ -135,8 +136,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   icon: {fileID: 21300000, guid: 5440755378e6dbf49a98288d1216e684, type: 3}
-  ActionTitle: Red
-  Description: 
+  ActionTitle: Red Repulsion
+  Description: Sends forth a slow-moving projectile that pushes enemies away, dealing
+    {DAMAGE} damage.
   projectilePrefab: {fileID: 3867255862158688488, guid: 802c980abcc15754896716c3e38172a3,
     type: 3}
   ProjectileSpeed: 3

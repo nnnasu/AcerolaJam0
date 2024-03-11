@@ -44,6 +44,8 @@ namespace Core.Directors.Managers {
                     budget -= enemy.cost;
                 }
             }
+            // TODO If we have excess budget, spend it by pulling modifiers to apply onto each enemy
+
 
             if (enemies.Count == 0) OnEnemiesCleared?.Invoke(); // just to make sure we don't softlock the player if nothing spawns.
 

@@ -65,6 +65,10 @@ namespace Core.AttributeSystem.Alignments {
             }
         }
 
+        public string GetTooltipText(int level) {
+            return $"{AlignmentName} +{level}";
+        }
+
 
 
 

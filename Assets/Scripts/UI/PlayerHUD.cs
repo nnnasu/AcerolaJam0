@@ -16,8 +16,9 @@ public class PlayerHUD : MonoBehaviour {
     [Header("Player Reference")]
     public AbilityManager abilityManager;
     public PlayerAttributeSet attributes => abilityManager.Attributes;
+    public HoverTipManager HoverManager;
 
-    
+
 
     private void Start() {
         // Tween.Delay(1, Synchronise);
@@ -46,12 +47,17 @@ public class PlayerHUD : MonoBehaviour {
         }
     }
 
+
     private void OnEnable() {
         attributes.OnHPChanged += UpdateHP;
         attributes.OnMPChanged += UpdateMP;
         abilityManager.OnRebindRequest += Synchronise;
         attributes.OnEffectApplied += statusEffectDisplay.ApplyEffect;
         attributes.OnEffectRemoved += statusEffectDisplay.RemoveEffect;
+        foreach (var item in Skills) {
+            item.OnHoverEvent += OnHoverEvent;
+            item.OnHoverLeft += OnHoverLeft;
+        }
     }
 
     private void OnDisable() {
@@ -60,6 +66,10 @@ public class PlayerHUD : MonoBehaviour {
         abilityManager.OnRebindRequest -= Synchronise;
         attributes.OnEffectApplied -= statusEffectDisplay.ApplyEffect;
         attributes.OnEffectRemoved -= statusEffectDisplay.RemoveEffect;
+        foreach (var item in Skills) {
+            item.OnHoverEvent -= OnHoverEvent;
+            item.OnHoverLeft -= OnHoverLeft;
+        }
     }
 
     private void UpdateMP(float oldValue, float newValue) {
@@ -68,6 +78,19 @@ public class PlayerHUD : MonoBehaviour {
 
     private void UpdateHP(float oldValue, float newValue) {
         HPBar.OnValueChanged(oldValue, newValue, attributes.MaxHP);
+    }
+
+    private void OnHoverEvent(int index, Vector2 pos) {
+        var icon = Skills[index - 1];
+        if (icon.boundAbility == null) return;
+
+        var ability = icon.boundAbility;
+        HoverManager.ShowTip("", ability.GetDescription(), pos);
+
+    }
+    private void OnHoverLeft() {
+        HoverManager.HideTip();
+
     }
 
 }

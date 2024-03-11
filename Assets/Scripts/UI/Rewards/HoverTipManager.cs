@@ -5,12 +5,17 @@ using TMPro;
 using UnityEngine;
 
 public class HoverTipManager : MonoBehaviour {
-    public TextMeshProUGUI tooltipText;
+
+    public TextMeshProUGUI TitleTextField;
+    public TextMeshProUGUI LevelField;
+    public TextMeshProUGUI DescriptionTextField;
     public RectTransform tipWindow;
 
-    public void ShowTip(string tip, Vector2 mousePos) {
+    public void ShowTip(string title, string description, Vector2 mousePos, int level = 0) {
         gameObject.SetActive(true);
-        tooltipText.text = tip;
+        TitleTextField.text = title;
+        LevelField.text = level > 0 ? $"Level {level}" : "";
+        DescriptionTextField.text = description;
         // tipWindow.sizeDelta = new Vector2(tooltipText.preferredWidth > 200 ? 200 : tooltipText.preferredWidth, tooltipText.preferredHeight);
         tipWindow.position = mousePos;
         // TODO: Fix the overflow stuff (not important, is functional already)
@@ -23,7 +28,7 @@ public class HoverTipManager : MonoBehaviour {
     }
 
     internal void HideTip() {
-        tooltipText.text = "hide";
+        DescriptionTextField.text = "hide";
         gameObject.SetActive(false);
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Core.Abilities.Effects;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
@@ -21,8 +23,12 @@ namespace Core.Abilities.Definitions {
         public ScaledFloat DamageMultiplier;
         public ScaledFloat BaseCooldown;
         public ScaledFloat BaseMPCost;
+
+
+        public List<OnHitEffect> OnHitUniqueEffects = new();
         public List<OnHitEffect> OnHitEffects = new();
         public List<OnActivateEffect> OnActivateEffects = new();
+
 
         [Header("Animations")]
         public AnimationStateInfo AnimationToPlay;
@@ -45,10 +51,15 @@ namespace Core.Abilities.Definitions {
 
 
         public virtual void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-            OnHitEffects.ForEach(x => x.OnHit(owner, ability, action, target));
+            OnHitEffects
+                .ForEach(x => x.OnHit(owner, ability, action, target));
         }
 
-        public void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        public virtual void OnActionHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+            OnHitUniqueEffects.ForEach(x => x.OnHit(owner, ability, action, target));
+        }
+
+        public void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null, Action<AttributeSet> OnActionHit = null) {
             OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
 
             float animationMult = 1;
@@ -58,16 +69,34 @@ namespace Core.Abilities.Definitions {
             owner.AnimationHandler.SetActionSpeed(animationMult);
             float delay = CastPoint * ability.cachedUsageTime;
 
+            Action<AttributeSet> combinedAction = delegate { };
+            if (OnHit != null) combinedAction += OnHit;
+            if (OnActionHit != null) combinedAction += OnActionHit;
 
             if (delay > 0) {
-                Tween.Delay(delay, () => ActivateActionImplementation(owner, ability, action, target, OnHit));
+                Tween.Delay(delay, () => ActivateActionImplementation(owner, ability, action, target, combinedAction));
             } else {
-                ActivateActionImplementation(owner, ability, action, target, OnHit);
+                ActivateActionImplementation(owner, ability, action, target, combinedAction);
             }
         }
 
-        public virtual string GetTooltipText(float level) {
-            return Description;
+        public string GetTooltipText(int level) {
+            List<string> results = new();
+            if (alignment) results.Add(alignment.GetTooltipText(GetAlignmentLevel(level).Item2));
+            results.Add(GetActionDescription(level));
+
+            OnHitEffects.ForEach(x => results.Add(x.GetTooltip(level)));
+            OnActivateEffects.ForEach(x => results.Add(x.GetTooltip(level)));
+            return string.Join("\n", results);
+        }
+
+        public string GetActionDescription(int level) {
+            StringBuilder sb = new(Description);
+
+            //* Replaces specific strings in the description with the following. 
+            sb.Replace("{RANGE}", $"{Range.GetValueAtLevel(level)}m");
+            sb.Replace("{DAMAGE}", $"{DamageMultiplier.GetValueAtLevel(level)}x");
+            return sb.ToString();
         }
 
         public (AlignmentDefinition, int) GetAlignmentLevel(int level) {

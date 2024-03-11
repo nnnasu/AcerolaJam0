@@ -51,7 +51,7 @@ public static class Formulas {
     }
 
     public static float RewardFormulaPityComponent(int levels) {
-        return levels / 10;
+        return levels / 7.5f;
     }
 
 }

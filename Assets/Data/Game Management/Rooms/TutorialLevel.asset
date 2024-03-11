@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   RewardsList: {fileID: 11400000, guid: 501dba6051fae624086a19b35f903fd2, type: 2}
-  RewardBonusLevels: 10
+  RewardBonusLevels: 0

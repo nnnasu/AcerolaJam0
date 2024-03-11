@@ -8,7 +8,7 @@ namespace Core.Abilities.Effects {
 
     public abstract class OnActivateEffect : ScriptableObject {
 
-        public abstract string GetTooltip(ActionInstance action);
+        public abstract string GetTooltip(int level);
         public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null);
 
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,11 +6,12 @@ using Core.Abilities.Instances;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillDisplay : MonoBehaviour {
+public class SkillDisplay : MonoBehaviour, IPointerMoveHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
-    private AbilityInstance boundAbility;
+    internal AbilityInstance boundAbility;
     public Image Border;
     public Image MainIcon;
     public Image CooldownOverlay;
@@ -20,6 +22,12 @@ public class SkillDisplay : MonoBehaviour {
     Tween CooldownDisplayTween;
     Tween CooldownTextTween;
     bool isSelected = false;
+    public int index = 0;
+
+
+    public event Action<int, Vector2> OnHoverEvent = delegate { };
+    public event Action<int> OnClickEvent = delegate { };
+    public event Action OnHoverLeft = delegate { };
 
     public void OnAbilityStarted() {
     }
@@ -50,6 +58,7 @@ public class SkillDisplay : MonoBehaviour {
 
     public void SetAbilityNumber(int num) {
         KeyText.text = num.ToString();
+        index = num;
     }
 
     public void Bind(AbilityInstance ability) {
@@ -88,5 +97,21 @@ public class SkillDisplay : MonoBehaviour {
         boundAbility.OnAbilityChanged -= UpdateAbilityDisplay;
         boundAbility = null;
         gameObject.SetActive(false);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        OnHoverEvent?.Invoke(index, eventData.position);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        OnHoverLeft?.Invoke();
+    }
+
+    public void OnPointerMove(PointerEventData eventData) {
+        OnHoverEvent?.Invoke(index, eventData.position);
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+
     }
 }

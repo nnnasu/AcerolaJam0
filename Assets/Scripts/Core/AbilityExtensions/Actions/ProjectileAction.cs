@@ -30,12 +30,14 @@ public class ProjectileAction : ActionDefinition {
         direction.y = 0;
         direction.Normalize();
 
+        Vector3 targetPoint = owner.transform.position + direction * Range.GetValueAtLevel(action.level);
+
         int count = ProjectileCountScalesWithLevel ? action.level : ProjectileCount;
 
         // e.g. if we have 3 projectiles at 10 deg, leftmost starts at -15 deg so that the center is unchanged.
         float eulerY = -count * AngleBetweenProjectiles / 2;
         for (int i = 0; i < count; i++) {
-            SpawnAndOrientProjecitle(owner, ability, action, target, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
+            SpawnAndOrientProjecitle(owner, ability, action, targetPoint, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
             eulerY += AngleBetweenProjectiles;
         }
 

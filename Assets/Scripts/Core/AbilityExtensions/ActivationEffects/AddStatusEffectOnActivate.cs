@@ -8,13 +8,13 @@ using UnityEngine;
 
 namespace Core.AbilityExtensions.ActivationEffects {
     [CreateAssetMenu(fileName = "OnActivateStatusEffect", menuName = "Ability System/On Activate Effects/Status Effect", order = 0)]
-    public  class AddStatusEffectOnActivate : OnActivateEffect {
+    public class AddStatusEffectOnActivate : OnActivateEffect {
 
         public StatusEffect EffectToApply;
         [TextArea] public string Description;
 
-        public override string GetTooltip(ActionInstance action) {
-            return Description;
+        public override string GetTooltip(int level) {
+            return $"Applies {EffectToApply.name} on activation";
         }
 
         public override void OnActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {

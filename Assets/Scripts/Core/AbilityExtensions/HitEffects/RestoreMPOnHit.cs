@@ -9,8 +9,8 @@ namespace Core.AbilityExtensions.Effects {
     public class RestoreMPOnHit : OnHitEffect {
         public ScaledFloat RegenOnHit;
 
-        public override string GetTooltip(ActionInstance action) {
-            return $"Recovers {RegenOnHit.GetValueAtLevel(action.level)} MP on hit.";
+        public override string GetTooltip(int level) {
+            return $"Recovers {RegenOnHit.GetValueAtLevel(level)} MP on hit.";
         }
 
         public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {

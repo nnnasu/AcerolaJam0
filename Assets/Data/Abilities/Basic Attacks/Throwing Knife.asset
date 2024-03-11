@@ -98,9 +98,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  OnHitEffects:
+  OnHitUniqueEffects:
   - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
-  - {fileID: 11400000, guid: 590ae6a176ce2c645bcd92574bc0bf75, type: 2}
+  OnHitEffects: []
   OnActivateEffects: []
   AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
   CastPoint: 0.3
@@ -149,3 +149,5 @@ MonoBehaviour:
   ProjectileCount: 3
   AngleBetweenProjectiles: 10
   ProjectileCountScalesWithLevel: 1
+  HomeTowardsUser: 0
+  SpawnAtTargetPoint: 0

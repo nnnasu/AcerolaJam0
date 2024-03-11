@@ -23,14 +23,21 @@ namespace Core.Abilities.Instances {
         }
 
         public void ActivateAbility(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {
-            definition.ActivateAction(owner, ability, this, target, OnHit);
+            definition.ActivateAction(owner, ability, this, target, OnHit, (target) => OnActionHit(owner, ability, target));
         }
 
         public void OnHit(AbilityManager owner, AbilityInstance ability, AttributeSet target) {
             definition.OnHit(owner, ability, this, target);
         }
 
-        public string ToTooltipText() {
+        protected void OnActionHit(AbilityManager owner, AbilityInstance ability, AttributeSet target) {
+            definition.OnActionHit(owner, ability, this, target);
+        }
+
+        public string GetTitle() {
+            return "NA";
+        }
+        public string GetDescription() {
             if (definition == null) return "Empty Action";
             return definition.GetTooltipText(level);
         }

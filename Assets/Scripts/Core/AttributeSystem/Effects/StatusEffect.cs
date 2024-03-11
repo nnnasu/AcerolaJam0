@@ -18,7 +18,13 @@ public abstract class StatusEffect : ScriptableObject {
     [Header("UI Properties")]
     public Sprite icon;
     public string EffectName;
-    public abstract string GetDescription(EffectInstance instance);
+    [TextArea] public string ShortDescription;
+    public abstract string GetDescription(EffectInstance instance); // used for HUD 
+
+    // used for on hit/activate effect explanations
+    public virtual string GetShortDescription() {
+        return ShortDescription;
+    }
 
     public bool ShouldDisplayNumber = false;
     public bool ShowInHUD = true;

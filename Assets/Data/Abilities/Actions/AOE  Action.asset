@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AOE  Action
   m_EditorClassIdentifier: 
   actionType: 2
-  alignment: {fileID: 0}
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0.3
@@ -98,10 +98,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  UsageTime: 0
+  OnHitUniqueEffects: []
   OnHitEffects: []
   OnActivateEffects: []
   AnimationToPlay: {fileID: 11400000, guid: 718a64c1b25b10d4e9991703cb7a4ed5, type: 2}
+  CastPoint: 0
+  UsageTime: 0
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
@@ -134,8 +136,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   icon: {fileID: 21300000, guid: 66085d104b5f1ad4fae4bf650188c0b2, type: 3}
-  ActionTitle: Red
-  Description: AOE damage
+  ActionTitle: Explosion
+  Description: Creates an explosion at the target point up to {RANGE} away, dealing
+    {DAMAGE} damage to any enemies who enter the area.
   AoeSpawnObject: {fileID: 3787522926584128234, guid: 214e6fcf7343d8d42a5ffc36aa111ad3,
     type: 3}
   IgnoredEntities: 1

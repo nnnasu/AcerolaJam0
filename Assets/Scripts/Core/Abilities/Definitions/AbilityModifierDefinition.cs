@@ -11,7 +11,7 @@ using UnityEngine;
 
 public abstract class AbilityModifierDefinition : ScriptableObject, IGetAlignmentLevel {
     // pass in the modifier instance so we can tell what level the mod is at
-    public AlignmentDefinition alignment;    
+    public AlignmentDefinition alignment;
 
     [Tooltip("Stats which apply to the entire character.")]
     public List<StatModifier> GlobalStatModifier = new();
@@ -32,6 +32,7 @@ public abstract class AbilityModifierDefinition : ScriptableObject, IGetAlignmen
         List<string> strings = new();
         GlobalStatModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));
         PerAbilityModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));
+        if (alignment) strings.Add(alignment.GetTooltipText(level));
         strings.Add(Description);
         return string.Join("\n", strings);
     }

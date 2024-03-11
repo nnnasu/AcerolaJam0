@@ -20,9 +20,11 @@ namespace Core.Abilities.Instances {
         public void OnHit(AbilityManager owner, AbilityInstance ability, AttributeSet hitTarget) {
             definition.OnHit(owner, ability, this, hitTarget);
         }
-
-        public string ToTooltipText() {
-            if (definition == null) return "Empty";
+        public string GetTitle() {
+            return "NA";
+        }
+        public string GetDescription() {
+            if (definition == null) return "";
             return definition.GetTooltipText(level);
         }
     }

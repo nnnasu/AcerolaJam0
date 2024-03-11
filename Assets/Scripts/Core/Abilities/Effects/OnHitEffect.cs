@@ -7,7 +7,7 @@ namespace Core.Abilities.Effects {
 
     public abstract class OnHitEffect : ScriptableObject {
 
-        public abstract string GetTooltip(ActionInstance action);
+        public abstract string GetTooltip(int level);
         public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target);
 
     }
