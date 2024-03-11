@@ -14,8 +14,7 @@ public class LineDamageAction : ActionDefinition {
     public EntityType IgnoredEntities = EntityType.Player;
     public float radius = 1;
 
-    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
-        base.ActivateAction(owner, ability, action, target, OnHit);
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.previousPosition;
         var poolObj = GlobalPool.Current.GetObject(AoeSpawnObject);
         LineAoe obj = poolObj.GetComponent<LineAoe>();

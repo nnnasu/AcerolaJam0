@@ -10,8 +10,7 @@ using System.Linq;
 public class StructureActionDefinition : ActionDefinition {
     public StructureDefinition structure;
 
-    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
-        base.ActivateAction(owner, ability, action, target, OnHit);
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         // Check if the player has enough structures in stock
         // Spawn the structure.
         var obj = structure.SpawnStructure(target, owner, ability, action);

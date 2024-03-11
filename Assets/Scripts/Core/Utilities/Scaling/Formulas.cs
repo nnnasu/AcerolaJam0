@@ -8,7 +8,7 @@ public static class Formulas {
     public static float AttackSpeedFormula(float baseAttackTime, float attackSpeed) {
         return Mathf.Clamp(
             baseAttackTime / (1 + attackSpeed / 30),
-            0.2f,
+            0.3f,
             6
         );
     }

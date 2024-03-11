@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abilities.Enums;
+using Core.Animation;
 using PrimeTween;
 using UnityEngine;
 
@@ -10,19 +11,28 @@ namespace Core.Abilities.Instances {
     [Serializable]
     public class AbilityInstance {
 
+        [HideInInspector]
         public AbilityManager owner;
+
         public List<ActionInstance> actions = new();
         public List<ModifierInstance> modifiers = new();
+
+        [Header("Current State")]
         public float CooldownDisplay;
         public float UsageTimeDisplay;
         public bool isOnCooldown { get; private set; } = false;
         public float cachedCooldownTime { get; private set; }
         public float cachedUsageTime { get; private set; }
+        public float baseUsageTime { get; private set; } = 0;
         public float cachedMPCost { get; private set; }
+
         public bool useDynamicCost = false;
         public bool useDynamicCooldown = false;
         public Tween CooldownTween; // sum(action cd)
         public Tween UsageTween; // cast time = max(action cast time)
+
+        // Animations
+        public AnimationStateInfo StateToPlay { get; private set; } = null;
 
         public event Action OnAbilityActivated = delegate { };
         public event Action<bool> OnFocusChanged = delegate { };
@@ -38,6 +48,7 @@ namespace Core.Abilities.Instances {
             CalculateCooldownTime(owner);
             CalculateUsageTime(owner);
             CalculateMPCost(owner);
+            RecalculateAnimation();
             OnAbilityChanged?.Invoke();
         }
 
@@ -129,6 +140,7 @@ namespace Core.Abilities.Instances {
                 if (item.definition.actionType == ActionType.BasicAttack) isBasicAttack = true;
                 usage = Mathf.Max(usage, item.definition.UsageTime);
             }
+            baseUsageTime = usage;
             cachedUsageTime = usage;
             if (isBasicAttack) {
                 float attackSpeed = owner.Attributes.AttackSpeed;
@@ -213,6 +225,23 @@ namespace Core.Abilities.Instances {
             } else {
                 actions[index] = incoming;
             }
+        }
+
+        /// <summary>
+        /// Function that checks through all available actions, then sets the AnimatorStateInfo. 
+        /// The priority number with the lowest value is taken. Ties are broken based on the slot order.
+        /// </summary>
+        public void RecalculateAnimation() {
+            AnimationStateInfo animationToPlay = null;
+            int priority = int.MaxValue;
+            foreach (var item in actions) {
+                var anim = item.definition.AnimationToPlay;
+                if (!anim) continue;
+                if (anim.priority < priority) {
+                    animationToPlay = anim;
+                }
+            }
+            StateToPlay = animationToPlay;
         }
 
     }

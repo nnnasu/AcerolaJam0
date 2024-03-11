@@ -19,9 +19,11 @@ namespace Core.Enemies.Strategy {
         public ScaledFloat damageMult;
         public GameObject ExplosionPrefab;
         public EntityType IgnoredEntities = EntityType.NONE;
+        public float radius = 5;
 
 
         public override float Execute(AIController controller, AIPackage package, Vector3? playerPosition) {
+            controller.rb.velocity = Vector3.zero;
             var ex = controller.GetComponent<ExplosionComponent>();
             if (!ex) return 0;
 
@@ -45,10 +47,17 @@ namespace Core.Enemies.Strategy {
         }
 
         private float ExecuteCharging(AIController controller, AIPackage package, Vector3? playerPosition, ExplosionComponent ex) {
-            return ex.GetRemainingChargeTime();
+            return 0;
         }
 
         private float ExecuteCharged(AIController controller, AIPackage package, Vector3? playerPosition, ExplosionComponent ex) {
+            if (controller.currentPlayerDistance > radius)  {
+                // Cancel
+                Debug.Log("Charged, should cancel");
+                ex.CancelCharge();
+                return 0;
+            }
+            Debug.Log("Charged, exploding");
             // Detonate.
             ex.MarkForDetonation();
             // Spawn the burst

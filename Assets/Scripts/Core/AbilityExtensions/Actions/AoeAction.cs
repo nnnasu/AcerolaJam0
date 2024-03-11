@@ -13,8 +13,7 @@ public class AoeAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;
 
-    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
-        base.ActivateAction(owner, ability, action, target, OnHit);
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();

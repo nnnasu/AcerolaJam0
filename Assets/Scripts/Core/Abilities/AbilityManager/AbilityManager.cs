@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Core.Abilities.Definitions;
 using Core.Abilities.Instances;
 using Core.Abilities.Structures;
+using Core.Animation;
 using PrimeTween;
 using UnityEngine;
 
 namespace Core.Abilities {
     public partial class AbilityManager : MonoBehaviour {
         public PlayerAttributeSet Attributes;
+        public AnimationHandler AnimationHandler;
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
         public event Action OnRebindRequest = delegate { };
 
@@ -72,18 +74,26 @@ namespace Core.Abilities {
         public void OnClick(Vector3 targetPosition) {
             previousPosition = transform.position;
             if (index == 0) {
-                BasicAttack?.ActivateAbility(targetPosition);
+                ActivateAbility(BasicAttack, targetPosition);
             } else {
                 if (index - 1 >= Abilities.Count) return;
 
                 var ability = Abilities[index - 1];
-                ability?.ActivateAbility(targetPosition);
+                ActivateAbility(ability, targetPosition);
             }
             SetActiveSkill(0);
         }
 
         public void OnStructureRecall(StructureBase structureBase) {
             structureBase.OnRecall(this);
+        }
+
+        private void ActivateAbility(AbilityInstance ability, Vector3 position) {
+            if (ability == null) return;
+            AnimationHandler.SetActionSpeed(1);
+            if (ability.ActivateAbility(position)) {
+                AnimationHandler.PlayAnimationState(ability.StateToPlay);
+            }
         }
 
 
@@ -101,6 +111,7 @@ namespace Core.Abilities {
         public void MoveTick(Vector3 amount) {
             if (IsMovementControlledByAbility) return;
             characterController.Move(amount * Attributes.MovementSpeed);
+            AnimationHandler.SetWalkAnimationDirection(amount);
         }
     }
 }

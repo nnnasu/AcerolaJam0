@@ -18,14 +18,17 @@ public class ProjectileAction : ActionDefinition {
 
     public EntityType IgnoredEntities = EntityType.Player;
 
-    public override void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
-        base.ActivateAction(owner, ability, action, target, OnHit);
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+
+
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();
         var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
         Projectile obj = poolObj.GetComponent<Projectile>();
-        if (obj == null) return;
+        if (obj == null) {
+            return;
+        }
 
         obj.transform.position = owner.transform.position + owner.transform.rotation * offset;
         float damage = Formulas.DamageDealtFormula(
@@ -40,5 +43,6 @@ public class ProjectileAction : ActionDefinition {
         // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
         // else obj.Activate(speed, duration, direction, OnHit);
     }
+
 
 }

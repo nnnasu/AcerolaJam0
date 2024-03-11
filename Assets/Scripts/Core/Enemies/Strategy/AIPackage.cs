@@ -26,8 +26,10 @@ namespace Core.Enemies.Strategy {
             location.y = controller.transform.position.y;
             float distance = Vector3.Distance(location, controller.transform.position);
             foreach (var item in Actions) {
-                if (item.Conditions.Count == 0 || item.Conditions.All(x => x.CanExecute(controller)))
+                if (item.Conditions.Count == 0 || item.Conditions.All(x => x.CanExecute(controller))) {
+                    controller.CurrentAction = item;
                     return item.Execute(controller, this, playerLocation);
+                }
             }
 
             return 0;

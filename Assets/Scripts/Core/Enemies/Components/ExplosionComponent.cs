@@ -17,7 +17,7 @@ namespace Core.Enemies.Components {
         public Material baseMat;
         public Material lerpMat;
 
-        public ChargeStatus ChargeStatus { get; private set; } = ChargeStatus.Neutral;
+        public ChargeStatus ChargeStatus = ChargeStatus.Neutral;
 
         public float ChargeTimer = 2;
         public float DefuseTime = 5;
@@ -35,6 +35,9 @@ namespace Core.Enemies.Components {
         private void OnEnable() {
             render.material = baseMat;
             MarkedForDetonation = false;
+            chargeTween.Stop();
+            ShakeTween.Stop();
+            ChargeStatus = ChargeStatus.Neutral;
         }
 
         public void StartCharge() {
