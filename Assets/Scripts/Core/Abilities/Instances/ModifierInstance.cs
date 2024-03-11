@@ -9,9 +9,9 @@ namespace Core.Abilities.Instances {
         public AbilityModifierDefinition definition;
         public int level = 1;
 
-        public ModifierInstance(AbilityModifierDefinition def) {
+        public ModifierInstance(AbilityModifierDefinition def, int level = 1) {
             this.definition = def;
-
+            this.level = level;
         }
 
         public void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {

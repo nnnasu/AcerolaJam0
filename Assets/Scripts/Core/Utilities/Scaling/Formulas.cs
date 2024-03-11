@@ -42,4 +42,16 @@ public static class Formulas {
         return Mathf.Pow(Mathf.Log(x), exponent);
     }
 
+
+    // Final formula is floor(vary * random  + pity + 1)
+    public static float RewardFormulaVariableComponent(int levels) {
+        // log7( (levels+10)^1.9 / 10)
+        // this was derived by throwing a bunch of numbers into a graphing calculator
+        return Mathf.Log(Mathf.Pow(levels + 10, 1.9f) / 10, 7);
+    }
+
+    public static float RewardFormulaPityComponent(int levels) {
+        return levels / 10;
+    }
+
 }

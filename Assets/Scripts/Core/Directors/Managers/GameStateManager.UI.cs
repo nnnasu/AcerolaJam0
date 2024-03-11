@@ -1,3 +1,4 @@
+using Core.GlobalInfo;
 using Core.UI.Rewards;
 using PrimeTween;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace Core.Directors.Managers {
         public RewardScreen rewardScreen;
         public CanvasGroup GameHUDCanvas;
         public PlayerHUD playerHUD;
-        public RewardGenerator DefaultRewardGenerator;
         public float FadeDuration = 1;
         private Tween RewardFadeTween;
         private Tween HUDFadeTween;
@@ -23,7 +23,10 @@ namespace Core.Directors.Managers {
 
             // TODO Set levels on rewards
             rewardScreen.remainingTries = 3;
-            rewardScreen.RewardPanel.SetRewards(DefaultRewardGenerator.GetRandomActions(), DefaultRewardGenerator.GetRandomModifiers());
+            var roomer = EnemyDirector.CurrentRoom;
+            int currentLevel = GameLevel.current.level;
+
+            rewardScreen.RewardPanel.SetRewards(roomer.GetActionRewards(currentLevel), roomer.GetModifierRewards(currentLevel));
 
 
             HUDFadeTween = Tween.Alpha(GameHUDCanvas, 1, 0, FadeDuration);

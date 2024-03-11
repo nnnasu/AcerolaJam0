@@ -15,8 +15,9 @@ namespace Core.Abilities.Instances {
         public float BaseCost => definition.BaseMPCost.GetValueAtLevel(level);
         public float DamageMultiplier => definition.DamageMultiplier.GetValueAtLevel(level);
 
-        public ActionInstance(ActionDefinition definition) {
+        public ActionInstance(ActionDefinition definition, int level = 1) {
             this.definition = definition;
+            this.level = level;
 
             CooldownDisplay = BaseCooldown;
         }

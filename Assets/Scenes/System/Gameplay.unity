@@ -769,8 +769,6 @@ MonoBehaviour:
   rewardScreen: {fileID: 560199139}
   GameHUDCanvas: {fileID: 1032266918}
   playerHUD: {fileID: 1032266917}
-  DefaultRewardGenerator: {fileID: 11400000, guid: 501dba6051fae624086a19b35f903fd2,
-    type: 2}
   FadeDuration: 1
 --- !u!114 &386531891
 MonoBehaviour:

@@ -19,7 +19,6 @@ namespace Core.Directors.Managers {
         public RoomLoader levelManager;
         public CheckpointManager checkpointManager;
 
-        public int RoomsTraversed { get; private set; } = 0;
 
         [Header("Initialization")]
         public bool LoadTutorialOnStart = true;

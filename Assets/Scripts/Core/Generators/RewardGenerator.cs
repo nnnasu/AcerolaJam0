@@ -31,19 +31,25 @@ public class RewardGenerator : ScriptableObject {
 
     }
 
-    public List<ActionInstance> GetRandomActions(int number = 4) {
+    public List<ActionInstance> GetRandomActions(int number, int level) {
         List<ActionInstance> result = new();
         for (int i = 0; i < number; i++) {
-            result.Add(new ActionInstance(ActionWeights.Next()));
+            result.Add(new ActionInstance(ActionWeights.Next(), GenerateAbilityLevel(level)));
         }
         return result;
     }
 
-    public List<ModifierInstance> GetRandomModifiers(int number = 4) {
+    public List<ModifierInstance> GetRandomModifiers(int number, int level) {
         List<ModifierInstance> result = new();
         for (int i = 0; i < number; i++) {
-            result.Add(new ModifierInstance(ModifierWeights.Next()));
+            result.Add(new ModifierInstance(ModifierWeights.Next(), GenerateAbilityLevel(level)));
         }
         return result;
+    }
+
+    public static int GenerateAbilityLevel(int level) {
+        float randomComponent = Formulas.RewardFormulaVariableComponent(level) * Random.value;
+        float pityComponent = Formulas.RewardFormulaPityComponent(level);
+        return Mathf.FloorToInt(randomComponent + 1 + pityComponent);
     }
 }

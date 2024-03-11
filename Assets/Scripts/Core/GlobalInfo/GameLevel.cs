@@ -12,6 +12,10 @@ namespace Core.GlobalInfo {
             else current = this;
         }
 
+        private void OnDestroy() {
+            if (current == this) current = null;
+        }
+
         public void SetLevel(int lv) {
             level = lv;
         }

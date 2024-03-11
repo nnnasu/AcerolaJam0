@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Abilities.Instances;
 using Core.Directors;
 using Core.Utilities.Scaling;
 using UnityEngine;
@@ -22,13 +23,15 @@ namespace Core.Directors.Common {
         [Header("Valid Rooms")]
         public List<AssetReference> EligibleLevels = new();
 
+        public RewardGenerator RewardsList;
+        public int RewardBonusLevels = 0;
+
         public AssetReference GetRandomLevel() {
             int index = Mathf.FloorToInt(Random.value * EligibleLevels.Count);
             return EligibleLevels[index];
         }
 
         public int GetSpawnCount(int level) {
-            // TODO DERIVE
             return SpawnFormula.GetFlooredValue(level);
         }
 
@@ -36,6 +39,12 @@ namespace Core.Directors.Common {
             return CreditFormula.GetValue(level);
         }
 
+        public List<ActionInstance> GetActionRewards(int level) {
+            return RewardsList.GetRandomActions(4, level + RewardBonusLevels);
+        }
+        public List<ModifierInstance> GetModifierRewards(int level) {
+            return RewardsList.GetRandomModifiers(4, level + RewardBonusLevels);
+        }
 
     }
 }

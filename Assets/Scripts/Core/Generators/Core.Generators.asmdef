@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "GUID:2bda659bafb1d2746a18aaf6870fd1f6",
-        "GUID:d319d576fda3f2c46839e04ecb059f11"
+        "GUID:d319d576fda3f2c46839e04ecb059f11",
+        "GUID:db31bb5f2418a0c40a4ba37c4045b330"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
