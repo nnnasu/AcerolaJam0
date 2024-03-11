@@ -36,7 +36,7 @@ public partial class PlayerController : MonoBehaviour {
         input.OnRecallEvent -= OnRecall;
         input.OnSkillSelected -= OnSkillSelected;
         OnControllerDisable?.Invoke();
-        abilityManager.MoveTick(Vector3.zero);
+        abilityManager?.MoveTick(Vector3.zero);
 
         currentInput = Vector2.zero;
     }

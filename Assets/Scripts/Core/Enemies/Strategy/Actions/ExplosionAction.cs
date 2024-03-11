@@ -57,7 +57,6 @@ namespace Core.Enemies.Strategy {
                 ex.CancelCharge();
                 return 0;
             }
-            Debug.Log("Charged, exploding");
             // Detonate.
             ex.MarkForDetonation();
             // Spawn the burst

@@ -9,18 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4b019b9f42c2b48b14a2cafe4ee963, type: 3}
-  m_Name: ExplosionAction
+  m_Script: {fileID: 11500000, guid: a9c37aa992cce45408d4b69ca4c0a8ec, type: 3}
+  m_Name: DeathCount
   m_EditorClassIdentifier: 
-  Conditions:
-  - {fileID: 11400000, guid: 502c8411eab1e484fa06dcfbedfafe59, type: 2}
-  ChargeTimer: 3
-  ChargeExplosionDelay: 4
-  offset: 0.1
-  damageMult:
-    scalingType: 0
-    BaseValue: 0.1
-    AdditiveValue: 1
+  duration:
+    scalingType: 2
+    BaseValue: 0
+    AdditiveValue: 10
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -45,6 +40,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  ExplosionPrefab: {fileID: 3787522926584128234, guid: 214e6fcf7343d8d42a5ffc36aa111ad3,
-    type: 3}
-  IgnoredEntities: 0
+  effectType: 1
+  Conditions: []
+  icon: {fileID: 21300000, guid: e866f59780811764d9b054143d5d1bee, type: 3}
+  EffectName: Imminent Death
+  ShouldDisplayNumber: 0
+  ShowInHUD: 1

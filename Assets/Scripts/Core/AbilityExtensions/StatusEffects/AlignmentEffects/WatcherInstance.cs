@@ -5,7 +5,6 @@ namespace Core.AbilityExtensions.StatusEffects.AlignmentEffects {
 
     public class WatcherInstance : EffectInstance {
 
-        protected AttributeSet target;
         private AttributeWatcher watcherDefinition;
 
         public WatcherInstance(StatusEffect def, int level) : base(def, level) {
@@ -14,7 +13,6 @@ namespace Core.AbilityExtensions.StatusEffects.AlignmentEffects {
 
         public override void HandleEffectApplication(AttributeSet attributes) {
             base.HandleEffectApplication(attributes);
-            target = attributes;
 
 
             switch (watcherDefinition.watchedAttribute) {

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Core.AttributeSystem.Conditions;
 using Core.Utilities.Scaling;
 using UnityEngine;
 
@@ -10,13 +12,14 @@ public abstract class StatusEffect : ScriptableObject {
 
     public ScaledFloat duration;
     public EffectType effectType = EffectType.Duration;
+    public List<TargetCondition> Conditions = new();
 
 
     [Header("UI Properties")]
     public Sprite icon;
     public string EffectName;
     public abstract string GetDescription(EffectInstance instance);
-    
+
     public bool ShouldDisplayNumber = false;
     public bool ShowInHUD = true;
 
@@ -33,5 +36,9 @@ public abstract class StatusEffect : ScriptableObject {
 
     public virtual EffectInstance GetEffectInstance(AttributeSet target, int level) {
         return new(this, level);
+    }
+
+    public virtual bool CanApplyEffect(AttributeSet target, EffectInstance instance) {
+        return Conditions.All(x => x.TestCondition(target));
     }
 }

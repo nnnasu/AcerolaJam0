@@ -15,19 +15,31 @@ public class ProjectileAction : ActionDefinition {
     public float ProjectileDuration = 5;
     public bool Piercing = false;
     public Vector3 offset = new Vector3(0, 1, 0);
-
     public EntityType IgnoredEntities = EntityType.Player;
 
+    public int ProjectileCount = 3;
+    public float AngleBetweenProjectiles = 10;
+
+
     protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
-
-
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();
+
+        // e.g. if we have 3 projectiles at 10 deg, leftmost starts at -15 deg so that the center is unchanged.
+        float eulerY = -ProjectileCount * AngleBetweenProjectiles / 2;
+        for (int i = 0; i < ProjectileCount; i++) {
+            SpawnAndOrientProjecitle(owner, ability, action, target, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
+            eulerY += AngleBetweenProjectiles;
+        }
+
+    }
+
+    private Projectile SpawnAndOrientProjecitle(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<AttributeSet> OnHit = null) {
         var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
         Projectile obj = poolObj.GetComponent<Projectile>();
         if (obj == null) {
-            return;
+            return null;
         }
 
         obj.transform.position = owner.transform.position + owner.transform.rotation * offset;
@@ -39,9 +51,7 @@ public class ProjectileAction : ActionDefinition {
         obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
         obj.IgnoredEntities = IgnoredEntities;
         obj.DestroyOnContact = !Piercing;
-
-        // if (useCurve) obj.Activate(curve, duration, direction, OnHit);
-        // else obj.Activate(speed, duration, direction, OnHit);
+        return obj;
     }
 
 

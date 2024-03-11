@@ -59,6 +59,8 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     }
 
     public void ApplyEffect(EffectInstance effect) {
+        if (!effect.CanApplyEffect(this)) return;
+
         if (ActiveEffects.ContainsKey(effect.effectDefinition)) {
             RemoveEffect(effect, true); // just remove the existing effect and apply it again
         }
@@ -131,5 +133,9 @@ public class AttributeSet : MonoBehaviour, IDamageable {
 
     public EntityType GetEntityType() {
         return entityType;
+    }
+
+    public void Kill() {
+        TakeDamage(MaxHP);
     }
 }

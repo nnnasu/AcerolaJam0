@@ -8,8 +8,8 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Line Action", menuName = "Ability System/Player Actions/Line Action", order = 0)]
-public class LineDamageAction : ActionDefinition {
+[CreateAssetMenu(fileName = "Teleport Trail", menuName = "Ability System/Player Actions/Teleport Trail", order = 0)]
+public class TeleportTrailDamageAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;
     public float radius = 1;
@@ -36,9 +36,6 @@ public class LineDamageAction : ActionDefinition {
         obj.ResizeAndMoveColliderToFitLength(owner.previousPosition, lineEndPos, 1);
         obj.IgnoredEntities = IgnoredEntities;
         owner.Teleport(teleportTargetPoint);
-
-
-
     }
 
 }

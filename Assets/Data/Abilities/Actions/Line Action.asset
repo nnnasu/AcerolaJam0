@@ -98,9 +98,11 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  UsageTime: 0
   OnHitEffects: []
   OnActivateEffects: []
+  AnimationToPlay: {fileID: 11400000, guid: 35f5c9420d9f8bc42927c37a1e8fa6a2, type: 2}
+  CastPoint: 0.05
+  UsageTime: 1
   TargetingType: 3
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}

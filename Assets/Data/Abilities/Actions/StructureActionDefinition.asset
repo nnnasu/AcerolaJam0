@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StructureActionDefinition
   m_EditorClassIdentifier: 
   actionType: 4
-  alignment: 3
+  alignment: {fileID: 0}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -99,6 +99,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   UsageTime: 0
+  OnHitEffects: []
+  OnActivateEffects: []
+  AnimationToPlay: {fileID: 11400000, guid: acdab74fce5370f40993c9106f519caa, type: 2}
   TargetingType: 1
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}

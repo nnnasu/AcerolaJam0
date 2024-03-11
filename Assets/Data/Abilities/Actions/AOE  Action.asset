@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AOE  Action
   m_EditorClassIdentifier: 
   actionType: 2
-  alignment: 0
+  alignment: {fileID: 0}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0.3
@@ -100,6 +100,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   UsageTime: 0
   OnHitEffects: []
+  OnActivateEffects: []
+  AnimationToPlay: {fileID: 11400000, guid: 718a64c1b25b10d4e9991703cb7a4ed5, type: 2}
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}

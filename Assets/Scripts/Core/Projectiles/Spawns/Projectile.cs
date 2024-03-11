@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.AttributeSystem;
+using Core.Projectiles.Visuals;
 using Core.Utilities.Sounds;
 using PrimeTween;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace Core.AbilityExtensions.Spawns {
         public Action<AttributeSet> OnHitCallback = null;
         Tween ExpiryTween;
         public EntityType IgnoredEntities = EntityType.NONE;
+        public GameObject OnHitParticlesPrefab;
+        public TrailRenderer trail;
 
         public AudioSource audioPlayer;
         public SoundGroup OnFireSounds;
@@ -35,6 +38,7 @@ namespace Core.AbilityExtensions.Spawns {
             }
 
             if (OnHitSounds) audioPlayer.PlayOneShot(OnHitSounds.GetRandomClip());
+            if (OnHitParticlesPrefab) SpawnHitParticles();
 
             if (DestroyOnContact) {
                 ExpiryTween.Complete();
@@ -43,6 +47,10 @@ namespace Core.AbilityExtensions.Spawns {
 
         public void Activate(float duration, float speed, Vector3 directionWS, float damage, Action<AttributeSet> onHitCallback = null) {
             enabled = true;
+            if (trail) {
+                trail.Clear();
+                trail.emitting = true;
+            }
             transform.rotation = Quaternion.LookRotation(directionWS);
             gameObject.SetActive(true);
             ExpiryTween = Tween.Delay(duration, OnExpiry);
@@ -54,9 +62,16 @@ namespace Core.AbilityExtensions.Spawns {
             }
         }
 
+        private void SpawnHitParticles() {
+            var obj = GlobalPool.Current.GetObject(OnHitParticlesPrefab);
+            obj.transform.position = transform.position;
+            obj.transform.rotation = transform.rotation;
+        }
+
 
 
         private void OnExpiry() {
+            if (trail) trail.emitting = false;
             ReturnToPool();
         }
 

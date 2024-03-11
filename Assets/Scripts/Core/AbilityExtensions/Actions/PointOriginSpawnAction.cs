@@ -8,8 +8,8 @@ using Core.AbilityExtensions.Spawns;
 using Core.AttributeSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AOE Action", menuName = "Ability System/Player Actions/Point AOE", order = 0)]
-public class AoeAction : ActionDefinition {
+[CreateAssetMenu(fileName = "AOE Action", menuName = "Ability System/Player Actions/Point Targeted Spawn", order = 0)]
+public class PointOriginSpawnAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public EntityType IgnoredEntities = EntityType.Player;
 
