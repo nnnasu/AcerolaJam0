@@ -17,7 +17,7 @@ public class CountdownEffect : StatusEffect {
     }
 
     public override string GetDescription(EffectInstance instance) {
-        return "Does X after Y";
+        return "Will die once the timer runs out.";
     }
 
     public override void Remove(AttributeSet attributeSet, EffectInstance instance) {
