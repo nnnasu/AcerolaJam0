@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8911826a31e3a2b4b9f8e635771cb636, type: 3}
-  m_Name: Projectile Action
+  m_Name: Throwing Knife
   m_EditorClassIdentifier: 
   actionType: 0
-  alignment: {fileID: 0}
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -141,10 +141,11 @@ MonoBehaviour:
   Description: Fires a projectile.
   projectilePrefab: {fileID: 3867255862158688488, guid: 915ff68c349c1a34c874c810e295dfe6,
     type: 3}
-  ProjectileSpeed: 15
-  ProjectileDuration: 1.5
-  Piercing: 1
-  offset: {x: 0, y: 1, z: 0}
+  ProjectileSpeed: 35
+  ProjectileDuration: 0.5
+  Piercing: 0
+  offset: {x: 0, y: 1, z: 1}
   IgnoredEntities: 1
   ProjectileCount: 3
-  AngleBetweenProjectiles: 15
+  AngleBetweenProjectiles: 10
+  ProjectileCountScalesWithLevel: 1

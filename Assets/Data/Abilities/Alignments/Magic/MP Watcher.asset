@@ -52,4 +52,4 @@ MonoBehaviour:
   effectTriggersAboveThreshold: 0
   Reversible: 1
   effectsToTrigger:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c11b65c297721ca45a0f0a0ffb18555b, type: 2}

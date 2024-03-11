@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8911826a31e3a2b4b9f8e635771cb636, type: 3}
+  m_Name: Red
+  m_EditorClassIdentifier: 
+  actionType: 1
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
+  DamageMultiplier:
+    scalingType: 0
+    BaseValue: 0.05
+    AdditiveValue: 0.3
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  BaseCooldown:
+    scalingType: 0
+    BaseValue: -0.5
+    AdditiveValue: 20
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  BaseMPCost:
+    scalingType: 0
+    BaseValue: 5
+    AdditiveValue: 20
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  OnHitEffects: []
+  OnActivateEffects: []
+  AnimationToPlay: {fileID: 11400000, guid: cae8b6781700f0e41aa40453d7de3b0a, type: 2}
+  CastPoint: 0.1
+  UsageTime: 0
+  TargetingType: 0
+  TargetSize: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Range:
+    scalingType: 0
+    BaseValue: 0
+    AdditiveValue: 0
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  icon: {fileID: 21300000, guid: 5440755378e6dbf49a98288d1216e684, type: 3}
+  ActionTitle: Red
+  Description: 
+  projectilePrefab: {fileID: 3867255862158688488, guid: 802c980abcc15754896716c3e38172a3,
+    type: 3}
+  ProjectileSpeed: 3
+  ProjectileDuration: 6
+  Piercing: 1
+  offset: {x: 0, y: 1, z: 0}
+  IgnoredEntities: 1
+  ProjectileCount: 1
+  AngleBetweenProjectiles: 10
+  ProjectileCountScalesWithLevel: 0
+  HomeTowardsUser: 0
+  SpawnAtTargetPoint: 0

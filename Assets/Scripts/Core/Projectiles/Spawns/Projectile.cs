@@ -14,7 +14,7 @@ namespace Core.AbilityExtensions.Spawns {
         public bool DestroyOnContact = false;
         public float speed = 0;
         public Action<AttributeSet> OnHitCallback = null;
-        Tween ExpiryTween;
+        protected Tween ExpiryTween;
         public EntityType IgnoredEntities = EntityType.NONE;
         public GameObject OnHitParticlesPrefab;
         public TrailRenderer trail;
@@ -22,6 +22,9 @@ namespace Core.AbilityExtensions.Spawns {
         public AudioSource audioPlayer;
         public SoundGroup OnFireSounds;
         public SoundGroup OnHitSounds;
+
+        public Transform HomingTarget = null;
+        public float TurnRate = 0.5f;
 
         private void OnTriggerEnter(Collider other) {
             var target = other.GetComponent<IDamageable>();
@@ -62,21 +65,24 @@ namespace Core.AbilityExtensions.Spawns {
             }
         }
 
-        private void SpawnHitParticles() {
+        protected void SpawnHitParticles() {
             var obj = GlobalPool.Current.GetObject(OnHitParticlesPrefab);
             obj.transform.position = transform.position;
             obj.transform.rotation = transform.rotation;
         }
 
-
-
-        private void OnExpiry() {
+        protected void OnExpiry() {
             if (trail) trail.emitting = false;
             ReturnToPool();
         }
 
         private void Update() {
+            if (HomingTarget) {
+                Quaternion targetRotation = Quaternion.LookRotation(HomingTarget.position - transform.position);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, TurnRate);
+            }
             transform.position += transform.forward * speed * Time.deltaTime;
+
         }
 
 

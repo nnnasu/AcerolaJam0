@@ -20,15 +20,21 @@ public class ProjectileAction : ActionDefinition {
     public int ProjectileCount = 3;
     public float AngleBetweenProjectiles = 10;
 
+    public bool ProjectileCountScalesWithLevel = false;
+    public bool HomeTowardsUser = false;
+    public bool SpawnAtTargetPoint = false;
+
 
     protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();
 
+        int count = ProjectileCountScalesWithLevel ? action.level : ProjectileCount;
+
         // e.g. if we have 3 projectiles at 10 deg, leftmost starts at -15 deg so that the center is unchanged.
-        float eulerY = -ProjectileCount * AngleBetweenProjectiles / 2;
-        for (int i = 0; i < ProjectileCount; i++) {
+        float eulerY = -count * AngleBetweenProjectiles / 2;
+        for (int i = 0; i < count; i++) {
             SpawnAndOrientProjecitle(owner, ability, action, target, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
             eulerY += AngleBetweenProjectiles;
         }
@@ -42,12 +48,20 @@ public class ProjectileAction : ActionDefinition {
             return null;
         }
 
-        obj.transform.position = owner.transform.position + owner.transform.rotation * offset;
+        Vector3 position = Vector3.zero;
+        if (SpawnAtTargetPoint) {
+            position = target;
+        } else position = owner.transform.position + owner.transform.rotation * offset;
+
+        obj.transform.position = position;
         float damage = Formulas.DamageDealtFormula(
             owner.Attributes.BaseAttack,
             DamageMultiplier.GetValueAtLevel(action.level),
             owner.Attributes.DamageDealtMult
         );
+        if (HomeTowardsUser) obj.HomingTarget = owner.transform;
+        else obj.HomingTarget = null;
+
         obj.Activate(ProjectileDuration, ProjectileSpeed, direction, damage, OnHit);
         obj.IgnoredEntities = IgnoredEntities;
         obj.DestroyOnContact = !Piercing;
