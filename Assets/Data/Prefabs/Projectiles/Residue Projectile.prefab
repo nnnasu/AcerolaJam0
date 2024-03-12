@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7584276303616972592}
   - component: {fileID: 2424102909749887722}
   m_Layer: 0
-  m_Name: Throwing Knife
+  m_Name: Residue Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a98bc7bcee7a37c4caf266e8295f0aa1, type: 2}
+  - {fileID: 2100000, guid: 85b71bf3dd342dc418c1cc2727fd0d6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   OnActivateEffects: []
   OnHitEffects:
   - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
-  projectilePrefab: {fileID: 3867255862158688488, guid: 755bda098bd64f2438f5e06e81725f65,
+  projectilePrefab: {fileID: 3867255862158688488, guid: 9ebe8490637c5404bb1dc5c8857c5403,
     type: 3}
   ProjectileSpeed: 10
   ProjectileDuration: 5
