@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateName: MeleeAttackA
   StateHash: -2114284127
+  UsageTime: 1.5
   priority: 0

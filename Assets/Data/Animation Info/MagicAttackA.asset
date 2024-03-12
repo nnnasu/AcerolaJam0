@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateName: MagicAttackA
   StateHash: -375855289
+  UsageTime: 1
   priority: 1

@@ -7,6 +7,7 @@ using Core.Abilities.Effects;
 using Core.Abilities.Enums;
 using Core.Abilities.Instances;
 using Core.Animation;
+using Core.AttributeSystem;
 using Core.AttributeSystem.Alignments;
 using Core.Utilities.Scaling;
 using PrimeTween;
@@ -23,7 +24,7 @@ namespace Core.Abilities.Definitions {
         public ScaledFloat DamageMultiplier;
         public ScaledFloat BaseCooldown;
         public ScaledFloat BaseMPCost;
-
+        public EntityType IgnoredEntities = EntityType.Player;
 
         public List<OnHitEffect> OnHitUniqueEffects = new();
         public List<OnHitEffect> OnHitEffects = new();
@@ -35,7 +36,8 @@ namespace Core.Abilities.Definitions {
         [Range(0, 1)]
         [Tooltip("Delay after starting the ability. Final delay is CastPoint * UsageTime")]
         public float CastPoint = 0;
-        public float UsageTime = 0;
+        [SerializeField] float BackupUsageTime;
+        public float UsageTime => AnimationToPlay ? AnimationToPlay.UsageTime : BackupUsageTime;
 
         [Header("Targeting Properties")]
         public TargetingType TargetingType;
@@ -60,7 +62,6 @@ namespace Core.Abilities.Definitions {
         }
 
         public void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null, Action<AttributeSet> OnActionHit = null) {
-            OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
 
             float animationMult = 1;
             if (ability.cachedUsageTime < ability.baseUsageTime && ability.cachedUsageTime > 0) {
@@ -73,9 +74,11 @@ namespace Core.Abilities.Definitions {
             if (OnHit != null) combinedAction += OnHit;
             if (OnActionHit != null) combinedAction += OnActionHit;
 
+
             if (delay > 0) {
-                Tween.Delay(delay, () => ActivateActionImplementation(owner, ability, action, target, combinedAction));
+                Tween.Delay(delay, () => DelayedActivate(owner, ability, action, target, combinedAction));
             } else {
+                OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, combinedAction));
                 ActivateActionImplementation(owner, ability, action, target, combinedAction);
             }
         }
@@ -96,6 +99,7 @@ namespace Core.Abilities.Definitions {
             //* Replaces specific strings in the description with the following. 
             sb.Replace("{RANGE}", $"{Range.GetValueAtLevel(level)}m");
             sb.Replace("{DAMAGE}", $"{DamageMultiplier.GetValueAtLevel(level)}x");
+            sb.Replace("{LEVEL}", $"{level}");
             return sb.ToString();
         }
 
@@ -105,5 +109,9 @@ namespace Core.Abilities.Definitions {
 
         protected abstract void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
 
+        protected void DelayedActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+            OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
+            ActivateActionImplementation(owner, ability, action, target, OnHit);
+        }
     }
 }

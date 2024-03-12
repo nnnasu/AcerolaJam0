@@ -1,5 +1,6 @@
 using Core.GlobalInfo;
 using Core.UI.Rewards;
+using Core.UI.Targeting;
 using PrimeTween;
 using UnityEngine;
 
@@ -14,9 +15,12 @@ namespace Core.Directors.Managers {
         private Tween RewardFadeTween;
         private Tween HUDFadeTween;
 
+        public CursorManager CursorManager;
+
         [ContextMenu("Show Reward Menu")]
         public void ShowSwapUI() {
             LockPlayer();
+            CursorManager?.SetMenuMode(true);
             rewardScreen.LoadPlayerData(Player);
             SwapMenuCanvas.gameObject.SetActive(true);
             RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 0, 1, FadeDuration);
@@ -35,6 +39,7 @@ namespace Core.Directors.Managers {
         [ContextMenu("Hide Reward Menu")]
         public void HideSwapUI() {
             UnlockPlayer();
+            CursorManager?.SetMenuMode(false);
             RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 1, 0, FadeDuration).OnComplete(() => SwapMenuCanvas.gameObject.SetActive(false));
             HUDFadeTween = Tween.Alpha(GameHUDCanvas, 0, 1, FadeDuration);
         }

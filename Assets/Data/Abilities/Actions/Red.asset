@@ -98,12 +98,14 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  IgnoredEntities: 1
   OnHitUniqueEffects: []
   OnHitEffects: []
-  OnActivateEffects: []
+  OnActivateEffects:
+  - {fileID: 11400000, guid: b301978ad447c9f41969d1eb4eb203ed, type: 2}
   AnimationToPlay: {fileID: 11400000, guid: cae8b6781700f0e41aa40453d7de3b0a, type: 2}
   CastPoint: 0.1
-  UsageTime: 0
+  BackupUsageTime: 0
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
@@ -145,7 +147,6 @@ MonoBehaviour:
   ProjectileDuration: 6
   Piercing: 1
   offset: {x: 0, y: 1, z: 0}
-  IgnoredEntities: 1
   ProjectileCount: 1
   AngleBetweenProjectiles: 10
   ProjectileCountScalesWithLevel: 0

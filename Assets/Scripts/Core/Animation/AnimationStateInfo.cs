@@ -10,6 +10,7 @@ namespace Core.Animation {
 
         public string StateName;
         public int StateHash;
+        public float UsageTime;
     
         [Tooltip("Lowest number is used first. ")]
         public int priority;

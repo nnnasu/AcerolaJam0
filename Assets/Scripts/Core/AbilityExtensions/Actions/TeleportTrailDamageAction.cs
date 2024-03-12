@@ -11,7 +11,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Teleport Trail", menuName = "Ability System/Player Actions/Teleport Trail", order = 0)]
 public class TeleportTrailDamageAction : ActionDefinition {
     public GameObject AoeSpawnObject;
-    public EntityType IgnoredEntities = EntityType.Player;
     public float radius = 1;
 
     protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {

@@ -41,7 +41,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   effectType: 1
-  Conditions: []
+  Conditions:
+  - {fileID: 11400000, guid: 894bc60d20429014c99087eb8cd44f78, type: 2}
   icon: {fileID: 0}
   EffectName: Beasthood
   ShortDescription: 'Increases attack speed, damage taken, and damage dealt. '
@@ -58,7 +59,7 @@ MonoBehaviour:
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
+        m_RotationOrder: 4
   - Attribute: 10
     value:
       scalingType: 0
@@ -69,7 +70,7 @@ MonoBehaviour:
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
+        m_RotationOrder: 4
   - Attribute: 3
     value:
       scalingType: 0
@@ -80,7 +81,7 @@ MonoBehaviour:
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
+        m_RotationOrder: 4
   UseAlignmentLevelForScaling: 1
   alignmentToScaleWith: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0,
     type: 2}

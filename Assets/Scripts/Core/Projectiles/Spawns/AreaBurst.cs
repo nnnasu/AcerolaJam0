@@ -14,6 +14,7 @@ namespace Core.AbilityExtensions.Spawns {
         public float damage = 0;
         public float delay;
         public float linger;
+        public float returnTime;
 
 
         public Action<AttributeSet> OnHitCallback = null;
@@ -47,13 +48,23 @@ namespace Core.AbilityExtensions.Spawns {
             col.enabled = false;
             this.damage = damage;
             this.OnHitCallback = onHitCallback;
-            DelayTween = Tween.Delay(delay, Burst);
-            vfx.Play();
+
+            if (delay > 0) DelayTween = Tween.Delay(delay, Burst);
+            else Burst();
+            
+            vfx?.Play();
         }
 
         private void Burst() {
             col.enabled = true;
-            ExpiryTween = Tween.Delay(linger, Expire);
+            if (linger > 0) ExpiryTween = Tween.Delay(linger, Deactivate);
+            else Deactivate();
+        }
+
+        private void Deactivate() {
+            col.enabled = false;
+            if (returnTime > 0) ExpiryTween = Tween.Delay(returnTime, Expire);
+            else Expire();
         }
 
         private void Expire() {

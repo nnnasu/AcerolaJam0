@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32c4f5ee7be2114b9c6be6639c4d54f, type: 3}
   m_Name: MagicAlignmentReq10
   m_EditorClassIdentifier: 
-  Alignment: {fileID: 0}
+  Alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   RequiredLevel: 10

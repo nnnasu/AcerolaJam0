@@ -12,6 +12,7 @@ namespace Core.Abilities {
     public partial class AbilityManager : MonoBehaviour {
         public PlayerAttributeSet Attributes;
         public AnimationHandler AnimationHandler;
+        public AttachmentHandler AttachmentHandler;
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
         public event Action OnRebindRequest = delegate { };
 
@@ -20,6 +21,7 @@ namespace Core.Abilities {
 
         public float movementSpeed => Attributes.MovementSpeed;
         public ActionDefinition DefaultAttack;
+        public DefaultAbility[] DefaultAbilities;
 
         private int index = 0;
         public bool isSkillSelected => index != 0;
@@ -46,6 +48,13 @@ namespace Core.Abilities {
             }
             BasicAttack = new(this);
             if (DefaultAttack) BasicAttack.actions.Add(new(DefaultAttack));
+            for (int i = 0; i < DefaultAbilities.Length; i++) {
+                var list = DefaultAbilities[i];
+                foreach (var item in list.Actions) {
+                    Abilities[i].actions.Add(new(item));
+                }
+            }
+
             Attributes.ResetState(true);
             RecalculateStats();
         }

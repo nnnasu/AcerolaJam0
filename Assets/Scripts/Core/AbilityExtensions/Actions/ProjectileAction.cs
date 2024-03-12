@@ -15,7 +15,6 @@ public class ProjectileAction : ActionDefinition {
     public float ProjectileDuration = 5;
     public bool Piercing = false;
     public Vector3 offset = new Vector3(0, 1, 0);
-    public EntityType IgnoredEntities = EntityType.Player;
 
     public int ProjectileCount = 3;
     public float AngleBetweenProjectiles = 10;

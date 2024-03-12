@@ -7,7 +7,7 @@ using Core.Abilities.Instances;
 using UnityEngine;
 
 namespace Core.AbilityExtensions.ActivationEffects {
-    [CreateAssetMenu(fileName = "OnActivateStatusEffect", menuName = "Ability System/On Activate Effects/Status Effect", order = 0)]
+    [CreateAssetMenu(fileName = "AddStatusEffectOnActivation", menuName = "Ability System/On Activate Effects/Add Status Effect", order = 0)]
     public class AddStatusEffectOnActivate : OnActivateEffect {
 
         public StatusEffect EffectToApply;
@@ -17,7 +17,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             return $"Applies {EffectToApply.name} on activation";
         }
 
-        public override void OnActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
+        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
             var instance = EffectToApply.GetEffectInstance(owner.Attributes, action.level);
             owner.Attributes.ApplyEffect(instance);
         }

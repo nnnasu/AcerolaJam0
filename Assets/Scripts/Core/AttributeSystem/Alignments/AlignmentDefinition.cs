@@ -27,7 +27,6 @@ namespace Core.AttributeSystem.Alignments {
         }
 
         public virtual void ApplyEffects(PlayerAttributeSet player, int level) {
-            Debug.Log(level);
             RemoveEffects(player, level);
             if (ApplyHighestEffectOnly) ApplyHighestEffect(player, level);
             else ApplyAllEffects(player, level);
