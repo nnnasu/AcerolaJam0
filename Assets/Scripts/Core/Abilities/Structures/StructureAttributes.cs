@@ -8,9 +8,13 @@ namespace Core.Abilities.Structures {
         public float MaxHP;
 
         public event Action<StructureAttributes> OnDeath = delegate { };
+        public event Action<float, float> OnHPChanged = delegate { };
 
         public void TakeDamage(float amount) {
+            float oldHP = HP;
             HP--;
+            OnHPChanged?.Invoke(oldHP, HP);
+            
             if (HP <= 0) {
                 OnDeath?.Invoke(this);
             }

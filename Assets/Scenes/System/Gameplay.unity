@@ -776,7 +776,7 @@ MonoBehaviour:
   levelManager: {fileID: 386531895}
   checkpointManager: {fileID: 386531896}
   LoadTutorialOnStart: 1
-  TutorialRoom: {fileID: 11400000, guid: fb2281dee6c830e4b90ec3d6f17c8f58, type: 2}
+  TutorialRoom: {fileID: 11400000, guid: 599001cb9b4bd88409d1372a6fee3d7c, type: 2}
   SwapMenuCanvas: {fileID: 560199140}
   rewardScreen: {fileID: 560199139}
   GameHUDCanvas: {fileID: 1032266918}
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registry: {fileID: 11400000, guid: 8bb699fc0452b3147b6b078ded5daa4a, type: 2}
   typesToDistribute:
-  - {fileID: 11400000, guid: fb2281dee6c830e4b90ec3d6f17c8f58, type: 2}
+  - {fileID: 11400000, guid: 599001cb9b4bd88409d1372a6fee3d7c, type: 2}
   bossRoom: {fileID: 0}
 --- !u!224 &402464656 stripped
 RectTransform:

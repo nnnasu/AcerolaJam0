@@ -11,7 +11,6 @@ namespace Core.UI.PositionDisplays {
 
         private void OnEnable() {
             Register();
-
         }
 
         private void OnDisable() {
