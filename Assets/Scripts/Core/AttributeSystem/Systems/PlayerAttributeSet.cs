@@ -12,6 +12,7 @@ public class PlayerAttributeSet : AttributeSet {
     public float MaxMP;
     public float MPRegenPercent;
     public float HPRegenPercent;
+    public float MPCostReduction;
     public float StructureTickSpeed;
     public float CooldownReduction;
 
@@ -26,6 +27,7 @@ public class PlayerAttributeSet : AttributeSet {
             HPRegenPercent = playerAttr.HPRegenPercent;
             StructureTickSpeed = playerAttr.StructureTickSpeed;
             CooldownReduction = playerAttr.CooldownReduction;
+            MPCostReduction = playerAttr.MPCostReduction;
         }
     }
 

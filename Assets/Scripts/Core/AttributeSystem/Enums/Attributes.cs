@@ -9,15 +9,7 @@ public enum GameAttributes {
     HPRegenPercent,
     StructureTickSpeed,
     CooldownReduction,
+    MPCostReduction,
     DamageTaken,
     DamageDealt,
-}
-
-public enum AbilityAttributes {
-    Attack, 
-    CooldownReduction,
-    CostReduction,
-    DamageTaken,
-    DamageDealt
-
 }

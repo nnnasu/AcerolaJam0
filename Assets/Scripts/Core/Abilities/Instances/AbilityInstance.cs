@@ -111,7 +111,17 @@ namespace Core.Abilities.Instances {
                 mp += item.BaseCost;
             }
             cachedMPCost = mp; // TODO: cost reduction?
-            return mp;
+
+            float costr = owner.Attributes.MPCostReduction;
+            foreach (var item in modifiers) {
+                item.definition.PerAbilityModifier.ForEach(x => {
+                    if (x.Attribute == GameAttributes.MPCostReduction)
+                        costr += x.value.GetValueAtLevel(item.level);
+                });
+            }
+            cachedMPCost = Formulas.CostReductionFormula(cachedMPCost, costr);
+
+            return cachedMPCost;
         }
 
         public float CalculateCooldownTime(AbilityManager owner) {
@@ -135,19 +145,19 @@ namespace Core.Abilities.Instances {
         }
 
         public virtual float CalculateUsageTime(AbilityManager owner) {
-            bool isBasicAttack = false;
             float usage = 0;
             foreach (var item in actions) {
                 if (item == null) break;
-                if (item.definition.actionType == ActionType.BasicAttack) isBasicAttack = true;
+                if (item.definition.actionType == ActionType.BasicAttack) {
+                    float attackTime = item.definition.UsageTime;
+                    float attackSpeed = owner.Attributes.AttackSpeed;
+                    attackTime = Formulas.AttackSpeedFormula(attackTime, attackSpeed);
+                    usage = Mathf.Max(usage, attackTime);
+                    continue;
+                }
                 usage = Mathf.Max(usage, item.definition.UsageTime);
             }
-            baseUsageTime = usage;
             cachedUsageTime = usage;
-            if (isBasicAttack) {
-                float attackSpeed = owner.Attributes.AttackSpeed;
-                cachedUsageTime = Formulas.AttackSpeedFormula(cachedUsageTime, attackSpeed);
-            }
             UsageTimeDisplay = cachedUsageTime;
             return cachedUsageTime;
         }

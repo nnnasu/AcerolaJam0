@@ -17,6 +17,10 @@ public static class Formulas {
         return Mathf.Clamp((cooldown) / (1 + cdr / 100), 0, cooldown);
     }
 
+    public static float CostReductionFormula(float cost, float reduction) {
+        return Mathf.Clamp((cost) / (1 + reduction / 100), 0, cost);
+    }
+
     public static float StructureTickRateFormula(float StructureTickSpeed) {
         return Mathf.Clamp(
             BaseStructureTickInterval / (1 + StructureTickSpeed / 20),

@@ -3251,6 +3251,7 @@ MonoBehaviour:
   MaxMP: 50
   MPRegenPercent: 0
   HPRegenPercent: 0
+  MPCostReduction: 0
   StructureTickSpeed: 0
   CooldownReduction: 0
 --- !u!114 &1107741112

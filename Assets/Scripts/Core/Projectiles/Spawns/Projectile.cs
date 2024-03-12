@@ -12,6 +12,7 @@ namespace Core.AbilityExtensions.Spawns {
     public class Projectile : PoolableBehaviour {
         public float damage = 0;
         public bool DestroyOnContact = false;
+        public float DamageDropoffRate = 0.9f; // every hit reduces damage by this amount.
         public float speed = 0;
         public Action<AttributeSet> OnHitCallback = null;
         protected Tween ExpiryTween;
@@ -36,6 +37,8 @@ namespace Core.AbilityExtensions.Spawns {
             }
 
             target.TakeDamage(damage);
+            damage *= DamageDropoffRate;
+            
             if (target is AttributeSet attribute) {
                 OnHitCallback?.Invoke(attribute);
             }

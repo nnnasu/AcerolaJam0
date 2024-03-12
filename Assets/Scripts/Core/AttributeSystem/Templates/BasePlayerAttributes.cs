@@ -9,6 +9,7 @@ namespace Core.AttributeSystem {
         public float HPRegenPercent;
         public float StructureTickSpeed;
         public float CooldownReduction;
+        public float MPCostReduction;
 
     }
 }
