@@ -8,6 +8,7 @@ namespace Core.Animation {
         public static int MoveYHash = Animator.StringToHash("MoveY");
         public static int AnimationSpeedHash = Animator.StringToHash("ActionSpeedMult");
         public static int EmptyStateHash = Animator.StringToHash("Empty State");
+        public bool UseEmptyState = true;
 
         public Animator animator;
 
@@ -20,7 +21,7 @@ namespace Core.Animation {
 
         public void PlayAnimationState(AnimationStateInfo state) {
             if (!state) return;
-            animator.Play(EmptyStateHash);
+            if (UseEmptyState) animator.Play(EmptyStateHash);
             animator.Play(state.StateHash);
         }
         
