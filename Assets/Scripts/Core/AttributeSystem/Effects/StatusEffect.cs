@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Core.AttributeSystem.Conditions;
 using Core.Utilities.Scaling;
 using UnityEngine;
@@ -21,13 +22,16 @@ public class StatusEffect : ScriptableObject {
     public Sprite icon;
     public string EffectName;
     [TextArea][SerializeField] protected string ShortDescription;
-    public virtual string GetDescription(EffectInstance instance) {
-        return ShortDescription;
-    }
 
-    // used for on hit/activate effect explanations
-    public virtual string GetShortDescription() {
-        return ShortDescription;
+
+    public virtual string GetDescription(EffectInstance instance) {
+
+        StringBuilder sb = new(ShortDescription);
+
+        //* Replaces specific strings in the description with the following. 
+        sb.Replace("{DURATION}", $"{instance.effectDefinition.duration.GetValueAtLevel(instance.level)}s");
+        sb.Replace("{LEVEL}", $"{instance.level}");
+        return sb.ToString();
     }
 
     public bool ShouldDisplayNumber = false;
@@ -41,8 +45,8 @@ public class StatusEffect : ScriptableObject {
         return 0;
     }
 
-    public virtual void Apply(AttributeSet attributeSet, EffectInstance instance) {}
-    public virtual void Remove(AttributeSet attributeSet, EffectInstance instance) {}
+    public virtual void Apply(AttributeSet attributeSet, EffectInstance instance) { }
+    public virtual void Remove(AttributeSet attributeSet, EffectInstance instance) { }
 
     public virtual EffectInstance GetEffectInstance(AttributeSet target, int level) {
         return new(this, level);

@@ -93,7 +93,7 @@ namespace Core.Abilities.Definitions {
             return string.Join("\n", results);
         }
 
-        public string GetActionDescription(int level) {
+        public virtual string GetActionDescription(int level) {
             StringBuilder sb = new(Description);
 
             //* Replaces specific strings in the description with the following. 

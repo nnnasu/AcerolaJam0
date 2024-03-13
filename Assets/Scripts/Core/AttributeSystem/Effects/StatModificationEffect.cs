@@ -21,6 +21,8 @@ public class StatModificationEffect : StatusEffect {
 
     public override string GetDescription(EffectInstance instance) {
         var ls = modifiers.Select(x => x.GetTooltipText(instance.level)).ToList();
+        float time = instance.effectDefinition.duration.GetValueAtLevel(instance.level);
+        ls.Add($"Lasts for {time}s.");
         return string.Join("\n", ls);
     }
 

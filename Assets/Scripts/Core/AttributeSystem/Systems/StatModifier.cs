@@ -2,6 +2,7 @@
 
 using System;
 using Core.Utilities.Scaling;
+using UnityEngine;
 
 [Serializable]
 public class StatModifier {
@@ -18,7 +19,7 @@ public class StatModifier {
     public float GetValue(int level, int stacks = 1) {
         if (Attribute == GameAttributes.DamageTaken || Attribute == GameAttributes.DamageDealt) {
             // i.e. 1.01, 1.02, 1.03, ...
-            return 1 + value.GetValueAtLevel(level) * stacks;
+            return Mathf.Min(1 + value.GetValueAtLevel(level) * stacks, float.Epsilon);
         }
         return stacks * value.GetValueAtLevel(level);
     }
