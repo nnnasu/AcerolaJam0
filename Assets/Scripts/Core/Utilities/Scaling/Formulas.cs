@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Formulas {
 
-    public static float BaseStructureTickInterval = 1;
+    public static float BaseStructureTickInterval = 2;
 
     public static float AttackSpeedFormula(float baseAttackTime, float attackSpeed) {
         return Mathf.Clamp(

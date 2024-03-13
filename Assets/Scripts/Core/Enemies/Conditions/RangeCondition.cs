@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Enemies.Conditions {
 
-    [CreateAssetMenu(fileName = "ConditionBase", menuName = "AI/Conditions/Player In Range", order = 0)]
+    [CreateAssetMenu(fileName = "Range Condition", menuName = "Enemy AI/Conditions/Player In Range", order = 0)]
     public class RangeCondition : ConditionBase {
 
         public float range;

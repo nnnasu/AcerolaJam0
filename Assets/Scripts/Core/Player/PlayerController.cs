@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Core.Abilities;
 using Core.Abilities.Structures;
+using Core.UI.Targeting;
 using UnityEngine;
 
 public partial class PlayerController : MonoBehaviour {
     [SerializeField] InputReader input;
     [SerializeField] public CharacterController characterController;
     [SerializeField] public AbilityManager abilityManager;
+    public CursorManager cursorManager;
     Vector2 currentInput;
     Vector3 movementDirection;
     public Vector3 mousePosition;
@@ -84,6 +86,13 @@ public partial class PlayerController : MonoBehaviour {
         RaycastHit hitinfo;
         if (Physics.Raycast(ray, out hitinfo, Mathf.Infinity, MousePositionLayer)) {
             mousePosition = hitinfo.point;
+        }
+
+        RaycastHit structureRayInfo;
+        if (Physics.Raycast(ray, out structureRayInfo, Mathf.Infinity, RecallLayer, QueryTriggerInteraction.Ignore)) {
+            if (cursorManager) cursorManager.isHoveringOverStructure = true;
+        } else {
+            if (cursorManager) cursorManager.isHoveringOverStructure = false;
         }
 
         mousePosition.y = transform.position.y;

@@ -12,16 +12,34 @@ namespace Core.UI.Targeting {
         public Vector2 offset;
     }
 
+
     public class CursorManager : MonoBehaviour {
         public AbilityManager abilityManager;
 
+
         public CursorPreset MenuCursor;
         public CursorPreset CombatCursor;
-        bool isInMenu = false;
+        public CursorPreset StructureCursor;
+        public CursorPreset TargetingCursor;
+
+
+        public bool isInCombat = true;
+        public bool isHoveringOverStructure = false;
+        public bool isCurrentlyTargeting = false;
 
         private void Start() {
             Cursor.lockState = CursorLockMode.Confined;
             SetCursor(CombatCursor);
+        }
+
+        private void Update() {
+            if (!isInCombat) SetCursor(MenuCursor);
+            else {
+                if (isCurrentlyTargeting) {
+                    SetCursor(TargetingCursor); // Set the current targeting cursor
+                } else if (isHoveringOverStructure) SetCursor(StructureCursor);
+                else SetCursor(CombatCursor);
+            }
         }
 
         private void OnEnable() {
@@ -37,11 +55,7 @@ namespace Core.UI.Targeting {
 
         }
 
-        public void SetMenuMode(bool menu) {
-            isInMenu = menu;
-            if (menu) SetCursor(MenuCursor);
-            else SetCursor(CombatCursor);
-        }
+
 
         private void SetCursor(CursorPreset preset) {
             Cursor.SetCursor(preset.tex, preset.offset, CursorMode.Auto);

@@ -5,15 +5,22 @@ using UnityEngine;
 
 public class TutorialControlDisplay : MonoBehaviour {
     public CanvasGroup canvasGroup;
-    public bool StartActivated = false;
-    bool active;
+
+    bool active = false;
     Tween tween;
     public float duration;
+    public bool StartAsInvisible = true;
 
-    private void Start() {
-        active = StartActivated;
-
+    private void Awake() {
+        if (StartAsInvisible) {
+            canvasGroup.alpha = 0;
+            active = false;
+        } else {
+            active = true;
+            canvasGroup.alpha = 1;
+        }
     }
+
 
     private void OnTriggerExit(Collider other) {
         if (other.tag != "Player") return;

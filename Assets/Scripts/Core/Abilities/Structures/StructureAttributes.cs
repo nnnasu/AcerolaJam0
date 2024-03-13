@@ -6,6 +6,7 @@ namespace Core.Abilities.Structures {
     public class StructureAttributes : MonoBehaviour, IDamageable {
         public float HP;
         public float MaxHP;
+        public float BaseMaxHP;
 
         public event Action<StructureAttributes> OnDeath = delegate { };
         public event Action<float, float> OnHPChanged = delegate { };
@@ -20,7 +21,8 @@ namespace Core.Abilities.Structures {
             }
         }
 
-        public void ResetState() {
+        public void ResetState(float multiplier = 1) {
+            MaxHP = BaseMaxHP * multiplier;
             HP = MaxHP;
         }
 

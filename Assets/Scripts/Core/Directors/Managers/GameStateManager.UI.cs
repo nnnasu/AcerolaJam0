@@ -20,7 +20,7 @@ namespace Core.Directors.Managers {
         [ContextMenu("Show Reward Menu")]
         public void ShowSwapUI() {
             LockPlayer();
-            CursorManager?.SetMenuMode(true);
+            if (CursorManager) CursorManager.isInCombat = false;
             rewardScreen.LoadPlayerData(Player);
             SwapMenuCanvas.gameObject.SetActive(true);
             RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 0, 1, FadeDuration);
@@ -39,7 +39,7 @@ namespace Core.Directors.Managers {
         [ContextMenu("Hide Reward Menu")]
         public void HideSwapUI() {
             UnlockPlayer();
-            CursorManager?.SetMenuMode(false);
+            if (CursorManager) CursorManager.isInCombat = true;
             RewardFadeTween = Tween.Alpha(SwapMenuCanvas, 1, 0, FadeDuration).OnComplete(() => SwapMenuCanvas.gameObject.SetActive(false));
             HUDFadeTween = Tween.Alpha(GameHUDCanvas, 0, 1, FadeDuration);
         }

@@ -15,6 +15,7 @@ namespace Core.Abilities {
         public AttachmentHandler AttachmentHandler;
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
         public event Action OnRebindRequest = delegate { };
+        public event Action<StructureBase> OnStructureKilledEvent = delegate { };
 
         public AbilityInstance BasicAttack;
         public List<AbilityInstance> Abilities = new(4);
@@ -93,9 +94,19 @@ namespace Core.Abilities {
             SetActiveSkill(0);
         }
 
-        public void OnStructureRecall(StructureBase structureBase) {
+        public void OnStructureRecall(StructureBase structureBase, bool executeAction = true) {
             structureBase.OnRecall(this);
+            if (StructureStorage.ContainsKey(structureBase.Definition)) {
+                StructureStorage[structureBase.Definition].Remove(structureBase);
+            }
         }
+
+        public void OnStructureKilled(StructureBase structureBase) {
+            OnStructureKilledEvent?.Invoke(structureBase);
+
+        }
+
+
 
         private void ActivateAbility(AbilityInstance ability, Vector3 position) {
             if (ability == null) return;
