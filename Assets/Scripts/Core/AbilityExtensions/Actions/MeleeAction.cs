@@ -24,6 +24,8 @@ public class MeleeAction : ActionDefinition {
         Vector3 spawnPoint = owner.transform.position + owner.transform.rotation * TargetOffset;
         obj.transform.position = spawnPoint;
         obj.transform.rotation = owner.transform.rotation;
+        float range = Range.GetValueAtLevel(action.level);
+        obj.transform.localScale = new(range, range, range);
         float damage = Formulas.DamageDealtFormula(
             owner.Attributes.BaseAttack,
             DamageMultiplier.GetValueAtLevel(action.level),

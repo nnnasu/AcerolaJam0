@@ -25,3 +25,24 @@ MonoBehaviour:
       type: 3}
     weight: 3
     cost: 2
+  modifierWeights:
+  - Modification: {fileID: 11400000, guid: bf153ce872964c24680aa82cff661d7f, type: 2}
+    levelMultiplier: 0.2
+    weight: 5
+    cost: 2
+  - Modification: {fileID: 11400000, guid: 2ae2ad0071b986f43ae79a5e42c8f96e, type: 2}
+    levelMultiplier: 0.2
+    weight: 2
+    cost: 7
+  - Modification: {fileID: 11400000, guid: 87763fa56272f9747a86d3934dc85f93, type: 2}
+    levelMultiplier: 0.2
+    weight: 4
+    cost: 4
+  - Modification: {fileID: 11400000, guid: 24adc71254566a34e8282a20bb87ec0a, type: 2}
+    levelMultiplier: 0.2
+    weight: 6
+    cost: 3
+  - Modification: {fileID: 11400000, guid: c9dba65a4fe2fcc49863c87b3ff96031, type: 2}
+    levelMultiplier: 0.2
+    weight: 4
+    cost: 5

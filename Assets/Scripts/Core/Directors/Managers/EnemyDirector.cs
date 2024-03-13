@@ -30,6 +30,7 @@ namespace Core.Directors.Managers {
             int spawns = CurrentRoom.GetSpawnCount(level);
             float budget = CurrentRoom.GetCredits(level);
             int chances = CurrentRoom.SpawnAttempts;
+            List<AttributeSet> enemies = new();
 
             // Spawn Loop
             while (budget > 0 && chances > 0 && spawns > 0) {
@@ -39,24 +40,39 @@ namespace Core.Directors.Managers {
                     chances--;
                     continue;
                 } else {
-                    SpawnEnemy(point.GetRandomPosition(), enemy.prefab);
+                    var spawned = SpawnEnemy(point.GetRandomPosition(), enemy.prefab);
+                    enemies.Add(spawned);
                     spawns--;
                     budget -= enemy.cost;
                 }
             }
-            // TODO If we have excess budget, spend it by pulling modifiers to apply onto each enemy
+            
+            // If we have excess budget, spend it by pulling modifiers to apply onto each enemy
+            chances = CurrentRoom.SpawnAttempts;
+            while (budget > 0 && chances > 0) {
+                var mod = CurrentRoom.SpawnList.GetRandomMod();
+                if (budget - mod.cost < 0) {
+                    chances--;
+                    continue;
+                }
+                int index = Mathf.FloorToInt(UnityEngine.Random.value * enemies.Count);
+                var enemy = enemies[index];
+                enemy.ApplyEffect(mod.Modification.GetEffectInstance(enemy, mod.GetLevel(level)));
+                budget -= mod.cost;
+            }
 
 
             if (enemies.Count == 0) OnEnemiesCleared?.Invoke(); // just to make sure we don't softlock the player if nothing spawns.
 
         }
-        private void SpawnEnemy(Vector3 position, GameObject prefab) {
+        private AttributeSet SpawnEnemy(Vector3 position, GameObject prefab) {
             var obj = GlobalPool.Current.GetObject(prefab);
             obj.transform.position = position;
             obj.SetActive(true);
             var attr = obj.GetComponent<AttributeSet>();
             enemies.Add(attr.gameObject);
             attr.OnDeath += OnEnemyKilled;
+            return attr;
         }
 
         private void OnEnemyKilled(AttributeSet attributeSet) {

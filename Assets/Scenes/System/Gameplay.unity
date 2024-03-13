@@ -2137,7 +2137,7 @@ GameObject:
   - component: {fileID: 690203582}
   - component: {fileID: 690203581}
   - component: {fileID: 690203580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3400,7 +3400,7 @@ MonoBehaviour:
     m_Bits: 64
   MousePositionLayer:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 8
 --- !u!54 &1107741103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3557,6 +3557,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 15715c798c5936f419460661ec91fe39, type: 2}
   - Actions:
     - {fileID: 11400000, guid: 4fe0b18cddba1ec4ea6199c5257b63ab, type: 2}
+  - Actions:
+    - {fileID: 11400000, guid: 67edb090d9c1b564290f6cc20eecd9c7, type: 2}
   characterController: {fileID: 1107741104}
   previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1107741113

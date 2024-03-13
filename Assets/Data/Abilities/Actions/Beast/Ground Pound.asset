@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f25878fc38117b4eaa55b082ca19018, type: 3}
+  m_Name: Ground Pound
+  m_EditorClassIdentifier: 
+  actionType: 0
+  alignment: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0, type: 2}
+  DamageMultiplier:
+    scalingType: 0
+    BaseValue: 0.1
+    AdditiveValue: 1.6
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  BaseCooldown:
+    scalingType: 0
+    BaseValue: -0.5
+    AdditiveValue: 10
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  BaseMPCost:
+    scalingType: 0
+    BaseValue: 0
+    AdditiveValue: 0
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  IgnoredEntities: 1
+  OnHitUniqueEffects:
+  - {fileID: 11400000, guid: 590ae6a176ce2c645bcd92574bc0bf75, type: 2}
+  OnHitEffects: []
+  OnActivateEffects:
+  - {fileID: 11400000, guid: 968505f7b9b1fcf4ea253db40b14a43b, type: 2}
+  AnimationToPlay: {fileID: 11400000, guid: 5a388548e69bd4e4ca404549a9783fc7, type: 2}
+  CastPoint: 0.4
+  BackupUsageTime: 0
+  TargetingType: 1
+  TargetSize: {x: 5, y: 5, z: 5}
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Range:
+    scalingType: 2
+    BaseValue: 1
+    AdditiveValue: 5
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  icon: {fileID: 0}
+  ActionTitle: 
+  Description: 'Attacks the area right in front of the user, dealing {DAMAGE} damage.
+    Also raises Beasthood. '
+  HitboxPrefab: {fileID: 3787522926584128234, guid: 77a401be7c3587c449c8270a6a63f126,
+    type: 3}
+  Attachment: {fileID: 6723276461294800403, guid: ea17256572dcc02409cd1a909b7e3a81,
+    type: 3}
+  attachmentSlot: 0
