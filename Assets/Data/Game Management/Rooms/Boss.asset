@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e88255a20639d4284a3cf7bfa6fbfd, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  CreditFormula: {fileID: 11400000, guid: 4b0faa8a10710e749b2705c675e76239, type: 2}
-  SpawnFormula: {fileID: 11400000, guid: a1ae164fc55ebc74f8c0206135797d69, type: 2}
+  CreditFormula: {fileID: 11400000, guid: 34c22eba6819e10478228a8054059aa9, type: 2}
+  SpawnFormula: {fileID: 11400000, guid: 0a47e318cf4b7a640af107d5ddbe6799, type: 2}
   SpawnList: {fileID: 11400000, guid: 11d9844b0d7de7c4b9fcc72fd51960af, type: 2}
-  SpawnAttempts: 0
+  SpawnAttempts: 5
   PortalColour: {r: 0.7897829, g: 0.92422277, b: 0.9622642, a: 1}
   ParticleColour: {r: 0.41327873, g: 0.6274082, b: 0.93207544, a: 1}
   EligibleLevels:

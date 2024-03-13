@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0146a60b05d435547ac2b30c9838fa9e, type: 3}
   m_Name: PlayerAttributes
   m_EditorClassIdentifier: 
-  BaseMaxHP: 100
-  BaseAttack: 10
+  BaseMaxHP: 150
+  BaseAttack: 25
   BaseMovementSpeed: 5
   BaseAttackSpeed: 10
   DamageDealtMult: 1
   DamageTakenMult: 1
   MaxHPScaling:
-    scalingType: 2
-    BaseValue: 0
+    scalingType: 0
+    BaseValue: 1
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2

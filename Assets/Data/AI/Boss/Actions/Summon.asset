@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922e00411866f414bbfb4f967047ca20, type: 3}
-  m_Name: Smash
+  m_Script: {fileID: 11500000, guid: 9c7ad4e3958122f48893c3a927ae6b72, type: 3}
+  m_Name: Summon
   m_EditorClassIdentifier: 
-  StateName: Smash
-  StateHash: 2125664144
-  UsageTime: 2
-  priority: 1
+  CooldownTime: 30
+  IdleTime: 6
+  MaximumRange: 15
+  CastPoint: 0.6
+  animation: {fileID: 11400000, guid: 87f2070b60424234dbb995451e7636f2, type: 2}

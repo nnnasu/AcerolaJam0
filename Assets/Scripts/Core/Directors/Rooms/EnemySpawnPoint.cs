@@ -8,11 +8,11 @@ namespace Core.Directors.Rooms {
 
         public float radius;
         public EnemySpawnPointChannel channel;
+        public bool RaiseImmediately = true;
 
 
         private void Start() {
-            channel.Raise(this);
-
+            if (RaiseImmediately) channel.Raise(this);
         }
 
         public Vector3 GetRandomPosition() {
@@ -23,6 +23,10 @@ namespace Core.Directors.Rooms {
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, radius);
+        }
+
+        public void RequestSpawns() {
+            channel.RequestAdditionalSpawns(this);
         }
     }
 }

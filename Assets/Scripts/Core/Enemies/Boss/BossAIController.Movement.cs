@@ -7,21 +7,20 @@ namespace Core.Enemies.Boss {
     public partial class BossAIController : MonoBehaviour {
 
 
-        private void MaintainPlayerDistanceAndOrientation(float time) {
+        private void MoveAndRotate(float time) {
             if (!PlayerLocation.CurrentLocator.playerLocation.HasValue) return;
 
             Vector3 diff = PlayerLocation.CurrentLocator.playerLocation.Value - transform.position;
             Vector3 dir = diff.normalized;
+
+            if (CanMove) {
+                Vector3 delta = CurrentMovementStrategy.GetWorldSpaceMovementVector(transform, cachedPlayerLocation, attributes.MovementSpeed);
+                characterController.Move(delta * time);
+                animationHandler.SetWalkAnimationDirection(delta);
+            }
+            // turning to face player
             float angle = Vector3.SignedAngle(transform.forward, dir, Vector3.up);
-            float distance = diff.magnitude;
-            float speed = Mathf.Lerp(0, attributes.MovementSpeed, Mathf.Clamp01(distance / distanceSoftRange));
-            if (distance < desiredDistance) speed *= -1;
-
-            if (Mathf.Abs(distance - desiredDistance) < deadzone) speed = 0;
-
-
-            characterController.Move(speed * time * dir);
-            transform.Rotate(new Vector3(0, angle, 0) * TurnRate * time);
+            if (CanTurn) transform.Rotate(new Vector3(0, angle, 0) * TurnRate * time);
 
             RegroundCharacter();
         }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb144001ebef2a448f06ef4d7600db7, type: 3}
+  m_Name: Boss Movements
+  m_EditorClassIdentifier: 
+  weights:
+  - action: {fileID: 11400000, guid: 55783f8c791cf0c4e94ca1543c1a7533, type: 2}
+    weight: 4
+  - action: {fileID: 11400000, guid: 634270a2c43bac14399a4b61e0b0fc1c, type: 2}
+    weight: 1
+  - action: {fileID: 11400000, guid: babc65dde1c41dc489a55a903cc8b2f0, type: 2}
+    weight: 1
+  - action: {fileID: 11400000, guid: 2933b0b271bf9b24fb42c169386434d3, type: 2}
+    weight: 3
+  - action: {fileID: 11400000, guid: 32abaf9fb16bf4b41a5e6ac16be99507, type: 2}
+    weight: 3

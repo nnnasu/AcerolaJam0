@@ -8,17 +8,13 @@ using Core.GlobalInfo;
 using Core.Utilities.Scaling;
 using UnityEngine;
 namespace Core.Enemies.Boss.Actions {
-    [CreateAssetMenu(fileName = "Projectile", menuName = "Boss/Projectile", order = 0)]
-    public class BossProjectileAction : BossAction {
+    [CreateAssetMenu(fileName = "AOE", menuName = "Boss/AOE", order = 0)]
+    public class BossAOEAction : BossAction {
 
-        public GameObject projectile;
-        public float ProjectileSpeed = 15;
+        public GameObject aoe;
         public float duration = 1f;
-        public bool DestroyOnContact = false;
         public ScaledFloat damageMult;
-
-
-
+        public Vector3 offset = Vector3.forward;
 
         public override bool CanExecuteImpl(BossAIController boss) {
             return true;
@@ -27,16 +23,18 @@ namespace Core.Enemies.Boss.Actions {
         public override void ExecuteImpl(BossAIController boss) {
             boss.CanMove = false;
             boss.CanTurn = false;
-            var obj = GlobalPool.Current.GetObject(projectile);
-            var proj = obj.GetComponent<Projectile>();
+            var obj = GlobalPool.Current.GetObject(aoe);
+            var area = obj.GetComponent<AreaBurst>();
 
             float damage = Formulas.DamageDealtFormula(boss.attributes.BaseAttack,
                 damageMult.GetValueAtLevel(GameLevel.current.level),
                 boss.attributes.DamageDealtMult);
-            proj.Activate(duration, ProjectileSpeed, boss.transform.forward, damage);
-            proj.IgnoredEntities = AttributeSystem.EntityType.Enemy;
-            proj.DestroyOnContact = DestroyOnContact;
-            proj.transform.position = boss.transform.position + Vector3.forward;
+
+            area.linger = duration;
+            area.Activate(damage);
+            area.IgnoredEntities = AttributeSystem.EntityType.Enemy;
+
+            area.transform.position = boss.transform.position + boss.transform.rotation * offset;
         }
     }
 }

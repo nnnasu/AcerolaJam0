@@ -16,6 +16,7 @@ namespace Core.Directors.Managers {
         public LevelInfo ActiveLevel { get; private set; } = null;
         public event Action<RoomType> OnCheckpointEntered = delegate { };
         private System.Random random = new();
+        bool bossRoomEnabled = false;
 
         public List<RoomType> typesToDistribute = new();
         public RoomType bossRoom;
@@ -25,6 +26,8 @@ namespace Core.Directors.Managers {
         /// Since we're just using orderby method of assigning types. 
         /// </summary>
         public void EnableBossRoom() {
+            if (bossRoomEnabled) return;
+            bossRoomEnabled = true;
             typesToDistribute.Add(bossRoom);
         }
 

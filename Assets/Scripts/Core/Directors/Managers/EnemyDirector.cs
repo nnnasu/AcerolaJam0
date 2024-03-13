@@ -16,9 +16,11 @@ namespace Core.Directors.Managers {
 
         private void OnEnable() {
             SpawnPointChannel.OnSpawnPointRegistered += SpawnEnemies;
+            SpawnPointChannel.OnAdditionalSpawnsRequested += SpawnExtra;
         }
         private void OnDisable() {
             SpawnPointChannel.OnSpawnPointRegistered -= SpawnEnemies;
+            SpawnPointChannel.OnAdditionalSpawnsRequested -= SpawnExtra;
         }
 
         public void SetRoomParameters(RoomType room) {
@@ -26,6 +28,10 @@ namespace Core.Directors.Managers {
         }
 
         private void SpawnEnemies(EnemySpawnPoint point) {
+            SpawnEnemies(point, true);
+        }
+
+        private void SpawnEnemies(EnemySpawnPoint point, bool track = true) {
             int level = GameLevel.current.level;
             int spawns = CurrentRoom.GetSpawnCount(level);
             float budget = CurrentRoom.GetCredits(level);
@@ -40,13 +46,13 @@ namespace Core.Directors.Managers {
                     chances--;
                     continue;
                 } else {
-                    var spawned = SpawnEnemy(point.GetRandomPosition(), enemy.prefab);
+                    var spawned = SpawnEnemy(point.GetRandomPosition(), enemy.prefab, track);
                     enemies.Add(spawned);
                     spawns--;
                     budget -= enemy.cost;
                 }
             }
-            
+
             // If we have excess budget, spend it by pulling modifiers to apply onto each enemy
             chances = CurrentRoom.SpawnAttempts;
             while (budget > 0 && chances > 0) {
@@ -62,22 +68,30 @@ namespace Core.Directors.Managers {
             }
 
 
-            if (enemies.Count == 0) OnEnemiesCleared?.Invoke(); // just to make sure we don't softlock the player if nothing spawns.
+            if (track && enemies.Count == 0) OnEnemiesCleared?.Invoke(); // just to make sure we don't softlock the player if nothing spawns.
 
         }
-        private AttributeSet SpawnEnemy(Vector3 position, GameObject prefab) {
+
+        private void SpawnExtra(EnemySpawnPoint spawnPoint) {
+            SpawnEnemies(spawnPoint, false);
+        }
+
+        private AttributeSet SpawnEnemy(Vector3 position, GameObject prefab, bool track = true) {
             var obj = GlobalPool.Current.GetObject(prefab);
             obj.transform.position = position;
             obj.SetActive(true);
             var attr = obj.GetComponent<AttributeSet>();
-            enemies.Add(attr.gameObject);
-            attr.OnDeath += OnEnemyKilled;
+            if (track) {
+                enemies.Add(attr.gameObject);
+                attr.OnDeath += OnEnemyKilled;
+            }
             return attr;
         }
 
+
         private void OnEnemyKilled(AttributeSet attributeSet) {
             attributeSet.OnDeath -= OnEnemyKilled;
-            enemies.Remove(attributeSet.gameObject);
+            if (enemies.Contains(attributeSet.gameObject)) enemies.Remove(attributeSet.gameObject);
             if (enemies.Count == 0) {
                 OnEnemiesCleared?.Invoke();
             }

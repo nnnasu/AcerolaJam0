@@ -5,6 +5,7 @@ using Core.Enemies.Boss.Actions;
 using Core.GlobalInfo;
 using PrimeTween;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.Enemies.Boss {
 
@@ -26,27 +27,44 @@ namespace Core.Enemies.Boss {
         public float deadzone = 2;
 
         public AnimationHandler animationHandler;
+        public Animator animator;
+
 
 
         // State
         public HashSet<BossAction> Cooldowns = new();
         public BossStates state = BossStates.Idle;
         public Vector3 cachedPlayerLocation;
+        public bool CanTurn = true;
+        public bool CanMove = true;
+        public MovementStrategy CurrentMovementStrategy;
 
         public ActionWeightedList actions;
+        public MovementWeightedList movements;
         public int ActionAttempts = 3;
         public float WaitTime = 2;
 
         Tween actionTween;
 
-        private void Start() {
+        public UnityEvent OnSupportRequested;
+        public UnityEvent OnKilled;
 
-            actionTween = Tween.Delay(WaitTime * Random.value, Act);
+        private void Start() {
+            CanMove = false;
+            CanTurn = false;
+            actionTween = Tween.Delay(5, Idle);
+        }
+
+        private void OnEnable() {
+            animator.SetBool("HasCombatStarted", true);
         }
 
         private void Idle() {
+            attributes.IsInvulnerable = false;
+            CanMove = CanTurn = true;
             state = BossStates.Idle;
             float wait = Random.value * WaitTime;
+            CurrentMovementStrategy = movements.GetMovement();
 
             Tween.Delay(wait, Act);
         }
@@ -57,22 +75,17 @@ namespace Core.Enemies.Boss {
             for (int i = 0; i < ActionAttempts; i++) {
                 var act = actions.GetAction();
                 if (!act.CanExecute(this)) continue;
+                CanMove = false;
                 actionTime = act.Execute(this);
                 break;
             }
-            
+
             Tween.Delay(wait, Idle);
         }
         private void Update() {
             UpdatePlayerLocation();
 
-            switch (state) {
-                case BossStates.Idle:
-                    MaintainPlayerDistanceAndOrientation(Time.deltaTime);
-                    break;
-                case BossStates.Resting: break;
-                default: break;
-            }
+            MoveAndRotate(Time.deltaTime);
 
         }
 
@@ -80,21 +93,6 @@ namespace Core.Enemies.Boss {
             if (PlayerLocation.CurrentLocator.playerLocation.HasValue) cachedPlayerLocation = PlayerLocation.CurrentLocator.playerLocation.Value;
         }
 
-
-        // private void Update() {
-        //     if (PlayerLocation.CurrentLocator.playerLocation.HasValue) cachedPlayerLocation = PlayerLocation.CurrentLocator.playerLocation.Value;
-
-        //     switch (state) {
-        //         case BossStates.Idle:
-        //             MaintainPlayerDistanceAndOrientation(Time.deltaTime);
-        //             RegroundCharacter();
-        //             break;
-        //         case BossStates.Acting: break;
-        //         case BossStates.Resting: break;
-
-        //         default: break;
-        //     }
-        // }
 
     }
 }

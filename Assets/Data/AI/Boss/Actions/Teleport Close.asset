@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922e00411866f414bbfb4f967047ca20, type: 3}
-  m_Name: Smash
+  m_Script: {fileID: 11500000, guid: ab1be7bc2b22bec46a1b4765aaac65b0, type: 3}
+  m_Name: Teleport Close
   m_EditorClassIdentifier: 
-  StateName: Smash
-  StateHash: 2125664144
-  UsageTime: 2
-  priority: 1
+  CooldownTime: 3
+  IdleTime: 0
+  MaximumRange: 10
+  CastPoint: 0.203
+  animation: {fileID: 11400000, guid: 35f5c9420d9f8bc42927c37a1e8fa6a2, type: 2}
+  CircleRadius: 7
+  UsePlayerPosition: 1

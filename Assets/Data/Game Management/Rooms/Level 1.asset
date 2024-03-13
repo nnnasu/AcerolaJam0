@@ -16,8 +16,8 @@ MonoBehaviour:
   SpawnFormula: {fileID: 11400000, guid: a1ae164fc55ebc74f8c0206135797d69, type: 2}
   SpawnList: {fileID: 11400000, guid: 11d9844b0d7de7c4b9fcc72fd51960af, type: 2}
   SpawnAttempts: 5
-  PortalColour: {r: 1, g: 0, b: 0, a: 1}
-  ParticleColour: {r: 1, g: 0, b: 0, a: 1}
+  PortalColour: {r: 1, g: 0.4433962, b: 0.4433962, a: 1}
+  ParticleColour: {r: 1, g: 0.34528297, b: 0.34528297, a: 1}
   EligibleLevels:
   - m_AssetGUID: 99c9720ab356a0642a771bea13969a05
     m_SubObjectName: 

@@ -19,6 +19,8 @@ namespace Core.Directors.Managers {
         public RoomLoader levelManager;
         public CheckpointManager checkpointManager;
 
+        public int EnableBossRoom = 10;
+
 
         [Header("Initialization")]
         public bool LoadTutorialOnStart = true;
@@ -70,6 +72,10 @@ namespace Core.Directors.Managers {
             LockPlayer();
             levelManager.LoadLevel(room, skipFade);
             GameLevel.current.SetLevel(GameLevel.current.level + 1);
+            if (GameLevel.current.level >= EnableBossRoom) {
+                checkpointManager.EnableBossRoom();
+
+            }
         }
 
         private void OnLoadCompleted(RoomType room) {

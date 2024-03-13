@@ -39,6 +39,7 @@ namespace Core.UI.PositionDisplays {
         }
 
         private void OnHpChange(float oldValue, float newValue) {
+            if (attributes == null) return;
             float maxHP = attributes.MaxHP;
             HitTween = Tween.Custom(oldValue / maxHP, newValue / maxHP, 0.5f, UpdateFillAmount);
             textDisplay.text = newValue.ToString("0");

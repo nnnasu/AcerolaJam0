@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba46e42167a2154fa8a9fd71ed6ed24, type: 3}
   m_Name: Witch Boss Attributes
   m_EditorClassIdentifier: 
-  BaseMaxHP: 1000
+  BaseMaxHP: 6969
   BaseAttack: 50
   BaseMovementSpeed: 12
   BaseAttackSpeed: 50
@@ -20,7 +20,7 @@ MonoBehaviour:
   DamageTakenMult: 1
   MaxHPScaling:
     scalingType: 0
-    BaseValue: 10
+    BaseValue: 696
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2
@@ -48,7 +48,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   AttackScaling:
     scalingType: 0
-    BaseValue: 5
+    BaseValue: 50
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2

@@ -20,7 +20,7 @@ MonoBehaviour:
   DamageTakenMult: 1
   MaxHPScaling:
     scalingType: 0
-    BaseValue: 7.5
+    BaseValue: 30
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2

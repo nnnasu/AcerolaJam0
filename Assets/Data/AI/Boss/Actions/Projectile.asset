@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c7c7a1d6cbbd5498d90acc7f907d09, type: 3}
   m_Name: Projectile
   m_EditorClassIdentifier: 
-  CooldownTime: 0
+  CooldownTime: 1
   IdleTime: 3
   MaximumRange: 15
   CastPoint: 0.5

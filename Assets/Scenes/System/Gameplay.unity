@@ -323,6 +323,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4102302345768921993, guid: dc396a4c6f7b60149a27c3321b90dc9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dc396a4c6f7b60149a27c3321b90dc9e,
         type: 3}
       propertyPath: m_Name
@@ -936,7 +941,8 @@ MonoBehaviour:
     type: 2}
   levelManager: {fileID: 386531895}
   checkpointManager: {fileID: 386531896}
-  LoadTutorialOnStart: 0
+  EnableBossRoom: 10
+  LoadTutorialOnStart: 1
   TutorialRoom: {fileID: 11400000, guid: fb2281dee6c830e4b90ec3d6f17c8f58, type: 2}
   SwapMenuCanvas: {fileID: 560199140}
   rewardScreen: {fileID: 560199139}
@@ -3557,10 +3563,10 @@ MonoBehaviour:
     useDynamicCooldown: 0
     CachedDescription: 
   Abilities: []
-  DefaultAttack: {fileID: 11400000, guid: 14cda2b699dff4c45abe03de3f79260b, type: 2}
+  DefaultAttack: {fileID: 11400000, guid: ac886c2a94d2f9248815756b19eac79f, type: 2}
   DefaultAbilities:
   - Actions:
-    - {fileID: 11400000, guid: 62941f11ed94cca41a1ab78f4ac79f66, type: 2}
+    - {fileID: 11400000, guid: 4fe0b18cddba1ec4ea6199c5257b63ab, type: 2}
   - Actions:
     - {fileID: 11400000, guid: 3efda68fa435fc94e8a916203d7dcc11, type: 2}
   - Actions:
@@ -3620,6 +3626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5776b286975ba4fadcdc4070dcbdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseEmptyState: 1
   animator: {fileID: 2064712301}
 --- !u!114 &1107741118
 MonoBehaviour:

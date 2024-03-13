@@ -33,6 +33,10 @@ namespace Core.Enemies.Boss.Actions {
             boss.state = BossStates.Acting;
             boss.animationHandler.PlayAnimationState(animation);
             Tween.Delay(CastPoint * animation.UsageTime, () => ExecuteImpl(boss));
+
+            boss.CanTurn = true;
+            boss.CanMove = false;
+            
             return animation.UsageTime + IdleTime;
         }
 
