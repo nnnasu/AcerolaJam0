@@ -12,4 +12,6 @@ public enum GameAttributes {
     MPCostReduction,
     DamageTaken,
     DamageDealt,
+    StructureReboundDamage,
+    StructureHPBonus
 }

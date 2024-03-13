@@ -18,7 +18,7 @@ public class ValueBar : MonoBehaviour {
     Tween GhostTween;
 
     public void OnValueChanged(float oldValue, float newValue, float maxValue) {
-        text.text = $"{newValue}/{maxValue}";
+        text.text = $"{newValue:0}/{maxValue:0}";
         MaxValue = maxValue;
         HitTween.Stop();
         GhostTween.Stop();

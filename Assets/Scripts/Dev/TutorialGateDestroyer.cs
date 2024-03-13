@@ -21,6 +21,9 @@ public class TutorialGateDestroyer : MonoBehaviour, IDamageable {
         return EntityType.Enemy;
     }
 
+    public void Heal(float amount) {
+    }
+
     public void TakeDamage(float amount) {
         audioSource.PlayOneShot(doorHitSounds.GetRandomClip());
         var seq = Sequence.Create();

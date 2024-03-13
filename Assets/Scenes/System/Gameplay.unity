@@ -3526,6 +3526,8 @@ MonoBehaviour:
   HPRegenPercent: 0
   MPCostReduction: 0
   StructureTickSpeed: 0
+  StructureReboundBonus: 0
+  StructureHPBonus: 0
   CooldownReduction: 0
 --- !u!114 &1107741112
 MonoBehaviour:
@@ -3558,11 +3560,11 @@ MonoBehaviour:
   DefaultAttack: {fileID: 11400000, guid: ac886c2a94d2f9248815756b19eac79f, type: 2}
   DefaultAbilities:
   - Actions:
-    - {fileID: 11400000, guid: 15715c798c5936f419460661ec91fe39, type: 2}
-  - Actions:
-    - {fileID: 11400000, guid: 4fe0b18cddba1ec4ea6199c5257b63ab, type: 2}
+    - {fileID: 11400000, guid: 62941f11ed94cca41a1ab78f4ac79f66, type: 2}
   - Actions:
     - {fileID: 11400000, guid: 3efda68fa435fc94e8a916203d7dcc11, type: 2}
+  - Actions:
+    - {fileID: 11400000, guid: a84ce6fbd6ad44c488e6b909cdc762d6, type: 2}
 --- !u!114 &1107741113
 MonoBehaviour:
   m_ObjectHideFlags: 0

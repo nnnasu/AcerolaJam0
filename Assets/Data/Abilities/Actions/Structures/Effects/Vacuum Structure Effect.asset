@@ -9,71 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee69a1615c5f5e34487a3a8bab646497, type: 3}
-  m_Name: StructureActionDefinition
+  m_Script: {fileID: 11500000, guid: bdfbc250d2982b843b8e9ad0c30e2a7f, type: 3}
+  m_Name: Vacuum Structure Effect
   m_EditorClassIdentifier: 
-  actionType: 4
-  alignment: {fileID: 0}
-  DamageMultiplier:
+  Radius:
     scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 0
-    ValueCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  BaseCooldown:
-    scalingType: 0
-    BaseValue: 1
-    AdditiveValue: 0
-    ValueCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  BaseMPCost:
-    scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 0
+    BaseValue: 0.3
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -98,16 +40,68 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  UsageTime: 0
-  OnHitEffects: []
-  OnActivateEffects: []
-  AnimationToPlay: {fileID: 11400000, guid: acdab74fce5370f40993c9106f519caa, type: 2}
-  TargetingType: 1
-  TargetSize: {x: 1, y: 1, z: 1}
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Range:
+  DeathDamageMultiplier:
     scalingType: 0
     BaseValue: 0
+    AdditiveValue: 1
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  LayersToCastFor:
+    serializedVersion: 2
+    m_Bits: 65
+  SuckDamage:
+    scalingType: 0
+    BaseValue: 2
+    AdditiveValue: 2
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  RecallDamage:
+    scalingType: 0
+    BaseValue: 5
     AdditiveValue: 10
     ValueCurve:
       serializedVersion: 2
@@ -117,23 +111,20 @@ MonoBehaviour:
         value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 34
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
-        value: 1
+        time: 5
+        value: 2
         inSlope: 0
         outSlope: 0
-        tangentMode: 34
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
-  ActionTitle: Summon Cylinder
-  Description: Summons a pillar.
-  structure: {fileID: 11400000, guid: d04e9ba4912c2ad4b835768315c13bb6, type: 2}
+  Force: 25

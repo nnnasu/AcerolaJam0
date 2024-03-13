@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1278457600933213772}
   - component: {fileID: 8129339459736725771}
-  - component: {fileID: -5025425988308658488}
   - component: {fileID: 1937379282279591095}
   - component: {fileID: 5326054490826963755}
   - component: {fileID: -1793431350174360655}
+  - component: {fileID: 93167325264791511}
   m_Layer: 6
-  m_Name: Struct
+  m_Name: Vacuum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,27 +61,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &-5025425988308658488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957290656272839930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0cc690371c84b47aa4cfe71bfe992d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 5326054490826963755}
-  Definition: {fileID: 0}
-  IgnoredEntities: 3
-  TickInterval: 2
-  DamagePerTick: 1
-  aoe: {fileID: 1937379282279591095}
-  force: 10
-  EffectToApply: {fileID: 11400000, guid: c1a661bd4ed59eb449d055354b45b54a, type: 2}
-  level: 1
 --- !u!135 &1937379282279591095
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -117,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 20
   MaxHP: 20
+  BaseMaxHP: 20
 --- !u!114 &-1793431350174360655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +112,36 @@ MonoBehaviour:
   DisplayPrefab: {fileID: 6353072237644076602, guid: 5583e10c79b20ec489de4b66cb4ac771,
     type: 3}
   offset: {x: 0, y: 0, z: 80}
+--- !u!114 &93167325264791511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957290656272839930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff5c98f34748e249be7004c036f0cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 5326054490826963755}
+  aoe: {fileID: 1937379282279591095}
+  Definition: {fileID: 11400000, guid: 2fe13e85c60778744872fa406be3d9d4, type: 2}
+  IgnoredEntities: 1
+  level: 1
+  TickInterval: 2
+  OnActivationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecallEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3591079949156301669
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +314,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3952cd4cc19d9049a68c08301cca491, type: 2}
+  - {fileID: 2100000, guid: c57c32de8560f0143a5c58593e4d69ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

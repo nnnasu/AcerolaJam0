@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e392eac95b1e4034cada3df5e2dacaac, type: 3}
   m_Name: HealingPortal
   m_EditorClassIdentifier: 
-  RechargeTime: 5
-  structurePrefab: {fileID: 1957290656272839930, guid: 801e6a799a3c8e643bbdb9316ad652bd,
+  MinimumCapacity: 1
+  MaximumCapacity: 10
+  CapacityMultiplier: 0.5
+  structurePrefab: {fileID: 1957290656272839930, guid: 7f95f9fdce8b326429f6068c5c0fc5c0,
     type: 3}
+  effects: {fileID: 11400000, guid: c3a4fb8f6fce5534fa35b8c7b4ea8bb0, type: 2}

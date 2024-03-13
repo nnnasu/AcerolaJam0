@@ -59,6 +59,15 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         if (HP <= 0) OnDeath?.Invoke(this);
     }
 
+    public virtual void Heal(float amount) {
+        // amount = Formulas.DamageTakenFormula(amount, DamageTakenMult);
+        // there is no heal% amp
+
+        float oldHP = HP;
+        HP += amount;
+        OnHPChanged?.Invoke(oldHP, HP);
+    }
+
     public void ApplyEffect(EffectInstance effect) {
         if (!effect.CanApplyEffect(this)) return;
 
@@ -139,4 +148,5 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     public void Kill() {
         TakeDamage(MaxHP);
     }
+
 }

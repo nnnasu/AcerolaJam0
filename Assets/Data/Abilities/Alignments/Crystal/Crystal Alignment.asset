@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e392eac95b1e4034cada3df5e2dacaac, type: 3}
-  m_Name: VacuumLandmine
+  m_Script: {fileID: 11500000, guid: 257c291527abb9344a66d11a5c3bdc40, type: 3}
+  m_Name: Crystal Alignment
   m_EditorClassIdentifier: 
-  RechargeTime: 5
-  structurePrefab: {fileID: 1957290656272839930, guid: 801e6a799a3c8e643bbdb9316ad652bd,
-    type: 3}
+  AlignmentName: Crystal
+  ApplyHighestEffectOnly: 0
+  Effects:
+  - level: 5
+    effect: {fileID: 11400000, guid: ac0259d6e9da6414eb5500c4dbd2bbdb, type: 2}

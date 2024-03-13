@@ -14,6 +14,8 @@ public class PlayerAttributeSet : AttributeSet {
     public float HPRegenPercent;
     public float MPCostReduction;
     public float StructureTickSpeed;
+    public float StructureReboundBonus = 0;
+    public float StructureHPBonus = 0;
     public float CooldownReduction;
 
     public Dictionary<AlignmentDefinition, int> levels = new();
@@ -97,6 +99,12 @@ public class PlayerAttributeSet : AttributeSet {
             case GameAttributes.DamageDealt:
                 if (negate) DamageDealtMult /= rawValue;
                 else DamageDealtMult *= rawValue;
+                break;
+            case GameAttributes.StructureReboundDamage:
+                StructureReboundBonus += value;
+                break;
+            case GameAttributes.StructureHPBonus:
+                StructureReboundBonus += value;
                 break;
             default: break;
         }

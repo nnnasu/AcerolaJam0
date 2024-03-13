@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: RewardGenerator
   m_EditorClassIdentifier: 
   Actions:
-  - {fileID: 11400000, guid: a84ce6fbd6ad44c488e6b909cdc762d6, type: 2}
   - {fileID: 11400000, guid: ac886c2a94d2f9248815756b19eac79f, type: 2}
   - {fileID: 11400000, guid: fb9edcb21d80ce44b846a9b3cfa0b91a, type: 2}
   - {fileID: 11400000, guid: 9d9dcedef689a724088f0e9ca89f0def, type: 2}
@@ -24,6 +23,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15715c798c5936f419460661ec91fe39, type: 2}
   - {fileID: 11400000, guid: 67edb090d9c1b564290f6cc20eecd9c7, type: 2}
   - {fileID: 11400000, guid: 3efda68fa435fc94e8a916203d7dcc11, type: 2}
+  - {fileID: 11400000, guid: a84ce6fbd6ad44c488e6b909cdc762d6, type: 2}
+  - {fileID: 11400000, guid: 62941f11ed94cca41a1ab78f4ac79f66, type: 2}
+  - {fileID: 11400000, guid: ece09cca962a5d54791179d3e4ad79e0, type: 2}
   Modifiers:
   - {fileID: 11400000, guid: 2dea8974403fb144786f4a6903cd9e97, type: 2}
   - {fileID: 11400000, guid: e9fd29e9cecdd97458f90d4151afe73b, type: 2}

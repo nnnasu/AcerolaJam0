@@ -16,7 +16,7 @@ public class StructureActionDefinition : ActionDefinition {
             return; // This should never happen.
         }
         var store = owner.StructureStorage[structure];
-        if (store.CurrentCharges <= 0) return;         
+        if (store.CurrentCharges <= 0) return;
 
         // Spawn the structure.                
         var obj = store.GetStructure();
@@ -37,7 +37,8 @@ public class StructureActionDefinition : ActionDefinition {
         obj.gameObject.SetActive(true);
         obj.Definition = structure;
         obj.transform.position = target;
-        obj.Activate(tickInterval, owner);
+
+        obj.Activate(tickInterval, owner, store);
     }
 
 }

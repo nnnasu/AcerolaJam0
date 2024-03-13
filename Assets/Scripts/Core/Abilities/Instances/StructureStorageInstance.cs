@@ -34,6 +34,8 @@ namespace Core.Abilities.Instances {
             }
             var obj = structure.SpawnStructure();
             var stru = obj.GetComponent<StructureBase>();
+            stru.attributes.ResetState(owner.Attributes.StructureHPBonus / 100 + 1);
+
             ActiveStructures.AddLast(stru);
             return stru;
         }

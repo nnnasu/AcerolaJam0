@@ -29,5 +29,9 @@ namespace Core.Abilities.Structures {
         public EntityType GetEntityType() {
             return EntityType.Structure;
         }
+
+        public void Heal(float amount) {
+            // Can't be healed...?
+        }
     }
 }
