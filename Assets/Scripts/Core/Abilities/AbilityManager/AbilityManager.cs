@@ -33,6 +33,7 @@ namespace Core.Abilities {
         public Vector3 previousPosition; // before applying abilities
 
         public bool IsMovementControlledByAbility { get; private set; } = false;
+        Tween MovementControlTween;
 
 
         private void Awake() {
@@ -123,9 +124,14 @@ namespace Core.Abilities {
             characterController.enabled = true;
         }
 
-        public void MoveTowards(Vector3 position, float time) {
-            Vector3 move = position - transform.position;
-            characterController.Move(move);
+        public void TakeControlOfMovement(float time) {
+            MovementControlTween.Stop();
+            IsMovementControlledByAbility = true;
+            MovementControlTween = Tween.Delay(time, RegainMovementControl);
+        }
+
+        private void RegainMovementControl() {
+            IsMovementControlledByAbility = false;
         }
 
         public void MoveTick(Vector3 amount) {
