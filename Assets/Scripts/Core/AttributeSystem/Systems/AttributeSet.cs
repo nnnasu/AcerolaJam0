@@ -149,4 +149,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
         TakeDamage(MaxHP);
     }
 
+    public Transform GetTransform() {
+        return transform;
+    }
 }

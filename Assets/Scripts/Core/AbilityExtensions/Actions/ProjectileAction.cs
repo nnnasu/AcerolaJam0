@@ -36,13 +36,13 @@ public class ProjectileAction : ActionDefinition {
         // e.g. if we have 3 projectiles at 10 deg, leftmost starts at -15 deg so that the center is unchanged.
         float eulerY = -count * AngleBetweenProjectiles / 2;
         for (int i = 0; i < count; i++) {
-            SpawnAndOrientProjecitle(owner, ability, action, targetPoint, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
+            SpawnAndOrientProjectile(owner, ability, action, targetPoint, Quaternion.Euler(0, eulerY, 0) * direction, OnHit);
             eulerY += AngleBetweenProjectiles;
         }
 
     }
 
-    private Projectile SpawnAndOrientProjecitle(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<AttributeSet> OnHit = null) {
+    private Projectile SpawnAndOrientProjectile(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<AttributeSet> OnHit = null) {
         var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
         Projectile obj = poolObj.GetComponent<Projectile>();
         if (obj == null) {

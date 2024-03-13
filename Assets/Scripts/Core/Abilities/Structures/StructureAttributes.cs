@@ -33,5 +33,9 @@ namespace Core.Abilities.Structures {
         public void Heal(float amount) {
             // Can't be healed...?
         }
+
+        public Transform GetTransform() {
+            return transform;
+        }
     }
 }

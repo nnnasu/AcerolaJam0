@@ -21,6 +21,10 @@ public class TutorialGateDestroyer : MonoBehaviour, IDamageable {
         return EntityType.Enemy;
     }
 
+    public Transform GetTransform() {
+        return transform;
+    }
+
     public void Heal(float amount) {
     }
 
