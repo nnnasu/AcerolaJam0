@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 5990903467143036490}
   - component: {fileID: 3198409922984813474}
   - component: {fileID: 5026281209415369725}
-  - component: {fileID: 1800492696049092383}
   - component: {fileID: 1311309250622504448}
   - component: {fileID: 5283207130900138482}
   m_Layer: 0
@@ -230,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea7cf0adaddf874887311165b66c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttributes: {fileID: 11400000, guid: 4dd22f382d40224498847c4a828ea661, type: 2}
+  baseAttributes: {fileID: 11400000, guid: a48cd9a8c99656447a93a0559a77ed15, type: 2}
   HP: 0
   MaxHP: 50
   MovementSpeed: 0
@@ -239,76 +238,7 @@ MonoBehaviour:
   DamageDealtMult: 1
   DamageTakenMult: 1
   entityType: 4
-  ResetOnEnable: 0
---- !u!114 &1800492696049092383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582547362017483110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8162373242446c458783ea6dac76725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 5026281209415369725}
-  MaxHPScaling:
-    scalingType: 0
-    BaseValue: 20
-    AdditiveValue: 0
-    ValueCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 5
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  BaseAttackScaling:
-    scalingType: 0
-    BaseValue: 25
-    AdditiveValue: 15
-    ValueCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 5
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
+  ResetOnEnable: 1
 --- !u!114 &1311309250622504448
 MonoBehaviour:
   m_ObjectHideFlags: 0

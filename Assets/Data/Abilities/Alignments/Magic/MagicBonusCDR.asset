@@ -41,10 +41,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   effectType: 0
+  Conditions: []
   icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
   EffectName: Mage Alignment CDR
+  ShortDescription: 
   ShouldDisplayNumber: 0
-  ShowInHUD: 1
+  ShowInHUD: 0
   modifiers:
   - Attribute: 8
     value:

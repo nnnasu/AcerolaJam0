@@ -21,3 +21,7 @@ MonoBehaviour:
       type: 3}
     weight: 2
     cost: 5
+  - prefab: {fileID: 8187667278936037665, guid: 4b1af97ce8d0402418e6c7c907ad391f,
+      type: 3}
+    weight: 3
+    cost: 2

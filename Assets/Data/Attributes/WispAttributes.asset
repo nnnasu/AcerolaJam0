@@ -9,12 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef985cc77f4606948a03fde770953267, type: 3}
-  m_Name: MP Watcher
+  m_Script: {fileID: 11500000, guid: eba46e42167a2154fa8a9fd71ed6ed24, type: 3}
+  m_Name: WispAttributes
   m_EditorClassIdentifier: 
-  duration:
+  BaseMaxHP: 10
+  BaseAttack: 15
+  BaseMovementSpeed: 15
+  BaseAttackSpeed: 0
+  DamageDealtMult: 1
+  DamageTakenMult: 1
+  MaxHPScaling:
     scalingType: 0
-    BaseValue: 0
+    BaseValue: 3.5
     AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2
@@ -40,17 +46,31 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  effectType: 0
-  Conditions: []
-  icon: {fileID: 21300000, guid: 140909e09f395084d8f6a1b56a7e7bea, type: 3}
-  EffectName: 
-  ShortDescription: 
-  ShouldDisplayNumber: 0
-  ShowInHUD: 1
-  Description: Apply effect upon the stat dropping below the threshold.
-  watchedAttribute: 1
-  threshold: 0.05
-  effectTriggersAboveThreshold: 0
-  Reversible: 1
-  effectsToTrigger:
-  - {fileID: 11400000, guid: c11b65c297721ca45a0f0a0ffb18555b, type: 2}
+  AttackScaling:
+    scalingType: 0
+    BaseValue: 5
+    AdditiveValue: 0
+    ValueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 5
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4

@@ -15,6 +15,16 @@ namespace Core.Directors.Levels {
         public int Count => Checkpoints.Count;
 
         internal void DistributeCheckpointTypes(List<RoomType> toDistribute) {
+            if (toDistribute.Count < Checkpoints.Count) {
+                int i = 0, j = 0;
+                while (i < Checkpoints.Count) {
+                    Checkpoints[i].SetNextRoom(toDistribute[j]);
+                    i++; // Checkpoints
+                    j = (j + 1) % toDistribute.Count; // Room Count
+                }
+                return;
+
+            }
             for (int i = 0; i < Count; i++) {
                 Checkpoints[i].SetNextRoom(toDistribute[i]);
             }

@@ -33,6 +33,7 @@ namespace Core.AbilityExtensions.Spawns {
 
         void OnTriggerStay(Collider other) {
             if (other.GetComponent<Rigidbody>() is Rigidbody rb) {
+                if (!rb) return;
                 if (rb.isKinematic) return;
                 Vector3 dir = transform.position - rb.transform.position;
                 rb.AddForce(dir.normalized * ForceMagnitude, ForceMode.Force);

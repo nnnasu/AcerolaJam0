@@ -36,13 +36,12 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     }
 
     public virtual void ResetState(bool resetHP = false) {
-
         RemoveAllEffects();
         MaxHP = baseAttributes.MaxHP;
         if (resetHP) HP = MaxHP;
-        MovementSpeed = baseAttributes.MovementSpeedBase;
-        AttackSpeed = baseAttributes.AttackSpeed;
-        BaseAttack = baseAttributes.BaseAttack;
+        MovementSpeed = baseAttributes.BaseMovementSpeed;
+        AttackSpeed = baseAttributes.BaseAttackSpeed;
+        BaseAttack = baseAttributes.Attack;
         DamageDealtMult = baseAttributes.DamageDealtMult;
         DamageTakenMult = baseAttributes.DamageTakenMult;
     }

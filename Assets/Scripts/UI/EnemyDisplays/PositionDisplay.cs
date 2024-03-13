@@ -41,7 +41,7 @@ namespace Core.UI.PositionDisplays {
         }
 
         public virtual void Tick() {
-            var pos = mainCamera.WorldToScreenPoint(target.transform.position);
+            var pos = mainCamera.WorldToScreenPoint(target.transform.position);            
             Vector3 uiPos = pos + offset;
 
             if (IsPointVisibleOnScreen(pos)) {
@@ -74,7 +74,7 @@ namespace Core.UI.PositionDisplays {
 
         protected virtual void Release() {
             target.OnDisableEvent -= Release;
-            ReturnToPool();
+            if (this) ReturnToPool();
             OnRelease?.Invoke(this);
         }       
 
