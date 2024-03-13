@@ -11,7 +11,8 @@ namespace Core.AbilityExtensions.Actions {
     public class TeleportAction : ActionDefinition {
 
 
-        protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+
+        protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
             base.ActivateAction(owner, ability, action, target, OnHit);
             Vector3 direction = target - owner.transform.position;
             direction.y = 0;
@@ -20,6 +21,5 @@ namespace Core.AbilityExtensions.Actions {
             Vector3 targetPoint = owner.transform.position + direction;
             owner.Teleport(targetPoint);
         }
-
     }
 }

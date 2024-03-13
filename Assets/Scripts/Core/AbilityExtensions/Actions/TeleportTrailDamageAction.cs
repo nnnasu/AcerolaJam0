@@ -13,7 +13,7 @@ public class TeleportTrailDamageAction : ActionDefinition {
     public GameObject AoeSpawnObject;
     public float radius = 1;
 
-    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
         Vector3 direction = target - owner.previousPosition;
         var poolObj = GlobalPool.Current.GetObject(AoeSpawnObject);
         LineAoe obj = poolObj.GetComponent<LineAoe>();

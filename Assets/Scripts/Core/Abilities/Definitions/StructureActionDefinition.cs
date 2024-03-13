@@ -10,7 +10,7 @@ using System.Linq;
 public class StructureActionDefinition : ActionDefinition {
     public StructureDefinition structure;
 
-    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
         // Check if the player has enough structures in stock
         if (!owner.StructureStorage.ContainsKey(structure)) {
             return; // This should never happen.

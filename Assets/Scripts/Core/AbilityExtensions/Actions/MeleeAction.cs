@@ -16,7 +16,7 @@ public class MeleeAction : ActionDefinition {
     public GameObject Attachment;
     public AttachmentSlot attachmentSlot = AttachmentSlot.RightHand;
 
-    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
         var poolObj = GlobalPool.Current.GetObject(HitboxPrefab);
         AreaBurst obj = poolObj.GetComponent<AreaBurst>();
         if (obj == null) return;

@@ -96,7 +96,7 @@ namespace Core.Abilities.Instances {
             return true;
         }
 
-        public void OnHit(AttributeSet target) {
+        public void OnHit(IDamageable target) {
             foreach (var item in actions) {
                 item.OnHit(owner, this, target);
             }

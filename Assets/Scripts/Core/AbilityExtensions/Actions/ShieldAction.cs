@@ -13,7 +13,7 @@ namespace Core.AbilityExtensions.Actions {
         public GameObject followObjectPrefab;
         public StatusEffect BuffEffect;
 
-        protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
             owner.Attributes.ApplyEffect(BuffEffect.GetEffectInstance(owner.Attributes, action.level));
 
             var obj = GlobalPool.Current.GetObject(followObjectPrefab);

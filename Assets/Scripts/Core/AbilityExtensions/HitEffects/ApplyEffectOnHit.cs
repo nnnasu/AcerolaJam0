@@ -13,9 +13,11 @@ namespace Core.AbilityExtensions.Effects {
             return $"Applies {effect.name} on hit.";
         }
 
-        public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
-            var instance = effect.GetEffectInstance(target, action.level);
-            target.ApplyEffect(instance);
+        public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
+            if (target is AttributeSet att && att != null) {
+                var instance = effect.GetEffectInstance(att, action.level);
+                att.ApplyEffect(instance);
+            }
         }
     }
 }

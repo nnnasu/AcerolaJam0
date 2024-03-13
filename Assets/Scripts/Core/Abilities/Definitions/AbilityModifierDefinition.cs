@@ -26,8 +26,8 @@ public abstract class AbilityModifierDefinition : ScriptableObject, IGetAlignmen
     public string ModifierName;
     [TextArea] public string Description;
 
-    public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null);
-    public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, AttributeSet hitTarget);
+    public abstract void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<IDamageable> OnHit = null);
+    public abstract void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, IDamageable hitTarget);
     public virtual string GetTooltipText(int level) {
         List<string> strings = new();
         GlobalStatModifier.ForEach(x => strings.Add(x.GetTooltipText(level)));

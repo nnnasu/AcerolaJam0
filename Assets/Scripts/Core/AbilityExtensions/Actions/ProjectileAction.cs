@@ -24,7 +24,7 @@ public class ProjectileAction : ActionDefinition {
     public bool SpawnAtTargetPoint = false;
 
 
-    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+    protected override void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
         Vector3 direction = target - owner.transform.position;
         direction.y = 0;
         direction.Normalize();

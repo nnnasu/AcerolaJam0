@@ -13,7 +13,7 @@ namespace Core.AbilityExtensions.Effects {
             return $"Recovers {RegenOnHit.GetValueAtLevel(level)} MP on hit.";
         }
 
-        public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+        public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
             float amount = RegenOnHit.GetValueAtLevel(action.level);
             owner.Attributes.CostMana(-amount); // negative negative            
         }

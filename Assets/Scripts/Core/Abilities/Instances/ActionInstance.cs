@@ -22,15 +22,15 @@ namespace Core.Abilities.Instances {
             CooldownDisplay = BaseCooldown;
         }
 
-        public void ActivateAbility(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {
+        public void ActivateAbility(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<IDamageable> OnHit = null) {
             definition.ActivateAction(owner, ability, this, target, OnHit, (target) => OnActionHit(owner, ability, target));
         }
 
-        public void OnHit(AbilityManager owner, AbilityInstance ability, AttributeSet target) {
+        public void OnHit(AbilityManager owner, AbilityInstance ability, IDamageable target) {
             definition.OnHit(owner, ability, this, target);
         }
 
-        protected void OnActionHit(AbilityManager owner, AbilityInstance ability, AttributeSet target) {
+        protected void OnActionHit(AbilityManager owner, AbilityInstance ability, IDamageable target) {
             definition.OnActionHit(owner, ability, this, target);
         }
 

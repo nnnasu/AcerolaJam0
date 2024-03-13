@@ -14,10 +14,10 @@ namespace Core.Abilities.Instances {
             this.level = level;
         }
 
-        public void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<AttributeSet> OnHit = null) {
+        public void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, Action<IDamageable> OnHit = null) {
             definition.OnActivate(owner, ability, target, this, OnHit);
         }
-        public void OnHit(AbilityManager owner, AbilityInstance ability, AttributeSet hitTarget) {
+        public void OnHit(AbilityManager owner, AbilityInstance ability, IDamageable hitTarget) {
             definition.OnHit(owner, ability, this, hitTarget);
         }
         public string GetTitle() {

@@ -58,16 +58,16 @@ namespace Core.Abilities.Definitions {
 
 
 
-        public virtual void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+        public virtual void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
             OnHitEffects
                 .ForEach(x => x.OnHit(owner, ability, action, target));
         }
 
-        public virtual void OnActionHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+        public virtual void OnActionHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
             OnHitUniqueEffects.ForEach(x => x.OnHit(owner, ability, action, target));
         }
 
-        public void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null, Action<AttributeSet> OnActionHit = null) {
+        public void ActivateAction(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null, Action<IDamageable> OnActionHit = null) {
 
             float animationMult = 1;
             if (ability.cachedUsageTime < ability.baseUsageTime && ability.cachedUsageTime > 0) {
@@ -76,7 +76,7 @@ namespace Core.Abilities.Definitions {
             owner.AnimationHandler.SetActionSpeed(animationMult);
             float delay = CastPoint * ability.cachedUsageTime;
 
-            Action<AttributeSet> combinedAction = delegate { };
+            Action<IDamageable> combinedAction = delegate { };
             if (OnHit != null) combinedAction += OnHit;
             if (OnActionHit != null) combinedAction += OnActionHit;
 
@@ -113,9 +113,9 @@ namespace Core.Abilities.Definitions {
             return (alignment, level * 2); // hardcoded value, but easy to turn into parameter
         }
 
-        protected abstract void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
+        protected abstract void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null);
 
-        protected void DelayedActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        protected void DelayedActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
             if (OnActivationSFX) owner.SoundEffects.PlayOneShot(OnActivationSFX.GetRandomClip());
 
             OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));

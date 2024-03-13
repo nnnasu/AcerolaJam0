@@ -10,12 +10,12 @@ namespace Core.AbilityExtensions.Modifiers {
     public class ApplyStatusEffectOnActivate : AbilityModifierDefinition {
         public StatusEffect effectToApply;
         
-        public override void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<AttributeSet> OnHit = null) {
+        public override void OnActivate(AbilityManager owner, AbilityInstance ability, Vector3 target, ModifierInstance mod, Action<IDamageable> OnHit = null) {
             var instance = effectToApply.GetEffectInstance(owner.Attributes, mod.level);
             owner.Attributes.ApplyEffect(instance);
         }
 
-        public override void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, AttributeSet hitTarget) {
+        public override void OnHit(AbilityManager owner, AbilityInstance ability, ModifierInstance mod, IDamageable hitTarget) {
         }
     }
 }
