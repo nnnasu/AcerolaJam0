@@ -10,15 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad560a45a26b77d44b3572c75beca327, type: 3}
-  m_Name: MP
+  m_Name: DoubleEdged
   m_EditorClassIdentifier: 
-  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
+  alignment: {fileID: 0}
   GlobalStatModifier:
-  - Attribute: 1
+  - Attribute: 10
     value:
       scalingType: 0
-      BaseValue: 5
-      AdditiveValue: 10
+      BaseValue: 0.2
+      AdditiveValue: 0
+      ValueCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+  - Attribute: 11
+    value:
+      scalingType: 0
+      BaseValue: 0.2
+      AdditiveValue: 0
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -44,6 +73,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
-  ModifierName: Flat Stat Bonus
+  icon: {fileID: 21300000, guid: 66085d104b5f1ad4fae4bf650188c0b2, type: 3}
+  ModifierName: Double-Edged
   Description: 

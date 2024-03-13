@@ -15,7 +15,7 @@ MonoBehaviour:
   duration:
     scalingType: 2
     BaseValue: 0
-    AdditiveValue: 2
+    AdditiveValue: 3
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -51,13 +51,14 @@ MonoBehaviour:
   - Attribute: 10
     value:
       scalingType: 0
-      BaseValue: 0.005
-      AdditiveValue: 0.01
+      BaseValue: 0.05
+      AdditiveValue: 0.1
       ValueCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  UseAlignmentLevelForScaling: 0
-  alignmentToScaleWith: {fileID: 0}
+  UseAlignmentLevelForScaling: 1
+  alignmentToScaleWith: {fileID: 11400000, guid: 500e76f5bf7e1d841b40ea30d9479882,
+    type: 2}

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad560a45a26b77d44b3572c75beca327, type: 3}
-  m_Name: MoveSpeed
+  m_Name: Cost Reduction
   m_EditorClassIdentifier: 
-  alignment: 0
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   GlobalStatModifier:
-  - Attribute: 2
+  - Attribute: 9
     value:
       scalingType: 0
-      BaseValue: 0.5
-      AdditiveValue: 1
+      BaseValue: 5
+      AdditiveValue: 10
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -45,5 +45,5 @@ MonoBehaviour:
         m_RotationOrder: 4
   PerAbilityModifier: []
   icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
-  ModifierName: Flat Stat Bonus
+  ModifierName: MP Cost Reduction
   Description: 

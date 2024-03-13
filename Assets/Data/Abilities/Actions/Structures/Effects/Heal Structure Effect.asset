@@ -73,8 +73,8 @@ MonoBehaviour:
     m_Bits: 65
   HealAmount:
     scalingType: 0
-    BaseValue: 1.5
-    AdditiveValue: 0
+    BaseValue: 5
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -101,8 +101,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   RecallHealAmount:
     scalingType: 0
-    BaseValue: 1
-    AdditiveValue: 5
+    BaseValue: 15
+    AdditiveValue: 15
     ValueCurve:
       serializedVersion: 2
       m_Curve:

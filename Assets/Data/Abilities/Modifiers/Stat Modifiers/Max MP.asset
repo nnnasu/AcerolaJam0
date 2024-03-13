@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad560a45a26b77d44b3572c75beca327, type: 3}
-  m_Name: HP
+  m_Name: Max MP
   m_EditorClassIdentifier: 
-  alignment: 0
+  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   GlobalStatModifier:
-  - Attribute: 0
+  - Attribute: 1
     value:
       scalingType: 0
       BaseValue: 15

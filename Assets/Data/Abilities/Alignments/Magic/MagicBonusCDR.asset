@@ -51,8 +51,8 @@ MonoBehaviour:
   - Attribute: 8
     value:
       scalingType: 0
-      BaseValue: 5
-      AdditiveValue: 30
+      BaseValue: 25
+      AdditiveValue: 25
       ValueCurve:
         serializedVersion: 2
         m_Curve: []

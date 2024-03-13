@@ -16,8 +16,8 @@ MonoBehaviour:
   alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
   DamageMultiplier:
     scalingType: 0
-    BaseValue: 0.05
-    AdditiveValue: 0.3
+    BaseValue: 0.3
+    AdditiveValue: 2
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -106,6 +106,7 @@ MonoBehaviour:
   AnimationToPlay: {fileID: 11400000, guid: cae8b6781700f0e41aa40453d7de3b0a, type: 2}
   CastPoint: 0.1
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}

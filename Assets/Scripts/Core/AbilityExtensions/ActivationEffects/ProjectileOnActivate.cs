@@ -30,6 +30,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
 
         public int ProjectileCount = 1;
         public float AngleBetweenProjectiles = 10;
+        public bool CountScalesWithLevel = false;
         [TextArea] public string Description;
 
 
@@ -49,7 +50,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             direction.Normalize();
 
 
-            int count = ProjectileCount;
+            int count = CountScalesWithLevel ? action.level : ProjectileCount;
 
             // e.g. if we have 3 projectiles at 10 deg, leftmost starts at -15 deg so that the center is unchanged.
             float eulerY = -count * AngleBetweenProjectiles / 2;

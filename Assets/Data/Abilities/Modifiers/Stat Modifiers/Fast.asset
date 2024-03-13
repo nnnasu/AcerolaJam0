@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad560a45a26b77d44b3572c75beca327, type: 3}
-  m_Name: Attack and Speed
+  m_Name: Fast
   m_EditorClassIdentifier: 
-  alignment: 0
+  alignment: {fileID: 0}
   GlobalStatModifier:
-  - Attribute: 3
+  - Attribute: 2
     value:
       scalingType: 0
-      BaseValue: 5
-      AdditiveValue: 5
+      BaseValue: 1
+      AdditiveValue: 1
       ValueCurve:
         serializedVersion: 2
         m_Curve:
@@ -43,11 +43,11 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - Attribute: 4
+  - Attribute: 10
     value:
       scalingType: 0
-      BaseValue: 3
-      AdditiveValue: 3
+      BaseValue: 0.05
+      AdditiveValue: 0
       ValueCurve:
         serializedVersion: 2
         m_Curve:

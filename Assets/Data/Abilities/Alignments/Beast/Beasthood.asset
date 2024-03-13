@@ -49,7 +49,7 @@ MonoBehaviour:
   ShouldDisplayNumber: 1
   ShowInHUD: 1
   modifiers:
-  - Attribute: 9
+  - Attribute: 10
     value:
       scalingType: 0
       BaseValue: 0.005
@@ -60,7 +60,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 4
-  - Attribute: 10
+  - Attribute: 11
     value:
       scalingType: 0
       BaseValue: 0.005

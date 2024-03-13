@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c58e4b4dcad2314f8cab68e96e67b74, type: 3}
   m_Name: Step
   m_EditorClassIdentifier: 
-  actionType: 0
-  alignment: {fileID: 0}
+  actionType: 5
+  alignment: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   BaseCooldown:
     scalingType: 0
     BaseValue: 0
-    AdditiveValue: 0
+    AdditiveValue: 2
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -107,7 +107,7 @@ MonoBehaviour:
   CastPoint: 0
   BackupUsageTime: 0
   OnActivationSFX: {fileID: 0}
-  TargetingType: 0
+  TargetingType: 3
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
