@@ -72,8 +72,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   BaseMPCost:
     scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 10
+    BaseValue: 15
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:

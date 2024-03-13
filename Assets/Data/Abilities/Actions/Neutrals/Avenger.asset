@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f25878fc38117b4eaa55b082ca19018, type: 3}
-  m_Name: Magic Sword
+  m_Script: {fileID: 11500000, guid: 8911826a31e3a2b4b9f8e635771cb636, type: 3}
+  m_Name: Avenger
   m_EditorClassIdentifier: 
-  actionType: 0
-  alignment: {fileID: 11400000, guid: a028ab4f5d860104aab58f51f187c6f1, type: 2}
+  actionType: 1
+  alignment: {fileID: 0}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0.1
-    AdditiveValue: 1
+    AdditiveValue: 1.4
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -44,8 +44,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   BaseCooldown:
     scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 0
+    BaseValue: -0.35
+    AdditiveValue: 7
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -72,8 +72,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   BaseMPCost:
     scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 0
+    BaseValue: 5
+    AdditiveValue: 10
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -99,22 +99,19 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   IgnoredEntities: 1
-  OnHitUniqueEffects:
-  - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
+  OnHitUniqueEffects: []
   OnHitEffects: []
-  OnActivateEffects:
-  - {fileID: 11400000, guid: dd89d073dfaf814499ca40d8f6aefdd0, type: 2}
-  - {fileID: 11400000, guid: 774f8eb218371114288b1ecedaf7f6cb, type: 2}
+  OnActivateEffects: []
   AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
   CastPoint: 0.3
   BackupUsageTime: 0
-  TargetingType: 1
+  TargetingType: 0
   TargetSize: {x: 1, y: 1, z: 1}
-  TargetOffset: {x: 0, y: 0, z: 2}
+  TargetOffset: {x: 0, y: 0, z: 0}
   Range:
     scalingType: 2
     BaseValue: 0
-    AdditiveValue: 2
+    AdditiveValue: 10
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -139,11 +136,17 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
-  ActionTitle: 
-  Description: Attacks the area right in front of the user, dealing {DAMAGE} damage.
-  HitboxPrefab: {fileID: 3787522926584128234, guid: 77a401be7c3587c449c8270a6a63f126,
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  ActionTitle: Avenger
+  Description: 'Throw a piercing shuriken that does {DAMAGE} damage. '
+  projectilePrefab: {fileID: 3867255862158688488, guid: 8013daa0f93b7f443ab4a5b417c7bfe5,
     type: 3}
-  Attachment: {fileID: 3930504323365550979, guid: 7c033f0bec75cdd4d8de7ee7e688712d,
-    type: 3}
-  attachmentSlot: 0
+  ProjectileSpeed: 35
+  ProjectileDuration: 5
+  Piercing: 1
+  offset: {x: 0, y: 1, z: 1}
+  ProjectileCount: 1
+  AngleBetweenProjectiles: 7
+  ProjectileCountScalesWithLevel: 0
+  HomeTowardsUser: 0
+  SpawnAtTargetPoint: 0

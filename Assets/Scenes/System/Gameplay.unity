@@ -3555,6 +3555,8 @@ MonoBehaviour:
   DefaultAbilities:
   - Actions:
     - {fileID: 11400000, guid: 15715c798c5936f419460661ec91fe39, type: 2}
+  - Actions:
+    - {fileID: 11400000, guid: 4fe0b18cddba1ec4ea6199c5257b63ab, type: 2}
   characterController: {fileID: 1107741104}
   previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1107741113

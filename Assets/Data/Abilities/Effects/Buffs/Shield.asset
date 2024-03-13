@@ -15,7 +15,7 @@ MonoBehaviour:
   duration:
     scalingType: 0
     BaseValue: 0.15
-    AdditiveValue: 0.5
+    AdditiveValue: 0.85
     ValueCurve:
       serializedVersion: 2
       m_Curve:
