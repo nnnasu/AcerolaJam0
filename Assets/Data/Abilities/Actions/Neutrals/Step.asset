@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c58e4b4dcad2314f8cab68e96e67b74, type: 3}
-  m_Name: Movement Action
+  m_Name: Step
   m_EditorClassIdentifier: 
   actionType: 0
   alignment: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   BaseMPCost:
     scalingType: 0
     BaseValue: 0
-    AdditiveValue: 0
+    AdditiveValue: 8
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -101,17 +101,19 @@ MonoBehaviour:
   IgnoredEntities: 1
   OnHitUniqueEffects: []
   OnHitEffects: []
-  OnActivateEffects: []
+  OnActivateEffects:
+  - {fileID: 11400000, guid: 6b22ba6a8748428479047d0adc04e5e4, type: 2}
   AnimationToPlay: {fileID: 11400000, guid: da7d70638b8bf7545af87e7f9860a339, type: 2}
   CastPoint: 0
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
     scalingType: 0
-    BaseValue: 0
-    AdditiveValue: 10
+    BaseValue: 1
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -137,14 +139,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   icon: {fileID: 0}
-  ActionTitle: 
-  Description: 
-  DisplacementCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  ActionTitle: Step
+  Description: 'Moves towards the target point up to {RANGE} away. '
+  MinimumDistance: 4
   TravelTime: 0.3
   ease: 6
   OnLandEffects: []

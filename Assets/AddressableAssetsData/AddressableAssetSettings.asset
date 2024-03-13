@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 23ac843f4b26e5045b9b6facf5c9fb02
   m_currentHash:
     serializedVersion: 2
-    Hash: 89bfc315803a1259636946299dd9a993
+    Hash: b0098b415a725c7ea4742d2dd2c4044e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -48,7 +48,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c6eb00e605a7b641b976799debc4969, type: 2}
   - {fileID: 11400000, guid: bf1946dee35a7c1419eeb2d0d43619ab, type: 2}
   - {fileID: 11400000, guid: e976c5aea2ce17646ac0604d61a9c9fd, type: 2}
-  - {fileID: 11400000, guid: 30f01a6a515972445bc9c577fea62fe4, type: 2}
+  - {fileID: 11400000, guid: 0407240d00d9a9c4b99e476a20b43b56, type: 2}
+  - {fileID: 11400000, guid: e324757a375b2df4ea90bf2fc3ed0e39, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -91,6 +92,9 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Persistent
+    - ability
+    - enemy
+    - projectiles
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 78fd5938f7ebafd4789b75d47d8dbbbb, type: 2}

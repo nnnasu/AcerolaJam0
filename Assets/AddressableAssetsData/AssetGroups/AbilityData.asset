@@ -10,25 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Abilities
+  m_Name: AbilityData
   m_EditorClassIdentifier: 
-  m_GroupName: Abilities
+  m_GroupName: AbilityData
   m_Data:
     m_SerializedData: []
-  m_GUID: aae887d41181bc24abf4d6d735d03d9b
+  m_GUID: 0092e84084976f243a131000411fb42a
   m_SerializeEntries:
-  - m_GUID: ac886c2a94d2f9248815756b19eac79f
-    m_Address: Projectile Action
+  - m_GUID: 2c84003550a2b7b4289b8c9d8a75c29f
+    m_Address: Spawns
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 968505f7b9b1fcf4ea253db40b14a43b
-    m_Address: Assets/Data/Abilities/Effects/ActivationEffects/Beasthood Application.asset
+  - m_GUID: ed119edce87e22d498a848a0d521f8ff
+    m_Address: Projectiles
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94b74b978f99834499997b608f5fac93
-    m_Address: Assets/Data/Abilities/Basic Attacks/Melee Action.asset
+  - m_GUID: 66c3147720003ab458e05eb488a332bd
+    m_Address: Weapons
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 550022d48d2b23e48aa7fe251947d2f3
+    m_Address: Abilities
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -36,5 +41,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 644696595008f5540a28c072fe12ba8f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 576706c2ea609aa428c8e1758a4fd68f, type: 2}
-    - {fileID: 11400000, guid: ece3c9c06e0c87f4286fe5a19ac4a403, type: 2}
+    - {fileID: 11400000, guid: d3ce94a98e233ee4fb5053097a47dec7, type: 2}
+    - {fileID: 11400000, guid: a5858e2baa748e246af8a6b5b143cd22, type: 2}

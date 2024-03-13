@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e392eac95b1e4034cada3df5e2dacaac, type: 3}
-  m_Name: StructureDefinition
+  m_Name: HealingPortal
   m_EditorClassIdentifier: 
   RechargeTime: 5
   structurePrefab: {fileID: 1957290656272839930, guid: 801e6a799a3c8e643bbdb9316ad652bd,

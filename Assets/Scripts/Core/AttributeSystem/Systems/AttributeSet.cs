@@ -16,6 +16,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     public float BaseAttack;
     public float DamageDealtMult = 1;
     public float DamageTakenMult = 1;
+    public bool IsInvulnerable = false;
 
     public EntityType entityType = EntityType.Enemy;
 
@@ -48,6 +49,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
 
 
     public virtual void TakeDamage(float amount) {
+        if (IsInvulnerable) return;
         amount = Formulas.DamageTakenFormula(amount, DamageTakenMult);
 
         float oldHP = HP;

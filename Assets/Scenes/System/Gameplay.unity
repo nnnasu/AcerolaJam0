@@ -3517,6 +3517,7 @@ MonoBehaviour:
   BaseAttack: 10
   DamageDealtMult: 1
   DamageTakenMult: 1
+  IsInvulnerable: 0
   entityType: 1
   ResetOnEnable: 1
   MP: 50
@@ -3541,6 +3542,9 @@ MonoBehaviour:
   Attributes: {fileID: 1107741110}
   AnimationHandler: {fileID: 1107741117}
   AttachmentHandler: {fileID: 1107741118}
+  characterController: {fileID: 1107741104}
+  SoundEffects: {fileID: 0}
+  previousPosition: {x: 0, y: 0, z: 0}
   BasicAttack:
     owner: {fileID: 0}
     actions: []
@@ -3559,8 +3563,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4fe0b18cddba1ec4ea6199c5257b63ab, type: 2}
   - Actions:
     - {fileID: 11400000, guid: 3efda68fa435fc94e8a916203d7dcc11, type: 2}
-  characterController: {fileID: 1107741104}
-  previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1107741113
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using Core.Animation;
 using Core.AttributeSystem;
 using Core.AttributeSystem.Alignments;
 using Core.Utilities.Scaling;
+using Core.Utilities.Sounds;
 using PrimeTween;
 using UnityEngine;
 
@@ -38,6 +39,11 @@ namespace Core.Abilities.Definitions {
         public float CastPoint = 0;
         [SerializeField] float BackupUsageTime;
         public float UsageTime => AnimationToPlay ? AnimationToPlay.UsageTime : BackupUsageTime;
+
+        [Header("Sounding")]
+        public SoundGroup OnActivationSFX;
+
+
 
         [Header("Targeting Properties")]
         public TargetingType TargetingType;
@@ -110,6 +116,8 @@ namespace Core.Abilities.Definitions {
         protected abstract void ActivateActionImplementation(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null);
 
         protected void DelayedActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+            if (OnActivationSFX) owner.SoundEffects.PlayOneShot(OnActivationSFX.GetRandomClip());
+
             OnActivateEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
             ActivateActionImplementation(owner, ability, action, target, OnHit);
         }

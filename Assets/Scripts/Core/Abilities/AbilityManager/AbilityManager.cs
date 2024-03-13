@@ -13,24 +13,27 @@ namespace Core.Abilities {
         public PlayerAttributeSet Attributes;
         public AnimationHandler AnimationHandler;
         public AttachmentHandler AttachmentHandler;
+        public CharacterController characterController;
+        public AudioSource SoundEffects;
+
         public Dictionary<StructureDefinition, StructureStorageInstance> StructureStorage = new();
         public event Action OnRebindRequest = delegate { };
         public event Action<StructureBase> OnStructureKilledEvent = delegate { };
+        public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
+
+        public float movementSpeed => Attributes.MovementSpeed;
+        private int index = 0;
+        public bool isSkillSelected => index != 0;
+        public AbilityInstance CurrentlySelected { get; private set; }
+        public Vector3 previousPosition; // before applying abilities
+
+
 
         public AbilityInstance BasicAttack;
         public List<AbilityInstance> Abilities = new(4);
-
-        public float movementSpeed => Attributes.MovementSpeed;
         public ActionDefinition DefaultAttack;
         public DefaultAbility[] DefaultAbilities;
 
-        private int index = 0;
-        public bool isSkillSelected => index != 0;
-
-        public AbilityInstance CurrentlySelected { get; private set; }
-        public event Action<AbilityInstance> OnCurrentSelectedAbilityChanged = delegate { };
-        public CharacterController characterController;
-        public Vector3 previousPosition; // before applying abilities
 
         public bool IsMovementControlledByAbility { get; private set; } = false;
         Tween MovementControlTween;
@@ -108,12 +111,11 @@ namespace Core.Abilities {
         }
 
 
-
         private void ActivateAbility(AbilityInstance ability, Vector3 position) {
             if (ability == null) return;
             AnimationHandler.SetActionSpeed(1);
             if (ability.ActivateAbility(position)) {
-                AnimationHandler.PlayAnimationState(ability.StateToPlay);
+                AnimationHandler.PlayAnimationState(ability.StateToPlay);                
             }
         }
 
