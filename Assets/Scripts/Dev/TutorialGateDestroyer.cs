@@ -4,6 +4,7 @@ using Core.AttributeSystem;
 using Core.Utilities.Sounds;
 using PrimeTween;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TutorialGateDestroyer : MonoBehaviour, IDamageable {
 
@@ -12,8 +13,9 @@ public class TutorialGateDestroyer : MonoBehaviour, IDamageable {
     public Collider col;
     public SoundGroup doorDropSounds;
     public SoundGroup doorHitSounds;
-    
+
     public AudioSource audioSource;
+    public UnityEvent OnGateDestroyed;
 
     public EntityType GetEntityType() {
         return EntityType.Enemy;
@@ -31,6 +33,7 @@ public class TutorialGateDestroyer : MonoBehaviour, IDamageable {
     private void DisableColliders() {
         audioSource.PlayOneShot(doorDropSounds.GetRandomClip(), 0.7f);
         col.enabled = false;
+        OnGateDestroyed?.Invoke();
     }
 
 }
