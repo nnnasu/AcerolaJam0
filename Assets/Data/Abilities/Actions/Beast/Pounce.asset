@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8911826a31e3a2b4b9f8e635771cb636, type: 3}
-  m_Name: Crystal Shard
+  m_Script: {fileID: 11500000, guid: 9c58e4b4dcad2314f8cab68e96e67b74, type: 3}
+  m_Name: Pounce
   m_EditorClassIdentifier: 
-  actionType: 0
-  alignment: {fileID: 0}
+  actionType: 5
+  alignment: {fileID: 11400000, guid: e38a5d562efcde64783d88a0e4f587e0, type: 2}
   DamageMultiplier:
     scalingType: 0
     BaseValue: 0
-    AdditiveValue: 1
+    AdditiveValue: 0
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -73,7 +73,7 @@ MonoBehaviour:
   BaseMPCost:
     scalingType: 0
     BaseValue: 0
-    AdditiveValue: 0
+    AdditiveValue: 25
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -99,22 +99,22 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   IgnoredEntities: 1
-  OnHitUniqueEffects:
-  - {fileID: 11400000, guid: 231e2c815e9eeac4aa375ecae228eadb, type: 2}
-  - {fileID: 11400000, guid: 144d6853e90753c4d94b5ddae2292146, type: 2}
+  OnHitUniqueEffects: []
   OnHitEffects: []
-  OnActivateEffects: []
-  AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
-  CastPoint: 0.3
+  OnActivateEffects:
+  - {fileID: 11400000, guid: 6b22ba6a8748428479047d0adc04e5e4, type: 2}
+  - {fileID: 11400000, guid: 968505f7b9b1fcf4ea253db40b14a43b, type: 2}
+  AnimationToPlay: {fileID: 11400000, guid: da7d70638b8bf7545af87e7f9860a339, type: 2}
+  CastPoint: 0
   BackupUsageTime: 0
   OnActivationSFX: {fileID: 0}
-  TargetingType: 2
-  TargetSize: {x: 1, y: 1, z: 1}
+  TargetingType: 0
+  TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
   Range:
-    scalingType: 2
-    BaseValue: 0
-    AdditiveValue: 10
+    scalingType: 0
+    BaseValue: 1
+    AdditiveValue: 5
     ValueCurve:
       serializedVersion: 2
       m_Curve:
@@ -128,8 +128,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 5
-        value: 2
+        time: 5.0167847
+        value: 2.0018857
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -139,18 +139,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  ActionTitle: Projectile
-  Description: 'Throws {LEVEL} daggers in a fan-shaped pattern which do {DAMAGE}
-    damage each. '
-  projectilePrefab: {fileID: 3867255862158688488, guid: 915ff68c349c1a34c874c810e295dfe6,
-    type: 3}
-  ProjectileSpeed: 35
-  ProjectileDuration: 0.5
-  Piercing: 0
-  offset: {x: 0, y: 1, z: 1}
-  ProjectileCount: 1
-  AngleBetweenProjectiles: 7
-  ProjectileCountScalesWithLevel: 1
-  HomeTowardsUser: 0
-  SpawnAtTargetPoint: 0
+  icon: {fileID: 0}
+  ActionTitle: Step
+  Description: 'Moves towards the target point up to {RANGE} away. '
+  MinimumDistance: 4
+  TravelTime: 0.3
+  ease: 6
+  OnLandEffects: []

@@ -13,6 +13,7 @@ namespace Core.AbilityExtensions.Effects {
     [CreateAssetMenu(fileName = "ExtraProjectile", menuName = "Ability System/On Hit Effects/Projectile On Hit", order = 0)]
     public class SpawnProjectileOnHit : OnHitEffect {
 
+        [Header("Projectile Settings")]
         public GameObject ProjectilePrefab;
         public float ProjectileSpeed = 10;
         public float ProjectileDuration = 5;
@@ -23,12 +24,15 @@ namespace Core.AbilityExtensions.Effects {
         public ScaledFloat DamageMultiplier;
         public EntityType IgnoredEntities = EntityType.Player;
 
+        public EntityType TriggerEntities = EntityType.Structure;
+
 
         public override string GetTooltip(int level) {
             return "";
         }
 
         public override void OnHit(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
+            if ((target.GetEntityType() & TriggerEntities) == 0) return;
 
             Vector3 pos = target.GetTransform().position;
             Vector3 direction = owner.transform.position - pos;

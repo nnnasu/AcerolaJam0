@@ -17,7 +17,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             return $"Applies {EffectToApply.name} on activation";
         }
 
-        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
+        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<IDamageable> OnHit = null) {
             var instance = EffectToApply.GetEffectInstance(owner.Attributes, action.level);
             owner.Attributes.ApplyEffect(instance);
         }

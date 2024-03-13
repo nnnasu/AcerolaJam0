@@ -34,7 +34,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
 
 
 
-        public void ActivateOnHitEffect(AbilityManager owner, AbilityInstance ability, ActionInstance action, AttributeSet target) {
+        public void ActivateOnHitEffect(AbilityManager owner, AbilityInstance ability, ActionInstance action, IDamageable target) {
             OnHitEffects.ForEach(x => x.OnHit(owner, ability, action, target));
         }
 
@@ -43,7 +43,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             return Description;
         }
 
-        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
+        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<IDamageable> OnHit = null) {
             Vector3 direction = owner.transform.forward;
             direction.y = 0;
             direction.Normalize();
@@ -59,7 +59,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             }
         }
 
-        private Projectile SpawnAndOrientProjecitle(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<AttributeSet> OnHit = null) {
+        private Projectile SpawnAndOrientProjecitle(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<IDamageable> OnHit = null) {
             var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
             Projectile obj = poolObj.GetComponent<Projectile>();
             if (obj == null) {
@@ -76,7 +76,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             );
 
 
-            Action<AttributeSet> combinedAction = delegate { };
+            Action<IDamageable> combinedAction = delegate { };
             if (OnHit != null) combinedAction += OnHit;
             combinedAction += (target) => ActivateOnHitEffect(owner, ability, action, target);
 

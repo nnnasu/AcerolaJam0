@@ -14,7 +14,7 @@ namespace Core.AbilityExtensions.Spawns {
         public bool DestroyOnContact = false;
         public float DamageDropoffRate = 0.9f; // every hit reduces damage by this amount.
         public float speed = 0;
-        public Action<AttributeSet> OnHitCallback = null;
+        public Action<IDamageable> OnHitCallback = null;
         protected Tween ExpiryTween;
         public EntityType IgnoredEntities = EntityType.NONE;
         public GameObject OnHitParticlesPrefab;
@@ -38,10 +38,10 @@ namespace Core.AbilityExtensions.Spawns {
 
             target.TakeDamage(damage);
             damage *= DamageDropoffRate;
-            
-            if (target is AttributeSet attribute) {
-                OnHitCallback?.Invoke(attribute);
-            }
+
+
+            OnHitCallback?.Invoke(target);
+
 
             if (OnHitSounds) audioPlayer.PlayOneShot(OnHitSounds.GetRandomClip());
             if (OnHitParticlesPrefab) SpawnHitParticles();
@@ -51,7 +51,7 @@ namespace Core.AbilityExtensions.Spawns {
             }
         }
 
-        public void Activate(float duration, float speed, Vector3 directionWS, float damage, Action<AttributeSet> onHitCallback = null) {
+        public void Activate(float duration, float speed, Vector3 directionWS, float damage, Action<IDamageable> onHitCallback = null) {
             enabled = true;
             if (trail) {
                 trail.Clear();

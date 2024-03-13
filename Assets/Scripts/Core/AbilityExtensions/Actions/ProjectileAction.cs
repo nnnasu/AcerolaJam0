@@ -42,7 +42,7 @@ public class ProjectileAction : ActionDefinition {
 
     }
 
-    private Projectile SpawnAndOrientProjectile(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<AttributeSet> OnHit = null) {
+    private Projectile SpawnAndOrientProjectile(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Vector3 direction, Action<IDamageable> OnHit = null) {
         var poolObj = GlobalPool.Current.GetObject(projectilePrefab);
         Projectile obj = poolObj.GetComponent<Projectile>();
         if (obj == null) {

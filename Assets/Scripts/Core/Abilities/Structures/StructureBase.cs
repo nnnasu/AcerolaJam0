@@ -13,7 +13,8 @@ using UnityEngine.Pool;
 namespace Core.Abilities.Structures {
     public class StructureBase : PoolableBehaviour {
         public StructureAttributes attributes;
-        public SphereCollider aoe;
+        public Vector3 Center;
+        public float Radius;
 
         [Header("Structure Parameters")]
         public StructureDefinition Definition;
@@ -34,14 +35,14 @@ namespace Core.Abilities.Structures {
 
         public Collider[] OverlapAoe(out int count) {
             int mask = Definition.effects.LayersToCastFor;
-            count = Physics.OverlapSphereNonAlloc(aoe.bounds.center, aoe.radius, CastResults, mask, QueryTriggerInteraction.Ignore); // ignore?
+            count = Physics.OverlapSphereNonAlloc( transform.position + Center, Radius, CastResults, mask, QueryTriggerInteraction.Ignore); // ignore?
             return CastResults;
         }
 
 
         public void Activate(float tickInterval, AbilityManager owner, StructureStorageInstance storage, float HPMultiplier = 1) {
             level = Mathf.FloorToInt(storage.AverageLevel);
-            aoe.radius = Definition.effects.Radius.GetValueAtLevel(level);
+            Radius = Definition.effects.Radius.GetValueAtLevel(level);
             TickInterval = tickInterval;
             attributes.ResetState(HPMultiplier);
             this.owner = owner;

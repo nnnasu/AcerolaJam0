@@ -60,7 +60,7 @@ namespace Core.AbilityExtensions.Actions {
             con.characterController.Move(con.directionWS * speed * Time.deltaTime);
         }
 
-        protected void OnLanding(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<AttributeSet> OnHit = null) {
+        protected void OnLanding(AbilityManager owner, AbilityInstance ability, ActionInstance action, Vector3 target, Action<IDamageable> OnHit = null) {
 
             OnLandEffects.ForEach(x => x.OnActivate(owner, ability, action, OnHit));
         }

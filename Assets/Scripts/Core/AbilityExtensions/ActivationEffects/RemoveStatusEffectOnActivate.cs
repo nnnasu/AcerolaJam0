@@ -17,7 +17,7 @@ namespace Core.AbilityExtensions.ActivationEffects {
             return $"Removes {EffectToApply.name} on activation";
         }
 
-        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
+        public override void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<IDamageable> OnHit = null) {
             owner.Attributes.RemoveEffect(EffectToApply);
         }
 

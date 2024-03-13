@@ -35,7 +35,7 @@ namespace Core.AbilityExtensions.Spawns {
                 var target = damageable as AttributeSet;
                 if (!target) continue;
                 if (target.GetComponent<Rigidbody>() is Rigidbody rb && rb != null) {
-                    Vector3 direction = structure.aoe.bounds.center - rb.transform.position;
+                    Vector3 direction = structure.transform.position + structure.Center - rb.transform.position;
                     direction.Normalize();
                     rb.AddForce(direction * Force, ForceMode.Impulse);
                 }
@@ -57,7 +57,7 @@ namespace Core.AbilityExtensions.Spawns {
                 var target = damageable as AttributeSet;
                 if (!target) continue;
                 if (target.GetComponent<Rigidbody>() is Rigidbody rb && rb != null) {
-                    Vector3 direction = structure.aoe.bounds.center - rb.transform.position;
+                    Vector3 direction = structure.transform.position + structure.Center - rb.transform.position;
                     direction.Normalize();
                     rb.AddForce(direction * Force, ForceMode.Impulse);
                 }

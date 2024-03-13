@@ -18,9 +18,9 @@ namespace Core.Abilities.Effects {
             return UserConditions.All(x => x.TestCondition(owner.Attributes));
         }
 
-        public abstract void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null);
+        public abstract void OnActivateImpl(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<IDamageable> OnHit = null);
 
-        public void OnActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<AttributeSet> OnHit = null) {
+        public void OnActivate(AbilityManager owner, AbilityInstance ability, ActionInstance action, Action<IDamageable> OnHit = null) {
             if (!CanActivate(owner, ability, action)) return;
             OnActivateImpl(owner, ability, action, OnHit);
         }
