@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Core.AttributeSystem;
 using Core.AttributeSystem.Alignments;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class PlayerAttributeSet : AttributeSet {
@@ -17,6 +18,7 @@ public class PlayerAttributeSet : AttributeSet {
     public float StructureReboundBonus = 0;
     public float StructureHPBonus = 0;
     public float CooldownReduction;
+    public UnityEvent PlayerDeath;
 
     public Dictionary<AlignmentDefinition, int> levels = new();
 
@@ -35,6 +37,18 @@ public class PlayerAttributeSet : AttributeSet {
 
     public event Action<float, float> OnMPChanged = delegate { };
 
+    private void OnEnable() {
+        OnDeath += die;
+    }
+    private void OnDisable() {
+        OnDeath -= die;
+    }
+
+    private void die(AttributeSet attributeSet) {
+        PlayerDeath?.Invoke();
+    }
+
+
     public void CostMana(float amount) {
         float oldMP = MP;
         MP = Mathf.Clamp(MP - amount, 0, MaxMP);
@@ -49,6 +63,7 @@ public class PlayerAttributeSet : AttributeSet {
             alignment.ApplyEffects(this, level);
         }
     }
+
 
     public void AddAlignmentLevels(AlignmentDefinition alignment, int level) {
 

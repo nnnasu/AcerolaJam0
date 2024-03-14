@@ -27,8 +27,12 @@ namespace Core.Directors.Managers {
         public RoomType TutorialRoom;
 
         [ContextMenu("Reset Game")]
-        private void ReloadGame() {
+        public void ReloadGame() {
             SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        }
+
+        public void QuitGame() {
+            Application.Quit();
         }
 
         

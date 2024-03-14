@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Core.AttributeSystem;
 using PrimeTween;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttributeSet : MonoBehaviour, IDamageable {
 
@@ -29,6 +30,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     public event Action<EffectInstance> OnEffectRemoved = delegate { };
 
     public event Action<float> OnDamageTaken = delegate { };
+    
 
     public bool ResetOnEnable = false;
 
