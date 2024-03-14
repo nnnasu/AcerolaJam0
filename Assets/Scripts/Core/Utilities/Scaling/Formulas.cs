@@ -59,7 +59,7 @@ public static class Formulas {
     }
 
     public static float StructureEnmityBonus(float remainingPercentage) {
-        return 1 - Mathf.Pow(remainingPercentage, 0.5f); // y =1 -sqrt(x) 
+        return Mathf.Clamp01(1 - Mathf.Pow(remainingPercentage, 0.5f)); // y =1 -sqrt(x) 
     }
 
 }

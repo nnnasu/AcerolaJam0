@@ -19,7 +19,7 @@ public class StatModifier {
     public float GetValue(int level, int stacks = 1) {
         if (Attribute == GameAttributes.DamageTaken || Attribute == GameAttributes.DamageDealt) {
             // i.e. 1.01, 1.02, 1.03, ...
-            return Mathf.Min(1 + value.GetValueAtLevel(level) * stacks, float.Epsilon);
+            return 1 + value.GetValueAtLevel(level) * stacks;
         }
         return stacks * value.GetValueAtLevel(level);
     }

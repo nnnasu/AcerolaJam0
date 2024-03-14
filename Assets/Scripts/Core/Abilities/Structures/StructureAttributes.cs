@@ -9,13 +9,14 @@ namespace Core.Abilities.Structures {
         public float BaseMaxHP;
 
         public event Action<StructureAttributes> OnDeath = delegate { };
+        public event Action<StructureAttributes> OnRecall = delegate { };
         public event Action<float, float> OnHPChanged = delegate { };
 
         public void TakeDamage(float amount) {
             float oldHP = HP;
             HP--;
             OnHPChanged?.Invoke(oldHP, HP);
-            
+
             if (HP <= 0) {
                 OnDeath?.Invoke(this);
             }
@@ -36,6 +37,9 @@ namespace Core.Abilities.Structures {
 
         public Transform GetTransform() {
             return transform;
+        }
+        public void Recall() {
+            OnRecall?.Invoke(this);
         }
     }
 }

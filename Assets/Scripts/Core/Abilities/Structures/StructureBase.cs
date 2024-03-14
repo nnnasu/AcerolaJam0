@@ -39,6 +39,15 @@ namespace Core.Abilities.Structures {
             return CastResults;
         }
 
+        private void OnEnable() {
+            attributes.OnDeath += OnDeath;
+        }
+
+        private void OnDisable() {
+            attributes.OnDeath -= OnDeath;
+        }
+
+
 
         public void Activate(float tickInterval, AbilityManager owner, StructureStorageInstance storage, float HPMultiplier = 1) {
             level = Mathf.FloorToInt(storage.AverageLevel);
@@ -47,7 +56,6 @@ namespace Core.Abilities.Structures {
             attributes.ResetState(HPMultiplier);
             this.owner = owner;
             TickTween = Tween.Delay(TickInterval, OnTick);
-            attributes.OnDeath += OnDeath;
         }
 
 
@@ -68,6 +76,7 @@ namespace Core.Abilities.Structures {
         }
 
         protected virtual void RecallAction(AbilityManager recaller) {
+            attributes.Recall();
             OnRecallEvent?.Invoke();
             Definition.effects.OnRecall(recaller, this);
         }
@@ -87,7 +96,6 @@ namespace Core.Abilities.Structures {
         }
 
         public void Cleanup() {
-            attributes.OnDeath -= OnDeath;
             TickTween.Stop();
             ReturnToPool();
         }

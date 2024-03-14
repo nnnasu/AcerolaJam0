@@ -30,7 +30,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
     public event Action<EffectInstance> OnEffectRemoved = delegate { };
 
     public event Action<float> OnDamageTaken = delegate { };
-    
+
 
     public bool ResetOnEnable = false;
 
@@ -67,6 +67,7 @@ public class AttributeSet : MonoBehaviour, IDamageable {
 
         float oldHP = HP;
         HP += amount;
+        HP = Mathf.Min(HP, MaxHP);
         OnHPChanged?.Invoke(oldHP, HP);
     }
 
@@ -124,11 +125,11 @@ public class AttributeSet : MonoBehaviour, IDamageable {
                 BaseAttack += value;
                 break;
             case GameAttributes.DamageTaken:
-                if (negate) DamageTakenMult /= rawValue;
+                if (negate) DamageTakenMult /= 1 + rawValue;
                 else DamageTakenMult *= rawValue;
                 break;
             case GameAttributes.DamageDealt:
-                if (negate) DamageDealtMult /= rawValue;
+                if (negate) DamageDealtMult /= 1 + rawValue;
                 else DamageDealtMult *= rawValue;
                 break;
             default: break;

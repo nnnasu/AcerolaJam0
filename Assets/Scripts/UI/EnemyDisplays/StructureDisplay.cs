@@ -19,7 +19,7 @@ namespace Core.UI.PositionDisplays {
 
             var attribute = target.GetComponent<StructureAttributes>();
             attributes = attribute;
-
+            attributes.OnRecall += OnDeath;
             attributes.OnDeath += OnDeath;
             attributes.OnHPChanged += OnHpChange;
 
@@ -28,6 +28,7 @@ namespace Core.UI.PositionDisplays {
 
         private void Unbind() {
             HitTween.Complete();
+            attributes.OnRecall -= OnDeath;
             attributes.OnDeath -= OnDeath;
             attributes.OnHPChanged -= OnHpChange;
             attributes = null;
