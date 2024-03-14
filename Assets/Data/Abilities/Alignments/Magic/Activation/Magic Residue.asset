@@ -42,7 +42,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   effectType: 0
   Conditions: []
-  icon: {fileID: 21300000, guid: af9aaa75538775c46813cba5dea03fe2, type: 3}
+  icon: {fileID: 21300000, guid: 333c43a0bdd1aa64e95005e6a546760b, type: 3}
   EffectName: Magic Residue
   ShortDescription: 'Currently holding onto magical energy. '
   ShouldDisplayNumber: 0

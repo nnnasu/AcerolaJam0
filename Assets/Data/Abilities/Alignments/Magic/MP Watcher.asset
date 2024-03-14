@@ -42,7 +42,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   effectType: 0
   Conditions: []
-  icon: {fileID: 21300000, guid: 140909e09f395084d8f6a1b56a7e7bea, type: 3}
+  icon: {fileID: 21300000, guid: e5e707e974c97a248b209b708f1287bb, type: 3}
   EffectName: 
   ShortDescription: 
   ShouldDisplayNumber: 0

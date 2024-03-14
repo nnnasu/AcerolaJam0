@@ -138,7 +138,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 8808cc30111cfd448ba97b8344e926ff, type: 3}
   ActionTitle: Line Damage
   Description: Teleports up to {RANGE} away, leaving a trail behind which does {DAMAGE}
     damage to enemies.

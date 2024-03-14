@@ -256,14 +256,14 @@ namespace Core.UI.Rewards {
                 }
 
                 var slot = abilityInstance.modifiers[slotIndex];
-                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos);
+                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos, slot.level);
             } else {
                 if (slotIndex >= abilityInstance.actions.Count) {
                     hoverTipManager.ShowTip("Empty Action", "", pos);
                     return;
                 }
                 var slot = abilityInstance.actions[slotIndex];
-                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos);
+                hoverTipManager.ShowTip(slot.GetTitle(), slot.GetDescription(), pos, slot.level);
             }
         }
         private void OnHoverReward(int iconIndex, bool isModifier, Vector2 pos, bool isEnter) {
@@ -274,7 +274,7 @@ namespace Core.UI.Rewards {
                 if (icon == null) {
                     hoverTipManager.ShowTip("NA", "", pos);
                 } else {
-                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos);
+                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos, icon.level);
                 }
 
             } else {
@@ -282,7 +282,7 @@ namespace Core.UI.Rewards {
                 if (icon == null) {
                     hoverTipManager.ShowTip("NA", "", pos);
                 } else {
-                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos);
+                    hoverTipManager.ShowTip(icon.GetTitle(), icon.GetDescription(), pos, icon.level);
                 }
             }
         }

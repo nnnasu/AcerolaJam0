@@ -107,6 +107,7 @@ MonoBehaviour:
   AnimationToPlay: {fileID: 11400000, guid: 5a388548e69bd4e4ca404549a9783fc7, type: 2}
   CastPoint: 0.4
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 1
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 2}
@@ -138,7 +139,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: cf5fae21bad654043baeeaf30bcb4da8, type: 3}
   ActionTitle: 
   Description: 'Attacks the area right in front of the user, dealing {DAMAGE} damage.
     Also raises Beasthood. '

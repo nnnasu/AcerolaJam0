@@ -139,7 +139,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 0229d5c7a1551a342af0e098e309258a, type: 3}
   ActionTitle: Projectile
   Description: 'Throws {LEVEL} daggers in a fan-shaped pattern which do {DAMAGE}
     damage each. '

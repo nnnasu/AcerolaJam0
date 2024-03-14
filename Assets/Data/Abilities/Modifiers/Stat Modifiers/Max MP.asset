@@ -44,6 +44,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
+  icon: {fileID: 21300000, guid: a5cd268aafa874e42b4e207a4ffcfaec, type: 3}
   ModifierName: Flat Stat Bonus
   Description: 

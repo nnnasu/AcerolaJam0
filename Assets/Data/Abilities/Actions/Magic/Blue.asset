@@ -138,7 +138,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 21300000, guid: 3da7dec63fea0b14cabc74574d60d26e, type: 3}
+  icon: {fileID: 21300000, guid: 97ba1cbbef8f27a4588da832390f0d51, type: 3}
   ActionTitle: Blue Attraction
   Description: 'Creates a projectile at the target point up to {RANGE} away that
     does {DAMAGE} damage while pulling enemies into itself while moving towards the

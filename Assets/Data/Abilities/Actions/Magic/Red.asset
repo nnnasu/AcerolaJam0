@@ -138,7 +138,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 21300000, guid: 5440755378e6dbf49a98288d1216e684, type: 3}
+  icon: {fileID: 21300000, guid: 41a400717044cff45947a8bbcc69c5e7, type: 3}
   ActionTitle: Red Repulsion
   Description: Sends forth a slow-moving projectile that pushes enemies away, dealing
     {DAMAGE} damage.

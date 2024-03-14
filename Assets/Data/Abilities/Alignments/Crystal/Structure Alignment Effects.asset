@@ -42,7 +42,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   effectType: 0
   Conditions: []
-  icon: {fileID: 21300000, guid: 75a65cf2b13752845a65bd9459dca145, type: 3}
+  icon: {fileID: 21300000, guid: 9c004f2cfef456e4ba9e744cf2861ab6, type: 3}
   EffectName: 
   ShortDescription: 'Increases HP and tick speed for structures, but increases the
     damage taken when losing a tower. '

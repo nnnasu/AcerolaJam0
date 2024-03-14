@@ -106,6 +106,7 @@ MonoBehaviour:
   AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
   CastPoint: 0.3
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 0
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 0}
@@ -137,7 +138,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: d2938101f798e884ab136d64d33405c3, type: 3}
   ActionTitle: Projectile
   Description: 'Throws {LEVEL} daggers in a fan-shaped pattern which do {DAMAGE}
     damage each. '

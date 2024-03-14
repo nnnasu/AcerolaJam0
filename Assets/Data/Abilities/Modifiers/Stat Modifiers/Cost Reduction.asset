@@ -44,6 +44,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
+  icon: {fileID: 21300000, guid: a045f1de43cb2f2499d7696f44e588a2, type: 3}
   ModifierName: MP Cost Reduction
   Description: 

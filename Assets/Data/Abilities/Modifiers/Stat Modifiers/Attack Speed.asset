@@ -44,6 +44,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: 017fdad7ed90387439230d9463b20d15, type: 3}
+  icon: {fileID: 21300000, guid: 67844b45e1a392843bb6af9b39b8d936, type: 3}
   ModifierName: Attack Speed
   Description: 

@@ -73,6 +73,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: cb6038f9e303dfd4e8ad88f31b39fc57, type: 3}
+  icon: {fileID: 21300000, guid: 9c004f2cfef456e4ba9e744cf2861ab6, type: 3}
   ModifierName: Structure Reinforcement
   Description: 

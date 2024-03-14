@@ -108,6 +108,7 @@ MonoBehaviour:
   AnimationToPlay: {fileID: 11400000, guid: 579857df42858e64a9a2c42c256c1906, type: 2}
   CastPoint: 0.3
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 1
   TargetSize: {x: 1, y: 1, z: 1}
   TargetOffset: {x: 0, y: 0, z: 2}
@@ -139,7 +140,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8ec579267746ccb49ad0cad1a90ac4c6, type: 3}
   ActionTitle: 
   Description: Attacks the area right in front of the user, dealing {DAMAGE} damage.
   HitboxPrefab: {fileID: 3787522926584128234, guid: 77a401be7c3587c449c8270a6a63f126,

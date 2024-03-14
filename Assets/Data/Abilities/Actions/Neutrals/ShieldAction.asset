@@ -105,6 +105,7 @@ MonoBehaviour:
   AnimationToPlay: {fileID: 11400000, guid: 35f5c9420d9f8bc42927c37a1e8fa6a2, type: 2}
   CastPoint: 0
   BackupUsageTime: 0
+  OnActivationSFX: {fileID: 0}
   TargetingType: 0
   TargetSize: {x: 0, y: 0, z: 0}
   TargetOffset: {x: 0, y: 0, z: 0}
@@ -136,7 +137,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: be45c0c75d9267042a81fcff5453ebbc, type: 3}
   ActionTitle: Shield
   Description: 'Deploys a shield around yourself. '
   followObjectPrefab: {fileID: 3867255862158688488, guid: b162a071ca37eb847a30f9fdbcd5f7bd,

@@ -73,6 +73,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   PerAbilityModifier: []
-  icon: {fileID: 21300000, guid: 66085d104b5f1ad4fae4bf650188c0b2, type: 3}
+  icon: {fileID: 21300000, guid: 6d1cc634b3d153f41a104d7061e48500, type: 3}
   ModifierName: Double-Edged
   Description: 
